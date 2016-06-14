@@ -1,3 +1,11 @@
+//
+//  EXPMatchers+FBSnapshotTest.h
+//  Artsy
+//
+//  Created by Daniel Doubrovkine on 1/14/14.
+//  Copyright (c) 2014 Artsy Inc. All rights reserved.
+//
+
 #import "EXPMatchers+FBSnapshotTest.h"
 #import <Expecta/EXPMatcherHelpers.h>
 #import <FBSnapshotTestCase/FBSnapshotTestController.h>
@@ -94,6 +102,11 @@ void setGlobalReferenceImageDir(char *reference) {
 @end
 
 
+
+// If you're bringing in Speca via CocoaPods
+// use the test path to get the test's image file URL
+
+#if __has_include(<Specta/Specta.h>)
 #import <Specta/Specta.h>
 #import <Specta/SpectaUtility.h>
 #import <Specta/SPTExample.h>
@@ -117,11 +130,6 @@ NSString *sanitizedTestPath(){
 EXPMatcherImplementationBegin(haveValidSnapshot, (void)){
     __block NSError *error = nil;
 
-    prerequisite(^BOOL{
-        return actual;
-    });
-
-
     match(^BOOL{
         NSString *referenceImageDir = [self _getDefaultReferenceDirectory];
         NSString *name = sanitizedTestPath();
@@ -136,10 +144,6 @@ EXPMatcherImplementationBegin(haveValidSnapshot, (void)){
     });
 
     failureMessageForTo(^NSString *{
-        if (!actual) {
-            return [EXPExpectFBSnapshotTest combinedError:@"Nil was passed into haveValidSnapshot." test:sanitizedTestPath() error:nil];
-        }
-
         return [EXPExpectFBSnapshotTest combinedError:@"expected a matching snapshot in" test:sanitizedTestPath() error:error];
     });
 
@@ -155,7 +159,7 @@ EXPMatcherImplementationBegin(recordSnapshot, (void)) {
     BOOL actualIsViewLayerOrViewController = ([actual isKindOfClass:UIView.class] || [actual isKindOfClass:CALayer.class] || [actual isKindOfClass:UIViewController.class]);
 
     prerequisite(^BOOL{
-        return actual && actualIsViewLayerOrViewController;
+        return actualIsViewLayerOrViewController;
     });
 
     match(^BOOL{
@@ -174,10 +178,6 @@ EXPMatcherImplementationBegin(recordSnapshot, (void)) {
     });
 
     failureMessageForTo(^NSString *{
-        if (!actual) {
-            return [EXPExpectFBSnapshotTest combinedError:@"Nil was passed into recordSnapshot." test:sanitizedTestPath() error:nil];
-        }
-
         if (!actualIsViewLayerOrViewController) {
             return [EXPExpectFBSnapshotTest combinedError:@"Expected a View, Layer or View Controller." test:sanitizedTestPath() error:nil];
         }
@@ -198,12 +198,54 @@ EXPMatcherImplementationBegin(recordSnapshot, (void)) {
 }
 EXPMatcherImplementationEnd
 
+#else
+
+// If you don't have Speca stub the functions
+
+EXPMatcherImplementationBegin(haveValidSnapshot, (void)){
+
+    prerequisite(^BOOL{
+        return NO;
+    });
+
+    failureMessageForTo(^NSString *{
+        return @"you need Specta installed via CocoaPods to use haveValidSnapshot, use haveValidSnapshotNamed instead";
+    });
+
+    failureMessageForNotTo(^NSString *{
+        return @"you need Specta installed via CocoaPods to use haveValidSnapshot, use haveValidSnapshotNamed instead";
+    });
+}
+EXPMatcherImplementationEnd
+
+
+EXPMatcherImplementationBegin(recordSnapshot, (void)) {
+    
+    prerequisite(^BOOL{
+        return NO;
+    });
+
+    failureMessageForTo(^NSString *{
+        return @"you need Specta installed via CocoaPods to use recordSnapshot, use recordSnapshotNamed instead";
+    });
+
+    failureMessageForNotTo(^NSString *{
+        return @"you need Specta installed via CocoaPods to use recordSnapshot, use recordSnapshotNamed instead";
+    });
+}
+EXPMatcherImplementationEnd
+
+
+#endif
+
+
+
 EXPMatcherImplementationBegin(haveValidSnapshotNamed, (NSString *snapshot)){
     BOOL snapshotIsNil = (snapshot == nil);
     __block NSError *error = nil;
 
     prerequisite(^BOOL{
-        return actual && !(snapshotIsNil);
+        return !(snapshotIsNil);
     });
 
     match(^BOOL{
@@ -218,10 +260,6 @@ EXPMatcherImplementationBegin(haveValidSnapshotNamed, (NSString *snapshot)){
     });
 
     failureMessageForTo(^NSString *{
-        if (!actual) {
-            return [EXPExpectFBSnapshotTest combinedError:@"Nil was passed into haveValidSnapshotNamed." test:sanitizedTestPath() error:nil];
-        }
-
         return [EXPExpectFBSnapshotTest combinedError:@"expected a matching snapshot named" test:snapshot error:error];
 
     });
@@ -257,9 +295,6 @@ EXPMatcherImplementationBegin(recordSnapshotNamed, (NSString *snapshot)) {
     });
 
     failureMessageForTo(^NSString *{
-        if (!actual) {
-            return [EXPExpectFBSnapshotTest combinedError:@"Nil was passed into recordSnapshotNamed." test:sanitizedTestPath() error:nil];
-        }
         if (!actualIsViewLayerOrViewController) {
             return [EXPExpectFBSnapshotTest combinedError:@"Expected a View, Layer or View Controller." test:snapshot error:nil];
         }
