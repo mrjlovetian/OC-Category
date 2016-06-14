@@ -87,7 +87,7 @@
 #import "UITableViewCell+DelaysContentTouches.h"
 #import "UITableViewCell+NIB.h"
 #import "UITextField+Blocks.h"
-#import "UITextField+History.h"
+//#import "UITextField+History.h"
 #import "UITextField+Select.h"
 #import "UITextField+Shake.h"
 #import "UITextView+PinchZoom.h"
