@@ -33,6 +33,6 @@ Pod::Spec.new do |s|
   #s.source_files = 'OC-Category/Classes/**/*'
 
 
-   #s.source_files = 'OC-Category/**/*.{h,m}'
-   #s.public_header_files = 'OC-Category/**/*.{h}'
+   s.source_files = 'OC-Category/**/*.{h,m}'
+   s.public_header_files = 'OC-Category/**/*.{h}'
 end
