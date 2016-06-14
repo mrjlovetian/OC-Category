@@ -30,41 +30,16 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '7.0'
 
-  s.source_files = 'OC-Category/Classes/**/*'
-  
+  #s.source_files = 'OC-Category/Classes/**/*'
+
+
+   s.source_files = 'OC-Category/**/*.{h,m}'
+   s.public_header_files = 'OC-Category/**/*.{h}'
+
+
   # s.resource_bundles = {
   #   'OC-Category' => ['OC-Category/Assets/*.png']
   # }
-
-	s.subspec 'CoreData' do |cordata|
-		cordata.source_file = 'Pod/Classes/CoreData/**/*'
-		cordata.public_header_files = 'Pod/Classes/CoreData/**/*.h'
-	end
-
-	s.subspec 'CoreLocation' do |location|
-                location.source_file = 'Pod/Classes/CoreLocation/**/*'
-                location.public_header_files = 'Pod/Classes/CoreLocation/**/*.h'
-        end
-
-	s.subspec 'Foundation' do |foundation|
-                foundation.source_file = 'Pod/Classes/Foundation/**/*'
-                foundation.public_header_files = 'Pod/Classes/Foundation/**/*.h'
-        end
-
-	s.subspec 'Mapkit' do |mapkit|
-                mapkit.source_file = 'Pod/Classes/Mapkit/**/*'
-                mapkit.public_header_files = 'Pod/Classes/Mapkit/**/*.h'
-        end
-
-	s.subspec 'QuartzCore' do |quaretzCore|
-                quaretzCore.source_file = 'Pod/Classes/QuartzCore/**/*'
-                quaretzCore.public_header_files = 'Pod/Classes/QuartzCore/**/*.h'
-        end
-
-	s.subspec 'UIKit' do |uikit|
-                uikit.source_file = 'Pod/Classes/UIKit/**/*'
-                uikit.public_header_files = 'Pod/Classes/UIKit/**/*.h'
-        end
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
