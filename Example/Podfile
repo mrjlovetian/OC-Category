@@ -1,0 +1,14 @@
+use_frameworks!
+
+target 'OC-Category_Example' do
+  pod 'OC-Category', :path => '../'
+
+  target 'OC-Category_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+  pod 'Expecta'
+  pod 'FBSnapshotTestCase'
+  pod 'Expecta+Snapshots'
+  end
+end
