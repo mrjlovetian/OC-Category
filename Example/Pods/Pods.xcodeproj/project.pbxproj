@@ -466,8 +466,6 @@
 		C2A1467C1D0FDCB7000E0771 /* UITableViewCell+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A144C11D0FDCB6000E0771 /* UITableViewCell+NIB.m */; };
 		C2A1467D1D0FDCB7000E0771 /* UITextField+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A144C31D0FDCB6000E0771 /* UITextField+Blocks.h */; };
 		C2A1467E1D0FDCB7000E0771 /* UITextField+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A144C41D0FDCB6000E0771 /* UITextField+Blocks.m */; };
-		C2A1467F1D0FDCB7000E0771 /* UITextField+History.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A144C51D0FDCB6000E0771 /* UITextField+History.h */; };
-		C2A146801D0FDCB7000E0771 /* UITextField+History.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A144C61D0FDCB6000E0771 /* UITextField+History.m */; };
 		C2A146811D0FDCB7000E0771 /* UITextField+Select.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A144C71D0FDCB6000E0771 /* UITextField+Select.h */; };
 		C2A146821D0FDCB7000E0771 /* UITextField+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A144C81D0FDCB6000E0771 /* UITextField+Select.m */; };
 		C2A146831D0FDCB7000E0771 /* UITextField+Shake.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A144C91D0FDCB6000E0771 /* UITextField+Shake.h */; };
@@ -1130,8 +1128,6 @@
 		C2A144C11D0FDCB6000E0771 /* UITableViewCell+NIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+NIB.m"; sourceTree = "<group>"; };
 		C2A144C31D0FDCB6000E0771 /* UITextField+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Blocks.h"; sourceTree = "<group>"; };
 		C2A144C41D0FDCB6000E0771 /* UITextField+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Blocks.m"; sourceTree = "<group>"; };
-		C2A144C51D0FDCB6000E0771 /* UITextField+History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+History.h"; sourceTree = "<group>"; };
-		C2A144C61D0FDCB6000E0771 /* UITextField+History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+History.m"; sourceTree = "<group>"; };
 		C2A144C71D0FDCB6000E0771 /* UITextField+Select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Select.h"; sourceTree = "<group>"; };
 		C2A144C81D0FDCB6000E0771 /* UITextField+Select.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Select.m"; sourceTree = "<group>"; };
 		C2A144C91D0FDCB6000E0771 /* UITextField+Shake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Shake.h"; sourceTree = "<group>"; };
@@ -2439,8 +2435,6 @@
 			children = (
 				C2A144C31D0FDCB6000E0771 /* UITextField+Blocks.h */,
 				C2A144C41D0FDCB6000E0771 /* UITextField+Blocks.m */,
-				C2A144C51D0FDCB6000E0771 /* UITextField+History.h */,
-				C2A144C61D0FDCB6000E0771 /* UITextField+History.m */,
 				C2A144C71D0FDCB6000E0771 /* UITextField+Select.h */,
 				C2A144C81D0FDCB6000E0771 /* UITextField+Select.m */,
 				C2A144C91D0FDCB6000E0771 /* UITextField+Shake.h */,
@@ -3012,7 +3006,6 @@
 				C2A145961D0FDCB7000E0771 /* NSRunLoop+PerformBlock.h in Headers */,
 				C2A1460F1D0FDCB7000E0771 /* UIColor+Web.h in Headers */,
 				85E31076D5530AEEB45ACF16B2B8A983 /* EXPMatchers.h in Headers */,
-				C2A1467F1D0FDCB7000E0771 /* UITextField+History.h in Headers */,
 				C2A145661D0FDCB7000E0771 /* NSException+Trace.h in Headers */,
 				C2A1468B1D0FDCB7000E0771 /* UIView+Animation.h in Headers */,
 				51DDDB0FB4899757CF6A826B531B940D /* EXPUnsupportedObject.h in Headers */,
@@ -3463,7 +3456,6 @@
 				C2A146381D0FDCB7000E0771 /* UIImage+RemoteSize.m in Sources */,
 				C2A1464C1D0FDCB7000E0771 /* UIImageView+Reflect.m in Sources */,
 				C2A145DD1D0FDCB7000E0771 /* CAShapeLayer+UIBezierPath.m in Sources */,
-				C2A146801D0FDCB7000E0771 /* UITextField+History.m in Sources */,
 				C2A145311D0FDCB6000E0771 /* NSManagedObjectContext+FetchRequestsConstructors.m in Sources */,
 				931D410B9F8ACB935883DF8C59F9C93E /* EXPMatchers+postNotification.m in Sources */,
 				C2A145BB1D0FDCB7000E0771 /* NSString+XMLDictionary.m in Sources */,
@@ -3814,7 +3806,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Expecta/Expecta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Expecta/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Expecta/Expecta.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -4039,7 +4031,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Expecta/Expecta-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Expecta/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Expecta/Expecta.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
