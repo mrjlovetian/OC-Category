@@ -27,3 +27,4 @@ pod "OC-Category"
 ## License
 
 OC-Category is available under the MIT license. See the LICENSE file for more info.
+Objective-C类目中便捷的方法
