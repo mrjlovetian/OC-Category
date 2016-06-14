@@ -1,0 +1,6 @@
+framework module OC_Category {
+  umbrella header "OC-Category-umbrella.h"
+
+  export *
+  module * { export * }
+}
