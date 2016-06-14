@@ -163,8 +163,6 @@
 		C2A149051D0FFCBD000E0771 /* NSData+Gzip.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A147181D0FFCBC000E0771 /* NSData+Gzip.m */; };
 		C2A149061D0FFCBD000E0771 /* NSData+Hash.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A147191D0FFCBC000E0771 /* NSData+Hash.h */; };
 		C2A149071D0FFCBD000E0771 /* NSData+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1471A1D0FFCBC000E0771 /* NSData+Hash.m */; };
-		C2A149081D0FFCBD000E0771 /* NSData+zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A1471B1D0FFCBC000E0771 /* NSData+zlib.h */; };
-		C2A149091D0FFCBD000E0771 /* NSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1471C1D0FFCBC000E0771 /* NSData+zlib.m */; };
 		C2A1490A1D0FFCBD000E0771 /* NSDate+CupertinoYankee.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A1471E1D0FFCBC000E0771 /* NSDate+CupertinoYankee.h */; };
 		C2A1490B1D0FFCBD000E0771 /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A1471F1D0FFCBC000E0771 /* NSDate+CupertinoYankee.m */; };
 		C2A1490C1D0FFCBD000E0771 /* NSDate+Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = C2A147201D0FFCBC000E0771 /* NSDate+Extension.h */; };
@@ -825,8 +823,6 @@
 		C2A147181D0FFCBC000E0771 /* NSData+Gzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Gzip.m"; sourceTree = "<group>"; };
 		C2A147191D0FFCBC000E0771 /* NSData+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hash.h"; sourceTree = "<group>"; };
 		C2A1471A1D0FFCBC000E0771 /* NSData+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hash.m"; sourceTree = "<group>"; };
-		C2A1471B1D0FFCBC000E0771 /* NSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+zlib.h"; sourceTree = "<group>"; };
-		C2A1471C1D0FFCBC000E0771 /* NSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+zlib.m"; sourceTree = "<group>"; };
 		C2A1471E1D0FFCBC000E0771 /* NSDate+CupertinoYankee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CupertinoYankee.h"; sourceTree = "<group>"; };
 		C2A1471F1D0FFCBC000E0771 /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
 		C2A147201D0FFCBC000E0771 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
@@ -1720,8 +1716,6 @@
 				C2A147181D0FFCBC000E0771 /* NSData+Gzip.m */,
 				C2A147191D0FFCBC000E0771 /* NSData+Hash.h */,
 				C2A1471A1D0FFCBC000E0771 /* NSData+Hash.m */,
-				C2A1471B1D0FFCBC000E0771 /* NSData+zlib.h */,
-				C2A1471C1D0FFCBC000E0771 /* NSData+zlib.m */,
 			);
 			path = NSData;
 			sourceTree = "<group>";
@@ -2846,7 +2840,6 @@
 				C2A14A0F1D0FFCBD000E0771 /* UILabel+AutoSize.h in Headers */,
 				C2A14A0D1D0FFCBD000E0771 /* UILabel+AutomaticWriting.h in Headers */,
 				FD2D4497BC41412128C2D87C1BDE7398 /* EXPMatchers+beginWith.h in Headers */,
-				C2A149081D0FFCBD000E0771 /* NSData+zlib.h in Headers */,
 				C2A14A001D0FFCBD000E0771 /* UIImageView+BetterFace.h in Headers */,
 				C2A14A6B1D0FFCBD000E0771 /* UIViewController+BackButtonItemTitle.h in Headers */,
 				C2A14A081D0FFCBD000E0771 /* UIImageView+Reflect.h in Headers */,
@@ -3340,7 +3333,6 @@
 				C2A149471D0FFCBD000E0771 /* NSObject+Blocks.m in Sources */,
 				C2A149231D0FFCBD000E0771 /* NSDictionary+XML.m in Sources */,
 				C2A149E91D0FFCBD000E0771 /* UIImage+Color.m in Sources */,
-				C2A149091D0FFCBD000E0771 /* NSData+zlib.m in Sources */,
 				1312A7D381C51428CF481E33E3D37901 /* EXPMatchers+beGreaterThan.m in Sources */,
 				C2A14A6C1D0FFCBD000E0771 /* UIViewController+BackButtonItemTitle.m in Sources */,
 				C2A14A4A1D0FFCBD000E0771 /* UIView+BlockGesture.m in Sources */,
@@ -3661,6 +3653,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OC-Category/OC-Category.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = OC_Category;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3690,7 +3683,7 @@
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OC-Category_Example/Pods-OC-Category_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
@@ -3839,7 +3832,7 @@
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OC-Category_Example/Pods-OC-Category_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
@@ -3931,6 +3924,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/OC-Category/OC-Category.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = OC_Category;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4002,7 +3996,7 @@
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OC-Category_Tests/Pods-OC-Category_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
@@ -4064,7 +4058,7 @@
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OC-Category_Tests/Pods-OC-Category_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
