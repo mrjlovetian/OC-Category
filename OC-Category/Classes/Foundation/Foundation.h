@@ -18,7 +18,7 @@
 #import "NSData+Encrypt.h"
 #import "NSData+Gzip.h"
 #import "NSData+Hash.h"
-#import "NSData+zlib.h"
+//#import "NSData+zlib.h"
 #import "NSDate+CupertinoYankee.h"
 #import "NSDate+Extension.h"
 #import "NSDate+Formatter.h"
