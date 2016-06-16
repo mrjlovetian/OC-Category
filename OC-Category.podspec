@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'OC-Category'
-  s.version          = '0.1.3.3'
+  s.version          = '0.1.3.4'
   s.summary          = 'OC语言类目的归类整理.'
 
 # This description is used to generate tags and improve search results.
