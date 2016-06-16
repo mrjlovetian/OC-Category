@@ -37,33 +37,33 @@ Pod::Spec.new do |s|
    #s.public_header_files = 'OC-Category/**/*.{h}'
 
 	s.subspec 'CoreData' do |ss|
-	ss.source_files = 'OC-Category/CoreData/**/*.{h.m}'
-	ss.public_header_files = 'OC-Category/CoreData/**/*.h'
+	ss.source_files = 'OC-Category/Classes/CoreData/**/*'
+	ss.public_header_files = 'OC-Category/Classes/CoreData/**/*.h'
 	end
 
 	s.subspec 'CoreLocation' do |ss|
-	ss.source_files = 'OC-Category/CoreLocation/**/*.{h.m}'
-	ss.public_header_files = 'OC-Category/CoreLocation/**/*.h'
+	ss.source_files = 'OC-Category/Classes/CoreLocation/**/*'
+	ss.public_header_files = 'OC-Category/Classes/CoreLocation/**/*.h'
 	end
 
 	s.subspec 'Foundation' do |ss|
-	ss.source_files = 'OC-Category/Foundation/**/*.{h.m}'
-	ss.public_header_files = 'OC-Category/Foundation/**/*.h'
+	ss.source_files = 'OC-Category/Classes/Foundation/**/*'
+	ss.public_header_files = 'OC-Category/Classes/Foundation/**/*.h'
 	end
 
 	s.subspec 'MapKit' do |ss|
-	ss.source_files = 'OC-Category/MapKit/**/*.{h.m}'
-	ss.public_header_files = 'OC-Category/MapKit/**/*.h'
+	ss.source_files = 'OC-Category/Classes/MapKit/**/*'
+	ss.public_header_files = 'OC-Category/Classes/MapKit/**/*.h'
 	end
 
 	s.subspec 'QuartzCore' do |ss|
-	ss.source_files = 'OC-Category/QuartzCore/**/*.{h.m}'
-	ss.public_header_files = 'OC-Category/QuartzCore/**/*.h'
+	ss.source_files = 'OC-Category/Classes/QuartzCore/**/*'
+	ss.public_header_files = 'OC-Category/Classes/QuartzCore/**/*.h'
 	end
 
 	s.subspec 'UIKit' do |ss|
-	ss.source_files = 'OC-Category/UIKit/**/*.{h.m}'
-	ss.public_header_files = 'OC-Category/UIKit/**/*.h'
+	ss.source_files = 'OC-Category/Classes/UIKit/**/*'
+	ss.public_header_files = 'OC-Category/Classes/UIKit/**/*.h'
 	end
 
 end
