@@ -22,9 +22,13 @@ pod "OC-Category"
 
 ## Author
 
-房产销冠, mrjyuhongjianglovetian@gmail.com
+余洪江, mrjyuhongjianglovetian@gmail.com
 
 ## License
 
 OC-Category is available under the MIT license. See the LICENSE file for more info.
 Objective-C类目中便捷的方法
+
+##特别声明
+
+这个类目是整理了很多开发者使用的方法，方便iOS开发使用
