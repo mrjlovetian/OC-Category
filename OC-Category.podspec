@@ -34,25 +34,25 @@ Pod::Spec.new do |s|
 
 
    	s.source_files = 'OC-Category/Classes/CoreData.h'
-   	s.public_header_files = 'OC-Category/CoreData.h'
+   	s.public_header_files = 'OC-Category/Classes/CoreData.h'
 
 	s.source_files = 'OC-Category/Classes/CoreLocation.h'
-   	s.public_header_files = 'OC-Category/CoreLocation.h'
+   	s.public_header_files = 'OC-Category/Classes/CoreLocation.h'
 
 	s.source_files = 'OC-Category/Classes/Foundation.h'
-   	s.public_header_files = 'OC-Category/Foundation.h'
+   	s.public_header_files = 'OC-Category/Classes/Foundation.h'
 
 	s.source_files = 'OC-Category/Classes/MapKit.h'
-   	s.public_header_files = 'OC-Category/MapKit.h'
+   	s.public_header_files = 'OC-Category/Classes/MapKit.h'
 	
 	s.source_files = 'OC-Category/Classes/QuartzCore.h'
-   	s.public_header_files = 'OC-Category/QuartzCore.h'
+   	s.public_header_files = 'OC-Category/Classes/QuartzCore.h'
 	
 	s.source_files = 'OC-Category/Classes/UIKit.h'
-   	s.public_header_files = 'OC-Category/UIKit.h'
+   	s.public_header_files = 'OC-Category/Classes/UIKit.h'
 	
 	s.source_files = 'OC-Category/Classes/Categories.h'
-   	s.public_header_files = 'OC-Category/Categories.h'
+   	s.public_header_files = 'OC-Category/Classes/Categories.h'
 
 	s.subspec 'CoreData' do |ss|
 	ss.source_files = 'OC-Category/Classes/CoreData/**/*'
