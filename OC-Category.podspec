@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'OC-Category'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'OC语言类目的归类整理.'
 
 # This description is used to generate tags and improve search results.
@@ -33,6 +33,37 @@ Pod::Spec.new do |s|
   #s.source_files = 'OC-Category/Classes/**/*'
 
 
-   s.source_files = 'OC-Category/**/*.{h,m}'
-   s.public_header_files = 'OC-Category/**/*.{h}'
+   #s.source_files = 'OC-Category/**/*.{h,m}'
+   #s.public_header_files = 'OC-Category/**/*.{h}'
+
+	s.subspec 'CoreData' do |ss|
+	ss.source_files = 'OC-Category/CoreData/**/*.{h.m}'
+	ss.public_header_files = 'OC-Category/CoreData/**/*.h'
+	end
+
+	s.subspec 'CoreLocation' do |ss|
+	ss.source_files = 'OC-Category/CoreLocation/**/*.{h.m}'
+	ss.public_header_files = 'OC-Category/CoreLocation/**/*.h'
+	end
+
+	s.subspec 'Foundation' do |ss|
+	ss.source_files = 'OC-Category/Foundation/**/*.{h.m}'
+	ss.public_header_files = 'OC-Category/Foundation/**/*.h'
+	end
+
+	s.subspec 'MapKit' do |ss|
+	ss.source_files = 'OC-Category/MapKit/**/*.{h.m}'
+	ss.public_header_files = 'OC-Category/MapKit/**/*.h'
+	end
+
+	s.subspec 'QuartzCore' do |ss|
+	ss.source_files = 'OC-Category/QuartzCore/**/*.{h.m}'
+	ss.public_header_files = 'OC-Category/QuartzCore/**/*.h'
+	end
+
+	s.subspec 'UIKit' do |ss|
+	ss.source_files = 'OC-Category/UIKit/**/*.{h.m}'
+	ss.public_header_files = 'OC-Category/UIKit/**/*.h'
+	end
+
 end
