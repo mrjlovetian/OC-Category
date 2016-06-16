@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'OC-Category'
-  s.version          = '0.1.3.1'
+  s.version          = '0.1.3.2'
   s.summary          = 'OC语言类目的归类整理.'
 
 # This description is used to generate tags and improve search results.
@@ -33,8 +33,26 @@ Pod::Spec.new do |s|
   #s.source_files = 'OC-Category/Classes/**/*'
 
 
-   #s.source_files = 'OC-Category/**/*.{h,m}'
-   #s.public_header_files = 'OC-Category/**/*.{h}'
+   	s.source_files = 'OC-Category/Classes/CoreData.h'
+   	s.public_header_files = 'OC-Category/CoreData.h'
+
+	s.source_files = 'OC-Category/Classes/CoreLocation.h'
+   	s.public_header_files = 'OC-Category/CoreLocation.h'
+
+	s.source_files = 'OC-Category/Classes/Foundation.h'
+   	s.public_header_files = 'OC-Category/Foundation.h'
+
+	s.source_files = 'OC-Category/Classes/MapKit.h'
+   	s.public_header_files = 'OC-Category/MapKit.h'
+	
+	s.source_files = 'OC-Category/Classes/QuartzCore.h'
+   	s.public_header_files = 'OC-Category/QuartzCore.h'
+	
+	s.source_files = 'OC-Category/Classes/UIKit.h'
+   	s.public_header_files = 'OC-Category/UIKit.h'
+	
+	s.source_files = 'OC-Category/Classes/Categories.h'
+   	s.public_header_files = 'OC-Category/Categories.h'
 
 	s.subspec 'CoreData' do |ss|
 	ss.source_files = 'OC-Category/Classes/CoreData/**/*'
