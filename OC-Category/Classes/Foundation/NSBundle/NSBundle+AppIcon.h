@@ -7,6 +7,17 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface NSBundle (AppIcon)
+/**
+ *  获得appicon的路径
+ *
+ *  @return
+ */
 - (NSString*)appIconPath ;
+
+/**
+ *  直接获得appicon的图片
+ *
+ *  @return 
+ */
 - (UIImage*)appIcon ;
 @end
