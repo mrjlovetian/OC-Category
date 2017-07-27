@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## OC-Category
 
-Copyright (c) 2016 房产销冠 <mrjyuhongjianglovetian@gmail.com>
+Copyright (c) 2016 余洪江 <mrjyuhongjianglovetian@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

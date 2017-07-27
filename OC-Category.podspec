@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/mrjlovetian/OC-Category'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '房产销冠' => 'mrjyuhongjianglovetian@gmail.com' }
+  s.author           = { '余洪江' => 'mrjyuhongjianglovetian@gmail.com' }
   s.source           = { :git => 'https://github.com/mrjlovetian/OC-Category.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

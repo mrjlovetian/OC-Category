@@ -1,6 +1,6 @@
 # OC-Category
 
-[![CI Status](http://img.shields.io/travis/房产销冠/OC-Category.svg?style=flat)](https://travis-ci.org/房产销冠/OC-Category)
+[![CI Status](http://img.shields.io/travis/余洪江/OC-Category.svg?style=flat)](https://travis-ci.org/余洪江/OC-Category)
 [![Version](https://img.shields.io/cocoapods/v/OC-Category.svg?style=flat)](http://cocoapods.org/pods/OC-Category)
 [![License](https://img.shields.io/cocoapods/l/OC-Category.svg?style=flat)](http://cocoapods.org/pods/OC-Category)
 [![Platform](https://img.shields.io/cocoapods/p/OC-Category.svg?style=flat)](http://cocoapods.org/pods/OC-Category)
