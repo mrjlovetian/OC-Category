@@ -442,6 +442,10 @@
 		C28752181D124A670023A3F1 /* QuartzCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C28752121D124A670023A3F1 /* QuartzCore.h */; };
 		C28752191D124A670023A3F1 /* UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C28752131D124A670023A3F1 /* UIKit.h */; };
 		C289A57687F4CECF3D2BCEF8A06B7B67 /* NSFileHandle+ReadLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 33BECB51B17389E4F948514A2A33461B /* NSFileHandle+ReadLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C29D7D201F4D11D000CAFCF0 /* NSBundle+YHJQRCode.h in Headers */ = {isa = PBXBuildFile; fileRef = C29D7D1E1F4D11D000CAFCF0 /* NSBundle+YHJQRCode.h */; };
+		C29D7D211F4D11D000CAFCF0 /* NSBundle+YHJQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = C29D7D1F1F4D11D000CAFCF0 /* NSBundle+YHJQRCode.m */; };
+		C29D7D241F4D122600CAFCF0 /* YHJQRCodeScanningView.h in Headers */ = {isa = PBXBuildFile; fileRef = C29D7D221F4D122600CAFCF0 /* YHJQRCodeScanningView.h */; };
+		C29D7D251F4D122600CAFCF0 /* YHJQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = C29D7D231F4D122600CAFCF0 /* YHJQRCodeScanningView.m */; };
 		C2DE0798ADB5DCF374F78B450DC74A7F /* NSManagedObject+Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B872EB5EEE40D1FD1B6D9ABD975228 /* NSManagedObject+Dictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C36387C9C42DD850C0065753D465C09B /* NSDictionary+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7528F07AE45EC59B1B708F7580581AA6 /* NSDictionary+URL.m */; };
 		C3A22C6445F839B7653507D72EEC8B50 /* NSObject+EasyCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7CDD1F19F05747C457C42407949A8F /* NSObject+EasyCopy.m */; };
@@ -1105,6 +1109,10 @@
 		C28752111D124A670023A3F1 /* MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapKit.h; sourceTree = "<group>"; };
 		C28752121D124A670023A3F1 /* QuartzCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzCore.h; sourceTree = "<group>"; };
 		C28752131D124A670023A3F1 /* UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKit.h; sourceTree = "<group>"; };
+		C29D7D1E1F4D11D000CAFCF0 /* NSBundle+YHJQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+YHJQRCode.h"; sourceTree = "<group>"; };
+		C29D7D1F1F4D11D000CAFCF0 /* NSBundle+YHJQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+YHJQRCode.m"; sourceTree = "<group>"; };
+		C29D7D221F4D122600CAFCF0 /* YHJQRCodeScanningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHJQRCodeScanningView.h; sourceTree = "<group>"; };
+		C29D7D231F4D122600CAFCF0 /* YHJQRCodeScanningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHJQRCodeScanningView.m; sourceTree = "<group>"; };
 		C2EF85717C098AB4A5BBC8AB6FE44F12 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
 		C30872960B74C7C0F123E63B82FB6D73 /* UIApplication+Permissions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Permissions.m"; sourceTree = "<group>"; };
 		C3160FF6A5E7B14B96B37D11AD364281 /* NSManagedObjectContext+Extensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Extensions.h"; sourceTree = "<group>"; };
@@ -1563,8 +1571,12 @@
 		25C34C5E86F5FF606FCAE0F195F0887C /* NSBundle */ = {
 			isa = PBXGroup;
 			children = (
+				C29D7D1E1F4D11D000CAFCF0 /* NSBundle+YHJQRCode.h */,
+				C29D7D1F1F4D11D000CAFCF0 /* NSBundle+YHJQRCode.m */,
 				D51B98A2C147CDE1BC2D65BC7C145D3B /* NSBundle+AppIcon.h */,
 				8FB510F0CE1B1C6111649791C9C13161 /* NSBundle+AppIcon.m */,
+				C29D7D221F4D122600CAFCF0 /* YHJQRCodeScanningView.h */,
+				C29D7D231F4D122600CAFCF0 /* YHJQRCodeScanningView.m */,
 			);
 			path = NSBundle;
 			sourceTree = "<group>";
@@ -2713,12 +2725,14 @@
 				3C2700C7DAA15C6AF84A595865C42F4D /* EXPMatchers+contain.h in Headers */,
 				1A1AB2EC52323C5EA28DAA99F1E1A90D /* EXPMatchers+endWith.h in Headers */,
 				0F94F5B0ABB3252B9275B7C129EC7A26 /* EXPMatchers+equal.h in Headers */,
+				C29D7D241F4D122600CAFCF0 /* YHJQRCodeScanningView.h in Headers */,
 				F75CB2A727F678C9A848A3A11EA7979B /* EXPMatchers+haveCountOf.h in Headers */,
 				2916A0606136A9DC67F2463AB230868B /* EXPMatchers+match.h in Headers */,
 				9B2E761A064459F77EA9870BEF03ACC3 /* EXPMatchers+postNotification.h in Headers */,
 				46137F5CC368BF38BAF0D0AF81DD8FFE /* EXPMatchers+raise.h in Headers */,
 				11C1AEB289C1EB80089349B71F09D04B /* EXPMatchers+raiseWithReason.h in Headers */,
 				260BC7EED9289AF321A6F791964CE472 /* EXPMatchers+respondTo.h in Headers */,
+				C29D7D201F4D11D000CAFCF0 /* NSBundle+YHJQRCode.h in Headers */,
 				85E31076D5530AEEB45ACF16B2B8A983 /* EXPMatchers.h in Headers */,
 				51DDDB0FB4899757CF6A826B531B940D /* EXPUnsupportedObject.h in Headers */,
 				7B223B4E6EF14BA12DA113F7EE10B96C /* NSObject+Expecta.h in Headers */,
@@ -3230,6 +3244,7 @@
 				CE3F4ECBB0BC095577D66AE50C8E604C /* EXPFloatTuple.m in Sources */,
 				201BF9C605852822CA5A65ADE282A310 /* EXPMatcherHelpers.m in Sources */,
 				BA12B131F10BCE3BE6E9A02FC908FE9D /* EXPMatchers+beCloseTo.m in Sources */,
+				C29D7D251F4D122600CAFCF0 /* YHJQRCodeScanningView.m in Sources */,
 				17572374B2AE183C6347C41E8DF8E579 /* EXPMatchers+beFalsy.m in Sources */,
 				F12D57414A73406831CC032A7170DBFF /* EXPMatchers+beginWith.m in Sources */,
 				1312A7D381C51428CF481E33E3D37901 /* EXPMatchers+beGreaterThan.m in Sources */,
@@ -3247,6 +3262,7 @@
 				DB30F82FB1BE083D9471B965FB500CA2 /* EXPMatchers+conformTo.m in Sources */,
 				FC20596ABFE14A61F171A29FD03275E7 /* EXPMatchers+contain.m in Sources */,
 				918E06480F28F27361B19D19432F8538 /* EXPMatchers+endWith.m in Sources */,
+				C29D7D211F4D11D000CAFCF0 /* NSBundle+YHJQRCode.m in Sources */,
 				1AB3304B6884F626BC54150AC7565E18 /* EXPMatchers+equal.m in Sources */,
 				403292D82DA62291204BF59524BC4EDB /* EXPMatchers+haveCountOf.m in Sources */,
 				FC45858927D3B6A0F922C4B697B04A38 /* EXPMatchers+match.m in Sources */,
