@@ -7,7 +7,7 @@
 //
 
 #import "YHJViewController.h"
-#import <OC_Category/Categories.h>
+//#import <OC_Category/Categories.h>
 
 @interface YHJViewController ()
 
@@ -18,11 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSDate date] daysAgo];
-    [[NSArray alloc] each:^(id object) {
-        
-    }];
-    [[NSArray alloc] objectWithIndex:3];
+//    [[NSDate date] daysAgo];
+//    [[NSArray alloc] each:^(id object) {
+//        
+//    }];
+//    [[NSArray alloc] objectWithIndex:3];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

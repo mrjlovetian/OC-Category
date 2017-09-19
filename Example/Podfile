@@ -1,5 +1,7 @@
 use_frameworks!
 
+platform :ios, 8.0
+
 target 'OC-Category_Example' do
   pod 'OC-Category', :path => '../'
 

@@ -6,9 +6,6 @@
 //
 #import "UIView+Animation.h"
 
-
-// Very helpful function
-
 float radiansForDegrees(int degrees) {
     return degrees * M_PI / 180;
 }
