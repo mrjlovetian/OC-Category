@@ -12,8 +12,7 @@
 
 @implementation NSManagedObjectContext(FetchRequestsConstructors)
 #pragma mark - Constructors
-- (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingValue:(id)value forKey:(NSString*)key returningAsFault:(BOOL)fault
-{
+- (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingValue:(id)value forKey:(NSString*)key returningAsFault:(BOOL)fault{
     // Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 
@@ -25,8 +24,7 @@
 	return req;
 }
 
-- (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault
-{
+- (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault{
 	// Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 
@@ -38,33 +36,28 @@
 	return req;
 }
 
-- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName returningAsFault:(BOOL)fault
-{
+- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName returningAsFault:(BOOL)fault{
     return [self fetchRequestForEntityObjects:entityName
                                usingPredicate:nil
                          usingSortDescriptors:nil
                              returningAsFault:fault];
-
 }
 
-- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault
-{
+- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault{
     return [self fetchRequestForEntityObjects:entityName
                                usingPredicate:predicate
                          usingSortDescriptors:nil
                              returningAsFault:fault];
 }
 
-- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault
-{
+- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault{
     return [self fetchRequestForEntityObjects:entityName
                                usingPredicate:nil
                          usingSortDescriptors:sortDescriptors
                              returningAsFault:fault];
 }
 
-- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault
-{
+- (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault{
     // Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 

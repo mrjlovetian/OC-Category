@@ -9,24 +9,20 @@
 
 @implementation NSManagedObjectContext(Extensions)
 
-- (NSManagedObjectModel *)objectModel
-{
+- (NSManagedObjectModel *)objectModel{
   return [[self persistentStoreCoordinator] managedObjectModel];
 }
 
 #pragma mark - Sync methods
-- (NSArray *)fetchObjectsForEntity:(NSString *)entity
-{
+- (NSArray *)fetchObjectsForEntity:(NSString *)entity{
   return [self fetchObjectsForEntity:entity predicate:nil sortDescriptors:nil];
 }
 
-- (NSArray *)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate
-{
+- (NSArray *)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate{
   return [self fetchObjectsForEntity:entity predicate:predicate sortDescriptors:nil];
 }
 
-- (NSArray *)fetchObjectsForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors
-{
+- (NSArray *)fetchObjectsForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors{
   return [self fetchObjectsForEntity:entity predicate:nil sortDescriptors:sortDescriptors];
 }
 
@@ -34,8 +30,7 @@
   return [self fetchObjectsForEntity:entity predicate:predicate sortDescriptors:sortDescriptors fetchLimit:0];
 }
 
-- (NSArray *)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors fetchLimit:(NSUInteger)limit
-{
+- (NSArray *)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors fetchLimit:(NSUInteger)limit{
   NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntity:[NSEntityDescription entityForName:entity inManagedObjectContext:self] predicate:predicate sortDescriptors:sortDescriptors];
   if (limit > 0)
     [request setFetchLimit:limit];
@@ -62,23 +57,19 @@
   return nil;
 }
 
-- (id)fetchObjectForEntity:(NSString *)entity
-{
+- (id)fetchObjectForEntity:(NSString *)entity{
   return [self fetchObjectForEntity:entity predicate:nil sortDescriptors:nil];
 }
 
-- (id)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate
-{
+- (id)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate{
   return [self fetchObjectForEntity:entity predicate:predicate sortDescriptors:nil];
 }
 
-- (id)fetchObjectForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors
-{
+- (id)fetchObjectForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors{
   return [self fetchObjectForEntity:entity predicate:nil sortDescriptors:sortDescriptors];
 }
 
-- (id)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors
-{
+- (id)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors{
   NSArray *results = [self fetchObjectsForEntity:entity predicate:predicate sortDescriptors:sortDescriptors];
   if (results.count < 1)
     return nil;
@@ -86,49 +77,40 @@
   return [results objectAtIndex:0];
 }
 
-
-
 #pragma mark - Async Methods
-- (void)fetchObjectsForEntity:(NSString *)entity callback:(FetchObjectsCallback)callback
-{
+
+- (void)fetchObjectsForEntity:(NSString *)entity callback:(FetchObjectsCallback)callback{
   [self fetchObjectsForEntity:entity predicate:nil sortDescriptors:nil callback:callback];
 }
 
-- (void)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate callback:(FetchObjectsCallback)callback
-{
+- (void)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate callback:(FetchObjectsCallback)callback{
   [self fetchObjectsForEntity:entity predicate:predicate sortDescriptors:nil callback:callback];
 }
 
-- (void)fetchObjectsForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectsCallback)callback
-{
+- (void)fetchObjectsForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectsCallback)callback{
   [self fetchObjectsForEntity:entity predicate:nil sortDescriptors:sortDescriptors callback:callback];
 }
 
-- (void)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectsCallback)callback
-{
+- (void)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectsCallback)callback{
   NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entity inManagedObjectContext:self];
   NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntity:entityDescription predicate:predicate sortDescriptors:sortDescriptors];
   
   [self fetchRequest:request withCallback:callback];
 }
 
-- (void)fetchObjectForEntity:(NSString *)entity callback:(FetchObjectCallback)callback
-{
+- (void)fetchObjectForEntity:(NSString *)entity callback:(FetchObjectCallback)callback{
   [self fetchObjectForEntity:entity predicate:nil sortDescriptors:nil callback:callback];
 }
 
-- (void)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate callback:(FetchObjectCallback)callback
-{
+- (void)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate callback:(FetchObjectCallback)callback{
   [self fetchObjectForEntity:entity predicate:predicate sortDescriptors:nil callback:callback];
 }
 
-- (void)fetchObjectForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectCallback)callback
-{
+- (void)fetchObjectForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectCallback)callback{
   [self fetchObjectForEntity:entity predicate:nil sortDescriptors:sortDescriptors callback:callback];
 }
 
-- (void)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectCallback)callback
-{
+- (void)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectCallback)callback{
   [self fetchObjectsForEntity:entity predicate:predicate sortDescriptors:sortDescriptors callback:^(NSArray *objects, NSError *error) {
     id object = nil;
     
@@ -140,8 +122,7 @@
 }
 
 
-- (void)fetchRequest:(NSFetchRequest *)fetchRequest withCallback:(FetchObjectsCallback)callback
-{
+- (void)fetchRequest:(NSFetchRequest *)fetchRequest withCallback:(FetchObjectsCallback)callback{
   NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
   [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
   
@@ -172,13 +153,11 @@
 }
 
 #pragma mark - Insert New Entity
-- (id)insertEntity:(NSString *)entity
-{
+- (id)insertEntity:(NSString *)entity{
   return [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:self];
 }
 
-- (void)deleteEntity:(NSString *)entity withPredicate:(NSPredicate *)predicate
-{
+- (void)deleteEntity:(NSString *)entity withPredicate:(NSPredicate *)predicate{
   NSError __block *error = nil;
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntity:[NSEntityDescription entityForName:entity inManagedObjectContext:self] predicate:predicate];
   
@@ -191,11 +170,9 @@
             NSLog(@"CoreData Delete error: %@", [error userInfo]);
         else
             [self deleteObject:object];
-        
     }];
     
    [self save:&error];
 }
-
 
 @end

@@ -8,15 +8,13 @@
 
 @implementation NSManagedObjectContext(Fetching)
 #pragma mark Fetching
-- (id)fetchObject:(NSString*)entityName usingValue:(id)value forKey:(NSString *)key returningAsFault:(BOOL)fault
-{
+- (id)fetchObject:(NSString*)entityName usingValue:(id)value forKey:(NSString *)key returningAsFault:(BOOL)fault{
     return [self fetchObject:entityName
               usingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", key, value]
             returningAsFault:fault];
 }
 
-- (id)fetchObject:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault
-{
+- (id)fetchObject:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault{
 	// Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 
@@ -30,8 +28,7 @@
                                 error:nil] lastObject];
 }
 
-- (NSArray *)fetchObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault
-{
+- (NSArray *)fetchObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault{
 	// Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 
@@ -44,8 +41,7 @@
                                error:nil];
 }
 
-- (NSArray *)fetchObjects:(NSString*)entityName usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault
-{	
+- (NSArray *)fetchObjects:(NSString*)entityName usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault{
 	// Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 
@@ -58,8 +54,7 @@
                                error:nil];
 }
 
-- (NSArray *)fetchObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault
-{
+- (NSArray *)fetchObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault{
 	// Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 
@@ -73,19 +68,16 @@
                                error:nil];
 }
 
-- (NSArray*)fetchObjects:(NSString*)entityName returningAsFault:(BOOL)fault
-{
+- (NSArray*)fetchObjects:(NSString*)entityName returningAsFault:(BOOL)fault{
 	return [self fetchObjects:entityName usingSortDescriptors:nil returningAsFault:fault];
 }
 
 #pragma mark - Count
-- (NSInteger)countObjects:(NSString*)entityName
-{
+- (NSInteger)countObjects:(NSString*)entityName{
     return [self countObjects:entityName usingPredicate:nil];
 }
 
-- (NSInteger)countObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate
-{
+- (NSInteger)countObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate{
     // Create request
     NSFetchRequest *req        = [[NSFetchRequest alloc] init];
 

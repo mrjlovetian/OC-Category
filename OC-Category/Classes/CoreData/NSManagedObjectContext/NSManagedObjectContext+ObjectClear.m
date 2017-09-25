@@ -10,8 +10,7 @@
 
 @implementation NSManagedObjectContext (ObjectClear)
 #pragma mark - Utils
-- (void)deleteObjects:(id <NSFastEnumeration>)objects
-{
+- (void)deleteObjects:(id <NSFastEnumeration>)objects{
     for (id obj in objects)
         [self deleteObject:obj];
 }
