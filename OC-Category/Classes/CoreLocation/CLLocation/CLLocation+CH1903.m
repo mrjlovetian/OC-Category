@@ -113,9 +113,6 @@
     return x;
 }
 
-
-
-
 // Convert DEC angle to SEX DMS
 + (double)decToSex:(double)angle {
     // Extract DMS
