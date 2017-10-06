@@ -20,4 +20,5 @@
  *  @brief  catgory runtime实现get set方法增加一个NSInteger属性
  */
 @property (nonatomic,assign) NSInteger integerProperty;
+
 @end

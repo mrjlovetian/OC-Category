@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @interface NSData (Gzip)
 /**
  *  @brief  GZIP压缩
@@ -31,4 +32,5 @@
 - (NSData *)gunzippedData;
 
 - (BOOL)isGzippedData;
+
 @end

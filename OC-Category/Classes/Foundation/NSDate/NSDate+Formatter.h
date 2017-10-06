@@ -28,9 +28,9 @@
 -(NSString *)formatWithTimeZoneOffsetWithoutDate:(NSTimeInterval)offset;
 -(NSString *)formatTimeWithTimeZone:(NSTimeZone *)timezone;
 
-
 + (NSString *)currentDateStringWithFormat:(NSString *)format;
 + (NSDate *)dateWithSecondsFromNow:(NSInteger)seconds;
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSUInteger)month day:(NSUInteger)day;
 - (NSString *)dateWithFormat:(NSString *)format;
+
 @end

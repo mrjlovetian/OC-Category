@@ -27,6 +27,7 @@
 - (NSDictionary *)dictionaryByMergingWith:(NSDictionary *)dict;
 
 #pragma mark - Manipulation
+
 - (NSDictionary *)dictionaryByAddingEntriesFromDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)dictionaryByRemovingEntriesWithKeys:(NSSet *)keys;
 

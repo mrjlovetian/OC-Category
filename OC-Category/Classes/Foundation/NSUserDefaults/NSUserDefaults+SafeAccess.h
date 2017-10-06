@@ -39,4 +39,5 @@
 #pragma mark - WRITE ARCHIVE FOR STANDARD
 
 + (void)setArcObject:(id)value forKey:(NSString *)defaultName;
+
 @end

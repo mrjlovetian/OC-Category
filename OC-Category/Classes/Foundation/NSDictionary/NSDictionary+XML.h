@@ -13,4 +13,5 @@
  *  @return XML 字符串
  */
 - (NSString *)XMLString;
+
 @end

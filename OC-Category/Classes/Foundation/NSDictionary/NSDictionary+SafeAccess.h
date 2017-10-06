@@ -88,4 +88,5 @@
 -(void)setSize:(CGSize)o forKey:(NSString*)key;
 
 -(void)setRect:(CGRect)o forKey:(NSString*)key;
+
 @end

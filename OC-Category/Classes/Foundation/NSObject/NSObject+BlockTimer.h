@@ -8,5 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (BlockTimer)
+
 -(void)logTimeTakenToRunBlock:(void (^)(void)) block withPrefix:(NSString*) prefixString;
+
 @end

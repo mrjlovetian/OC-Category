@@ -12,7 +12,6 @@ typedef void (^ContextCallback)(NSManagedObjectContext *context);
 typedef void (^ContextObjectCallback)(NSManagedObjectContext *context, id object);
 typedef void (^ContextObjectsCallback)(NSManagedObjectContext *context, NSArray *objects);
 
-
 @interface NSManagedObjectContext(Extensions)
 
 #pragma mark - Conveince Property
@@ -30,16 +29,15 @@ typedef void (^ContextObjectsCallback)(NSManagedObjectContext *context, NSArray 
 - (id)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors;
 
 #pragma mark - Async Methods
+
 - (void)fetchObjectsForEntity:(NSString *)entity callback:(FetchObjectsCallback)callback;
 - (void)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate callback:(FetchObjectsCallback)callback;
 - (void)fetchObjectsForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectsCallback)callback;
 - (void)fetchObjectsForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectsCallback)callback;
-
 - (void)fetchObjectForEntity:(NSString *)entity callback:(FetchObjectCallback)callback;
 - (void)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate callback:(FetchObjectCallback)callback;
 - (void)fetchObjectForEntity:(NSString *)entity sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectCallback)callback;
 - (void)fetchObjectForEntity:(NSString *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors callback:(FetchObjectCallback)callback;
-
 - (void)fetchRequest:(NSFetchRequest *)fetchRequest withCallback:(FetchObjectsCallback)callback;
 
 #pragma mark - Insert New Entity

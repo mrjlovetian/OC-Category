@@ -39,13 +39,9 @@
  *  @return
  */
 - (NSArray *)filter:(BOOL (^)(id object))block;
-
-
 - (NSArray *)reject:(BOOL (^)(id object))block;
-
 - (id)detect:(BOOL (^)(id object))block;
-
 - (id)reduce:(id (^)(id accumulator, id object))block;
-
 - (id)reduce:(id)initial withBlock:(id (^)(id accumulator, id object))block;
-@end
+
+@end 

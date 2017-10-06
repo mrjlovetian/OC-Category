@@ -14,6 +14,7 @@
  *  @return 参数转字典结果
  */
 - (NSDictionary *)parameters;
+
 /**
  *  @brief  根据参数名 取参数值
  *
@@ -22,4 +23,5 @@
  *  @return 参数值
  */
 - (NSString *)valueForParameter:(NSString *)parameterKey;
+
 @end

@@ -40,6 +40,7 @@ extern NSString *const NSRunloopTimeoutException;
  *  @param block <#block description#>
  */
 - (void)performBlockAndWait:(void (^)(BOOL *finish))block;
+
 /**
  *  @author ishkawa
  *

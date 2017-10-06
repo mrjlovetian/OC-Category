@@ -54,22 +54,22 @@
 - (NSDate*)startOfWeek;
 - (NSDate*)endOfWeek;
 
-- (NSDate*) startOfMonth;
-- (NSDate*) endOfMonth;
+- (NSDate*)startOfMonth;
+- (NSDate*)endOfMonth;
 
-- (NSDate*) startOfYear;
-- (NSDate*) endOfYear;
+- (NSDate*)startOfYear;
+- (NSDate*)endOfYear;
 
-- (NSDate*) previousDay;
-- (NSDate*) nextDay;
+- (NSDate*)previousDay;
+- (NSDate*)nextDay;
 
-- (NSDate*) previousWeek;
-- (NSDate*) nextWeek;
+- (NSDate*)previousWeek;
+- (NSDate*)nextWeek;
 
-- (NSDate*) previousMonth;
-- (NSDate*) previousMonth:(NSUInteger) monthsToMove;
-- (NSDate*) nextMonth;
-- (NSDate*) nextMonth:(NSUInteger) monthsToMove;
+- (NSDate*)previousMonth;
+- (NSDate*)previousMonth:(NSUInteger) monthsToMove;
+- (NSDate*)nextMonth;
+- (NSDate*)nextMonth:(NSUInteger) monthsToMove;
 
 #ifdef DEBUG
 // For testing only. A helper function to format and display a date
@@ -77,6 +77,7 @@
 //     NSDate *test = [NSDate firstDayOfCurrentMonth];
 //     [test logWithComment:@"First day of current month: "];
 - (void)logWithComment:(NSString *)comment;
+
 #endif
 
 @end

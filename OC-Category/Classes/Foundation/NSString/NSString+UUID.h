@@ -14,6 +14,7 @@
  *  @return 随机 UUID
  */
 + (NSString *)UUID;
+
 /**
  *
  *  @brief  毫秒时间戳 例如 1443066826371
@@ -21,4 +22,5 @@
  *  @return 毫秒时间戳
  */
 + (NSString *)UUIDTimestamp;
+
 @end

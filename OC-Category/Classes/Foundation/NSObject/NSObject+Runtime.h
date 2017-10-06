@@ -67,4 +67,5 @@
  @return YES if one of super classes in hierarchy responds a specified selector.
  */
 + (BOOL)instancesRespondToSelector:(SEL)selector untilClass:(Class)stopClass;
+
 @end

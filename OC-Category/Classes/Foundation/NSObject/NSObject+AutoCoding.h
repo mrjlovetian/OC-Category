@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 @interface NSObject (AutoCoding) <NSSecureCoding>
+
 //coding
 + (NSDictionary *)codableProperties;
 - (void)setWithCoder:(NSCoder *)aDecoder;
@@ -15,4 +16,5 @@
 //loading / saving
 + (instancetype)objectWithContentsOfFile:(NSString *)path;
 - (BOOL)writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
+
 @end

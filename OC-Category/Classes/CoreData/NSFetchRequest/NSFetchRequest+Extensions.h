@@ -16,7 +16,6 @@ typedef void (^FetchObjectCallback)(id fetchedObject, NSError * error);
 + (id)fetchRequestWithEntity:(NSEntityDescription *)entity predicate:(NSPredicate *)predicate;
 + (id)fetchRequestWithEntity:(NSEntityDescription *)entity sortDescriptors:(NSArray *)sortDescriptors;
 + (id)fetchRequestWithEntity:(NSEntityDescription *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors;
-
 - (id)initWithEntity:(NSEntityDescription *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors;
 
 @end
