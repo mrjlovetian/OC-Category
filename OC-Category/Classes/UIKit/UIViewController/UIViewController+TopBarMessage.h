@@ -6,11 +6,8 @@
 //
 ///通知显示的2种模式
 typedef enum {
-    
     TopBarMessageModeOverlay = 0,   //视图不下移
-    
     TopBarMessageModeResize,        //视图下移
-    
 }TopBarMessageMode;
 
 
@@ -23,9 +20,7 @@ typedef enum {
 @property (nonatomic, copy) dispatch_block_t tapHandler;
 @property (nonatomic, assign) float dimissDelay;
 @property (nonatomic, strong) UILabel *label;
-
 @property (nonatomic, assign) TopBarMessageMode mode;
-
 
 - (void)resetViews;
 - (void)dismiss;

@@ -13,18 +13,20 @@
  *
  *  @return 打印视图层级字符串
  */
--(NSString*)recursiveView;
+- (NSString *)recursiveView;
+
 /**
  *  @brief  打印约束
  *
  *  @return 打印约束字符串
  */
--(NSString*)constraintsDescription;
+- (NSString *)constraintsDescription;
+
 /**
  *  @brief  打印整个autolayout树的字符串
  *
  *  @return 打印整个autolayout树的字符串
  */
--(NSString*)autolayoutTraceDescription;
+- (NSString *)autolayoutTraceDescription;
 
 @end

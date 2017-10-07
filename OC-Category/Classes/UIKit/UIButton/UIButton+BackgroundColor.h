@@ -15,4 +15,5 @@
  *  @param state           按钮状态
  */
 - (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state;
+
 @end

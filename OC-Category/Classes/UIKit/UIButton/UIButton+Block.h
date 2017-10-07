@@ -9,5 +9,7 @@
 typedef void (^TouchedButtonBlock)(NSInteger tag);
 
 @interface UIButton (Block)
--(void)addActionHandler:(TouchedButtonBlock)touchHandler;
+
+- (void)addActionHandler:(TouchedButtonBlock)touchHandler;
+
 @end

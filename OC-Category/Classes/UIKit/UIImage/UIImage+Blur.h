@@ -14,7 +14,6 @@ FOUNDATION_EXPORT const unsigned char ImageEffectsVersionString[];
 - (UIImage *)extraLightImage;
 - (UIImage *)darkImage;
 - (UIImage *)tintedImageWithColor:(UIColor *)tintColor;
-
 - (UIImage *)blurredImageWithRadius:(CGFloat)blurRadius;
 - (UIImage *)blurredImageWithSize:(CGSize)blurSize;
 - (UIImage *)blurredImageWithSize:(CGSize)blurSize

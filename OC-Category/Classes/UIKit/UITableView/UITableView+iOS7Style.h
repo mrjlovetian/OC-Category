@@ -15,4 +15,5 @@
  *  @param indexPath indexPath
  */
 -(void)applyiOS7SettingsStyleGrouping:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

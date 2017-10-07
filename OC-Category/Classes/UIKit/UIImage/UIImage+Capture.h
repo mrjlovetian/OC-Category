@@ -30,4 +30,5 @@
  *  @return 截图
  */
 + (UIImage *)screenshotWithView:(UIView *)aView limitWidth:(CGFloat)maxWidth;
+
 @end

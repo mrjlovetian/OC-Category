@@ -14,10 +14,12 @@
  *  @return canvas颜色
  */
 - (NSString *)canvasColorString;
+
 /**
  *  @brief  获取网页颜色字串
  *
  *  @return 网页颜色
  */
 - (NSString *)webColorString;
+
 @end

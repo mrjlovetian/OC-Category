@@ -14,7 +14,6 @@
 
 - (CGPoint)convertPointFromImage:(CGPoint)imagePoint;
 - (CGRect)convertRectFromImage:(CGRect)imageRect;
-
 - (CGPoint)convertPointFromView:(CGPoint)viewPoint;
 - (CGRect)convertRectFromView:(CGRect)viewRect;
 

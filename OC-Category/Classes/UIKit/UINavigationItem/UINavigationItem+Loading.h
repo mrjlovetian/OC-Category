@@ -11,7 +11,7 @@
 /**
  *  Position to show UIActivityIndicatorView in a navigation bar
  */
-typedef NS_ENUM(NSUInteger, NavBarLoaderPosition){
+typedef NS_ENUM(NSUInteger, NavBarLoaderPosition) {
     /**
      *  Will show UIActivityIndicatorView in place of title view
      */

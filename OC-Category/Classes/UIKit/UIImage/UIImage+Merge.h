@@ -17,4 +17,5 @@
  *  @return 合并后图片
  */
 + (UIImage*)mergeImage:(UIImage*)firstImage withImage:(UIImage*)secondImage;
+
 @end

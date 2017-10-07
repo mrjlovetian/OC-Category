@@ -38,6 +38,6 @@
  */
 + (CGSize)scaleImage:(UIImage *) image withLength:(CGFloat) imageLength;
 
-
 + (UIImage*)resizableHalfImage:(NSString *)name;
+
 @end

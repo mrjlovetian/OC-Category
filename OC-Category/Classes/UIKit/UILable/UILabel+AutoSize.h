@@ -39,4 +39,5 @@
  *  @return 原始UILabel修改过的Rect的UILabel(起始位置相同)
  */
 - (UILabel *)resizeLabelVertical:(CGFloat)minimumHeigh;
+
 @end

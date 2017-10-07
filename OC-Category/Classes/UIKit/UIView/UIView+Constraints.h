@@ -8,8 +8,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Constraints)
-- (NSLayoutConstraint *)constraintForAttribute:(NSLayoutAttribute)attribute;
 
+- (NSLayoutConstraint *)constraintForAttribute:(NSLayoutAttribute)attribute;
 - (NSLayoutConstraint *)leftConstraint;
 - (NSLayoutConstraint *)rightConstraint;
 - (NSLayoutConstraint *)topConstraint;
@@ -21,4 +21,5 @@
 - (NSLayoutConstraint *)centerXConstraint;
 - (NSLayoutConstraint *)centerYConstraint;
 - (NSLayoutConstraint *)baseLineConstraint;
+
 @end

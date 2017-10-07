@@ -17,15 +17,12 @@
 - (UIImage *)imageCroppedAndScaledToSize:(CGSize)size
                              contentMode:(UIViewContentMode)contentMode
                                 padToFit:(BOOL)padToFit;
-
 - (UIImage *)reflectedImageWithScale:(CGFloat)scale;
 - (UIImage *)imageWithReflectionWithScale:(CGFloat)scale gap:(CGFloat)gap alpha:(CGFloat)alpha;
 - (UIImage *)imageWithShadowColor:(UIColor *)color offset:(CGSize)offset blur:(CGFloat)blur;
 - (UIImage *)imageWithCornerRadius:(CGFloat)radius;
 - (UIImage *)imageWithAlpha:(CGFloat)alpha;
 - (UIImage *)imageWithMask:(UIImage *)maskImage;
-
 - (UIImage *)maskImageFromImageAlpha;
-
 
 @end

@@ -16,7 +16,6 @@
 
 @end
 
-
 @interface UIWebView (TS_JavaScriptContext)
 
 @property (nonatomic, readonly) JSContext* ts_javaScriptContext;

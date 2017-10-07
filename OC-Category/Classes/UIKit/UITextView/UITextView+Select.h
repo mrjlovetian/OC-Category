@@ -14,18 +14,18 @@
  *  @return NSRange
  */
 - (NSRange)selectedRange;
+
 /**
  *  @brief  选中所有文字
  */
 - (void)selectAllText;
+
 /**
  *  @brief  选中指定范围的文字
  *
  *  @param range NSRange范围
  */
 - (void)setSelectedRange:(NSRange)range;
-
-
 
 //https://github.com/pclion/TextViewCalculateLength
 // 用于计算textview输入情况下的字符数，解决实现限制字符数时，计算不准的问题
