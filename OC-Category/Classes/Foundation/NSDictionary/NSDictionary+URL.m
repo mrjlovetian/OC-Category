@@ -15,8 +15,7 @@
  *
  *  @return NSDictionary
  */
-+ (NSDictionary *)dictionaryWithURLQuery:(NSString *)query
-{
++ (NSDictionary *)dictionaryWithURLQuery:(NSString *)query {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSArray *parameters = [query componentsSeparatedByString:@"&"];
     for(NSString *parameter in parameters) {

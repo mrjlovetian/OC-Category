@@ -26,13 +26,11 @@
 
 - (id)initWithEntity:(NSEntityDescription *)entity predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)sortDescriptors{
   self = [self init];
-  if(self)
-  {
+  if(self) {
     self.entity = entity;
     self.predicate = predicate;
     self.sortDescriptors = sortDescriptors;
   }
-  
   return self;
 }
 

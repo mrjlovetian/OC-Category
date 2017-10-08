@@ -33,7 +33,6 @@
  *  @return 返回结果
  */
 - (NSDecimalNumber*)roundToScale:(NSUInteger)scale mode:(NSRoundingMode)roundingMode;
-
 - (NSDecimalNumber*)decimalNumberWithPercentage:(float)percent;
 - (NSDecimalNumber*)decimalNumberWithDiscountPercentage:(NSDecimalNumber *)discountPercentage;
 - (NSDecimalNumber*)decimalNumberWithDiscountPercentage:(NSDecimalNumber *)discountPercentage roundToScale:(NSUInteger)scale;

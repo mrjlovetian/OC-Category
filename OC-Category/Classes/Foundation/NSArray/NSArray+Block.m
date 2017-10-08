@@ -22,11 +22,9 @@
 
 - (NSArray *)map:(id (^)(id object))block {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.count];
-    
     for (id object in self) {
         [array addObject:block(object) ?: [NSNull null]];
     }
-    
     return array;
 }
 
@@ -56,10 +54,8 @@
 
 - (id)reduce:(id)initial withBlock:(id (^)(id accumulator, id object))block {
     id accumulator = initial;
-    
     for(id object in self)
         accumulator = accumulator ? block(accumulator, object) : object;
-    
     return accumulator;
 }
 @end

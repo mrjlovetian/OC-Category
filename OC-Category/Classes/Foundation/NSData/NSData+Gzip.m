@@ -11,8 +11,7 @@
 
 @implementation NSData (Gzip)
 
-static void *libzOpen()
-{
+static void *libzOpen() {
     static void *libz;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -21,10 +20,8 @@ static void *libzOpen()
     return libz;
 }
 
-- (NSData *)gzippedDataWithCompressionLevel:(float)level
-{
-    if (self.length == 0 || [self isGzippedData])
-    {
+- (NSData *)gzippedDataWithCompressionLevel:(float)level {
+    if (self.length == 0 || [self isGzippedData]) {
         return self;
     }
     
@@ -47,13 +44,10 @@ static void *libzOpen()
     
     NSMutableData *output = nil;
     int compression = (level < 0.0f)? Z_DEFAULT_COMPRESSION: (int)(roundf(level * 9));
-    if (deflateInit2(&stream, compression, Z_DEFLATED, 31, 8, Z_DEFAULT_STRATEGY) == Z_OK)
-    {
+    if (deflateInit2(&stream, compression, Z_DEFLATED, 31, 8, Z_DEFAULT_STRATEGY) == Z_OK) {
         output = [NSMutableData dataWithLength:ChunkSize];
-        while (stream.avail_out == 0)
-        {
-            if (stream.total_out >= output.length)
-            {
+        while (stream.avail_out == 0) {
+            if (stream.total_out >= output.length) {
                 output.length += ChunkSize;
             }
             stream.next_out = (uint8_t *)output.mutableBytes + stream.total_out;
@@ -63,19 +57,15 @@ static void *libzOpen()
         deflateEnd(&stream);
         output.length = stream.total_out;
     }
-    
     return output;
 }
 
-- (NSData *)gzippedData
-{
+- (NSData *)gzippedData {
     return [self gzippedDataWithCompressionLevel:-1.0f];
 }
 
-- (NSData *)gunzippedData
-{
-    if (self.length == 0 || ![self isGzippedData])
-    {
+- (NSData *)gunzippedData {
+    if (self.length == 0 || ![self isGzippedData]) {
         return self;
     }
     
@@ -94,34 +84,27 @@ static void *libzOpen()
     stream.avail_out = 0;
     
     NSMutableData *output = nil;
-    if (inflateInit2(&stream, 47) == Z_OK)
-    {
+    if (inflateInit2(&stream, 47) == Z_OK) {
         int status = Z_OK;
         output = [NSMutableData dataWithCapacity:self.length * 2];
-        while (status == Z_OK)
-        {
-            if (stream.total_out >= output.length)
-            {
+        while (status == Z_OK) {
+            if (stream.total_out >= output.length) {
                 output.length += self.length / 2;
             }
             stream.next_out = (uint8_t *)output.mutableBytes + stream.total_out;
             stream.avail_out = (uInt)(output.length - stream.total_out);
             status = inflate (&stream, Z_SYNC_FLUSH);
         }
-        if (inflateEnd(&stream) == Z_OK)
-        {
-            if (status == Z_STREAM_END)
-            {
+        if (inflateEnd(&stream) == Z_OK) {
+            if (status == Z_STREAM_END) {
                 output.length = stream.total_out;
             }
         }
     }
-    
     return output;
 }
 
-- (BOOL)isGzippedData
-{
+- (BOOL)isGzippedData {
     const UInt8 *bytes = (const UInt8 *)self.bytes;
     return (self.length >= 2 && bytes[0] == 0x1f && bytes[1] == 0x8b);
 }

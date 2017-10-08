@@ -10,13 +10,11 @@
 #import "YHJQRCodeScanningView.h"
 
 @implementation NSBundle (YHJQRCode)
-+ (NSString *)YHJQRCodeLocalizedStringForKey:(NSString *)key
-{
++ (NSString *)YHJQRCodeLocalizedStringForKey:(NSString *)key {
     return [self YHJQRCodeLocalizedStringForKey:key value:nil];
 }
 
-+ (NSString *)YHJQRCodeLocalizedStringForKey:(NSString *)key value:(NSString *)value
-{
++ (NSString *)YHJQRCodeLocalizedStringForKey:(NSString *)key value:(NSString *)value {
     NSBundle *bundle = nil;
     // （iOS获取的语言字符串比较不稳定）目前框架只处理en、zh-Hans、zh-Hant三种情况，其他按照系统默认处理
     NSString *language = [NSLocale preferredLanguages].firstObject;

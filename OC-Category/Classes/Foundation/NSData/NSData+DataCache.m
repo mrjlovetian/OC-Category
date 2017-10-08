@@ -12,8 +12,7 @@
 
 @implementation NSData (DataCache)
 
-+ (NSString *)cachePath
-{
++ (NSString *)cachePath {
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
     path = [path stringByAppendingPathComponent:@"Caches"];
     path = [path stringByAppendingPathComponent:@"DataCache"];
@@ -23,8 +22,7 @@
     return path;
 }
 
-+ (NSString *)creatMD5StringWithString:(NSString *)string
-{
++ (NSString *)creatMD5StringWithString:(NSString *)string {
     const char *original_str = [string UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(original_str, (CC_LONG)strlen(original_str), result);
@@ -35,21 +33,18 @@
     return hash;
 }
 
-+ (NSString *)creatDataPathWithString:(NSString *)string
-{
++ (NSString *)creatDataPathWithString:(NSString *)string {
     NSString *path = [NSData cachePath];
     path = [path stringByAppendingPathComponent:[self creatMD5StringWithString:string]];
     return path;
 }
 
-- (void)saveDataCacheWithIdentifier:(NSString *)identifier
-{
+- (void)saveDataCacheWithIdentifier:(NSString *)identifier {
     NSString *path = [NSData creatDataPathWithString:identifier];
     [self writeToFile:path atomically:YES];
 }
 
-+ (NSData *)getDataCacheWithIdentifier:(NSString *)identifier
-{
++ (NSData *)getDataCacheWithIdentifier:(NSString *)identifier {
     static BOOL isCheckedCacheDisk = NO;
     if (!isCheckedCacheDisk) {
         NSFileManager *manager = [NSFileManager defaultManager];
