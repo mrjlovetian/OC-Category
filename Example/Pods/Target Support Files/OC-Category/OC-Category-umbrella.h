@@ -1,7 +1,21 @@
+#ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
+#endif
 
-#import "Categories.h"
 #import "CoreData.h"
+#import "CoreLocation.h"
+#import "Foundation.h"
+#import "MapKit.h"
+#import "QuartzCore.h"
+#import "UIKit.h"
 #import "NSFetchRequest+Extensions.h"
 #import "NSManagedObject+Dictionary.h"
 #import "NSManagedObject+Extensions.h"
@@ -10,11 +24,11 @@
 #import "NSManagedObjectContext+FetchRequestsConstructors.h"
 #import "NSManagedObjectContext+ObjectClear.h"
 #import "CLLocation+CH1903.h"
-#import "CoreLocation.h"
-#import "Foundation.h"
 #import "NSArray+Block.h"
 #import "NSArray+SafeAccess.h"
 #import "NSBundle+AppIcon.h"
+#import "NSBundle+YHJQRCode.h"
+#import "YHJQRCodeScanningView.h"
 #import "NSData+APNSToken.h"
 #import "NSData+Base64.h"
 #import "NSData+DataCache.h"
@@ -86,7 +100,6 @@
 #import "NSURLRequest+ParamsFromDictionary.h"
 #import "NSUserDefaults+iCloudSync.h"
 #import "NSUserDefaults+SafeAccess.h"
-#import "MapKit.h"
 #import "MKMapView+BetterMaps.h"
 #import "MKMapView+MoveLogo.h"
 #import "MKMapView+ZoomLevel.h"
@@ -95,7 +108,6 @@
 #import "CAMediaTimingFunction+AdditionalEquations.h"
 #import "CAShapeLayer+UIBezierPath.h"
 #import "CATransaction+AnimateWithDuration.h"
-#import "QuartzCore.h"
 #import "UIAlertView+Block.h"
 #import "UIApplication+ApplicationSize.h"
 #import "UIApplication+KeyboardFrame.h"
@@ -150,7 +162,6 @@
 #import "UIImageView+GeometryConversion.h"
 #import "UIImageView+Letters.h"
 #import "UIImageView+Reflect.h"
-#import "UIKit.h"
 #import "UILabel+AdjustableLabel.h"
 #import "UILabel+AutomaticWriting.h"
 #import "UILabel+AutoSize.h"

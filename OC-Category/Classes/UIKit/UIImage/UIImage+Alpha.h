@@ -13,12 +13,14 @@
  *  @return 是否有alpha通道
  */
 - (BOOL)hasAlpha;
+
 /**
  *  @brief  如果没有alpha通道 增加alpha通道
  *
  *  @return 如果没有alpha通道 增加alpha通道
  */
 - (UIImage *)imageWithAlpha;
+
 /**
  *  @brief  增加透明边框
  *
@@ -27,7 +29,6 @@
  *  @return 增加透明边框后的图片
  */
 - (UIImage *)transparentBorderImage:(NSUInteger)borderSize;
-
 
 //http://stackoverflow.com/questions/6521987/crop-uiimage-to-alpha?answertab=oldest#tab-top
 /**

@@ -14,6 +14,7 @@
 // Up       1.2  1.3   1.3   1.4   1.3
 // Bankers  1.2  1.2   1.2   1.4   1.3
 @interface NSDecimalNumber (Extensions)
+
 /**
  *  @brief  四舍五入 NSRoundPlain
  *
@@ -22,6 +23,7 @@
  *  @return 返回结果
  */
 - (NSDecimalNumber*)roundToScale:(NSUInteger)scale;
+
 /**
  *  @brief  四舍五入
  *
@@ -31,7 +33,6 @@
  *  @return 返回结果
  */
 - (NSDecimalNumber*)roundToScale:(NSUInteger)scale mode:(NSRoundingMode)roundingMode;
-
 - (NSDecimalNumber*)decimalNumberWithPercentage:(float)percent;
 - (NSDecimalNumber*)decimalNumberWithDiscountPercentage:(NSDecimalNumber *)discountPercentage;
 - (NSDecimalNumber*)decimalNumberWithDiscountPercentage:(NSDecimalNumber *)discountPercentage roundToScale:(NSUInteger)scale;

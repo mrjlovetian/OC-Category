@@ -26,4 +26,5 @@
  *  @return 截图
  */
 - (UIImage *)screenshot:(CGFloat)maxWidth;
+
 @end

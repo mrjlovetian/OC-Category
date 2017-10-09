@@ -9,6 +9,8 @@
 #import <objc/runtime.h>
 @interface UITextView (PlaceHolder) <UITextViewDelegate>
 @property (nonatomic, strong) UITextView *placeHolderTextView;
+
 //@property (nonatomic, assign) id <UITextViewDelegate> textViewDelegate;
 - (void)addPlaceHolder:(NSString *)placeHolder;
+
 @end

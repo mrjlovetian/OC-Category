@@ -16,8 +16,7 @@
  *
  *  @return An NSData* object is returned with the line if found, or nil if no more lines were found
  */
-- (NSData *)readLineWithDelimiter:(NSString *)theDelimiter
-{
+- (NSData *)readLineWithDelimiter:(NSString *)theDelimiter {
     NSUInteger bufferSize = 1024; // Set our buffer size
     
     // Read the delimiter string into a C string

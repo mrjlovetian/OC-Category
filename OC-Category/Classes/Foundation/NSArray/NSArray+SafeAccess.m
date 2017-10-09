@@ -8,19 +8,17 @@
 #import "NSArray+SafeAccess.h"
 
 @implementation NSArray (SafeAccess)
--(id)objectWithIndex:(NSUInteger)index{
+-(id)objectWithIndex:(NSUInteger)index {
     if (index <self.count) {
         return self[index];
-    }else{
+    } else {
         return nil;
     }
 }
 
-- (NSString*)stringWithIndex:(NSUInteger)index
-{
+- (NSString*)stringWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"])
-    {
+    if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"]) {
         return nil;
     }
     if ([value isKindOfClass:[NSString class]]) {
@@ -29,13 +27,10 @@
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value stringValue];
     }
-    
     return nil;
 }
 
-
-- (NSNumber*)numberWithIndex:(NSUInteger)index
-{
+- (NSNumber*)numberWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     if ([value isKindOfClass:[NSNumber class]]) {
         return (NSNumber*)value;
@@ -48,9 +43,8 @@
     return nil;
 }
 
-- (NSDecimalNumber *)decimalNumberWithIndex:(NSUInteger)index{
+- (NSDecimalNumber *)decimalNumberWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
     if ([value isKindOfClass:[NSDecimalNumber class]]) {
         return value;
     } else if ([value isKindOfClass:[NSNumber class]]) {
@@ -63,183 +57,144 @@
     return nil;
 }
 
-- (NSArray*)arrayWithIndex:(NSUInteger)index
-{
+- (NSArray*)arrayWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return nil;
     }
-    if ([value isKindOfClass:[NSArray class]])
-    {
+    if ([value isKindOfClass:[NSArray class]]) {
         return value;
     }
     return nil;
 }
 
-
-- (NSDictionary*)dictionaryWithIndex:(NSUInteger)index
-{
+- (NSDictionary*)dictionaryWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return nil;
     }
-    if ([value isKindOfClass:[NSDictionary class]])
-    {
+    if ([value isKindOfClass:[NSDictionary class]]) {
         return value;
     }
     return nil;
 }
 
-- (NSInteger)integerWithIndex:(NSUInteger)index
-{
+- (NSInteger)integerWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
-    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]])
-    {
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
         return [value integerValue];
     }
     return 0;
 }
-- (NSUInteger)unsignedIntegerWithIndex:(NSUInteger)index
-{
+
+- (NSUInteger)unsignedIntegerWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     if (value == nil || value == [NSNull null])
     {
         return 0;
     }
-    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]])
-    {
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
         return [value unsignedIntegerValue];
     }
     return 0;
 }
-- (BOOL)boolWithIndex:(NSUInteger)index
-{
+
+- (BOOL)boolWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return NO;
     }
-    if ([value isKindOfClass:[NSNumber class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]]) {
         return [value boolValue];
     }
-    if ([value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSString class]]) {
         return [value boolValue];
     }
     return NO;
 }
-- (int16_t)int16WithIndex:(NSUInteger)index
-{
+
+- (int16_t)int16WithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]]) {
         return [value shortValue];
     }
-    if ([value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSString class]]) {
         return [value intValue];
     }
     return 0;
 }
-- (int32_t)int32WithIndex:(NSUInteger)index
-{
+
+- (int32_t)int32WithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
         return [value intValue];
     }
     return 0;
 }
-- (int64_t)int64WithIndex:(NSUInteger)index
-{
+
+- (int64_t)int64WithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]){
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
         return [value longLongValue];
     }
     return 0;
 }
 
-- (char)charWithIndex:(NSUInteger)index{
-    
+- (char)charWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
         return [value charValue];
     }
     return 0;
 }
 
-- (short)shortWithIndex:(NSUInteger)index
-{
+- (short)shortWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]]) {
         return [value shortValue];
     }
-    if ([value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSString class]]) {
         return [value intValue];
     }
     return 0;
 }
-- (float)floatWithIndex:(NSUInteger)index
-{
+
+- (float)floatWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
         return [value floatValue];
     }
     return 0;
 }
-- (double)doubleWithIndex:(NSUInteger)index
-{
+
+- (double)doubleWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]){
         return 0;
     }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]){
         return [value doubleValue];
     }
     return 0;
@@ -250,8 +205,7 @@
     formater.dateFormat = dateFormat;
     id value = [self objectWithIndex:index];
     
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]){
         return nil;
     }
     
@@ -262,8 +216,7 @@
 }
 
 //CG
-- (CGFloat)CGFloatWithIndex:(NSUInteger)index
-{
+- (CGFloat)CGFloatWithIndex:(NSUInteger)index{
     id value = [self objectWithIndex:index];
     
     CGFloat f = [value doubleValue];
@@ -271,84 +224,77 @@
     return f;
 }
 
-- (CGPoint)pointWithIndex:(NSUInteger)index
-{
+- (CGPoint)pointWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-
     CGPoint point = CGPointFromString(value);
-    
     return point;
 }
-- (CGSize)sizeWithIndex:(NSUInteger)index
-{
-    id value = [self objectWithIndex:index];
 
+- (CGSize)sizeWithIndex:(NSUInteger)index {
+    id value = [self objectWithIndex:index];
     CGSize size = CGSizeFromString(value);
-    
     return size;
 }
-- (CGRect)rectWithIndex:(NSUInteger)index
-{
+
+- (CGRect)rectWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
     CGRect rect = CGRectFromString(value);
-    
     return rect;
 }
 @end
 
-
 #pragma --mark NSMutableArray setter
+
 @implementation NSMutableArray (SafeAccess)
--(void)addObj:(id)i{
+- (void)addObj:(id)i {
     if (i!=nil) {
         [self addObject:i];
     }
 }
--(void)addString:(NSString*)i
-{
+
+- (void)addString:(NSString*)i {
     if (i!=nil) {
         [self addObject:i];
     }
 }
--(void)addBool:(BOOL)i
-{
+
+-(void)addBool:(BOOL)i{
     [self addObject:@(i)];
 }
--(void)addInt:(int)i
-{
+
+-(void)addInt:(int)i {
     [self addObject:@(i)];
 }
--(void)addInteger:(NSInteger)i
-{
+
+-(void)addInteger:(NSInteger)i {
     [self addObject:@(i)];
 }
--(void)addUnsignedInteger:(NSUInteger)i
-{
+
+-(void)addUnsignedInteger:(NSUInteger)i{
     [self addObject:@(i)];
 }
--(void)addCGFloat:(CGFloat)f
-{
+
+-(void)addCGFloat:(CGFloat)f{
    [self addObject:@(f)];
 }
--(void)addChar:(char)c
-{
+
+-(void)addChar:(char)c{
     [self addObject:@(c)];
 }
--(void)addFloat:(float)i
-{
+
+-(void)addFloat:(float)i{
     [self addObject:@(i)];
 }
--(void)addPoint:(CGPoint)o
-{
+
+-(void)addPoint:(CGPoint)o{
     [self addObject:NSStringFromCGPoint(o)];
 }
--(void)addSize:(CGSize)o
-{
+
+-(void)addSize:(CGSize)o{
    [self addObject:NSStringFromCGSize(o)];
 }
--(void)addRect:(CGRect)o
-{
+
+-(void)addRect:(CGRect)o{
     [self addObject:NSStringFromCGRect(o)];
 }
 @end

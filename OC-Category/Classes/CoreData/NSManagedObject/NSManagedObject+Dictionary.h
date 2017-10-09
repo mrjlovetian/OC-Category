@@ -16,6 +16,7 @@
  *  @return <#return value description#>
  */
 - (NSDictionary *)toDictionary;
+
 //http://stackoverflow.com/questions/5664423/storing-nsmanagedobject-in-a-dictionary-nsdictionary
 /**
  *  @author Categories

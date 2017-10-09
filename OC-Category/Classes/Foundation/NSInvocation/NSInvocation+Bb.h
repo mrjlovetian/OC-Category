@@ -20,5 +20,4 @@
 
 - (void)setArgumentWithObject:(id)object atIndex:(NSUInteger)index;
 
-
 @end

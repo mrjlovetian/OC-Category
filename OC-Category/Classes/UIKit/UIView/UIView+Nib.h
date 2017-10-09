@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface UIView (Nib)
+
 + (UINib *)loadNib;
 + (UINib *)loadNibNamed:(NSString*)nibName;
 + (UINib *)loadNibNamed:(NSString*)nibName bundle:(NSBundle *)bundle;

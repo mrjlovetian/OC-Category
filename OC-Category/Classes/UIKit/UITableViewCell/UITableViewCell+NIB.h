@@ -14,4 +14,5 @@
  *  @return nib
  */
 +(UINib*)nib;
+
 @end

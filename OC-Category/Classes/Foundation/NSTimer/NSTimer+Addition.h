@@ -12,12 +12,15 @@
  *  @brief  暂停NSTimer
  */
 - (void)pauseTimer;
+
 /**
  *  @brief  开始NSTimer
  */
 - (void)resumeTimer;
+
 /**
  *  @brief  延迟开始NSTimer
  */
 - (void)resumeTimerAfterTimeInterval:(NSTimeInterval)interval;
+
 @end

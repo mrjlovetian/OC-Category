@@ -14,6 +14,7 @@
  *
  */
 - (NSIndexPath *)previousRow;
+
 /**
  *  @author Categories
  *
@@ -21,6 +22,7 @@
  *
  */
 - (NSIndexPath *)nextRow;
+
 /**
  *  @author Categories
  *
@@ -28,6 +30,7 @@
  *
  */
 - (NSIndexPath *)previousItem;
+
 /**
  *  @author Categories
  *
@@ -35,6 +38,7 @@
  *
  */
 - (NSIndexPath *)nextItem;
+
 /**
  *  @author Categories
  *
@@ -42,6 +46,7 @@
  *
  */
 - (NSIndexPath *)nextSection;
+
 /**
  *  @author Categories
  *

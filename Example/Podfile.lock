@@ -8,7 +8,19 @@ PODS:
   - FBSnapshotTestCase/Core (2.0.7)
   - FBSnapshotTestCase/SwiftSupport (2.0.7):
     - FBSnapshotTestCase/Core
-  - OC-Category (0.1.1)
+  - OC-Category (0.1.4.0):
+    - OC-Category/CoreData (= 0.1.4.0)
+    - OC-Category/CoreLocation (= 0.1.4.0)
+    - OC-Category/Foundation (= 0.1.4.0)
+    - OC-Category/MapKit (= 0.1.4.0)
+    - OC-Category/QuartzCore (= 0.1.4.0)
+    - OC-Category/UIKit (= 0.1.4.0)
+  - OC-Category/CoreData (0.1.4.0)
+  - OC-Category/CoreLocation (0.1.4.0)
+  - OC-Category/Foundation (0.1.4.0)
+  - OC-Category/MapKit (0.1.4.0)
+  - OC-Category/QuartzCore (0.1.4.0)
+  - OC-Category/UIKit (0.1.4.0)
   - Specta (1.0.5)
 
 DEPENDENCIES:
@@ -20,15 +32,15 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   OC-Category:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Expecta+Snapshots: 29b38dd695bc72a0ed2bea833937d78df41943ba
   FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
-  OC-Category: 63d78df058afaecfa87898aca028ea7fc66ce790
+  OC-Category: c643b2d230053ef876c585cfd81a75f66cebae51
   Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
-PODFILE CHECKSUM: 71656f5abdc9ebaa5a7737ab71407245ad90f977
+PODFILE CHECKSUM: 4755443235d183b18f6f5416b745e41ecaeb9bf4
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.3.1

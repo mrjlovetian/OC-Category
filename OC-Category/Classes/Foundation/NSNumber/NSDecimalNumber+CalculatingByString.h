@@ -19,4 +19,5 @@
  *  @return <#return value description#>
  */
 + (NSDecimalNumber *)decimalNumberWithEquation:(NSString *)equation decimalNumbers:(NSDictionary *)numbers;
+
 @end

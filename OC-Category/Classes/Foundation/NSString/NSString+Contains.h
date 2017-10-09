@@ -14,6 +14,7 @@
  *  @return 是否包含中文
  */
 - (BOOL)isContainChinese;
+
 /**
  *  @brief  是否包含空格
  *
@@ -37,6 +38,7 @@
  *  @return YES, 包含;
  */
 - (BOOL)containsaString:(NSString *)string;
+
 /**
  *  @brief 获取字符数量
  */

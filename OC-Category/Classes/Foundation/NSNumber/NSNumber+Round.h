@@ -21,6 +21,7 @@
  *  @return 结果
  */
 - (NSNumber*)doRoundWithDigit:(NSUInteger)digit;
+
 /**
  *  @brief  取上整
  *
@@ -29,6 +30,7 @@
  *  @return 结果
  */
 - (NSNumber*)doCeilWithDigit:(NSUInteger)digit;
+
 /**
  *  @brief  取下整
  *
@@ -37,4 +39,5 @@
  *  @return 结果
  */
 - (NSNumber*)doFloorWithDigit:(NSUInteger)digit;
+
 @end

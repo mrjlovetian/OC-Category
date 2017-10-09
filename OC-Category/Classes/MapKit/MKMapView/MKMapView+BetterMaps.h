@@ -10,5 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface MKMapView (BetterMaps)
+
 - (void)zoomToFitAnnotationsAnimated:(BOOL)animated;
+
 @end

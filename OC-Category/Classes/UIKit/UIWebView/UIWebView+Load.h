@@ -14,12 +14,14 @@
  *  @param URLString 网页地址
  */
 - (void)loadURL:(NSString*)URLString;
+
 /**
  *  @brief  读取bundle中的webview
  *
  *  @param htmlName 文件名称 xxx.html
  */
 - (void)loadLocalHtml:(NSString*)htmlName;
+
 /**
  *
  *  读取bundle中的webview
@@ -33,4 +35,5 @@
  *  @brief  清空cookie
  */
 - (void)clearCookies;
+
 @end

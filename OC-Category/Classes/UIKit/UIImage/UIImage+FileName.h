@@ -16,6 +16,7 @@
  *  @return 无缓存的图片
  */
 + (UIImage *)imageWithFileName:(NSString *)name;
+
 /**
  *  @author Categories
  *
@@ -27,4 +28,5 @@
  *  @return 无缓存的图片
  */
 + (UIImage *)imageWithFileName:(NSString *)name inBundle:(NSBundle*)bundle;
+
 @end

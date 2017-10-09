@@ -17,8 +17,7 @@ extern NSTimeInterval const UILabelAWDefaultDuration;
 
 extern unichar const UILabelAWDefaultCharacter;
 
-typedef NS_ENUM(NSInteger, UILabellinkingMode)
-{
+typedef NS_ENUM(NSInteger, UILabellinkingMode) {
     UILabellinkingModeNone,
     UILabellinkingModeUntilFinish,
     UILabellinkingModeUntilFinishKeeping,
@@ -33,15 +32,10 @@ typedef NS_ENUM(NSInteger, UILabellinkingMode)
 @property (assign, nonatomic) UIEdgeInsets edgeInsets;
 
 - (void)setTextWithAutomaticWritingAnimation:(NSString *)text;
-
 - (void)setText:(NSString *)text automaticWritingAnimationWithBlinkingMode:(UILabellinkingMode)blinkingMode;
-
 - (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration;
-
 - (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabellinkingMode)blinkingMode;
-
 - (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabellinkingMode)blinkingMode blinkingCharacter:(unichar)blinkingCharacter;
-
 - (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabellinkingMode)blinkingMode blinkingCharacter:(unichar)blinkingCharacter completion:(void (^)(void))completion;
 
 @end

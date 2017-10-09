@@ -16,7 +16,6 @@
 @property (nonatomic, copy)         void (^swipeCallback)(UISwipeGestureRecognizer* recognizer, NSString* gestureId);
 @property (nonatomic, copy)         void (^rotationCallback)(UIRotationGestureRecognizer* recognizer, NSString* gestureId);
 @property (nonatomic, copy)         void (^longPressCallback)(UILongPressGestureRecognizer* recognizer, NSString* gestureId);
-
 @property (nonatomic, retain)       UIGestureRecognizer *gesture;
 @property (nonatomic, retain)       NSString *gestureId;
 
@@ -29,7 +28,6 @@
 @property (nonatomic)     NSMutableDictionary *gestures;
 @property (nonatomic)     NSMutableDictionary *gestureKeysHash;
 
-
 // tap
 -(NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback;
 -(NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  numberOfTapsRequired:(NSUInteger)numberOfTapsRequired  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
@@ -39,14 +37,12 @@
 -(void)removeAllTapGestures;
 -(void)tapHandler:(UITapGestureRecognizer*)recognizer;
 
-
 // pinch
 -(NSString*)addPinchGestureRecognizer:(void(^)(UIPinchGestureRecognizer* recognizer, NSString* gestureId))pinchCallback;
 -(void)addPinchGestureRecognizer:(void(^)(UIPinchGestureRecognizer* recognizer, NSString* gestureId))pinchCallback  pinchGestureId:(NSString*)pinchGestureId;
 -(void)removePinchGesture:(NSString*)pinchGestureId;
 -(void)removeAllPinchGestures;
 -(void)pinchHandler:(UIPinchGestureRecognizer*)recognizer;
-
 
 // pan
 -(NSString*)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback;
@@ -56,7 +52,6 @@
 -(void)removeAllPanGestures;
 -(void)panHandler:(UIPanGestureRecognizer*)recognizer;
 
-
 //swipe
 -(NSString*)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  direction:(UISwipeGestureRecognizerDirection)direction;
 -(NSString*)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  direction:(UISwipeGestureRecognizerDirection)direction  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
@@ -65,14 +60,12 @@
 -(void)removeAllSwipeGestures;
 -(void)swipeHandler:(UISwipeGestureRecognizer*)recognizer;
 
-
 //rotation
 -(NSString*)addRotationGestureRecognizer:(void(^)(UIRotationGestureRecognizer* recognizer, NSString* gestureId))rotationCallback;
 -(void)addRotationGestureRecognizer:(void(^)(UIRotationGestureRecognizer* recognizer, NSString* gestureId))rotationCallback  rotationGestureId:(NSString*)rotationGestureId;
 -(void)removeRotationGesture:(NSString*)rotationGestureId;
 -(void)removeAllRotationGestures;
 -(void)rotationHandler:(UIRotationGestureRecognizer*)recognizer;
-
 
 //long press
 -(NSString*)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback;
@@ -91,6 +84,5 @@
 -(void)removeLongPressGesture:(NSString*)longPressGestureId;
 -(void)removeAllLongPressGestures;
 -(void)longPressHandler:(UILongPressGestureRecognizer*)recognizer;
-
 
 @end

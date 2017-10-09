@@ -13,7 +13,7 @@
  *
  *  @return NSDictionary
  */
--(NSDictionary *)dictionaryValue{
+- (NSDictionary *)dictionaryValue{
     NSError *errorJson;
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[self dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&errorJson];
     if (errorJson != nil) {

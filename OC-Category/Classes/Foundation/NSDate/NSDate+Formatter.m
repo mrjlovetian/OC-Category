@@ -9,17 +9,14 @@
 
 @implementation NSDate (Formatter)
 +(NSDateFormatter *)formatter {
-    
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t oncePredicate;
-    
     dispatch_once(&oncePredicate, ^{
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setTimeStyle:NSDateFormatterShortStyle];
         [formatter setDoesRelativeDateFormatting:YES];
     });
-    
     return formatter;
 }
 

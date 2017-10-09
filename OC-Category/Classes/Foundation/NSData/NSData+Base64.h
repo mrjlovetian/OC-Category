@@ -16,6 +16,7 @@
  *  @return 传入字符串 base64后的data
  */
 + (NSData *)dataWithBase64EncodedString:(NSString *)string;
+
 /**
  *  @brief  NSData转string
  *
@@ -24,10 +25,12 @@
  *  @return base64后的字符串
  */
 - (NSString *)base64EncodedStringWithWrapWidth:(NSUInteger)wrapWidth;
+
 /**
  *  @brief  NSData转string 换行长度默认64
  *
  *  @return base64后的字符串
  */
 - (NSString *)base64EncodedString;
+
 @end

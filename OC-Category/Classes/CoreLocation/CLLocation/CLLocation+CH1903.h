@@ -17,7 +17,6 @@
  */
 - (id)initWithCH1903x:(double)x y:(double)y;
 
-
 /*!
  @method     CH1903Y
  @abstract   returns the CH1903 y value of the location
@@ -30,7 +29,6 @@
  */
 - (double)CH1903X;
 
-
 #pragma mark -
 #pragma mark static methodes
 
@@ -38,10 +36,8 @@
 + (double)CHtoWGSlongWithX:(double)x y:(double)y;
 + (double)WGStoCHyWithLatitude:(double)lat longitude:(double)lng;
 + (double)WGStoCHxWithLatitude:(double)lat longitude:(double)lng;
-
 + (double)decToSex:(double)angle;
 + (double)degToSec:(double)angle;
 + (double)sexToDec:(double)angle;
-
 
 @end

@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIViewController (Visible)
+
 - (BOOL)isVisible;
 
 @end

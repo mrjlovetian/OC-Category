@@ -16,6 +16,7 @@
  *  @return view对象
  */
 - (id)findSubViewWithSubViewClass:(Class)clazz;
+
 /**
  *  @brief  找到指定类名的SuperView对象
  *
@@ -31,6 +32,7 @@
  *  @return 结果
  */
 - (BOOL)findAndResignFirstResponder;
+
 /**
  *  @brief  找到第一响应者
  *
@@ -42,4 +44,5 @@
  *  @brief  找到当前view所在的viewcontroler
  */
 @property (readonly) UIViewController *viewController;
+
 @end

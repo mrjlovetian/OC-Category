@@ -14,4 +14,5 @@
  *  @return UIColor
  */
 + (UIColor *)randomColor;
+
 @end

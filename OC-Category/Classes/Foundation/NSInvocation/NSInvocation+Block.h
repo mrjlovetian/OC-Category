@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 
 @interface NSInvocation (Block)
+
 + (instancetype)invocationWithBlock:(id) block;
 + (instancetype)invocationWithBlockAndArguments:(id) block ,...;
+
 @end

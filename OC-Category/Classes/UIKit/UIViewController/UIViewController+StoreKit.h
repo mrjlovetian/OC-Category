@@ -22,12 +22,9 @@
 @property (nonatomic, copy) void (^loadedStoreKitItemBlock)(void);
 
 - (void)presentStoreKitItemWithIdentifier:(NSInteger)itemIdentifier;
-
 + (NSURL*)appURLForIdentifier:(NSInteger)identifier;
-
 + (void)openAppURLForIdentifier:(NSInteger)identifier;
 + (void)openAppReviewURLForIdentifier:(NSInteger)identifier;
-
 + (BOOL)containsITunesURLString:(NSString*)URLString;
 + (NSInteger)IDFromITunesURL:(NSString*)URLString;
 

@@ -2,12 +2,12 @@
 //  YHJViewController.m
 //  OC-Category
 //
-//  Created by 房产销冠 on 06/14/2016.
-//  Copyright (c) 2016 房产销冠. All rights reserved.
+//  Created by 余洪江 on 06/14/2016.
+//  Copyright (c) 2016 余洪江. All rights reserved.
 //
 
 #import "YHJViewController.h"
-#import <OC_Category/Categories.h>
+//#import <OC_Category/Categories.h>
 
 @interface YHJViewController ()
 
@@ -18,11 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSDate date] daysAgo];
-    [[NSArray alloc] each:^(id object) {
-        
-    }];
-    [[NSArray alloc] objectWithIndex:3];
+//    [[NSDate date] daysAgo];
+//    [[NSArray alloc] each:^(id object) {
+//        
+//    }];
+//    [[NSArray alloc] objectWithIndex:3];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

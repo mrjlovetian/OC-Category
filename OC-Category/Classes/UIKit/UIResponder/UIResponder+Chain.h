@@ -13,4 +13,5 @@
  *  @return  响应者链
  */
 - (NSString *)responderChainDescription;
+
 @end

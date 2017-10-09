@@ -14,14 +14,17 @@
  *  @return NSRange
  */
 - (NSRange)selectedRange;
+
 /**
  *  @brief  选中所有文字
  */
 - (void)selectAllText;
+
 /**
  *  @brief  选中指定范围的文字
  *
  *  @param range NSRange范围
  */
 - (void)setSelectedRange:(NSRange)range;
+
 @end

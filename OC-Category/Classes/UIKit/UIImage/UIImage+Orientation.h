@@ -17,6 +17,7 @@
  *  @return 修正方向后的图片
  */
 + (UIImage *)fixOrientation:(UIImage *)srcImg;
+
 /**
  *  @brief  旋转图片
  *
@@ -41,6 +42,7 @@
  *  @return  翻转后的图片
  */
 - (UIImage *)flipVertical;
+
 /**
  *  @brief  水平翻转
  *
@@ -55,7 +57,8 @@
  *
  *  @return 弧度
  */
-+(CGFloat)degreesToRadians:(CGFloat)degrees;
++ (CGFloat)degreesToRadians:(CGFloat)degrees;
+
 /**
  *  @brief  弧度转角度
  *
@@ -63,6 +66,6 @@
  *
  *  @return 角度
  */
-+(CGFloat)radiansToDegrees:(CGFloat)radians;
++ (CGFloat)radiansToDegrees:(CGFloat)radians;
 
 @end

@@ -17,8 +17,7 @@
  *
  *  @return 传入字符串 base64后的data
  */
-+ (NSData *)dataWithBase64EncodedString:(NSString *)string
-{
++ (NSData *)dataWithBase64EncodedString:(NSString *)string {
     if (![string length]) return nil;
     NSData *decoded = nil;
 #if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9 || __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
@@ -43,8 +42,7 @@
  *
  *  @return base64后的字符串
  */
-- (NSString *)base64EncodedStringWithWrapWidth:(NSUInteger)wrapWidth
-{
+- (NSString *)base64EncodedStringWithWrapWidth:(NSUInteger)wrapWidth {
     if (![self length]) return nil;
     NSString *encoded = nil;
 #if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9 || __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
@@ -98,8 +96,8 @@
  *
  *  @return base64后的字符串
  */
-- (NSString *)base64EncodedString
-{
+- (NSString *)base64EncodedString {
     return [self base64EncodedStringWithWrapWidth:0];
 }
+
 @end

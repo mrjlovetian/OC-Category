@@ -8,10 +8,10 @@
 #import <UIKit/UIKit.h>
 
 @interface UIScreen (Frame)
+
 + (CGSize)size;
 + (CGFloat)width;
 + (CGFloat)height;
-
 + (CGSize)orientationSize;
 + (CGFloat)orientationWidth;
 + (CGFloat)orientationHeight;

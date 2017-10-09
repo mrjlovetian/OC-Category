@@ -17,6 +17,7 @@ typedef void (^UIImageSizeRequestCompleted) (NSURL* imgURL, CGSize size);
  *  @param completion 完成回调
  */
 + (void)requestSizeNoHeader:(NSURL*)imgURL completion:(UIImageSizeRequestCompleted)completion;
+
 /**
  *  @brief  从header中获取远程图片的大小 (服务器必须支持)
  *

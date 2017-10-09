@@ -14,4 +14,5 @@
  *  @return SVG
  */
 - (NSString*)SVGString;
+
 @end
