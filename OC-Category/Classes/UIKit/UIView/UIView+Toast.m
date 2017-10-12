@@ -101,16 +101,12 @@ NSString * const ToastPositionBottom          = @"bottom";
     [self showToast:toast duration:ToastDefaultDuration position:nil];
 }
 
-
 - (void)showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position {
     [self showToast:toast duration:duration position:position tapCallback:nil];
-    
 }
 
-
 - (void)showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position
-      tapCallback:(void(^)(void))tapCallback
-{
+      tapCallback:(void(^)(void))tapCallback {
     toast.center = [self centerPointForPosition:position withToast:toast];
     toast.alpha = 0.0;
     
@@ -120,9 +116,7 @@ NSString * const ToastPositionBottom          = @"bottom";
         toast.userInteractionEnabled = YES;
         toast.exclusiveTouch = YES;
     }
-    
     [self addSubview:toast];
-    
     [UIView animateWithDuration:ToastFadeDuration
                           delay:0.0
                         options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction)
@@ -135,7 +129,6 @@ NSString * const ToastPositionBottom          = @"bottom";
                          objc_setAssociatedObject (toast, &ToastTapCallbackKey, tapCallback, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                      }];
 }
-
 
 - (void)hideToast:(UIView *)toast {
     [UIView animateWithDuration:ToastFadeDuration

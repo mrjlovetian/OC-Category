@@ -14,30 +14,25 @@ static int zoomEnabledKey;
 
 @implementation UITextView (PinchZoom)
 
-- (void)setMaxFontSize:(CGFloat)maxFontSize
-{
+- (void)setMaxFontSize:(CGFloat)maxFontSize {
     objc_setAssociatedObject(self, &maxFontSizeKey, [NSNumber numberWithFloat:maxFontSize],
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)maxFontSize
-{
+- (CGFloat)maxFontSize {
     return [objc_getAssociatedObject(self, &maxFontSizeKey) floatValue];
 }
 
-- (void)setMinFontSize:(CGFloat)maxFontSize
-{
+- (void)setMinFontSize:(CGFloat)maxFontSize {
     objc_setAssociatedObject(self, &minFontSizeKey, [NSNumber numberWithFloat:maxFontSize],
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)minFontSize
-{
+- (CGFloat)minFontSize {
     return [objc_getAssociatedObject(self, &minFontSizeKey) floatValue];
 }
 
-- (void)pinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer
-{
+- (void)pinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer {
     if (!self.iszoomEnabled) return;
 
     CGFloat pointSize = (gestureRecognizer.velocity > 0.0f ? 1.0f : -1.0f) + self.font.pointSize;
@@ -47,9 +42,7 @@ static int zoomEnabledKey;
     self.font = [UIFont fontWithName:self.font.fontName size:pointSize];
 }
 
-
-- (void)setZoomEnabled:(BOOL)zoomEnabled
-{
+- (void)setZoomEnabled:(BOOL)zoomEnabled {
     objc_setAssociatedObject(self, &zoomEnabledKey, [NSNumber numberWithBool:zoomEnabled],
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
@@ -68,8 +61,7 @@ static int zoomEnabledKey;
     }
 }
 
-- (BOOL)iszoomEnabled
-{
+- (BOOL)iszoomEnabled {
     return [objc_getAssociatedObject(self, &zoomEnabledKey) boolValue];
 }
 
