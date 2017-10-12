@@ -10,7 +10,7 @@
 
 @implementation UIImage(Vector)
 
-+ (NSCache *)cache{
++ (NSCache *)cache {
     static NSCache *cache = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

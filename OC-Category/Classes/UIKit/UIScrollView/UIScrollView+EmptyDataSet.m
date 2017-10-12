@@ -51,18 +51,15 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
 
 #pragma mark - Getters (Public)
 
-- (id<DZNEmptyDataSetSource>)emptyDataSetSource
-{
+- (id<DZNEmptyDataSetSource>)emptyDataSetSource{
     return objc_getAssociatedObject(self, kEmptyDataSetSource);
 }
 
-- (id<DZNEmptyDataSetDelegate>)emptyDataSetDelegate
-{
+- (id<DZNEmptyDataSetDelegate>)emptyDataSetDelegate {
     return objc_getAssociatedObject(self, kEmptyDataSetDelegate);
 }
 
-- (BOOL)isEmptyDataSetVisible
-{
+- (BOOL)isEmptyDataSetVisible {
     UIView *view = objc_getAssociatedObject(self, kEmptyDataSetView);
     return view ? !view.hidden : NO;
 }
@@ -70,12 +67,9 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
 
 #pragma mark - Getters (Private)
 
-- (DZNEmptyDataSetView *)emptyDataSetView
-{
+- (DZNEmptyDataSetView *)emptyDataSetView{
     DZNEmptyDataSetView *view = objc_getAssociatedObject(self, kEmptyDataSetView);
-    
-    if (!view)
-    {
+    if (!view){
         view = [DZNEmptyDataSetView new];
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         view.hidden = YES;
@@ -83,25 +77,21 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
         view.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dzn_didTapContentView:)];
         view.tapGesture.delegate = self;
         [view addGestureRecognizer:view.tapGesture];
-        
         [self setEmptyDataSetView:view];
     }
     return view;
 }
 
-- (BOOL)dzn_canDisplay
-{
+- (BOOL)dzn_canDisplay {
     if (self.emptyDataSetSource && [self.emptyDataSetSource conformsToProtocol:@protocol(DZNEmptyDataSetSource)]) {
         if ([self isKindOfClass:[UITableView class]] || [self isKindOfClass:[UICollectionView class]] || [self isKindOfClass:[UIScrollView class]]) {
             return YES;
         }
     }
-    
     return NO;
 }
 
-- (NSInteger)dzn_itemsCount
-{
+- (NSInteger)dzn_itemsCount {
     NSInteger items = 0;
     
     if (![self respondsToSelector:@selector(dataSource)]) {
@@ -143,8 +133,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
 
 #pragma mark - Data Source Getters
 
-- (NSAttributedString *)dzn_titleLabelString
-{
+- (NSAttributedString *)dzn_titleLabelString {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(titleForEmptyDataSet:)]) {
         NSAttributedString *string = [self.emptyDataSetSource titleForEmptyDataSet:self];
         if (string) NSAssert([string isKindOfClass:[NSAttributedString class]], @"You must return a valid NSAttributedString object -titleForEmptyDataSet:");
@@ -153,8 +142,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (NSAttributedString *)dzn_detailLabelString
-{
+- (NSAttributedString *)dzn_detailLabelString {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(descriptionForEmptyDataSet:)]) {
         NSAttributedString *string = [self.emptyDataSetSource descriptionForEmptyDataSet:self];
         if (string) NSAssert([string isKindOfClass:[NSAttributedString class]], @"You must return a valid NSAttributedString object -descriptionForEmptyDataSet:");
@@ -163,8 +151,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (UIImage *)dzn_image
-{
+- (UIImage *)dzn_image {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(imageForEmptyDataSet:)]) {
         UIImage *image = [self.emptyDataSetSource imageForEmptyDataSet:self];
         if (image) NSAssert([image isKindOfClass:[UIImage class]], @"You must return a valid UIImage object for -imageForEmptyDataSet:");
@@ -173,8 +160,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (CAAnimation *) dzn_imageAnimation
-{
+- (CAAnimation *) dzn_imageAnimation {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(imageAnimationForEmptyDataSet:)]) {
         CAAnimation *imageAnimation = [self.emptyDataSetSource imageAnimationForEmptyDataSet:self];
         if (imageAnimation) NSAssert([imageAnimation isKindOfClass:[CAAnimation class]], @"You must return a valid UIImage object for -imageForEmptyDataSet:");
@@ -183,8 +169,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (UIColor *)dzn_imageTintColor
-{
+- (UIColor *)dzn_imageTintColor {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(imageTintColorForEmptyDataSet:)]) {
         UIColor *color = [self.emptyDataSetSource imageTintColorForEmptyDataSet:self];
         if (color) NSAssert([color isKindOfClass:[UIColor class]], @"You must return a valid UIColor object -imageTintColorForEmptyDataSet:");
@@ -193,8 +178,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (NSAttributedString *)dzn_buttonTitleForState:(UIControlState)state
-{
+- (NSAttributedString *)dzn_buttonTitleForState:(UIControlState)state {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(buttonTitleForEmptyDataSet:forState:)]) {
         NSAttributedString *string = [self.emptyDataSetSource buttonTitleForEmptyDataSet:self forState:state];
         if (string) NSAssert([string isKindOfClass:[NSAttributedString class]], @"You must return a valid NSAttributedString object for -buttonTitleForEmptyDataSet:forState:");
@@ -203,8 +187,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (UIImage *)dzn_buttonImageForState:(UIControlState)state
-{
+- (UIImage *)dzn_buttonImageForState:(UIControlState)state {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(buttonImageForEmptyDataSet:forState:)]) {
         UIImage *image = [self.emptyDataSetSource buttonImageForEmptyDataSet:self forState:state];
         if (image) NSAssert([image isKindOfClass:[UIImage class]], @"You must return a valid UIImage object for -buttonImageForEmptyDataSet:forState:");
@@ -213,8 +196,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (UIImage *)dzn_buttonBackgroundImageForState:(UIControlState)state
-{
+- (UIImage *)dzn_buttonBackgroundImageForState:(UIControlState)state {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(buttonBackgroundImageForEmptyDataSet:forState:)]) {
         UIImage *image = [self.emptyDataSetSource buttonBackgroundImageForEmptyDataSet:self forState:state];
         if (image) NSAssert([image isKindOfClass:[UIImage class]], @"You must return a valid UIImage object for -buttonBackgroundImageForEmptyDataSet:forState:");
@@ -223,8 +205,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (UIColor *)dzn_dataSetBackgroundColor
-{
+- (UIColor *)dzn_dataSetBackgroundColor {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(backgroundColorForEmptyDataSet:)]) {
         UIColor *color = [self.emptyDataSetSource backgroundColorForEmptyDataSet:self];
         if (color) NSAssert([color isKindOfClass:[UIColor class]], @"You must return a valid UIColor object -backgroundColorForEmptyDataSet:");
@@ -233,8 +214,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return [UIColor clearColor];
 }
 
-- (UIView *)dzn_customView
-{
+- (UIView *)dzn_customView {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(customViewForEmptyDataSet:)]) {
         UIView *view = [self.emptyDataSetSource customViewForEmptyDataSet:self];
         if (view) NSAssert([view isKindOfClass:[UIView class]], @"You must return a valid UIView object for -customViewForEmptyDataSet:");
@@ -243,8 +223,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return nil;
 }
 
-- (CGFloat)dzn_verticalOffset
-{
+- (CGFloat)dzn_verticalOffset {
     CGFloat offset = 0.0;
     
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(verticalOffsetForEmptyDataSet:)]) {
@@ -253,14 +232,12 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return offset;
 }
 
-- (CGFloat)dzn_verticalSpace
-{
+- (CGFloat)dzn_verticalSpace {
     if (self.emptyDataSetSource && [self.emptyDataSetSource respondsToSelector:@selector(spaceHeightForEmptyDataSet:)]) {
         return [self.emptyDataSetSource spaceHeightForEmptyDataSet:self];
     }
     return 0.0;
 }
-
 
 #pragma mark - Delegate Getters & Events (Private)
 
@@ -271,68 +248,59 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     return YES;
 }
 
-- (BOOL)dzn_shouldDisplay
-{
+- (BOOL)dzn_shouldDisplay {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetShouldDisplay:)]) {
         return [self.emptyDataSetDelegate emptyDataSetShouldDisplay:self];
     }
     return YES;
 }
 
-- (BOOL)dzn_isTouchAllowed
-{
+- (BOOL)dzn_isTouchAllowed {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetShouldAllowTouch:)]) {
         return [self.emptyDataSetDelegate emptyDataSetShouldAllowTouch:self];
     }
     return YES;
 }
 
-- (BOOL)dzn_isScrollAllowed
-{
+- (BOOL)dzn_isScrollAllowed {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetShouldAllowScroll:)]) {
         return [self.emptyDataSetDelegate emptyDataSetShouldAllowScroll:self];
     }
     return NO;
 }
 
-- (BOOL)dzn_isImageViewAnimateAllow
-{
+- (BOOL)dzn_isImageViewAnimateAllow {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetShouldAnimateImageView:)]) {
         return [self.emptyDataSetDelegate emptyDataSetShouldAnimateImageView:self];
     }
     return NO;
 }
 
-- (void)dzn_willAppear
-{
+- (void)dzn_willAppear {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetWillAppear:)]) {
         [self.emptyDataSetDelegate emptyDataSetWillAppear:self];
     }
 }
 
-- (void)dzn_didAppear
-{
+- (void)dzn_didAppear {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetDidAppear:)]) {
         [self.emptyDataSetDelegate emptyDataSetDidAppear:self];
     }
 }
 
-- (void)dzn_willDisappear
-{
+- (void)dzn_willDisappear {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetWillDisappear:)]) {
         [self.emptyDataSetDelegate emptyDataSetWillDisappear:self];
     }
 }
 
-- (void)dzn_didDisappear
-{
+- (void)dzn_didDisappear {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSetDidDisappear:)]) {
         [self.emptyDataSetDelegate emptyDataSetDidDisappear:self];
     }
 }
 
-- (void)dzn_didTapContentView:(id)sender
-{
+- (void)dzn_didTapContentView:(id)sender {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSet:didTapView:)]) {
         [self.emptyDataSetDelegate emptyDataSet:self didTapView:sender];
     }
@@ -344,8 +312,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
 #pragma clang diagnostic pop
 }
 
-- (void)dzn_didTapDataButton:(id)sender
-{
+- (void)dzn_didTapDataButton:(id)sender {
     if (self.emptyDataSetDelegate && [self.emptyDataSetDelegate respondsToSelector:@selector(emptyDataSet:didTapButton:)]) {
         [self.emptyDataSetDelegate emptyDataSet:self didTapButton:sender];
     }
@@ -360,8 +327,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
 
 #pragma mark - Setters (Public)
 
-- (void)setEmptyDataSetSource:(id<DZNEmptyDataSetSource>)datasource
-{
+- (void)setEmptyDataSetSource:(id<DZNEmptyDataSetSource>)datasource {
     if (!datasource || ![self dzn_canDisplay]) {
         [self dzn_invalidate];
     }
@@ -377,47 +343,38 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     }
 }
 
-- (void)setEmptyDataSetDelegate:(id<DZNEmptyDataSetDelegate>)delegate
-{
+- (void)setEmptyDataSetDelegate:(id<DZNEmptyDataSetDelegate>)delegate {
     if (!delegate) {
         [self dzn_invalidate];
     }
-    
     objc_setAssociatedObject(self, kEmptyDataSetDelegate, delegate, OBJC_ASSOCIATION_ASSIGN);
 }
 
 
 #pragma mark - Setters (Private)
 
-- (void)setEmptyDataSetView:(DZNEmptyDataSetView *)view
-{
+- (void)setEmptyDataSetView:(DZNEmptyDataSetView *)view {
     objc_setAssociatedObject(self, kEmptyDataSetView, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-
 #pragma mark - Reload APIs (Public)
 
-- (void)reloadEmptyDataSet
-{
+- (void)reloadEmptyDataSet {
     [self dzn_reloadEmptyDataSet];
 }
 
-
 #pragma mark - Reload APIs (Private)
 
-- (void)dzn_reloadEmptyDataSet
-{
+- (void)dzn_reloadEmptyDataSet {
     if (![self dzn_canDisplay]) {
         return;
     }
     
-    if ([self dzn_shouldDisplay] && [self dzn_itemsCount] == 0)
-    {
+    if ([self dzn_shouldDisplay] && [self dzn_itemsCount] == 0) {
         // Notifies that the empty dataset view will appear
         [self dzn_willAppear];
         
         DZNEmptyDataSetView *view = self.emptyDataSetView;
-        
         if (!view.superview) {
             // Send the view all the way to the back, in case a header and/or footer is present, as well as for sectionHeaders or any other content
             if (([self isKindOfClass:[UITableView class]] || [self isKindOfClass:[UICollectionView class]]) && self.subviews.count > 1) {
@@ -530,24 +487,19 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     }
 }
 
-- (void)dzn_invalidate
-{
+- (void)dzn_invalidate {
     // Notifies that the empty dataset view will disappear
     [self dzn_willDisappear];
-    
     if (self.emptyDataSetView) {
         [self.emptyDataSetView prepareForReuse];
         [self.emptyDataSetView removeFromSuperview];
         
         [self setEmptyDataSetView:nil];
     }
-    
     self.scrollEnabled = YES;
-    
     // Notifies that the empty dataset view did disappear
     [self dzn_didDisappear];
 }
-
 
 #pragma mark - Method Swizzling
 
@@ -559,8 +511,7 @@ static NSString *const DZNSwizzleInfoSelectorKey = @"selector";
 // Based on Bryce Buchanan's swizzling technique http://blog.newrelic.com/2014/04/16/right-way-to-swizzle/
 // And Juzzin's ideas https://github.com/juzzin/JUSEmptyViewController
 
-void dzn_original_implementation(id self, SEL _cmd)
-{
+void dzn_original_implementation(id self, SEL _cmd) {
     // Fetch original implementation from lookup table
     NSString *key = dzn_implementationKey(self, _cmd);
     
@@ -579,8 +530,7 @@ void dzn_original_implementation(id self, SEL _cmd)
     }
 }
 
-NSString *dzn_implementationKey(id target, SEL selector)
-{
+NSString *dzn_implementationKey(id target, SEL selector) {
     if (!target || !selector) {
         return nil;
     }
@@ -597,8 +547,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return [NSString stringWithFormat:@"%@_%@",className,selectorName];
 }
 
-- (void)swizzleIfPossible:(SEL)selector
-{
+- (void)swizzleIfPossible:(SEL)selector {
     // Check if the target responds to selector
     if (![self respondsToSelector:selector]) {
         return;
@@ -653,8 +602,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return [super gestureRecognizerShouldBegin:gestureRecognizer];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     UIGestureRecognizer *tapGesture = self.emptyDataSetView.tapGesture;
     
     if ([gestureRecognizer isEqual:tapGesture] || [otherGestureRecognizer isEqual:tapGesture]) {
@@ -683,8 +631,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
 
 #pragma mark - Initialization Methods
 
-- (instancetype)init
-{
+- (instancetype)init {
     self =  [super init];
     if (self) {
         [self addSubview:self.contentView];
@@ -692,10 +639,8 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return self;
 }
 
-- (void)didMoveToSuperview
-{
+- (void)didMoveToSuperview {
     self.frame = self.superview.bounds;
-    
     void(^fadeInBlock)(void) = ^{_contentView.alpha = 1.0;};
     
     if (self.fadeInOnDisplay) {
@@ -711,10 +656,8 @@ NSString *dzn_implementationKey(id target, SEL selector)
 
 #pragma mark - Getters
 
-- (UIView *)contentView
-{
-    if (!_contentView)
-    {
+- (UIView *)contentView{
+    if (!_contentView) {
         _contentView = [UIView new];
         _contentView.translatesAutoresizingMaskIntoConstraints = NO;
         _contentView.backgroundColor = [UIColor clearColor];
@@ -724,10 +667,8 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return _contentView;
 }
 
-- (UIImageView *)imageView
-{
-    if (!_imageView)
-    {
+- (UIImageView *)imageView {
+    if (!_imageView) {
         _imageView = [UIImageView new];
         _imageView.translatesAutoresizingMaskIntoConstraints = NO;
         _imageView.backgroundColor = [UIColor clearColor];
@@ -740,10 +681,8 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return _imageView;
 }
 
-- (UILabel *)titleLabel
-{
-    if (!_titleLabel)
-    {
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
         _titleLabel = [UILabel new];
         _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _titleLabel.backgroundColor = [UIColor clearColor];
@@ -760,10 +699,8 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return _titleLabel;
 }
 
-- (UILabel *)detailLabel
-{
-    if (!_detailLabel)
-    {
+- (UILabel *)detailLabel {
+    if (!_detailLabel) {
         _detailLabel = [UILabel new];
         _detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _detailLabel.backgroundColor = [UIColor clearColor];
@@ -780,10 +717,8 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return _detailLabel;
 }
 
-- (UIButton *)button
-{
-    if (!_button)
-    {
+- (UIButton *)button{
+    if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.translatesAutoresizingMaskIntoConstraints = NO;
         _button.backgroundColor = [UIColor clearColor];
@@ -798,34 +733,28 @@ NSString *dzn_implementationKey(id target, SEL selector)
     return _button;
 }
 
-- (BOOL)canShowImage
-{
+- (BOOL)canShowImage {
     return (_imageView.image && _imageView.superview);
 }
 
-- (BOOL)canShowTitle
-{
+- (BOOL)canShowTitle {
     return (_titleLabel.attributedText.string.length > 0 && _titleLabel.superview);
 }
 
-- (BOOL)canShowDetail
-{
+- (BOOL)canShowDetail {
     return (_detailLabel.attributedText.string.length > 0 && _detailLabel.superview);
 }
 
-- (BOOL)canShowButton
-{
+- (BOOL)canShowButton {
     if ([_button attributedTitleForState:UIControlStateNormal].string.length > 0 || [_button imageForState:UIControlStateNormal]) {
         return (_button.superview != nil) ? YES : NO;
     }
     return NO;
 }
 
-
 #pragma mark - Setters
 
-- (void)setCustomView:(UIView *)view
-{
+- (void)setCustomView:(UIView *)view {
     if (!view) {
         return;
     }
@@ -840,11 +769,9 @@ NSString *dzn_implementationKey(id target, SEL selector)
     [self.contentView addSubview:_customView];
 }
 
-
 #pragma mark - Action Methods
 
-- (void)didTapButton:(id)sender
-{
+- (void)didTapButton:(id)sender {
     SEL selector = NSSelectorFromString(@"dzn_didTapDataButton:");
     
     if ([self.superview respondsToSelector:selector]) {
@@ -852,14 +779,12 @@ NSString *dzn_implementationKey(id target, SEL selector)
     }
 }
 
-- (void)removeAllConstraints
-{
+- (void)removeAllConstraints {
     [self removeConstraints:self.constraints];
     [_contentView removeConstraints:_contentView.constraints];
 }
 
-- (void)prepareForReuse
-{
+- (void)prepareForReuse {
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     _titleLabel = nil;
@@ -871,11 +796,9 @@ NSString *dzn_implementationKey(id target, SEL selector)
     [self removeAllConstraints];
 }
 
-
 #pragma mark - Auto-Layout Configuration
 
-- (void)setupConstraints
-{
+- (void)setupConstraints {
     // First, configure the content view constaints
     // The content view must alway be centered to its superview
     NSLayoutConstraint *centerXConstraint = [self equallyRelatedConstraintWithView:self.contentView attribute:NSLayoutAttributeCenterX];
@@ -982,8 +905,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
     }
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-{
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     UIView *hitView = [super hitTest:point withEvent:event];
     
     // Return any UIControl instance such as buttons, segmented controls, switches, etc.
@@ -1006,8 +928,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
 
 @implementation UIView (DZNConstraintBasedLayoutExtensions)
 
-- (NSLayoutConstraint *)equallyRelatedConstraintWithView:(UIView *)view attribute:(NSLayoutAttribute)attribute
-{
+- (NSLayoutConstraint *)equallyRelatedConstraintWithView:(UIView *)view attribute:(NSLayoutAttribute)attribute {
     return [NSLayoutConstraint constraintWithItem:view
                                         attribute:attribute
                                         relatedBy:NSLayoutRelationEqual

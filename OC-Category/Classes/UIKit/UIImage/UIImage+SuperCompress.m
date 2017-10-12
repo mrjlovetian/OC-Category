@@ -8,15 +8,13 @@
 #import "UIImage+SuperCompress.h"
 
 @implementation UIImage (SuperCompress)
-+ (UIImage*)resizableHalfImage:(NSString *)name
-{
++ (UIImage*)resizableHalfImage:(NSString *)name {
     UIImage *normal = [UIImage imageNamed:name];
     
     CGFloat imageW = normal.size.width * 0.5;
     CGFloat imageH = normal.size.height * 0.5;
     return [normal resizableImageWithCapInsets:UIEdgeInsetsMake(imageH, imageW, imageH, imageW)];
 }
-
 
 + (NSData *)compressImage:(UIImage *)image toMaxLength:(NSInteger)maxLength maxWidth:(NSInteger)maxWidth{
     NSAssert(maxLength > 0, @"图片的大小必须大于 0");
@@ -37,23 +35,18 @@
 }
 
 + (UIImage *)resizeImage:(UIImage *) image withNewSize:(CGSize) newSize{
-    
     UIGraphicsBeginImageContext(newSize);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     return newImage;
 }
 
 + (CGSize)scaleImage:(UIImage *) image withLength:(CGFloat) imageLength{
-    
     CGFloat newWidth = 0.0f;
     CGFloat newHeight = 0.0f;
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
-    
     if (width > imageLength || height > imageLength){
         
         if (width > height) {
@@ -75,7 +68,6 @@
     }else{
         return CGSizeMake(width, height);
     }
-    
     return CGSizeMake(newWidth, newHeight);
 }
 

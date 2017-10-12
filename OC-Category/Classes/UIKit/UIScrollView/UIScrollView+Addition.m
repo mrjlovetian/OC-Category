@@ -12,48 +12,53 @@
 - (CGFloat)contentWidth {
     return self.contentSize.width;
 }
+
 - (void)setContentWidth:(CGFloat)width {
     self.contentSize = CGSizeMake(width, self.frame.size.height);
 }
+
 - (CGFloat)contentHeight {
     return self.contentSize.height;
 }
+
 - (void)setContentHeight:(CGFloat)height {
     self.contentSize = CGSizeMake(self.frame.size.width, height);
 }
+
 - (CGFloat)contentOffsetX {
     return self.contentOffset.x;
 }
+
 - (void)setContentOffsetX:(CGFloat)x {
     self.contentOffset = CGPointMake(x, self.contentOffset.y);
 }
+
 - (CGFloat)contentOffsetY {
     return self.contentOffset.y;
 }
+
 - (void)setContentOffsetY:(CGFloat)y {
     self.contentOffset = CGPointMake(self.contentOffset.x, y);
 }
 //
 
-
-- (CGPoint)topContentOffset
-{
+- (CGPoint)topContentOffset {
     return CGPointMake(0.0f, -self.contentInset.top);
 }
-- (CGPoint)bottomContentOffset
-{
+
+- (CGPoint)bottomContentOffset {
     return CGPointMake(0.0f, self.contentSize.height + self.contentInset.bottom - self.bounds.size.height);
 }
-- (CGPoint)leftContentOffset
-{
+
+- (CGPoint)leftContentOffset {
     return CGPointMake(-self.contentInset.left, 0.0f);
 }
-- (CGPoint)rightContentOffset
-{
+
+- (CGPoint)rightContentOffset {
     return CGPointMake(self.contentSize.width + self.contentInset.right - self.bounds.size.width, 0.0f);
 }
-- (ScrollDirection)ScrollDirection
-{
+
+- (ScrollDirection)ScrollDirection {
     ScrollDirection direction;
     
     if ([self.panGestureRecognizer translationInView:self.superview].y > 0.0f)
@@ -79,52 +84,52 @@
     
     return direction;
 }
-- (BOOL)isScrolledToTop
-{
+
+- (BOOL)isScrolledToTop {
     return self.contentOffset.y <= [self topContentOffset].y;
 }
-- (BOOL)isScrolledToBottom
-{
+
+- (BOOL)isScrolledToBottom {
     return self.contentOffset.y >= [self bottomContentOffset].y;
 }
-- (BOOL)isScrolledToLeft
-{
+
+- (BOOL)isScrolledToLeft {
     return self.contentOffset.x <= [self leftContentOffset].x;
 }
-- (BOOL)isScrolledToRight
-{
+
+- (BOOL)isScrolledToRight {
     return self.contentOffset.x >= [self rightContentOffset].x;
 }
-- (void)scrollToTopAnimated:(BOOL)animated
-{
+
+- (void)scrollToTopAnimated:(BOOL)animated {
     [self setContentOffset:[self topContentOffset] animated:animated];
 }
-- (void)scrollToBottomAnimated:(BOOL)animated
-{
+
+- (void)scrollToBottomAnimated:(BOOL)animated {
     [self setContentOffset:[self bottomContentOffset] animated:animated];
 }
-- (void)scrollToLeftAnimated:(BOOL)animated
-{
+
+- (void)scrollToLeftAnimated:(BOOL)animated {
     [self setContentOffset:[self leftContentOffset] animated:animated];
 }
-- (void)scrollToRightAnimated:(BOOL)animated
-{
+
+- (void)scrollToRightAnimated:(BOOL)animated {
     [self setContentOffset:[self rightContentOffset] animated:animated];
 }
-- (NSUInteger)verticalPageIndex
-{
+
+- (NSUInteger)verticalPageIndex {
     return (self.contentOffset.y + (self.frame.size.height * 0.5f)) / self.frame.size.height;
 }
-- (NSUInteger)horizontalPageIndex
-{
+
+- (NSUInteger)horizontalPageIndex {
     return (self.contentOffset.x + (self.frame.size.width * 0.5f)) / self.frame.size.width;
 }
-- (void)scrollToVerticalPageIndex:(NSUInteger)pageIndex animated:(BOOL)animated
-{
+
+- (void)scrollToVerticalPageIndex:(NSUInteger)pageIndex animated:(BOOL)animated {
     [self setContentOffset:CGPointMake(0.0f, self.frame.size.height * pageIndex) animated:animated];
 }
-- (void)scrollToHorizontalPageIndex:(NSUInteger)pageIndex animated:(BOOL)animated
-{
+
+- (void)scrollToHorizontalPageIndex:(NSUInteger)pageIndex animated:(BOOL)animated {
     [self setContentOffset:CGPointMake(self.frame.size.width * pageIndex, 0.0f) animated:animated];
 }
 

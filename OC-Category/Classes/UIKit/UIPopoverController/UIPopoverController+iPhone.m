@@ -17,4 +17,5 @@
 + (BOOL)_popoversDisabled {
     return NO;
 }
+
 @end

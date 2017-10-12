@@ -14,8 +14,7 @@
 // =====================================================
 - (void)adjustLabelToMaximumSize:(CGSize)maxSize
                      minimumSize:(CGSize)minSize 
-                 minimumFontSize:(int)minFontSize
-{
+                 minimumFontSize:(int)minFontSize {
   //// 1) Calculate new label size
   //// ---------------------------
   // First, reset some basic parameters  
@@ -86,8 +85,7 @@
 // font size as constraints
 // =====================================================
 - (void)adjustLabelToMaximumSize:(CGSize)maxSize
-                 minimumFontSize:(int)minFontSize
-{
+                 minimumFontSize:(int)minFontSize {
   [self adjustLabelToMaximumSize:maxSize
                      minimumSize:CGSizeZero 
                  minimumFontSize:minFontSize];
@@ -97,8 +95,7 @@
 // size as a constraint (the maximum size will be
 // calculated automatically based on the screen size)
 // =====================================================
-- (void)adjustLabelSizeWithMinimumFontSize:(int)minFontSize
-{
+- (void)adjustLabelSizeWithMinimumFontSize:(int)minFontSize {
   [self adjustLabelToMaximumSize:CGSizeZero
                      minimumSize:CGSizeZero 
                  minimumFontSize:minFontSize];
@@ -108,8 +105,7 @@
 // size will be calculated automatically based on the
 // screen size)
 // =====================================================
-- (void)adjustLabel
-{
+- (void)adjustLabel {
   [self adjustLabelToMaximumSize:CGSizeZero 
                      minimumSize:CGSizeZero 
                  minimumFontSize:[self minimumScaleFactor]];
