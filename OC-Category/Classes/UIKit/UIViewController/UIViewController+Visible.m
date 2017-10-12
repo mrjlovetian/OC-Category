@@ -8,7 +8,9 @@
 #import "UIViewController+Visible.h"
 
 @implementation UIViewController (Visible)
+
 - (BOOL)isVisible {
     return [self isViewLoaded] && self.view.window;
 }
+
 @end
