@@ -31,12 +31,12 @@ NSString* const iTunesAppleString = @"itunes.apple.com";
 @implementation UIViewController (StoreKit)
 
 - (void)presentStoreKitItemWithIdentifier:(NSInteger)itemIdentifier {
-    SKStoreProductViewController* storeViewController = [[SKStoreProductViewController alloc] init];
+    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
     storeViewController.delegate = self;
 
-    NSString* campaignToken = self.campaignToken ?: @"";
+    NSString *campaignToken = self.campaignToken ?: @"";
 
-    NSDictionary* parameters = @{
+    NSDictionary *parameters = @{
         SKStoreProductParameterITunesItemIdentifier : @(itemIdentifier),
         affiliateTokenKey : affiliateTokenKey,
         campaignTokenKey : campaignToken,
@@ -50,24 +50,21 @@ NSString* const iTunesAppleString = @"itunes.apple.com";
             self.loadedStoreKitItemBlock();
         }
 
-        if (result && !error)
-        {
+        if (result && !error) {
             [self presentViewController:storeViewController animated:YES completion:nil];
         }
     }];
 }
 
-////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Delegation - SKStoreProductViewControllerDelegate
 
-- (void)productViewControllerDidFinish:(SKStoreProductViewController*)viewController {
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Public methods
 
-+ (NSURL*)appURLForIdentifier:(NSInteger)identifier {
++ (NSURL *)appURLForIdentifier:(NSInteger)identifier {
     NSString* appURLString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%li", (long)identifier];
     return [NSURL URLWithString:appURLString];
 }

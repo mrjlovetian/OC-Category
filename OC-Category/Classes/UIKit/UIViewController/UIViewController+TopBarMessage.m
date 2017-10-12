@@ -29,8 +29,7 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
 @implementation TopWarningView
 
 
-- (void)dealloc
-{
+- (void)dealloc {
     [self.dimissTimer invalidate];
     self.dimissTimer = nil;
 }
@@ -139,7 +138,6 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
 
 @end
 
-///=====================================================================
 static char TopWarningKey;
 
 @implementation UIViewController (TopBarMessage)

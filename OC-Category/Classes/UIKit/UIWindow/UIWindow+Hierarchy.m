@@ -8,7 +8,7 @@
 #import "UIWindow+Hierarchy.h"
 
 @implementation UIWindow (Hierarchy)
-- (UIViewController*)topMostController {
+- (UIViewController *)topMostController {
     UIViewController *topController = [self rootViewController];
     
     //  Getting topMost ViewController
@@ -18,7 +18,7 @@
     return topController;
 }
 
-- (UIViewController*)currentViewController {
+- (UIViewController *)currentViewController {
     UIViewController *currentViewController = [self topMostController];
     
     while ([currentViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)currentViewController topViewController])

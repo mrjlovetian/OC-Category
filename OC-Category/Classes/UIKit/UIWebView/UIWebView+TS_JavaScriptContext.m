@@ -58,7 +58,7 @@ static NSHashTable* g_webViews = nil;
 
 @implementation UIWebView (TS_JavaScriptContext)
 
-+ (id) allocWithZone:(struct _NSZone *)zone {
++ (id)allocWithZone:(struct _NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         g_webViews = [NSHashTable weakObjectsHashTable];

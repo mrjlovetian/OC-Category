@@ -22,14 +22,13 @@ static BOOL diagStat = NO;
     while (dialogue.hidden==NO && dialogue.superview!=nil) {
         [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01f]];
     }
-    
     return diagStat;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex==0) {
         diagStat=YES;
-    }else if(buttonIndex==1){
+    } else if (buttonIndex == 1){
         diagStat=NO;
     }
 }

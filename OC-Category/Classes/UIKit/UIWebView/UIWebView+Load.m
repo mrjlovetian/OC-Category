@@ -13,7 +13,7 @@
  *
  *  @param URLString 网页地址
  */
-- (void)loadURL:(NSString*)URLString {
+- (void)loadURL:(NSString *)URLString {
     NSString *encodedUrl = (__bridge NSString *) CFURLCreateStringByAddingPercentEscapes (NULL, (__bridge CFStringRef) URLString, NULL, NULL,kCFStringEncodingUTF8);
     NSURL *url = [NSURL URLWithString:encodedUrl];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
@@ -41,10 +41,8 @@
  */
 - (void)clearCookies {
     NSHTTPCookieStorage *storage = NSHTTPCookieStorage.sharedHTTPCookieStorage;
-    
     for (NSHTTPCookie *cookie in storage.cookies)
         [storage deleteCookie:cookie];
-    
     [NSUserDefaults.standardUserDefaults synchronize];
 }
 

@@ -16,7 +16,6 @@
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPushItem:(UINavigationItem *)item {
     UIViewController * viewController = self.viewControllers.count > 1 ? \
                     [self.viewControllers objectAtIndex:self.viewControllers.count - 2] : nil;
-    
     if (!viewController) {
         return YES;
     }

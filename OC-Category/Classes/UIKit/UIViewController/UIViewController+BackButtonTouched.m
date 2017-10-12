@@ -40,12 +40,11 @@ static const void *BackButtonHandlerKey = &BackButtonHandlerKey;
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(self);
         });
-    }else{
+    } else {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self popViewControllerAnimated:YES];
         });
     }
-
 	return NO;
 }
 

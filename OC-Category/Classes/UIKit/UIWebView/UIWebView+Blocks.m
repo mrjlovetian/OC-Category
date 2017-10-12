@@ -56,7 +56,6 @@ static uint __loadedWebItems;
               loadStarted:(void (^)(UIWebView *webView))loadStartedBlock
                shouldLoad:(BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType))shouldLoadBlock {
     __loadedWebItems    = 0;
-    
     __loadedBlock       = loadedBlock;
     __failureBlock      = failureBlock;
     __loadStartedBlock  = loadStartedBlock;
@@ -68,9 +67,9 @@ static uint __loadedWebItems;
 }
 
 #pragma mark - Private Static delegate
+
 + (void)webViewDidFinishLoad:(UIWebView *)webView {
-    __loadedWebItems--;
-    
+    __loadedWebItems --;
     if(__loadedBlock && (!TRUE_END_REPORT || __loadedWebItems == 0)){
         __loadedWebItems = 0;
         __loadedBlock(webView);
@@ -78,14 +77,13 @@ static uint __loadedWebItems;
 }
 
 + (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    __loadedWebItems--;
-    
+    __loadedWebItems --;
     if(__failureBlock)
         __failureBlock(webView, error);
 }
 
 + (void)webViewDidStartLoad:(UIWebView *)webView {
-    __loadedWebItems++;
+    __loadedWebItems ++;
     if(__loadStartedBlock && (!TRUE_END_REPORT || __loadedWebItems > 0))
         __loadStartedBlock(webView);
 }

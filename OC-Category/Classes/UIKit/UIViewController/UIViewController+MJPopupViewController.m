@@ -18,7 +18,7 @@
 
 @interface UIViewController (MJPopupViewControllerPrivate)
 
-- (UIView*)topView;
+- (UIView *)topView;
 - (void)presentPopupView:(UIView*)popupView;
 
 @end
@@ -90,7 +90,7 @@ static void * const keypath = (void*)&keypath;
     return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 
-- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
+- (UIViewController *)topViewControllerWithRootViewController:(UIViewController *)rootViewController {
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController* tabBarController = (UITabBarController*)rootViewController;
         return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];

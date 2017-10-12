@@ -51,7 +51,6 @@ static NSMutableArray *__popUpViewControllers = nil;
     if (CGSizeEqualToSize(popUpViewSize, CGSizeZero)) {
         popUpViewSize = self.topViewController.popUpViewSize;
     }
-    
     return popUpViewSize;
 }
 
