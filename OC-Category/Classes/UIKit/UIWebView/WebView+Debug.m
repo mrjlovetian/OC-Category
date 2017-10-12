@@ -20,7 +20,6 @@
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 static NSString* getAddress() {
     id myhost =[NSClassFromString(@"NSHost") performSelector:@selector(currentHost)];
-    
     if (myhost) {
         for (NSString* address in [myhost performSelector:@selector(addresses)]) {
             if ([address rangeOfString:@"::"].location == NSNotFound) {
@@ -28,7 +27,6 @@ static NSString* getAddress() {
             }
         }
     }
-    
     return @"127.0.0.1";
 }
 
