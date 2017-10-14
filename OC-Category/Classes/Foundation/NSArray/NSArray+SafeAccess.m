@@ -8,6 +8,7 @@
 #import "NSArray+SafeAccess.h"
 
 @implementation NSArray (SafeAccess)
+    
 -(id)objectWithIndex:(NSUInteger)index {
     if (index <self.count) {
         return self[index];
@@ -92,8 +93,7 @@
 
 - (NSUInteger)unsignedIntegerWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
+    if (value == nil || value == [NSNull null]) {
         return 0;
     }
     if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
@@ -143,7 +143,6 @@
 
 - (int64_t)int64WithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
-    
     if (value == nil || value == [NSNull null]){
         return 0;
     }
@@ -204,7 +203,6 @@
     NSDateFormatter *formater = [[NSDateFormatter alloc]init];
     formater.dateFormat = dateFormat;
     id value = [self objectWithIndex:index];
-    
     if (value == nil || value == [NSNull null]){
         return nil;
     }
@@ -218,9 +216,7 @@
 //CG
 - (CGFloat)CGFloatWithIndex:(NSUInteger)index{
     id value = [self objectWithIndex:index];
-    
     CGFloat f = [value doubleValue];
-    
     return f;
 }
 
@@ -246,6 +242,7 @@
 #pragma --mark NSMutableArray setter
 
 @implementation NSMutableArray (SafeAccess)
+    
 - (void)addObj:(id)i {
     if (i!=nil) {
         [self addObject:i];
@@ -258,44 +255,45 @@
     }
 }
 
--(void)addBool:(BOOL)i{
+- (void)addBool:(BOOL)i{
     [self addObject:@(i)];
 }
 
--(void)addInt:(int)i {
+- (void)addInt:(int)i {
     [self addObject:@(i)];
 }
 
--(void)addInteger:(NSInteger)i {
+- (void)addInteger:(NSInteger)i {
     [self addObject:@(i)];
 }
 
--(void)addUnsignedInteger:(NSUInteger)i{
+- (void)addUnsignedInteger:(NSUInteger)i{
     [self addObject:@(i)];
 }
 
--(void)addCGFloat:(CGFloat)f{
+- (void)addCGFloat:(CGFloat)f{
    [self addObject:@(f)];
 }
 
--(void)addChar:(char)c{
+- (void)addChar:(char)c{
     [self addObject:@(c)];
 }
 
--(void)addFloat:(float)i{
+- (void)addFloat:(float)i{
     [self addObject:@(i)];
 }
 
--(void)addPoint:(CGPoint)o{
+- (void)addPoint:(CGPoint)o{
     [self addObject:NSStringFromCGPoint(o)];
 }
 
--(void)addSize:(CGSize)o{
+- (void)addSize:(CGSize)o{
    [self addObject:NSStringFromCGSize(o)];
 }
 
--(void)addRect:(CGRect)o{
+- (void)addRect:(CGRect)o{
     [self addObject:NSStringFromCGRect(o)];
 }
+    
 @end
 
