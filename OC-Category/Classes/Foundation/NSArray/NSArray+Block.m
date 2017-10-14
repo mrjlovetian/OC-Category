@@ -8,6 +8,7 @@
 #import "NSArray+Block.h"
 
 @implementation NSArray (Block)
+    
 - (void)each:(void (^)(id object))block {
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         block(obj);
@@ -58,4 +59,5 @@
         accumulator = accumulator ? block(accumulator, object) : object;
     return accumulator;
 }
+    
 @end
