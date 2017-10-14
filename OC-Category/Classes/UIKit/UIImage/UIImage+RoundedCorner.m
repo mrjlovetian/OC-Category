@@ -9,7 +9,9 @@
 
 // Private helper methods
 @interface UIImage (RoundedCornerPrivateMethods)
+
 - (void)addRoundedRectToPath:(CGRect)rect context:(CGContextRef)context ovalWidth:(CGFloat)ovalWidth ovalHeight:(CGFloat)ovalHeight;
+
 @end
 
 @implementation UIImage (RoundedCorner)

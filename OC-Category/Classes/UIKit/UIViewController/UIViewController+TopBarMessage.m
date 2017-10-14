@@ -29,14 +29,12 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
 @implementation TopWarningView
 
 
-- (void)dealloc
-{
+- (void)dealloc {
     [self.dimissTimer invalidate];
     self.dimissTimer = nil;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
@@ -61,8 +59,7 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
     return self;
 }
 
-- (void)resetViews
-{
+- (void)resetViews {
     if (!__defaultTopMessageConfig) {
         __defaultTopMessageConfig = [@{kDXTopBarBackgroundColor : [UIColor colorWithRed:0.64 green:0.65 blue:0.66 alpha:0.96], kDXTopBarTextColor : [UIColor whiteColor], kDXTopBarTextFont : [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0]} mutableCopy];
     }
@@ -73,8 +70,7 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
     self.label.font = __defaultTopMessageConfig[kDXTopBarTextFont];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     CGSize textSize = [self.label.text boundingRectWithSize:CGSizeMake(CGRectGetWidth(self.bounds) * 0.9, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.label.font} context:nil].size;
     CGFloat betweenIconAndText  = 10.0f;
     CGFloat iconWidth = 20.0f;
@@ -86,32 +82,19 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
     self.label.frame = CGRectMake(CGRectGetMaxX(self.iconIgv.frame) + betweenIconAndText, (CGRectGetHeight(self.bounds) - labelDefaultHeight) * 0.5, textSize.width, labelDefaultHeight);
 }
 
-- (void)setWarningText:(NSString *)warningText
-{
+- (void)setWarningText:(NSString *)warningText {
     _warningText = warningText;
     self.label.text = _warningText;
     [self setNeedsLayout];
 }
 
-- (void)tapNow
-{
+- (void)tapNow {
     if (self.tapHandler) {
         self.tapHandler();
     }
 }
 
-- (void)dismiss
-{
-//    CGRect selfFrame = self.frame;
-//    selfFrame.origin.y -= CGRectGetHeight(selfFrame);
-//    
-//    [UIView animateWithDuration:0.25f animations:^{
-//        self.frame = selfFrame;
-//        self.alpha = 0.3;
-//    } completion:^(BOOL finished) {
-//        [self removeFromSuperview];
-//    }];
-    
+- (void)dismiss {
 //#warning mark - 视图恢复到原来位置
     [UIView animateWithDuration:0.25 animations:^{
         self.superview.transform = CGAffineTransformIdentity;
@@ -121,8 +104,8 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
 }
 
 #pragma mark - 从父视图上移除
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if (newSuperview) {
         self.alpha = 1.0;
@@ -146,9 +129,7 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
         if (self.dimissDelay > 0) {
             self.dimissTimer = [NSTimer scheduledTimerWithTimeInterval:MAX(self.dimissDelay, kDefaultDimissDelay) target:self selector:@selector(dismiss) userInfo:nil repeats:0];
         }
-        
-        
-    }else {
+    } else {
         [self.dimissTimer invalidate];
         self.dimissTimer = nil;
         [super willMoveToSuperview:newSuperview];
@@ -157,15 +138,11 @@ static NSMutableDictionary *__defaultTopMessageConfig = nil;
 
 @end
 
-
-///=====================================================================
 static char TopWarningKey;
 
 @implementation UIViewController (TopBarMessage)
 
-
-+ (void)setTopMessageDefaultApperance:(NSDictionary *)apperance
-{
++ (void)setTopMessageDefaultApperance:(NSDictionary *)apperance {
     if (!__defaultTopMessageConfig) {
         __defaultTopMessageConfig = [NSMutableDictionary dictionary];
     }
@@ -192,14 +169,12 @@ static char TopWarningKey;
     }
 }
 
-- (void)showTopMessage:(NSString *)message
-{
+- (void)showTopMessage:(NSString *)message {
     [self showTopMessage:message topBarConfig:nil mode:TopBarMessageModeOverlay  dismissDelay:kDefaultDimissDelay withTapBlock:nil];
 }
 
 //- (void)showTopMessage:(NSString *)message topBarConfig:(NSDictionary *)config dismissDelay:(float)delay withTapBlock:(dispatch_block_t)tapHandler
-- (void)showTopMessage:(NSString *)message topBarConfig:(NSDictionary *)config mode:(TopBarMessageMode)messageMode dismissDelay:(float)delay withTapBlock:(dispatch_block_t)tapHandler
-{
+- (void)showTopMessage:(NSString *)message topBarConfig:(NSDictionary *)config mode:(TopBarMessageMode)messageMode dismissDelay:(float)delay withTapBlock:(dispatch_block_t)tapHandler {
     TopWarningView *topV = objc_getAssociatedObject(self, &TopWarningKey);
     if (!topV) {
         topV = [[TopWarningView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), kTopBarHeight)];
@@ -250,7 +225,7 @@ static char TopWarningKey;
             topV.label.font = font;
         }
         
-    }else {
+    } else {
         [topV resetViews];
     }
     
@@ -258,22 +233,17 @@ static char TopWarningKey;
     
 //#warning mark -
     if (messageMode == TopBarMessageModeResize) {
-        
         [UIView animateWithDuration:0.25f animations:^{
             CGAffineTransform transform = CGAffineTransformMakeTranslation(0, kTopBarHeight);
             self.view.transform = transform;
-            
             CGRect frame = topV.frame;
             frame.origin.y = -kTopBarHeight;
             topV.frame = frame;
         }];
-        
     }
-    
 }
 
-- (void)dismissTopMessage
-{
+- (void)dismissTopMessage {
     NSLog(@"隐藏");
     NSArray *subViews = self.view.subviews;
     for (UIView *subView in subViews) {

@@ -8,8 +8,7 @@
 
 @implementation CAShapeLayer (UIBezierPath)
 
--(void)updateWithBezierPath:(UIBezierPath *)path
-{
+- (void)updateWithBezierPath:(UIBezierPath *)path {
     self.path = [path CGPath];
     self.lineWidth = path.lineWidth;
     self.miterLimit = path.miterLimit;
@@ -33,17 +32,13 @@
     self.lineDashPhase = phase;
 }
 
--(UIBezierPath *)bezierPath
-{
+- (UIBezierPath *)bezierPath {
     UIBezierPath * path = [UIBezierPath bezierPathWithCGPath:self.path];
     path.lineWidth = self.lineWidth;
     path.miterLimit = self.miterLimit;
-
     path.lineCapStyle = [[self class] lineCapFromCALineCap:self.lineCap];
     path.lineJoinStyle = [[self class] lineJoinFromCALineJoin:self.lineJoin];
-    
     path.usesEvenOddFillRule = (self.fillRule == kCAFillRuleEvenOdd);
-    
     CGFloat phase = self.lineDashPhase;
     NSInteger count = self.lineDashPattern.count;
     CGFloat pattern[count];
@@ -51,14 +46,12 @@
         pattern[i] = [[self.lineDashPattern objectAtIndex:i] floatValue];
     }
     [path setLineDash:pattern count:count phase:phase];
-    
     return path;
 }
 
 
 
-+(NSDictionary *)CGtoCALineCaps
-{
++ (NSDictionary *)CGtoCALineCaps {
     return @{
              @(kCGLineCapSquare) :kCALineCapSquare,
              @(kCGLineCapButt) : kCALineCapButt,
@@ -66,8 +59,7 @@
              };
 }
 
-+(NSDictionary *)CGtoCALineJoins
-{
++ (NSDictionary *)CGtoCALineJoins {
     return @{
              @(kCGLineJoinRound) : kCALineJoinRound,
              @(kCGLineJoinMiter) : kCALineJoinMiter,
@@ -75,8 +67,7 @@
              };
 }
 
-+(NSDictionary *)CAtoCGLineCaps
-{
++ (NSDictionary *)CAtoCGLineCaps {
     return @{
              kCALineCapSquare : @(kCGLineCapSquare),
              kCALineCapButt : @(kCGLineCapButt),
@@ -84,8 +75,7 @@
              };
 }
 
-+(NSDictionary *)CAtoCGLineJoins
-{
++ (NSDictionary *)CAtoCGLineJoins {
     return @{
              kCALineJoinRound : @(kCGLineJoinRound),
              kCALineJoinMiter : @(kCGLineJoinMiter),
@@ -93,23 +83,20 @@
              };
 }
 
-+(NSString *)lineCapFromCGLineCap:(CGLineCap)lineCap
-{
++ (NSString *)lineCapFromCGLineCap:(CGLineCap)lineCap {
     return [self CGtoCALineCaps][@(lineCap)];
 }
 
-+(NSString *)lineJoinFromCGLineJoin:(CGLineJoin)lineJoin
-{
++ (NSString *)lineJoinFromCGLineJoin:(CGLineJoin)lineJoin {
     return [self CGtoCALineJoins][@(lineJoin)];
 }
 
-+(CGLineCap)lineCapFromCALineCap:(NSString *)lineCap
-{
++ (CGLineCap)lineCapFromCALineCap:(NSString *)lineCap {
     return [[self CAtoCGLineCaps][lineCap] intValue];
 }
 
-+(CGLineJoin)lineJoinFromCALineJoin:(NSString *)lineJoin
-{
++ (CGLineJoin)lineJoinFromCALineJoin:(NSString *)lineJoin {
     return [[self CAtoCGLineJoins][lineJoin] intValue];
 }
+
 @end

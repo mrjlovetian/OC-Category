@@ -5,6 +5,7 @@
 //  Copyright © MRJ. All rights reserved.
 //
 
+///http://blog.csdn.net/cool_bear_xx/article/details/44859111
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+Genie.h"
 
@@ -72,15 +73,13 @@ typedef NS_ENUM(NSInteger, BCAxis) {
 // Moreover, CGFloat is a typedefed float, and floats have much lower precision, causing slices
 // to misalign occasionaly. Using doubles completely (?) removed the issue.
 
-typedef union BCPoint
-{
+typedef union BCPoint {
     struct { double x, y; }; 
     double v[2];
 }
 BCPoint;
 
-static inline BCPoint BCPointMake(double x, double y)
-{
+static inline BCPoint BCPointMake(double x, double y) {
     BCPoint p; p.x = x; p.y = y; return p;
 }
 
@@ -133,13 +132,11 @@ static const int BCTrapezoidWinding[4][4] = {
 
 #pragma mark - privates
 
-
-- (void) genieTransitionWithDuration:(NSTimeInterval) duration
+- (void)genieTransitionWithDuration:(NSTimeInterval)duration
                            edge:(BCRectEdge) edge
                      destinationRect:(CGRect)destRect
                              reverse:(BOOL)reverse
-                          completion:(void (^)())completion
-{
+                          completion:(void (^)())completion {
     assert(!CGRectIsNull(destRect));
     
     BCAxis axis = axisForEdge(edge);
@@ -279,8 +276,7 @@ static const int BCTrapezoidWinding[4][4] = {
 }
 
 
-- (UIImage *) renderSnapshotWithMarginForAxis:(BCAxis)axis
-{
+- (UIImage *)renderSnapshotWithMarginForAxis:(BCAxis)axis {
     CGSize contextSize = self.frame.size;
     CGFloat xOffset = 0.0f;
     CGFloat yOffset = 0.0f;
@@ -305,9 +301,7 @@ static const int BCTrapezoidWinding[4][4] = {
     return snapshot;
 }
 
-
-- (NSArray *) sliceImage: (UIImage *) image toLayersAlongAxis: (BCAxis) axis
-{
+- (NSArray *)sliceImage:(UIImage *)image toLayersAlongAxis:(BCAxis)axis {
     CGFloat totalSize = axis == BCAxisY ? image.size.height : image.size.width;
     
     BCPoint origin = {0.0, 0.0};
@@ -338,28 +332,23 @@ static const int BCTrapezoidWinding[4][4] = {
 }
 
 
-- (NSArray *) transformationsForSlices: (NSArray *) slices
+- (NSArray *)transformationsForSlices:(NSArray *)slices
                              edge: (BCRectEdge) edge
                          startPosition: (CGFloat) startPosition
                              totalSize: (CGFloat) totalSize
                            firstBezier: (BCBezierCurve) first
                           secondBezier: (BCBezierCurve) second
-                        finalRectDepth: (CGFloat) rectDepth
-{
+                        finalRectDepth: (CGFloat) rectDepth {
     NSMutableArray *transformations = [NSMutableArray arrayWithCapacity:[slices count]];
-    
     BCAxis axis = axisForEdge(edge);
-    
     CGFloat rectPartStart = first.b.v[axis];
     CGFloat sign = isEdgeNegative(edge) ? -1.0 : 1.0;
-
     assert(sign*(startPosition - rectPartStart) <= 0.0);
     
     __block CGFloat position = startPosition;
     __block BCTrapezoid trapezoid = {0};
     trapezoid.v[BCTrapezoidWinding[edge][0]] = bezierAxisIntersection(first, axis, position);
     trapezoid.v[BCTrapezoidWinding[edge][1]] = bezierAxisIntersection(second, axis, position);
-    
     NSEnumerationOptions enumerationOptions = isEdgeNegative(edge) ? NSEnumerationReverse : 0;
     
     [slices enumerateObjectsWithOptions:enumerationOptions usingBlock:^(CALayer *layer, NSUInteger idx, BOOL *stop) {
@@ -403,8 +392,7 @@ static const int BCTrapezoidWinding[4][4] = {
 // X and Y is always assumed to be 0, that's why it's been dropped in the calculations
 // All calculations are on doubles, to make sure that we get as much precsision as we can
 // since even minor errors in transform matrix may cause major glitches
-- (CATransform3D) transformRect: (CGRect) rect toTrapezoid: (BCTrapezoid) trapezoid
-{
+- (CATransform3D) transformRect:(CGRect)rect toTrapezoid:(BCTrapezoid)trapezoid {
 
     double W = rect.size.width;
     double H = rect.size.height;
@@ -455,8 +443,7 @@ static const int BCTrapezoidWinding[4][4] = {
 
 #pragma mark - C convinience functions
 
-static BCSegment bezierEndPointsForTransition(BCRectEdge edge, CGRect endRect)
-{
+static BCSegment bezierEndPointsForTransition(BCRectEdge edge, CGRect endRect) {
     switch (edge) {
         case BCRectEdgeTop:
             return BCSegmentMake(BCPointMake(CGRectGetMinX(endRect), CGRectGetMinY(endRect)), BCPointMake(CGRectGetMaxX(endRect), CGRectGetMinY(endRect)));
@@ -471,15 +458,13 @@ static BCSegment bezierEndPointsForTransition(BCRectEdge edge, CGRect endRect)
     assert(0); // should never happen
 }
 
-static inline CGFloat progressOfSegmentWithinTotalProgress(CGFloat a, CGFloat b, CGFloat t)
-{
+static inline CGFloat progressOfSegmentWithinTotalProgress(CGFloat a, CGFloat b, CGFloat t) {
     assert(b > a);
     
     return MIN(MAX(0.0, (t - a)/(b - a)), 1.0);
 }
 
-static inline CGFloat easeInOutInterpolate(float t, CGFloat a, CGFloat b)
-{
+static inline CGFloat easeInOutInterpolate(float t, CGFloat a, CGFloat b) {
     assert(t >= 0.0 && t <= 1.0); // we don't want any other values
     
     CGFloat val = a + t*t*(3.0 - 2.0*t)*(b - a);
@@ -487,8 +472,7 @@ static inline CGFloat easeInOutInterpolate(float t, CGFloat a, CGFloat b)
     return b > a ? MAX(a,  MIN(val, b)) : MAX(b,  MIN(val, a)); // clamping, since numeric precision might bite here
 }
 
-static BCPoint bezierAxisIntersection(BCBezierCurve curve, BCAxis axis, CGFloat axisPos)
-{
+static BCPoint bezierAxisIntersection(BCBezierCurve curve, BCAxis axis, CGFloat axisPos) {
     assert((axisPos >= curve.a.v[axis] && axisPos <= curve.b.v[axis]) || (axisPos >= curve.b.v[axis] && axisPos <= curve.a.v[axis]));
     
     BCAxis pAxis = perpAxis(axis);
@@ -525,8 +509,7 @@ static BCPoint bezierAxisIntersection(BCBezierCurve curve, BCAxis axis, CGFloat 
     return ret;
 }
 
-static inline NSString * edgeDescription(BCRectEdge edge)
-{
+static inline NSString * edgeDescription(BCRectEdge edge) {
     NSString *rectEdge[] = {
         [BCRectEdgeBottom] = @"bottom",
         [BCRectEdgeTop] = @"top",

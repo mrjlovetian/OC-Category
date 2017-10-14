@@ -96,7 +96,6 @@ static const CGFloat FontResizingProportion = 0.42f;
 }
 
 - (UIColor *)letter_randomColor {
-    
     float red = 0.0;
     while (red < 0.1 || red > 0.84) {
         red = drand48();
@@ -123,8 +122,7 @@ static const CGFloat FontResizingProportion = 0.42f;
     if (self.contentMode == UIViewContentModeScaleToFill ||
         self.contentMode == UIViewContentModeScaleAspectFill ||
         self.contentMode == UIViewContentModeScaleAspectFit ||
-        self.contentMode == UIViewContentModeRedraw)
-    {
+        self.contentMode == UIViewContentModeRedraw) {
         size.width = floorf(size.width * scale) / scale;
         size.height = floorf(size.height * scale) / scale;
     }

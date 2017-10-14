@@ -18,25 +18,25 @@ static uint __loadedWebItems;
 
 #pragma mark - UIWebView+Blocks
 
-+(UIWebView *)loadRequest:(NSURLRequest *)request
++ (UIWebView *)loadRequest:(NSURLRequest *)request
                    loaded:(void (^)(UIWebView *webView))loadedBlock
-                   failed:(void (^)(UIWebView *webView, NSError *error))failureBlock{
+                   failed:(void (^)(UIWebView *webView, NSError *error))failureBlock {
 
     return [self loadRequest:request loaded:loadedBlock failed:failureBlock loadStarted:nil shouldLoad:nil];
 }
 
-+(UIWebView *)loadHTMLString:(NSString *)htmlString
++ (UIWebView *)loadHTMLString:(NSString *)htmlString
                       loaded:(void (^)(UIWebView *webView))loadedBlock
-                      failed:(void (^)(UIWebView *webView, NSError *error))failureBlock{
+                      failed:(void (^)(UIWebView *webView, NSError *error))failureBlock {
     
     return [self loadHTMLString:htmlString loaded:loadedBlock failed:failureBlock loadStarted:nil shouldLoad:nil];
 }
 
-+(UIWebView *)loadHTMLString:(NSString *)htmlString
++ (UIWebView *)loadHTMLString:(NSString *)htmlString
                       loaded:(void (^)(UIWebView *))loadedBlock
                       failed:(void (^)(UIWebView *, NSError *))failureBlock
                  loadStarted:(void (^)(UIWebView *webView))loadStartedBlock
-                  shouldLoad:(BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType))shouldLoadBlock{
+                  shouldLoad:(BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType))shouldLoadBlock {
     __loadedWebItems = 0;
     __loadedBlock = loadedBlock;
     __failureBlock = failureBlock;
@@ -50,51 +50,45 @@ static uint __loadedWebItems;
     return webView;
 }
 
-+(UIWebView *)loadRequest:(NSURLRequest *)request
++ (UIWebView *)loadRequest:(NSURLRequest *)request
                    loaded:(void (^)(UIWebView *webView))loadedBlock
                    failed:(void (^)(UIWebView *webView, NSError *error))failureBlock
               loadStarted:(void (^)(UIWebView *webView))loadStartedBlock
-               shouldLoad:(BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType))shouldLoadBlock{
+               shouldLoad:(BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType))shouldLoadBlock {
     __loadedWebItems    = 0;
-    
     __loadedBlock       = loadedBlock;
     __failureBlock      = failureBlock;
     __loadStartedBlock  = loadStartedBlock;
     __shouldLoadBlock   = shouldLoadBlock;
-    
     UIWebView *webView  = [[UIWebView alloc] init];
     webView.delegate    = (id) [self class];
-    
     [webView loadRequest: request];
-    
     return webView;
 }
 
 #pragma mark - Private Static delegate
-+(void)webViewDidFinishLoad:(UIWebView *)webView{
-    __loadedWebItems--;
-    
+
++ (void)webViewDidFinishLoad:(UIWebView *)webView {
+    __loadedWebItems --;
     if(__loadedBlock && (!TRUE_END_REPORT || __loadedWebItems == 0)){
         __loadedWebItems = 0;
         __loadedBlock(webView);
     }
 }
 
-+(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{    
-    __loadedWebItems--;
-    
++ (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    __loadedWebItems --;
     if(__failureBlock)
         __failureBlock(webView, error);
 }
 
-+(void)webViewDidStartLoad:(UIWebView *)webView{    
-    __loadedWebItems++;
-    
++ (void)webViewDidStartLoad:(UIWebView *)webView {
+    __loadedWebItems ++;
     if(__loadStartedBlock && (!TRUE_END_REPORT || __loadedWebItems > 0))
         __loadStartedBlock(webView);
 }
 
-+(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
++ (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if(__shouldLoadBlock)
         return __shouldLoadBlock(webView, request, navigationType);
     

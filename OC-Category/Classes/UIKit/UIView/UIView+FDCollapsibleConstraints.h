@@ -5,6 +5,7 @@
 //
 
 #import <UIKit/UIKit.h>
+/// https://github.com/forkingdog/UIView-FDCollapsibleConstraints
 
 /// "UIView+FDCollapsibleConstraints" helps to implement flow-layout-like behavior
 /// in Auto Layout (with Interface Builder).

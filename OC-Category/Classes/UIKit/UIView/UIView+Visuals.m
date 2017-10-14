@@ -12,41 +12,27 @@
 
 @implementation UIView (Visuals)
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)cornerRadius: (CGFloat)radius strokeSize: (CGFloat)size color: (UIColor *)color
-{
+- (void)cornerRadius:(CGFloat)radius strokeSize:(CGFloat)size color:(UIColor *)color {
     self.layer.cornerRadius = radius;
     self.layer.borderColor = color.CGColor;
     self.layer.borderWidth = size;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
--(void)setRoundedCorners:(UIRectCorner)corners radius:(CGFloat)radius {
+- (void)setRoundedCorners:(UIRectCorner)corners radius:(CGFloat)radius {
     CGRect rect = self.bounds;
-    
-    // Create the path
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:rect
                                                    byRoundingCorners:corners
                                                          cornerRadii:CGSizeMake(radius, radius)];
-    
-    // Create the shape layer and set its path
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.frame = rect;
     maskLayer.path = maskPath.CGPath;
-    
-    // Set the newly created shape layer as the mask for the view's layer
     self.layer.mask = maskLayer;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)shadowWithColor: (UIColor *)color
-                offset: (CGSize)offset 
-               opacity: (CGFloat)opacity 
-                radius: (CGFloat)radius
-{
+- (void)shadowWithColor:(UIColor *)color
+                offset:(CGSize)offset
+               opacity:(CGFloat)opacity
+                radius:(CGFloat)radius {
     self.clipsToBounds = NO;
     self.layer.shadowColor = color.CGColor;
     self.layer.shadowOffset = offset;
@@ -54,10 +40,7 @@
     self.layer.shadowRadius = radius;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)removeFromSuperviewWithFadeDuration: (NSTimeInterval)duration
-{
+- (void)removeFromSuperviewWithFadeDuration:(NSTimeInterval)duration {
     [UIView beginAnimations: nil context: NULL];
 	[UIView setAnimationBeginsFromCurrentState: YES];
 	[UIView setAnimationDuration: duration];
@@ -67,10 +50,7 @@
 	[UIView commitAnimations];	
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)addSubview: (UIView *)subview withTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration
-{
+- (void)addSubview:(UIView *)subview withTransition:(UIViewAnimationTransition)transition duration: (NSTimeInterval)duration {
 	[UIView beginAnimations: nil context: NULL];
 	[UIView setAnimationDuration: duration];
 	[UIView setAnimationTransition: transition forView: self cache: YES];
@@ -78,10 +58,8 @@
 	[UIView commitAnimations];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)removeFromSuperviewWithTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration
-{
+- (void)removeFromSuperviewWithTransition:(UIViewAnimationTransition)transition duration:(NSTimeInterval)duration {
 	[UIView beginAnimations: nil context: NULL];
 	[UIView setAnimationDuration: duration];
 	[UIView setAnimationTransition: transition forView: self.superview cache: YES];
@@ -89,14 +67,11 @@
 	[UIView commitAnimations];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)rotateByAngle: (CGFloat)angle
-            duration: (NSTimeInterval)duration 
-         autoreverse: (BOOL)autoreverse
-         repeatCount: (CGFloat)repeatCount
-      timingFunction: (CAMediaTimingFunction *)timingFunction
-{
+- (void)rotateByAngle:(CGFloat)angle
+            duration:(NSTimeInterval)duration
+         autoreverse:(BOOL)autoreverse
+         repeatCount:(CGFloat)repeatCount
+      timingFunction:(CAMediaTimingFunction *)timingFunction {
     CABasicAnimation *rotation = [CABasicAnimation animationWithKeyPath: @"transform.rotation"];
     rotation.toValue = [NSNumber numberWithFloat: degToRad(angle)];
     rotation.duration = duration;
@@ -108,14 +83,11 @@
     [self.layer addAnimation: rotation forKey: @"rotationAnimation"];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
--(void)moveToPoint: (CGPoint)newPoint 
-          duration: (NSTimeInterval)duration 
-       autoreverse: (BOOL)autoreverse
-       repeatCount: (CGFloat)repeatCount
-    timingFunction: (CAMediaTimingFunction *)timingFunction
-{
+- (void)moveToPoint:(CGPoint)newPoint
+          duration:(NSTimeInterval)duration
+       autoreverse:(BOOL)autoreverse
+       repeatCount:(CGFloat)repeatCount
+    timingFunction:(CAMediaTimingFunction *)timingFunction {
     CABasicAnimation *move = [CABasicAnimation animationWithKeyPath: @"position"];
     move.toValue = [NSValue valueWithCGPoint: newPoint];
     move.duration = duration;
@@ -126,6 +98,5 @@
 	move.timingFunction = timingFunction != nil ? timingFunction : [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
     [self.layer addAnimation: move forKey: @"positionAnimation"];
 }
-
 
 @end

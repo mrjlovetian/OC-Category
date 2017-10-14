@@ -9,13 +9,11 @@
 /// A stored property extension for NSLayoutConstraint's original constant.
 @implementation NSLayoutConstraint (_FDOriginalConstantStorage)
 
-- (void)setFd_originalConstant:(CGFloat)originalConstant
-{
+- (void)setFd_originalConstant:(CGFloat)originalConstant {
     objc_setAssociatedObject(self, @selector(fd_originalConstant), @(originalConstant), OBJC_ASSOCIATION_RETAIN);
 }
 
-- (CGFloat)fd_originalConstant
-{
+- (CGFloat)fd_originalConstant {
 #if CGFLOAT_IS_DOUBLE
     return [objc_getAssociatedObject(self, _cmd) doubleValue];
 #else
@@ -29,8 +27,7 @@
 
 #pragma mark - Hacking KVC
 
-+ (void)load
-{
++ (void)load {
     // Swizzle setValue:forKey: to intercept assignments to `fd_collapsibleConstraints`
     // from Interface Builder. We should not do so by overriding setvalue:forKey:
     // as the primary class implementation would be bypassed.
@@ -44,8 +41,7 @@
     method_exchangeImplementations(originalMethod, swizzledMethod);
 }
 
-- (void)fd_setValue:(id)value forKey:(NSString *)key
-{
+- (void)fd_setValue:(id)value forKey:(NSString *)key {
     NSString *injectedKey = [NSString stringWithUTF8String:sel_getName(@selector(fd_collapsibleConstraints))];
     if ([key isEqualToString:injectedKey]) {
         // This kind of IBOutlet won't trigger property's setter, so we forward it.
@@ -58,8 +54,7 @@
 
 #pragma mark - Dynamic Properties
 
-- (void)setFd_collapsed:(BOOL)collapsed
-{
+- (void)setFd_collapsed:(BOOL)collapsed {
     [self.fd_collapsibleConstraints enumerateObjectsUsingBlock:
      ^(NSLayoutConstraint *constraint, NSUInteger idx, BOOL *stop) {
          if (collapsed) {
@@ -72,13 +67,11 @@
     objc_setAssociatedObject(self, @selector(fd_collapsed), @(collapsed), OBJC_ASSOCIATION_RETAIN);
 }
 
-- (BOOL)fd_collapsed
-{
+- (BOOL)fd_collapsed {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-- (NSMutableArray *)fd_collapsibleConstraints
-{
+- (NSMutableArray *)fd_collapsibleConstraints {
     NSMutableArray *constraints = objc_getAssociatedObject(self, _cmd);
     if (!constraints) {
         constraints = @[].mutableCopy;
@@ -87,8 +80,7 @@
     return constraints;
 }
 
-- (void)setFd_collapsibleConstraints:(NSArray *)fd_collapsibleConstraints
-{
+- (void)setFd_collapsibleConstraints:(NSArray *)fd_collapsibleConstraints {
     // Hook assignments to our custom `fd_collapsibleConstraints` property.
     NSMutableArray *constraints = (NSMutableArray *)self.fd_collapsibleConstraints;
     
@@ -105,8 +97,7 @@
 
 #pragma mark - Hacking "-updateConstraints"
 
-+ (void)load
-{
++ (void)load {
     // Swizzle to hack "-updateConstraints" method
     SEL originalSelector = @selector(updateConstraints);
     SEL swizzledSelector = @selector(fd_updateConstraints);
@@ -118,8 +109,7 @@
     method_exchangeImplementations(originalMethod, swizzledMethod);
 }
 
-- (void)fd_updateConstraints
-{
+- (void)fd_updateConstraints {
     // Call primary method's implementation
     [self fd_updateConstraints];
  
@@ -144,18 +134,15 @@
 
 #pragma mark - Dynamic Properties
 
-- (BOOL)fd_autoCollapse
-{
+- (BOOL)fd_autoCollapse {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-- (void)setFd_autoCollapse:(BOOL)autoCollapse
-{
+- (void)setFd_autoCollapse:(BOOL)autoCollapse {
     objc_setAssociatedObject(self, @selector(fd_autoCollapse), @(autoCollapse), OBJC_ASSOCIATION_RETAIN);
 }
 
-- (void)setAutoCollapse:(BOOL)collapse
-{
+- (void)setAutoCollapse:(BOOL)collapse {
     // Just forwarding
     self.fd_autoCollapse = collapse;
 }

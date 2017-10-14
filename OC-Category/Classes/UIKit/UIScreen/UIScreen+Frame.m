@@ -8,41 +8,34 @@
 #import "UIScreen+Frame.h"
 
 @implementation UIScreen (Frame)
-+ (CGSize)size
-{
++ (CGSize)size{
     return [[UIScreen mainScreen] bounds].size;
 }
 
-+ (CGFloat)width
-{
++ (CGFloat)width{
     return [[UIScreen mainScreen] bounds].size.width;
 }
 
-+ (CGFloat)height
-{
++ (CGFloat)height{
     return [[UIScreen mainScreen] bounds].size.height;
 }
 
-+ (CGSize)orientationSize
-{
++ (CGSize)orientationSize{
     CGFloat systemVersion = [[[UIDevice currentDevice] systemVersion]
                              doubleValue];
     BOOL isLand =   UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation);
     return (systemVersion>8.0 && isLand) ? SizeSWAP([UIScreen size]) : [UIScreen size];
 }
 
-+ (CGFloat)orientationWidth
-{
++ (CGFloat)orientationWidth{
     return [UIScreen orientationSize].width;
 }
 
-+ (CGFloat)orientationHeight
-{
++ (CGFloat)orientationHeight{
     return [UIScreen orientationSize].height;
 }
 
-+ (CGSize)DPISize
-{
++ (CGSize)DPISize{
     CGSize size = [[UIScreen mainScreen] bounds].size;
     CGFloat scale = [[UIScreen mainScreen] scale];
     return CGSizeMake(size.width * scale, size.height * scale);
@@ -55,4 +48,5 @@
 static inline CGSize SizeSWAP(CGSize size) {
     return CGSizeMake(size.height, size.width);
 }
+
 @end

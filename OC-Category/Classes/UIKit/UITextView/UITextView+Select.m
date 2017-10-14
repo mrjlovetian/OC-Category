@@ -13,17 +13,13 @@
  *
  *  @return NSRange
  */
-- (NSRange)selectedRange
-{
-    UITextPosition* beginning = self.beginningOfDocument;
-    
-    UITextRange* selectedRange = self.selectedTextRange;
-    UITextPosition* selectionStart = selectedRange.start;
-    UITextPosition* selectionEnd = selectedRange.end;
-    
+- (NSRange)selectedRange{
+    UITextPosition *beginning = self.beginningOfDocument;
+    UITextRange *selectedRange = self.selectedTextRange;
+    UITextPosition *selectionStart = selectedRange.start;
+    UITextPosition *selectionEnd = selectedRange.end;
     NSInteger location = [self offsetFromPosition:beginning toPosition:selectionStart];
     NSInteger length = [self offsetFromPosition:selectionStart toPosition:selectionEnd];
-    
     return NSMakeRange(location, length);
 }
 /**
@@ -48,8 +44,7 @@
 //https://github.com/pclion/TextViewCalculateLength
 // 用于计算textview输入情况下的字符数，解决实现限制字符数时，计算不准的问题
 
-- (NSInteger)getInputLengthWithText:(NSString *)text
-{
+- (NSInteger)getInputLengthWithText:(NSString *)text {
     NSInteger textLength = 0;
     //获取高亮部分
     UITextRange *selectedRange = [self markedTextRange];
@@ -61,4 +56,5 @@
     }
     return textLength;
 }
+
 @end

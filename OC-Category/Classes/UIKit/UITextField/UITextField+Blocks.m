@@ -20,8 +20,8 @@ static const void *UITextFieldShouldChangeCharactersInRangeKey = &UITextFieldSho
 static const void *UITextFieldShouldClearKey = &UITextFieldShouldClearKey;
 static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
 #pragma mark UITextField Delegate methods
-+ (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
+
++ (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     UITextFieldReturnBlock block = textField.shouldBegindEditingBlock;
     if (block) {
         return block(textField);
@@ -33,8 +33,8 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
     // return default value just in case
     return YES;
 }
-+ (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
+
++ (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     UITextFieldReturnBlock block = textField.shouldEndEditingBlock;
     if (block) {
         return block(textField);
@@ -46,8 +46,8 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
     // return default value just in case
     return YES;
 }
-+ (void)textFieldDidBeginEditing:(UITextField *)textField
-{
+
++ (void)textFieldDidBeginEditing:(UITextField *)textField {
    UITextFieldVoidBlock block = textField.didBeginEditingBlock;
     if (block) {
         block(textField);
@@ -57,8 +57,8 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
         [delegate textFieldDidBeginEditing:textField];
     }
 }
-+ (void)textFieldDidEndEditing:(UITextField *)textField
-{
+
++ (void)textFieldDidEndEditing:(UITextField *)textField {
     UITextFieldVoidBlock block = textField.didEndEditingBlock;
     if (block) {
         block(textField);
@@ -68,8 +68,8 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
         [delegate textFieldDidBeginEditing:textField];
     }
 }
-+ (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
+
++ (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     UITextFieldCharacterChangeBlock block = textField.shouldChangeCharactersInRangeBlock;
     if (block) {
         return block(textField,range,string);
@@ -80,8 +80,8 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
     }
     return YES;
 }
-+ (BOOL)textFieldShouldClear:(UITextField *)textField
-{
+
++ (BOOL)textFieldShouldClear:(UITextField *)textField {
     UITextFieldReturnBlock block = textField.shouldClearBlock;
     if (block) {
         return block(textField);
@@ -92,8 +92,8 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
     }
     return YES;
 }
-+ (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+
++ (BOOL)textFieldShouldReturn:(UITextField *)textField {
     UITextFieldReturnBlock block = textField.shouldReturnBlock;
     if (block) {
         return block(textField);
@@ -104,79 +104,81 @@ static const void *UITextFieldShouldReturnKey = &UITextFieldShouldReturnKey;
     }
     return YES;
 }
+
 #pragma mark Block setting/getting methods
-- (BOOL (^)(UITextField *))shouldBegindEditingBlock
-{
+
+- (BOOL (^)(UITextField *))shouldBegindEditingBlock {
     return objc_getAssociatedObject(self, UITextFieldShouldBeginEditingKey);
 }
-- (void)setShouldBegindEditingBlock:(BOOL (^)(UITextField *))shouldBegindEditingBlock
-{
+
+- (void)setShouldBegindEditingBlock:(BOOL (^)(UITextField *))shouldBegindEditingBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldShouldBeginEditingKey, shouldBegindEditingBlock, OBJC_ASSOCIATION_COPY);
 }
-- (BOOL (^)(UITextField *))shouldEndEditingBlock
-{
+
+- (BOOL (^)(UITextField *))shouldEndEditingBlock {
     return objc_getAssociatedObject(self, UITextFieldShouldEndEditingKey);
 }
-- (void)setShouldEndEditingBlock:(BOOL (^)(UITextField *))shouldEndEditingBlock
-{
+
+- (void)setShouldEndEditingBlock:(BOOL (^)(UITextField *))shouldEndEditingBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldShouldEndEditingKey, shouldEndEditingBlock, OBJC_ASSOCIATION_COPY);
 }
-- (void (^)(UITextField *))didBeginEditingBlock
-{
+
+- (void (^)(UITextField *))didBeginEditingBlock {
     return objc_getAssociatedObject(self, UITextFieldDidBeginEditingKey);
 }
-- (void)setdidBeginEditingBlock:(void (^)(UITextField *))didBeginEditingBlock
-{
+
+- (void)setdidBeginEditingBlock:(void (^)(UITextField *))didBeginEditingBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldDidBeginEditingKey, didBeginEditingBlock, OBJC_ASSOCIATION_COPY);
 }
-- (void (^)(UITextField *))didEndEditingBlock
-{
+
+- (void (^)(UITextField *))didEndEditingBlock {
     return objc_getAssociatedObject(self, UITextFieldDidEndEditingKey);
 }
-- (void)setDidEndEditingBlock:(void (^)(UITextField *))didEndEditingBlock
-{
+
+- (void)setDidEndEditingBlock:(void (^)(UITextField *))didEndEditingBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldDidEndEditingKey, didEndEditingBlock, OBJC_ASSOCIATION_COPY);
 }
-- (BOOL (^)(UITextField *, NSRange, NSString *))shouldChangeCharactersInRangeBlock
-{
+
+- (BOOL (^)(UITextField *, NSRange, NSString *))shouldChangeCharactersInRangeBlock {
     return objc_getAssociatedObject(self, UITextFieldShouldChangeCharactersInRangeKey);
 }
-- (void)setShouldChangeCharactersInRangeBlock:(BOOL (^)(UITextField *, NSRange, NSString *))shouldChangeCharactersInRangeBlock
-{
+
+- (void)setShouldChangeCharactersInRangeBlock:(BOOL (^)(UITextField *, NSRange, NSString *))shouldChangeCharactersInRangeBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldShouldChangeCharactersInRangeKey, shouldChangeCharactersInRangeBlock, OBJC_ASSOCIATION_COPY);
 }
-- (BOOL (^)(UITextField *))shouldReturnBlock
-{
+
+- (BOOL (^)(UITextField *))shouldReturnBlock {
     return objc_getAssociatedObject(self, UITextFieldShouldReturnKey);
 }
-- (void)setShouldReturnBlock:(BOOL (^)(UITextField *))shouldReturnBlock
-{
+
+- (void)setShouldReturnBlock:(BOOL (^)(UITextField *))shouldReturnBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldShouldReturnKey, shouldReturnBlock, OBJC_ASSOCIATION_COPY);
 }
-- (BOOL (^)(UITextField *))shouldClearBlock
-{
+
+- (BOOL (^)(UITextField *))shouldClearBlock {
     return objc_getAssociatedObject(self, UITextFieldShouldClearKey);
 }
-- (void)setShouldClearBlock:(BOOL (^)(UITextField *textField))shouldClearBlock
-{
+
+- (void)setShouldClearBlock:(BOOL (^)(UITextField *textField))shouldClearBlock {
     [self setDelegateIfNoDelegateSet];
     objc_setAssociatedObject(self, UITextFieldShouldClearKey, shouldClearBlock, OBJC_ASSOCIATION_COPY);
 }
+
 #pragma mark control method
 /*
  Setting itself as delegate if no other delegate has been set. This ensures the UITextField will use blocks if no delegate is set.
  */
-- (void)setDelegateIfNoDelegateSet
-{
+- (void)setDelegateIfNoDelegateSet {
     if (self.delegate != (id<UITextFieldDelegate>)[self class]) {
         objc_setAssociatedObject(self, UITextFieldDelegateKey, self.delegate, OBJC_ASSOCIATION_ASSIGN);
         self.delegate = (id<UITextFieldDelegate>)[self class];
     }
 }
+
 @end

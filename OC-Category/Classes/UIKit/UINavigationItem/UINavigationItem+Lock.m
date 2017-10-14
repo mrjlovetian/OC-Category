@@ -8,8 +8,7 @@
 #import "UINavigationItem+Lock.h"
 
 @implementation UINavigationItem (Lock)
-- (void)lockRightItem:(BOOL)lock
-{
+- (void)lockRightItem:(BOOL)lock {
     NSArray *rightBarItems = self.rightBarButtonItems;
     if (rightBarItems  && [rightBarItems count]>0) {
         [rightBarItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -23,8 +22,7 @@
     }
 }
 
-- (void)lockLeftItem:(BOOL)lock
-{
+- (void)lockLeftItem:(BOOL)lock {
     NSArray *leftBarItems = self.leftBarButtonItems;
     if (leftBarItems  && [leftBarItems count]>0) {
         [leftBarItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

@@ -8,8 +8,7 @@
 
 @implementation UIView (Debug)
 
-- (id)swizzled_initWithFrame:(CGRect)frame
-{
+- (id)swizzled_initWithFrame:(CGRect)frame {
     // This is the confusing part (article explains this line).
     id result = [self swizzled_initWithFrame:frame];
     
@@ -26,8 +25,7 @@
     return result;
 }
 
-- (id)swizzled_initWithCoder:(NSCoder *)aDecoder
-{
+- (id)swizzled_initWithCoder:(NSCoder *)aDecoder {
     // This is the confusing part (article explains this line).
     id result = [self swizzled_initWithCoder:aDecoder];
     
@@ -44,8 +42,7 @@
     return result;
 }
 
-+ (void)load
-{
++ (void)load {
     // The "+ load" method is called once, very early in the application life-cycle.
     // It's called even before the "main" function is called. Beware: there's no
     // autorelease pool at this point, so avoid Objective-C calls.

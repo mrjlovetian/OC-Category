@@ -15,8 +15,7 @@
  *
  *  @return view对象
  */
-- (id)findSubViewWithSubViewClass:(Class)clazz
-{
+- (id)findSubViewWithSubViewClass:(Class)clazz {
     for (id subView in self.subviews) {
         if ([subView isKindOfClass:clazz]) {
             return subView;
@@ -25,6 +24,7 @@
     
     return nil;
 }
+
 /**
  *  @brief  找到指定类名的SuperView对象
  *
@@ -32,8 +32,7 @@
  *
  *  @return view对象
  */
-- (id)findSuperViewWithSuperViewClass:(Class)clazz
-{
+- (id)findSuperViewWithSuperViewClass:(Class)clazz {
     if (self == nil) {
         return nil;
     } else if (self.superview == nil) {
@@ -44,6 +43,7 @@
         return [self.superview findSuperViewWithSuperViewClass:clazz];
     }
 }
+
 /**
  *  @brief  找到并且resign第一响应者
  *
@@ -63,6 +63,7 @@
     
     return NO;
 }
+
 /**
  *  @brief  找到第一响应者
  *
@@ -74,21 +75,19 @@
         && (self.isFirstResponder)) {
         return self;
     }
-    
     for (UIView *v in self.subviews) {
         UIView *fv = [v findFirstResponder];
         if (fv) {
             return fv;
         }
     }
-    
     return nil;
 }
+
 /**
  *  @brief  找到当前view所在的viewcontroler
  */
-- (UIViewController *)viewController
-{
+- (UIViewController *)viewController {
     UIResponder *responder = self.nextResponder;
     do {
         if ([responder isKindOfClass:[UIViewController class]]) {

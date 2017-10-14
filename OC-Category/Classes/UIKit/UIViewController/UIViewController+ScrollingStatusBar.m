@@ -19,9 +19,8 @@ NSString* const ADScrollingHandlerDidScrollBlock = @"ADScrollingHandlerDidScroll
 
 @implementation ADScrollingHandler
 
-- (instancetype)initWithDidScrollBlock:(void(^)(UIScrollView *scrollView))didScrollBlock
-{
-    if(self = [super init]){
+- (instancetype)initWithDidScrollBlock:(void(^)(UIScrollView *scrollView))didScrollBlock {
+    if(self = [super init]) {
         self.didScrollBlock = didScrollBlock;
     }
     return self;
@@ -29,31 +28,27 @@ NSString* const ADScrollingHandlerDidScrollBlock = @"ADScrollingHandlerDidScroll
 
 #pragma mark - Properties
 
-- (void)setDidScrollBlock:(void(^)(UITableView *tableView))didScrollBlock
-{
+- (void)setDidScrollBlock:(void(^)(UITableView *tableView))didScrollBlock {
     objc_setAssociatedObject(self, (__bridge const void *)(ADScrollingHandlerDidScrollBlock), didScrollBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void(^)(UITableView *tableView))didScrollBlock
-{
+- (void(^)(UITableView *tableView))didScrollBlock {
     return objc_getAssociatedObject(self, (__bridge const void *)(ADScrollingHandlerDidScrollBlock));
 }
 
 #pragma mark - KVO
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if(![keyPath isEqualToString:@"contentOffset"]){
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if(![keyPath isEqualToString:@"contentOffset"]) {
         return;
     }
     
-    if(self.didScrollBlock){
+    if(self.didScrollBlock) {
         self.didScrollBlock(object);
     }
 }
 
 @end
-
 
 @interface ADStatusBarWindow : UIWindow
 
@@ -61,8 +56,7 @@ NSString* const ADScrollingHandlerDidScrollBlock = @"ADScrollingHandlerDidScroll
 
 @implementation ADStatusBarWindow
 
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
-{
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     /*
      20 points hardcoded for performance reason (default portrait status bar height)
      */
@@ -81,48 +75,40 @@ NSString* const UIViewControllerScrollView = @"UIViewControllerScrollView";
 
 #pragma mark - Properties
 
-- (void)setScrollingHandler:(ADScrollingHandler *)handler
-{
+- (void)setScrollingHandler:(ADScrollingHandler *)handler {
     objc_setAssociatedObject(self, (__bridge const void *)(UIViewControllerScrollingHandler), handler, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (ADScrollingHandler *)scrollingHandler
-{
+- (ADScrollingHandler *)scrollingHandler {
     return objc_getAssociatedObject(self, (__bridge const void *)(UIViewControllerScrollingHandler));
 }
 
-- (void)setStatusBarView:(UIView *)statusBarView
-{
+- (void)setStatusBarView:(UIView *)statusBarView {
     objc_setAssociatedObject(self, (__bridge const void *)(UIViewControllerStatusBarView), statusBarView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIView *)statusBarView
-{
+- (UIView *)statusBarView {
     return objc_getAssociatedObject(self, (__bridge const void *)(UIViewControllerStatusBarView));
 }
 
-- (void)setScrollView:(UIScrollView *)scrollView
-{
+- (void)setScrollView:(UIScrollView *)scrollView {
     objc_setAssociatedObject(self, (__bridge const void *)(UIViewControllerScrollView), scrollView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIScrollView *)scrollView
-{
+- (UIScrollView *)scrollView {
     return objc_getAssociatedObject(self, (__bridge const void *)(UIViewControllerScrollView));
 }
 
 #pragma mark - Gestures
 
-- (void)statusBarViewTap:(UITapGestureRecognizer *)tap
-{
+- (void)statusBarViewTap:(UITapGestureRecognizer *)tap {
     [self.scrollView setContentOffset:CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
 }
 
 #pragma mark - UI
 
 static UIWindow *fakeStatusBarWindow = nil;
-- (UIWindow *)fakeStatusBarWindow
-{
+- (UIWindow *)fakeStatusBarWindow {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         fakeStatusBarWindow = [[ADStatusBarWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -135,8 +121,7 @@ static UIWindow *fakeStatusBarWindow = nil;
     return fakeStatusBarWindow;
 }
 
-- (void)createStatusBarView
-{
+- (void)createStatusBarView {
     CGRect frame = [UIApplication sharedApplication].statusBarFrame;
     frame.size.height *= 2;
     self.statusBarView = [[UIView alloc] initWithFrame:frame];
@@ -153,17 +138,15 @@ static UIWindow *fakeStatusBarWindow = nil;
 
 #pragma mark - Helpers
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
     if(offsetY > -scrollView.contentInset.top){
-        if(!self.statusBarView){
+        if(!self.statusBarView) {
             [self createStatusBarView];
             [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
         }
         self.statusBarView.frame = (CGRect){.origin = CGPointMake(self.statusBarView.frame.origin.x, MAX(-self.statusBarView.frame.size.height * 0.5, -scrollView.contentInset.top - offsetY)), .size = self.statusBarView.frame.size};
-    }
-    else{
+    } else {
         if(self.statusBarView){
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
             [self.statusBarView removeFromSuperview];
@@ -174,21 +157,17 @@ static UIWindow *fakeStatusBarWindow = nil;
 
 #pragma mark - Interface
 
-- (void)enableStatusBarScrollingAlongScrollView:(UIScrollView *)scrollView
-{
+- (void)enableStatusBarScrollingAlongScrollView:(UIScrollView *)scrollView {
     NSParameterAssert(scrollView);
-    
     __weak id wSelf = self;
     self.scrollingHandler = [[ADScrollingHandler alloc] initWithDidScrollBlock:^(UIScrollView *scrollView) {
         [wSelf scrollViewDidScroll:scrollView];
     }];
-    
     self.scrollView = scrollView;
     [scrollView addObserver:self.scrollingHandler forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:(__bridge void *)(UIViewControllerScrollingStatusBarContext)];
 }
 
-- (void)disableStatusBarScrollingAlongScrollView:(UITableView *)scrollView
-{
+- (void)disableStatusBarScrollingAlongScrollView:(UITableView *)scrollView {
     self.scrollView = nil;
     [scrollView removeObserver:self.scrollingHandler forKeyPath:@"contentOffset" context:(__bridge void *)(UIViewControllerScrollingStatusBarContext)];
 }

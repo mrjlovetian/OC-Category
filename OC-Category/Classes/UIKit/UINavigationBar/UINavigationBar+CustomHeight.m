@@ -12,18 +12,15 @@ static char const *const heightKey = "Height";
 
 @implementation UINavigationBar (CustomHeight)
 
-- (void)setheight:(CGFloat)height
-{
+- (void)setheight:(CGFloat)height {
     objc_setAssociatedObject(self, heightKey, @(height), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSNumber *)hegith
-{
+- (NSNumber *)hegith {
     return objc_getAssociatedObject(self, heightKey);
 }
 
-- (CGSize)sizeThatFits:(CGSize)size
-{
+- (CGSize)sizeThatFits:(CGSize)size {
     CGSize newSize;
     
     if (self.hegith) {

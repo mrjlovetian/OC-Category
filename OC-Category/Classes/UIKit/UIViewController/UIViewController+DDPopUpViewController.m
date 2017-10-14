@@ -45,14 +45,12 @@ static NSMutableArray *__popUpViewControllers = nil;
 
 @implementation UINavigationController (DDPopUpViewControllerPrivate)
 
-- (CGSize)popUpViewSize
-{
+- (CGSize)popUpViewSize {
     NSValue *value = objc_getAssociatedObject(self, popUpSizeKey);
     CGSize popUpViewSize = [value CGSizeValue];
     if (CGSizeEqualToSize(popUpViewSize, CGSizeZero)) {
         popUpViewSize = self.topViewController.popUpViewSize;
     }
-    
     return popUpViewSize;
 }
 
@@ -61,125 +59,103 @@ static NSMutableArray *__popUpViewControllers = nil;
 @implementation UIViewController (DDPopUpViewController)
 
 #pragma mark - setters & getters
-- (void)setPopUpViewController:(UIViewController *)popUpViewController
-{
+- (void)setPopUpViewController:(UIViewController *)popUpViewController {
     objc_setAssociatedObject(self, popUpViewControllerKey, popUpViewController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIViewController *)popUpViewController
-{
+- (UIViewController *)popUpViewController {
     return objc_getAssociatedObject(self, popUpViewControllerKey);
 }
 
-- (void)setPopUpParentViewController:(UIViewController *)popUpParentViewController
-{
+- (void)setPopUpParentViewController:(UIViewController *)popUpParentViewController {
     objc_setAssociatedObject(self, popUpParentViewViewControllerKey, popUpParentViewController, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (UIViewController *)popUpParentViewController
-{
+- (UIViewController *)popUpParentViewController {
     return objc_getAssociatedObject(self, popUpParentViewViewControllerKey);
 }
 
-- (void)setPopUpOffset:(CGPoint)popUpOffset
-{
+- (void)setPopUpOffset:(CGPoint)popUpOffset {
     objc_setAssociatedObject(self, popUpOffsetKey, [NSValue valueWithCGPoint:popUpOffset], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self.popUpParentViewController updatePopupViewSize:self.popUpViewSize animated:YES];
 }
 
-- (CGPoint)popUpOffset
-{
+- (CGPoint)popUpOffset {
     NSValue *value = objc_getAssociatedObject(self, popUpOffsetKey);
     return [value CGPointValue];
 }
 
-- (void)setPopUpPosition:(DDPopUpPosition)popUpPosition
-{
+- (void)setPopUpPosition:(DDPopUpPosition)popUpPosition {
     objc_setAssociatedObject(self, popUpPositionKey, [NSNumber numberWithInteger:popUpPosition], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (DDPopUpPosition)popUpPosition
-{
+- (DDPopUpPosition)popUpPosition {
     NSNumber *number = objc_getAssociatedObject(self, popUpPositionKey);
     return [number integerValue];
 }
 
-- (void)setPopUpViewSize:(CGSize)popUpViewSize
-{
+- (void)setPopUpViewSize:(CGSize)popUpViewSize {
     objc_setAssociatedObject(self, popUpSizeKey, [NSValue valueWithCGSize:popUpViewSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self.popUpParentViewController updatePopupViewSize:self.popUpViewSize animated:YES];
 }
 
-- (CGSize)popUpViewSize
-{
+- (CGSize)popUpViewSize {
     NSValue *value = objc_getAssociatedObject(self, popUpSizeKey);
     return [value CGSizeValue];
 }
 
-- (void)setAnimationType:(DDPopUpAnimationType)animationType
-{
+- (void)setAnimationType:(DDPopUpAnimationType)animationType {
     objc_setAssociatedObject(self, animationTypeKey,@(animationType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (DDPopUpAnimationType)animationType
-{
+- (DDPopUpAnimationType)animationType {
     NSNumber *value = objc_getAssociatedObject(self, animationTypeKey);
     return [value integerValue];
 }
 
-- (void)setDismissWhenTouchBackground:(BOOL)dismissWhenTouchBackground
-{
+- (void)setDismissWhenTouchBackground:(BOOL)dismissWhenTouchBackground {
     objc_setAssociatedObject(self, dismissWhenTouchBackgroundKey,@(dismissWhenTouchBackground), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)dismissWhenTouchBackground
-{
+- (BOOL)dismissWhenTouchBackground {
     NSNumber *value = objc_getAssociatedObject(self, dismissWhenTouchBackgroundKey);
     return [value boolValue];
 }
 
-- (void)setPopUpWindow:(UIWindow *)popUpWindow
-{
+- (void)setPopUpWindow:(UIWindow *)popUpWindow {
     objc_setAssociatedObject(self, popUpWindowKey,popUpWindow, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (UIWindow *)popUpWindow
-{
+- (UIWindow *)popUpWindow {
     return objc_getAssociatedObject(self, popUpWindowKey);
 }
 
-- (void)setPreviosKeyWindow:(UIWindow *)previosKeyWindow
-{
+- (void)setPreviosKeyWindow:(UIWindow *)previosKeyWindow {
     objc_setAssociatedObject(self, previosKeyWindowKey,previosKeyWindow, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (UIWindow *)previosKeyWindow
-{
+- (UIWindow *)previosKeyWindow {
     return objc_getAssociatedObject(self, previosKeyWindowKey);
 }
 
-- (void)setDismissCallback:(DismissCallback)dismissCallback
-{
+- (void)setDismissCallback:(DismissCallback)dismissCallback {
     objc_setAssociatedObject(self, dissmissCallbackKey,dismissCallback, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (DismissCallback)dismissCallback
-{
+- (DismissCallback)dismissCallback {
     return objc_getAssociatedObject(self, dissmissCallbackKey);
 }
 
 #pragma mark - private methods
 
-+ (void)load
-{
++ (void)load {
     __popUpViewControllers = [[NSMutableArray alloc] init];
     Method original = class_getInstanceMethod([UIViewController class], NSSelectorFromString(@"dealloc"));
     Method swizzle = class_getInstanceMethod([UIViewController class], @selector(sizzled_dealloc));
     method_exchangeImplementations(original, swizzle);
 }
 
-- (void)sizzled_dealloc
-{
+- (void)sizzled_dealloc {
     if (self.popUpViewController) {
         [self dismissPopUpViewController:DDPopUpAnimationTypeNone];
     }
@@ -187,8 +163,7 @@ static NSMutableArray *__popUpViewControllers = nil;
     [self sizzled_dealloc];
 }
 
-- (UIView *)topView
-{
+- (UIView *)topView {
     UIWindow *w = [[UIApplication sharedApplication].delegate window];
     if (!w) {
         w = [[UIApplication sharedApplication].windows lastObject];
@@ -200,8 +175,7 @@ static NSMutableArray *__popUpViewControllers = nil;
     return [topVC view];
 }
 
-- (CGRect)frameForViewSize:(CGSize)viewSize
-{
+- (CGRect)frameForViewSize:(CGSize)viewSize {
     UIViewController *containerVC = self.popUpWindow.rootViewController;
     DDPopUpPosition position = self.popUpViewController.popUpPosition;
     CGPoint popupoffset = self.popUpViewController.popUpOffset;
@@ -223,8 +197,7 @@ static NSMutableArray *__popUpViewControllers = nil;
     return CGRectOffset(frame, popupoffset.x, popupoffset.y);
 }
 
-- (UIViewAutoresizing)autoresizingMaskForPosition:(DDPopUpPosition)popUpPosition frame:(CGRect)popupFrame
-{
+- (UIViewAutoresizing)autoresizingMaskForPosition:(DDPopUpPosition)popUpPosition frame:(CGRect)popupFrame {
     UIViewAutoresizing autoresizingMask = UIViewAutoresizingNone;
     if (popUpPosition == DDPopUpPositionTop){
         if (CGRectGetWidth(popupFrame) == CGRectGetWidth(self.view.bounds)) {
@@ -262,8 +235,7 @@ static NSMutableArray *__popUpViewControllers = nil;
     return autoresizingMask;
 }
 
-- (void)updatePopupViewSize:(CGSize)newSize animated:(BOOL)animated
-{
+- (void)updatePopupViewSize:(CGSize)newSize animated:(BOOL)animated {
     __block UIView *contentView = self.popUpViewController.view;
     CGRect frame = [self frameForViewSize:newSize];
     CGFloat animationDuration = animated ? kPopupModalAnimationDuration : 0;
@@ -278,8 +250,7 @@ static NSMutableArray *__popUpViewControllers = nil;
     }];
 }
 
-- (void)showPopUpView:(UIView *)popupContentView backgroundView:(UIView *)backgroundView animationType:(DDPopUpAnimationType)animationType
-{
+- (void)showPopUpView:(UIView *)popupContentView backgroundView:(UIView *)backgroundView animationType:(DDPopUpAnimationType)animationType {
     UIViewController *containerVC = self.popUpWindow.rootViewController;
     __block UIView *contentView = popupContentView;
     CGRect destinationFrame = popupContentView.frame;
@@ -323,13 +294,11 @@ static NSMutableArray *__popUpViewControllers = nil;
     }];
 }
 
-- (void)dismissPopUpViewWithoutAnimation
-{
+- (void)dismissPopUpViewWithoutAnimation {
     [self dismissPopUpViewController:DDPopUpAnimationTypeNone];
 }
 
-- (void)dismissPopUpView:(DDPopUpAnimationType)animationType  completion:(void (^)(void))completion
-{
+- (void)dismissPopUpView:(DDPopUpAnimationType)animationType  completion:(void (^)(void))completion {
     __block DDPopUpContainerViewController *containerVC = (DDPopUpContainerViewController *)self.popUpWindow.rootViewController;
     __block UIView *popupContentView = self.popUpViewController.view;
     
@@ -387,26 +356,22 @@ static NSMutableArray *__popUpViewControllers = nil;
 
 #pragma mark - public methods
 
-+ (void)dismissCurrentShowingPopUpViewControllers
-{
++ (void)dismissCurrentShowingPopUpViewControllers {
     while ([__popUpViewControllers count]) {
         UIViewController *vc = [__popUpViewControllers lastObject];
         [vc.popUpParentViewController dismissPopUpViewController:DDPopUpAnimationTypeNone];
     }
 }
 
-- (void)showPopUpViewController:(UIViewController *)popUpViewController
-{
+- (void)showPopUpViewController:(UIViewController *)popUpViewController {
     [self showPopUpViewController:popUpViewController animationType:DDPopUpAnimationTypeFade dismissWhenTouchBackground:YES];
 }
 
-- (void)showPopUpViewController:(UIViewController *)popUpViewController  animationType:(DDPopUpAnimationType)animationType
-{
+- (void)showPopUpViewController:(UIViewController *)popUpViewController  animationType:(DDPopUpAnimationType)animationType {
     [self showPopUpViewController:popUpViewController animationType:animationType dismissWhenTouchBackground:YES];
 }
 
-- (void)showPopUpViewController:(UIViewController *)popUpViewController  animationType:(DDPopUpAnimationType)animationType dismissWhenTouchBackground:(BOOL)dismissWhenTouchBackground
-{
+- (void)showPopUpViewController:(UIViewController *)popUpViewController  animationType:(DDPopUpAnimationType)animationType dismissWhenTouchBackground:(BOOL)dismissWhenTouchBackground {
     if (self.popUpWindow) {
         return;
     }
@@ -449,25 +414,21 @@ static NSMutableArray *__popUpViewControllers = nil;
     [self showPopUpView:popUpViewController.view backgroundView:backgroundView animationType:animationType];
 }
 
-- (void)backgroundViewTouched:(UIButton *)sender
-{
+- (void)backgroundViewTouched:(UIButton *)sender {
     if (self.popUpViewController.dismissWhenTouchBackground) {
         [self dismissPopUpViewController:self.popUpViewController.animationType];
     }
 }
 
-- (void)dismissPopUpViewController
-{
+- (void)dismissPopUpViewController {
     [self dismissPopUpViewController:self.popUpViewController.animationType];
 }
 
-- (void)dismissPopUpViewController:(DDPopUpAnimationType)animationType;
-{
+- (void)dismissPopUpViewController:(DDPopUpAnimationType)animationType; {
     [self dismissPopUpViewController:animationType completion:NULL];
 }
 
-- (void)dismissPopUpViewController:(DDPopUpAnimationType)animationType completion:(void (^)(void))completion
-{
+- (void)dismissPopUpViewController:(DDPopUpAnimationType)animationType completion:(void (^)(void))completion {
     UIViewController *vc = nil;
     if (self.popUpViewController) {
         vc = self;
@@ -484,30 +445,6 @@ static NSMutableArray *__popUpViewControllers = nil;
         [self.parentViewController dismissPopUpViewController:animationType];
     }
 }
-/*
-#pragma mark - UINavigationControllerDelegate
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    CGFloat offset = 0;
-    if (!navigationController.navigationBarHidden) {
-        offset += CGRectGetHeight(navigationController.navigationBar.bounds);
-    }
-    
-    CGSize popupViewSize = viewController.popUpViewSize;
-    if (CGSizeEqualToSize(popupViewSize, CGSizeZero)) {
-        popupViewSize = viewController.view.bounds.size;
-    }
-    
-    popupViewSize.height += offset;
-    
-    __block typeof(self) weakSelf = self;
-    double delayInSeconds = 0.25;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [weakSelf updatePopupViewSize:popupViewSize animated:YES];
-    });
-}
-*/
 
 @end
 
@@ -515,8 +452,7 @@ static NSMutableArray *__popUpViewControllers = nil;
 
 @implementation DDPopUpContainerViewController
 
-- (void)dealloc
-{
+- (void)dealloc {
     self.backgroundButton = nil;
     self.presentingPopupController = nil;
     
@@ -525,8 +461,7 @@ static NSMutableArray *__popUpViewControllers = nil;
     #endif
 }
 
-- (UIButton *)backgroundButton
-{
+- (UIButton *)backgroundButton {
     if (nil == _backgroundButton) {
         _backgroundButton = DDRetain([UIButton buttonWithType:UIButtonTypeCustom]);;
         _backgroundButton.frame = self.view.bounds;
@@ -537,60 +472,49 @@ static NSMutableArray *__popUpViewControllers = nil;
     return _backgroundButton;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return [self.presentingPopupController preferredStatusBarStyle];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden {
     return [self.presentingPopupController prefersStatusBarHidden];
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return [self.presentingPopupController supportedInterfaceOrientations];
 }
 
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return [self.presentingPopupController shouldAutorotate];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return [self.presentingPopupController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     [self.presentingPopupController.popUpViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
     [self.presentingPopupController.popUpViewController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
