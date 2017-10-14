@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NSBundle (YHJQRCode)
+    
 + (NSString *)YHJQRCodeLocalizedStringForKey:(NSString *)key;
+
 @end

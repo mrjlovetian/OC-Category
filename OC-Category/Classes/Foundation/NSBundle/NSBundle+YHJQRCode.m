@@ -10,6 +10,7 @@
 #import "YHJQRCodeScanningView.h"
 
 @implementation NSBundle (YHJQRCode)
+    
 + (NSString *)YHJQRCodeLocalizedStringForKey:(NSString *)key {
     return [self YHJQRCodeLocalizedStringForKey:key value:nil];
 }
@@ -43,9 +44,9 @@
     return [self bundleWithURL:[self tops_myLibraryBundleURL]];
 }
 
-
 + (NSURL *)tops_myLibraryBundleURL {
     NSBundle *bundle = [NSBundle bundleForClass:[YHJQRCodeScanningView class]];
     return [bundle URLForResource:@"TopsQRCode" withExtension:@"bundle"];
 }
+    
 @end

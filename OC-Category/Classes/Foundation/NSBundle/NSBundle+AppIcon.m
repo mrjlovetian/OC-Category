@@ -8,6 +8,7 @@
 #import "NSBundle+AppIcon.h"
 
 @implementation NSBundle (AppIcon)
+    
 - (NSString*)appIconPath {
     NSString* iconFilename = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIconFile"] ;
     NSString* iconBasename = [iconFilename stringByDeletingPathExtension] ;
