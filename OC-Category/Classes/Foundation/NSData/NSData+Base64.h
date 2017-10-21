@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSData (Base64)
+
 /**
  *  @brief  字符串base64后转data
  *

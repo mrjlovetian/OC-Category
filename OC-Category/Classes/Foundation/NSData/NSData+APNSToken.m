@@ -8,6 +8,7 @@
 #import "NSData+APNSToken.h"
 
 @implementation NSData (APNSToken)
+
 /**
  *  @brief  将APNS NSData类型token 格式化成字符串
  *
