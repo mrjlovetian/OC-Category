@@ -12,13 +12,13 @@
  *
  *  @return 视图层级字符串
  */
-- (NSString*)recursiveDescription {
+- (NSString *)recursiveDescription {
     NSMutableString *description = [NSMutableString stringWithFormat:@"\n"];
     [self addDescriptionToString:description indentLevel:0];
     return description;
 }
 
--(void)addDescriptionToString:(NSMutableString*)string indentLevel:(NSInteger)indentLevel {
+- (void)addDescriptionToString:(NSMutableString*)string indentLevel:(NSInteger)indentLevel {
     NSString *padding = [@"" stringByPaddingToLength:indentLevel withString:@" " startingAtIndex:0];
     [string appendString:padding];
     [string appendFormat:@"%@, %@",[self debugDescription],NSStringFromCGRect(self.view.frame)];

@@ -11,7 +11,7 @@ static const void *BackButtonHandlerKey = &BackButtonHandlerKey;
 
 @implementation UIViewController (BackButtonTouched)
 
-- (void)backButtonTouched:(BackButtonHandler)backButtonHandler{
+- (void)backButtonTouched:(BackButtonHandler)backButtonHandler {
     objc_setAssociatedObject(self, BackButtonHandlerKey, backButtonHandler, OBJC_ASSOCIATION_COPY);
 }
 

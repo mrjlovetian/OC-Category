@@ -11,12 +11,10 @@
 #define kTopBarHeight 38.0f
 #define kDefaultDimissDelay 3.0f
 
-
 NSString * const kDXTopBarBackgroundColor = @"dx.kDXTopBarBackgroundColor";
 NSString * const kDXTopBarTextColor = @"dx.kDXTopBarTextColor";
 NSString * const kDXTopBarTextFont = @"dx.kDXTopBarTextFont";
 NSString * const kDXTopBarIcon = @"dx.kDXTopBarIcon";
-
 
 static NSMutableDictionary *__defaultTopMessageConfig = nil;
 

@@ -9,7 +9,7 @@ typedef void (^UIViewControllerSegueBlock) (id sender, id destinationVC, UIStory
 
 @interface UIViewController (BlockSegue)
 
--(void)configureSegue:(NSString *)identifier withBlock:(UIViewControllerSegueBlock)block;
--(void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender withBlock:(UIViewControllerSegueBlock)block;
+- (void)configureSegue:(NSString *)identifier withBlock:(UIViewControllerSegueBlock)block;
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender withBlock:(UIViewControllerSegueBlock)block;
 
 @end

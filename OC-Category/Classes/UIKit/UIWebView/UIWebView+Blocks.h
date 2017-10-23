@@ -58,7 +58,7 @@
  
  @return The generated UIWebView
  */
-+(UIWebView *)loadHTMLString:(NSString *)htmlString
++ (UIWebView *)loadHTMLString:(NSString *)htmlString
                       loaded:(void (^)(UIWebView *webView))loadedBlock
                       failed:(void (^)(UIWebView *webView, NSError *error))failureBlock;
 
@@ -74,7 +74,7 @@
  
  @return The generated UIWebView
  */
-+(UIWebView *)loadHTMLString:(NSString *)htmlString
++ (UIWebView *)loadHTMLString:(NSString *)htmlString
                       loaded:(void (^)(UIWebView *))loadedBlock
                       failed:(void (^)(UIWebView *, NSError *))failureBlock
                  loadStarted:(void (^)(UIWebView *webView))loadStartedBlock
