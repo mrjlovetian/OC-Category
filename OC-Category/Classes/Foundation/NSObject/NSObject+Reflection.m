@@ -9,24 +9,23 @@
 #import <objc/runtime.h>
 
 @implementation NSObject (Reflection)
-- (NSString *)className
-{
+- (NSString *)className {
     return NSStringFromClass([self class]);
 }
-- (NSString *)superClassName
-{
+
+- (NSString *)superClassName {
     return NSStringFromClass([self superclass]);
 }
-+ (NSString *)className
-{
+
++ (NSString *)className {
     return NSStringFromClass([self class]);
 }
-+ (NSString *)superClassName
-{
+
++ (NSString *)superClassName {
     return NSStringFromClass([self superclass]);
 }
--(NSDictionary *)propertyDictionary
-{
+
+- (NSDictionary *)propertyDictionary {
     //创建可变字典
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     unsigned int outCount;
@@ -40,10 +39,11 @@
     free(props);
     return dict;
 }
-- (NSArray*)propertyKeys
-{
+
+- (NSArray*)propertyKeys {
     return [[self class] propertyKeys];
 }
+
 + (NSArray *)propertyKeys {
     unsigned int propertyCount = 0;
     objc_property_t * properties = class_copyPropertyList(self, &propertyCount);
@@ -56,10 +56,11 @@
     free(properties);
     return propertyNames;
 }
-- (NSArray *)propertiesInfo
-{
+
+- (NSArray *)propertiesInfo {
     return [[self class] propertiesInfo];
 }
+
 /**
  *  @author Jakey, 15-12-22 11:12:38
  *
@@ -67,8 +68,7 @@
  *
  *  @return <#return value description#>
  */
-+ (NSArray *)propertiesInfo
-{
++ (NSArray *)propertiesInfo {
     NSMutableArray *propertieArray = [NSMutableArray array];
     
     unsigned int propertyCount;
@@ -88,8 +88,8 @@
     
     return propertieArray;
 }
-+ (NSArray *)propertiesWithCodeFormat
-{
+
++ (NSArray *)propertiesWithCodeFormat {
     NSMutableArray *array = [NSMutableArray array];
     
     NSArray *properties = [[self class] propertiesInfo];
@@ -134,7 +134,8 @@
     
     return array;
 }
--(NSArray*)methodList{
+
+- (NSArray*)methodList {
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
     Method *methods= class_copyMethodList([self class], &count);
@@ -147,7 +148,8 @@
     free(methods);
     return methodList;
 }
--(NSArray*)methodListInfo{
+
+- (NSArray*)methodListInfo {
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
     Method *methods= class_copyMethodList([self class], &count);
@@ -188,7 +190,8 @@
     free(methods);
     return methodList;
 }
-+(NSArray*)methodList{
+
++ (NSArray *)methodList {
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
     Method * methods= class_copyMethodList([self class], &count);
@@ -202,9 +205,9 @@
 
     return methodList;
 }
+
 //创建并返回一个指向所有已注册类的指针列表
-+ (NSArray *)registedClassList
-{
++ (NSArray *)registedClassList {
     NSMutableArray *result = [NSMutableArray array];
     
     unsigned int count;
@@ -226,11 +229,11 @@
  *
  *  @return 协议列表信息
  */
--(NSDictionary *)protocolList{
+- (NSDictionary *)protocolList {
     return [[self class]protocolList];
 }
-+ (NSDictionary *)protocolList
-{
+
++ (NSDictionary *)protocolList {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     unsigned int count;
@@ -267,8 +270,7 @@
     return dictionary;
 }
 
-+ (NSArray *)instanceVariable
-{
++ (NSArray *)instanceVariable {
     unsigned int outCount;
     Ivar *ivars = class_copyIvarList([self class], &outCount);
     NSMutableArray *result = [NSMutableArray array];
@@ -282,19 +284,18 @@
     return result.count ? [result copy] : nil;
 }
 
-- (BOOL)hasPropertyForKey:(NSString*)key
-{
+- (BOOL)hasPropertyForKey:(NSString*)key {
     objc_property_t property = class_getProperty([self class], [key UTF8String]);
     return (BOOL)property;
 }
-- (BOOL)hasIvarForKey:(NSString*)key
-{
+
+- (BOOL)hasIvarForKey:(NSString*)key {
     Ivar ivar = class_getInstanceVariable([self class], [key UTF8String]);
     return (BOOL)ivar;
 }
+
 #pragma mark -- help
-+ (NSDictionary *)dictionaryWithProperty:(objc_property_t)property
-{
++ (NSDictionary *)dictionaryWithProperty:(objc_property_t)property {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     
     //name
@@ -341,61 +342,56 @@
      */
     
     //R
-    if ([attributeDictionary objectForKey:@"R"])
-    {
+    if ([attributeDictionary objectForKey:@"R"]){
         [attributeArray addObject:@"readonly"];
     }
+    
     //C
-    if ([attributeDictionary objectForKey:@"C"])
-    {
+    if ([attributeDictionary objectForKey:@"C"]) {
         [attributeArray addObject:@"copy"];
     }
+    
     //&
-    if ([attributeDictionary objectForKey:@"&"])
-    {
+    if ([attributeDictionary objectForKey:@"&"]) {
         [attributeArray addObject:@"strong"];
     }
+    
     //N
-    if ([attributeDictionary objectForKey:@"N"])
-    {
+    if ([attributeDictionary objectForKey:@"N"]) {
         [attributeArray addObject:@"nonatomic"];
-    }
-    else
-    {
+    } else {
         [attributeArray addObject:@"atomic"];
     }
+    
     //G<name>
-    if ([attributeDictionary objectForKey:@"G"])
-    {
+    if ([attributeDictionary objectForKey:@"G"]) {
         [attributeArray addObject:[NSString stringWithFormat:@"getter=%@", [attributeDictionary objectForKey:@"G"]]];
     }
+    
     //S<name>
-    if ([attributeDictionary objectForKey:@"S"])
-    {
+    if ([attributeDictionary objectForKey:@"S"]) {
         [attributeArray addObject:[NSString stringWithFormat:@"setter=%@", [attributeDictionary objectForKey:@"G"]]];
     }
+    
     //D
-    if ([attributeDictionary objectForKey:@"D"])
-    {
+    if ([attributeDictionary objectForKey:@"D"]) {
         [result setObject:[NSNumber numberWithBool:YES] forKey:@"isDynamic"];
-    }
-    else
-    {
+    } else {
         [result setObject:[NSNumber numberWithBool:NO] forKey:@"isDynamic"];
     }
+    
     //W
-    if ([attributeDictionary objectForKey:@"W"])
-    {
+    if ([attributeDictionary objectForKey:@"W"]) {
         [attributeArray addObject:@"weak"];
     }
+    
     //P
-    if ([attributeDictionary objectForKey:@"P"])
-    {
+    if ([attributeDictionary objectForKey:@"P"]) {
         //TODO:P | The property is eligible for garbage collection.
     }
+    
     //T
-    if ([attributeDictionary objectForKey:@"T"])
-    {
+    if ([attributeDictionary objectForKey:@"T"]) {
         /*
          https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
          c               A char
@@ -477,8 +473,8 @@
     
     return result;
 }
-+ (NSString *)decodeType:(const char *)cString
-{
+
++ (NSString *)decodeType:(const char *)cString {
     if (!strcmp(cString, @encode(char)))
         return @"char";
     if (!strcmp(cString, @encode(int)))
@@ -547,8 +543,7 @@
 //    }
     if ([[result substringToIndex:1] isEqualToString:@"@"] && [result rangeOfString:@"?"].location == NSNotFound) {
         result = [[result substringWithRange:NSMakeRange(2, result.length - 3)] stringByAppendingString:@"*"];
-    } else
-    {
+    } else {
         if ([[result substringToIndex:1] isEqualToString:@"^"]) {
             result = [NSString stringWithFormat:@"%@ *",
                       [NSString decodeType:[[result substringFromIndex:1] cStringUsingEncoding:NSUTF8StringEncoding]]];

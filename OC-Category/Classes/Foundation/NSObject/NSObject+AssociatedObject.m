@@ -14,20 +14,20 @@
  *  @param value 被附加的对象
  *  @param key   被附加对象的key
  */
-- (void)associateValue:(id)value withKey:(void *)key
-{
+- (void)associateValue:(id)value withKey:(void *)key {
     objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_RETAIN);
 }
+
 /**
  *  @brief  附加一个weak对象
  *
  *  @param value 被附加的对象
  *  @param key   被附加对象的key
  */
-- (void)weaklyAssociateValue:(id)value withKey:(void *)key
-{
+- (void)weaklyAssociateValue:(id)value withKey:(void *)key {
     objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_ASSIGN);
 }
+
 /**
  *  @brief  根据附加对象的key取出附加对象
  *
@@ -35,9 +35,9 @@
  *
  *  @return 附加对象
  */
-- (id)associatedValueForKey:(void *)key
-{
+- (id)associatedValueForKey:(void *)key {
     return objc_getAssociatedObject(self, key);
 }
+ 
 @end
 

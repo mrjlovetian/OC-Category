@@ -10,7 +10,7 @@
 
 @implementation NSObject (BlockTimer)
 
--(void)logTimeTakenToRunBlock:(void (^)(void)) block withPrefix:(NSString*) prefixString {
+- (void)logTimeTakenToRunBlock:(void (^)(void)) block withPrefix:(NSString*) prefixString {
 	
 	double a = CFAbsoluteTimeGetCurrent();
 	block();
@@ -20,4 +20,5 @@
 	
 	NSLog(@"%@: %d ms", prefixString ? prefixString : @"Time taken", m);
 }
+
 @end

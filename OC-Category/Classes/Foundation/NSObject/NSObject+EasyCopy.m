@@ -10,8 +10,7 @@
 
 @implementation NSObject (EasyCopy)
 
-- (BOOL)easyShallowCopy:(NSObject *)instance
-{
+- (BOOL)easyShallowCopy:(NSObject *)instance {
     Class currentClass = [self class];
     Class instanceClass = [instance class];
     
@@ -50,8 +49,7 @@
     return YES;
 }
 
-- (BOOL)easyDeepCopy:(NSObject *)instance
-{
+- (BOOL)easyDeepCopy:(NSObject *)instance {
     Class currentClass = [self class];
     Class instanceClass = [instance class];
     
@@ -105,7 +103,6 @@
 
 
 + (BOOL)isNSObjectClass:(Class)clazz{
-    
     BOOL flag = class_conformsToProtocol(clazz, @protocol(NSObject));
     if (flag) {
         return flag;
@@ -118,4 +115,5 @@
         }
     }
 }
+
 @end
