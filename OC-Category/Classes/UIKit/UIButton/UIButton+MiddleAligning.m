@@ -13,19 +13,14 @@
 
 @implementation UIImage (MiddleAligning)
 
-- (UIImage *)MiddleAlignedButtonImageScaleToSize:(CGSize)size
-{
+- (UIImage *)MiddleAlignedButtonImageScaleToSize:(CGSize)size {
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, 0.0, size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, size.width, size.height), self.CGImage);
-
     UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-
     UIGraphicsEndImageContext();
-
     return scaledImage;
 }
 
@@ -33,8 +28,7 @@
 
 @implementation UIButton (MiddleAligning)
 
-- (void)middleAlignButtonWithSpacing:(CGFloat)spacing
-{
+- (void)middleAlignButtonWithSpacing:(CGFloat)spacing {
     NSString *titleString = [self titleForState:UIControlStateNormal]?:@"";
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:titleString attributes:@{NSFontAttributeName : self.titleLabel.font}];
     CGSize titleSize = [attributedString boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
@@ -61,12 +55,9 @@
 
     CGFloat imageVerticalDiff = titleSize.height + spacing;
     CGFloat imageHorizontalDiff = titleSize.width;
-
     self.imageEdgeInsets = UIEdgeInsetsMake(-imageVerticalDiff, 0, 0, -imageHorizontalDiff);
-
     CGFloat titleVerticalDiff = imageSize.height + spacing;
     CGFloat titleHorizontalDiff = imageSize.width;
-
     self.titleEdgeInsets = UIEdgeInsetsMake(0, -titleHorizontalDiff, -titleVerticalDiff, 0);
 }
 
