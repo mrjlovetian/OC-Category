@@ -14,7 +14,8 @@
 
 + (NSURLConnectionDelegateWrapper*)wrapperWithHandler:(void (^)(NSURLResponse *, NSData *, NSError *))handler;
 + (NSMutableArray*)wrappers;
-@property (nonatomic,strong) NSURLConnection* connection;
+
+@property (nonatomic, strong) NSURLConnection *connection;
 
 @end
 

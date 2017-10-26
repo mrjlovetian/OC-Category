@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSUserDefaults (SafeAccess)
+
 + (NSString *)stringForKey:(NSString *)defaultName;
 
 + (NSArray *)arrayForKey:(NSString *)defaultName;

@@ -8,18 +8,10 @@
 #import <UIKit/UIKit.h>
 @interface NSBundle (AppIcon)
     
-/**
- *  获得appicon的路径
- *
- *  @return
- */
-- (NSString*)appIconPath;
+/// 获得appicon的路径
+- (NSString *)appIconPath;
 
-/**
- *  直接获得appicon的图片
- *
- *  @return 
- */
-- (UIImage*)appIcon;
+/// 直接获得appicon的图片
+- (UIImage *)appIcon;
     
 @end

@@ -8,7 +8,7 @@
 #import "NSDate+Formatter.h"
 
 @implementation NSDate (Formatter)
-+(NSDateFormatter *)formatter {
++ (NSDateFormatter *)formatter {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
@@ -20,7 +20,7 @@
     return formatter;
 }
 
-+(NSDateFormatter *)formatterWithoutTime {
++ (NSDateFormatter *)formatterWithoutTime {
     
     static NSDateFormatter *formatterWithoutTime = nil;
     static dispatch_once_t oncePredicate;
@@ -33,7 +33,7 @@
     return formatterWithoutTime;
 }
 
-+(NSDateFormatter *)formatterWithoutDate {
++ (NSDateFormatter *)formatterWithoutDate {
     
     static NSDateFormatter *formatterWithoutDate = nil;
     static dispatch_once_t oncePredicate;
@@ -48,19 +48,19 @@
 
 #pragma mark -
 #pragma mark Formatter with date & time
--(NSString *)formatWithUTCTimeZone {
+- (NSString *)formatWithUTCTimeZone {
     return [self formatWithTimeZoneOffset:0];
 }
 
--(NSString *)formatWithLocalTimeZone {
+- (NSString *)formatWithLocalTimeZone {
     return [self formatWithTimeZone:[NSTimeZone localTimeZone]];
 }
 
--(NSString *)formatWithTimeZoneOffset:(NSTimeInterval)offset {
+- (NSString *)formatWithTimeZoneOffset:(NSTimeInterval)offset {
     return [self formatWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:offset]];
 }
 
--(NSString *)formatWithTimeZone:(NSTimeZone *)timezone {
+- (NSString *)formatWithTimeZone:(NSTimeZone *)timezone {
     NSDateFormatter *formatter = [NSDate formatter];
     [formatter setTimeZone:timezone];
     return [formatter stringFromDate:self];
@@ -68,19 +68,19 @@
 
 #pragma mark -
 #pragma mark Formatter without time
--(NSString *)formatWithUTCTimeZoneWithoutTime {
+- (NSString *)formatWithUTCTimeZoneWithoutTime {
     return [self formatWithTimeZoneOffsetWithoutTime:0];
 }
 
--(NSString *)formatWithLocalTimeZoneWithoutTime {
+- (NSString *)formatWithLocalTimeZoneWithoutTime {
     return [self formatWithTimeZoneWithoutTime:[NSTimeZone localTimeZone]];
 }
 
--(NSString *)formatWithTimeZoneOffsetWithoutTime:(NSTimeInterval)offset {
+- (NSString *)formatWithTimeZoneOffsetWithoutTime:(NSTimeInterval)offset {
     return [self formatWithTimeZoneWithoutTime:[NSTimeZone timeZoneForSecondsFromGMT:offset]];
 }
 
--(NSString *)formatWithTimeZoneWithoutTime:(NSTimeZone *)timezone {
+- (NSString *)formatWithTimeZoneWithoutTime:(NSTimeZone *)timezone {
     NSDateFormatter *formatter = [NSDate formatterWithoutTime];
     [formatter setTimeZone:timezone];
     return [formatter stringFromDate:self];
@@ -88,32 +88,32 @@
 
 #pragma mark -
 #pragma mark Formatter without date
--(NSString *)formatWithUTCWithoutDate {
+- (NSString *)formatWithUTCWithoutDate {
     return [self formatTimeWithTimeZone:0];
 }
--(NSString *)formatWithLocalTimeWithoutDate {
+- (NSString *)formatWithLocalTimeWithoutDate {
     return [self formatTimeWithTimeZone:[NSTimeZone localTimeZone]];
 }
 
--(NSString *)formatWithTimeZoneOffsetWithoutDate:(NSTimeInterval)offset {
+- (NSString *)formatWithTimeZoneOffsetWithoutDate:(NSTimeInterval)offset {
     return [self formatTimeWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:offset]];
 }
 
--(NSString *)formatTimeWithTimeZone:(NSTimeZone *)timezone {
+- (NSString *)formatTimeWithTimeZone:(NSTimeZone *)timezone {
     NSDateFormatter *formatter = [NSDate formatterWithoutDate];
     [formatter setTimeZone:timezone];
     return [formatter stringFromDate:self];
 }
 #pragma mark -
 #pragma mark Formatter  date
-+ (NSString *)currentDateStringWithFormat:(NSString *)format
-{
++ (NSString *)currentDateStringWithFormat:(NSString *)format {
     NSDate *chosenDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     NSString *date = [formatter stringFromDate:chosenDate];
     return date;
 }
+
 + (NSDate *)dateWithSecondsFromNow:(NSInteger)seconds {
     NSDate *date = [NSDate date];
     NSDateComponents *components = [NSDateComponents new];
@@ -131,11 +131,12 @@
     [components setDay:day];
     return [calendar dateFromComponents:components];
 }
-- (NSString *)dateWithFormat:(NSString *)format
-{
+
+- (NSString *)dateWithFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     NSString *date = [formatter stringFromDate:self];
     return date;
 }
+
 @end

@@ -22,22 +22,11 @@
  */
 - (void)eachWithIndex:(void (^)(id object, NSUInteger index))block;
 
-/**
- *  map数组排序
- *
- *  @param block
- *
- *  @return
- */
+/// map数组排序
 - (NSArray *)map:(id (^)(id object))block;
 
-/**
- *  筛选数组
- *
- *  @param block 筛选条件
- *
- *  @return
- */
+/// 筛选数组
+
 - (NSArray *)filter:(BOOL (^)(id object))block;
 - (NSArray *)reject:(BOOL (^)(id object))block;
 - (id)detect:(BOOL (^)(id object))block;

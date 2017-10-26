@@ -17,7 +17,7 @@
  *
  *  @return data
  */
-- (NSData*)encryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
+- (NSData *)encryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     size_t dataMoved;
     NSMutableData *encryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSizeAES128];
@@ -39,6 +39,7 @@
     return nil;
     
 }
+
 /**
  *  @brief  利用AES解密据
  *
@@ -70,6 +71,7 @@
     return nil;
     
 }
+
 /**
  *  利用3DES加密数据
  *
@@ -99,6 +101,7 @@
     }
     return nil;
 }
+
 /**
  *  @brief   利用3DES解密数据
  *
@@ -134,7 +137,7 @@
  *
  *  @return 转成UTF8 字符串
  */
--(NSString *)UTF8String {
+- (NSString *)UTF8String {
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
 

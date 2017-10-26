@@ -8,6 +8,7 @@
 #import "NSUserDefaults+SafeAccess.h"
 
 @implementation NSUserDefaults (SafeAccess)
+
 + (NSString *)stringForKey:(NSString *)defaultName {
     return [[NSUserDefaults standardUserDefaults] stringForKey:defaultName];
 }
@@ -67,4 +68,5 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:value] forKey:defaultName];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 @end
