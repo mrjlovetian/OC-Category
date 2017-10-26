@@ -13,13 +13,11 @@
  *  @param backgroundColor 背景颜色
  *  @param state           按钮状态
  */
-- (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state
-{
+- (void)setBackgroundColor:(UIColor *)backgroundColor forState:(UIControlState)state {
     [self setBackgroundImage:[UIButton b_imageWithColor:backgroundColor] forState:state];
 }
 
-+ (UIImage *)b_imageWithColor:(UIColor *)color
-{
++ (UIImage *)b_imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

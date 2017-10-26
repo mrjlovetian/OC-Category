@@ -17,23 +17,19 @@
 #pragma mark -
 #pragma mark Map conversion methods
 
-- (double)longitudeToPixelSpaceX:(double)longitude
-{
+- (double)longitudeToPixelSpaceX:(double)longitude {
     return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * M_PI / 180.0);
 }
 
-- (double)latitudeToPixelSpaceY:(double)latitude
-{
+- (double)latitudeToPixelSpaceY:(double)latitude {
     return round(MERCATOR_OFFSET - MERCATOR_RADIUS * logf((1 + sinf(latitude * M_PI / 180.0)) / (1 - sinf(latitude * M_PI / 180.0))) / 2.0);
 }
 
-- (double)pixelSpaceXToLongitude:(double)pixelX
-{
+- (double)pixelSpaceXToLongitude:(double)pixelX {
     return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * 180.0 / M_PI;
 }
 
-- (double)pixelSpaceYToLatitude:(double)pixelY
-{
+- (double)pixelSpaceYToLatitude:(double)pixelY {
     return (M_PI / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * 180.0 / M_PI;
 }
 
@@ -42,8 +38,7 @@
 
 - (MKCoordinateSpan)coordinateSpanWithMapView:(MKMapView *)mapView
                              centerCoordinate:(CLLocationCoordinate2D)centerCoordinate
-                                 andZoomLevel:(NSUInteger)zoomLevel
-{
+                                 andZoomLevel:(NSUInteger)zoomLevel {
     // convert center coordiate to pixel space
     double centerPixelX = [self longitudeToPixelSpaceX:centerCoordinate.longitude];
     double centerPixelY = [self latitudeToPixelSpaceY:centerCoordinate.latitude];
@@ -81,8 +76,7 @@
 
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
                   zoomLevel:(NSUInteger)zoomLevel
-                   animated:(BOOL)animated
-{
+                   animated:(BOOL)animated {
     // clamp large numbers to 28
     zoomLevel = MIN(zoomLevel, 28);
     

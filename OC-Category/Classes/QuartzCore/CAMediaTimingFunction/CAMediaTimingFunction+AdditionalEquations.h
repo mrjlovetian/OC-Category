@@ -14,64 +14,64 @@
 /// @name Circ Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInCirc;
-+(CAMediaTimingFunction *)easeOutCirc;
-+(CAMediaTimingFunction *)easeInOutCirc;
++ (CAMediaTimingFunction *)easeInCirc;
++ (CAMediaTimingFunction *)easeOutCirc;
++ (CAMediaTimingFunction *)easeInOutCirc;
 
 ///---------------------------------------------------------------------------------------
 /// @name Cubic Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInCubic;
-+(CAMediaTimingFunction *)easeOutCubic;
-+(CAMediaTimingFunction *)easeInOutCubic;
++ (CAMediaTimingFunction *)easeInCubic;
++ (CAMediaTimingFunction *)easeOutCubic;
++ (CAMediaTimingFunction *)easeInOutCubic;
 
 ///---------------------------------------------------------------------------------------
 /// @name Expo Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInExpo;
-+(CAMediaTimingFunction *)easeOutExpo;
-+(CAMediaTimingFunction *)easeInOutExpo;
++ (CAMediaTimingFunction *)easeInExpo;
++ (CAMediaTimingFunction *)easeOutExpo;
++ (CAMediaTimingFunction *)easeInOutExpo;
 
 ///---------------------------------------------------------------------------------------
 /// @name Quad Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInQuad;
-+(CAMediaTimingFunction *)easeOutQuad;
-+(CAMediaTimingFunction *)easeInOutQuad;
++ (CAMediaTimingFunction *)easeInQuad;
++ (CAMediaTimingFunction *)easeOutQuad;
++ (CAMediaTimingFunction *)easeInOutQuad;
 
 ///---------------------------------------------------------------------------------------
 /// @name Quart Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInQuart;
-+(CAMediaTimingFunction *)easeOutQuart;
-+(CAMediaTimingFunction *)easeInOutQuart;
++ (CAMediaTimingFunction *)easeInQuart;
++ (CAMediaTimingFunction *)easeOutQuart;
++ (CAMediaTimingFunction *)easeInOutQuart;
 
 ///---------------------------------------------------------------------------------------
 /// @name Quint Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInQuint;
-+(CAMediaTimingFunction *)easeOutQuint;
-+(CAMediaTimingFunction *)easeInOutQuint;
++ (CAMediaTimingFunction *)easeInQuint;
++ (CAMediaTimingFunction *)easeOutQuint;
++ (CAMediaTimingFunction *)easeInOutQuint;
 
 ///---------------------------------------------------------------------------------------
 /// @name Sine Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInSine;
-+(CAMediaTimingFunction *)easeOutSine;
-+(CAMediaTimingFunction *)easeInOutSine;
++ (CAMediaTimingFunction *)easeInSine;
++ (CAMediaTimingFunction *)easeOutSine;
++ (CAMediaTimingFunction *)easeInOutSine;
 
 ///---------------------------------------------------------------------------------------
 /// @name Back Easing
 ///---------------------------------------------------------------------------------------
 
-+(CAMediaTimingFunction *)easeInBack;
-+(CAMediaTimingFunction *)easeOutBack;
-+(CAMediaTimingFunction *)easeInOutBack;
++ (CAMediaTimingFunction *)easeInBack;
++ (CAMediaTimingFunction *)easeOutBack;
++ (CAMediaTimingFunction *)easeInOutBack;
 
 @end
