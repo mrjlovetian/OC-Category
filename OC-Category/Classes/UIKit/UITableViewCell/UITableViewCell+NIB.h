@@ -13,6 +13,6 @@
  *
  *  @return nib
  */
-+(UINib*)nib;
++ (UINib *)nib;
 
 @end
