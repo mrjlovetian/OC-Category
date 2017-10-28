@@ -28,9 +28,7 @@
 
 + (instancetype)requestWithURL:(NSURL *)URL fileURLs:(NSArray *)fileURLs fileNames:(NSArray *)fileNames name:(NSString *)name {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-    
-    request.HTTPMethod = @"POST";
-    
+    request.HTTPMethod = @"POST";    
     NSMutableData *data = [NSMutableData data];
     NSString *boundary = multipartFormBoundary();
     

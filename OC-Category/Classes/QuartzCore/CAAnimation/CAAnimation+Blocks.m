@@ -20,15 +20,13 @@
 
 @implementation CAAnimationDelegate
 
-- (void)animationDidStart:(CAAnimation *)anim
-{
+- (void)animationDidStart:(CAAnimation *)anim {
     if (self.start != nil) {
         self.start();
     }
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (self.completion != nil) {
         self.completion(flag);
     }
@@ -36,11 +34,9 @@
 
 @end
 
-
 @implementation CAAnimation (BlocksAddition)
 
-- (void)setCompletion:(void (^)(BOOL))completion
-{
+- (void)setCompletion:(void (^)(BOOL))completion {
     if ([self.delegate isKindOfClass:[CAAnimationDelegate class]]) {
         ((CAAnimationDelegate *)self.delegate).completion = completion;
     }
@@ -51,13 +47,11 @@
     }
 }
 
-- (void (^)(BOOL))completion
-{
+- (void (^)(BOOL))completion {
     return [self.delegate isKindOfClass:[CAAnimationDelegate class]]? ((CAAnimationDelegate *)self.delegate).completion: nil;
 }
 
-- (void)setStart:(void (^)(void))start
-{
+- (void)setStart:(void (^)(void))start {
     if ([self.delegate isKindOfClass:[CAAnimationDelegate class]]) {
         ((CAAnimationDelegate *)self.delegate).start = start;
     }
@@ -68,8 +62,7 @@
     }
 }
 
-- (void (^)(void))start
-{
+- (void (^)(void))start {
     return [self.delegate isKindOfClass:[CAAnimationDelegate class]]? ((CAAnimationDelegate *)self.delegate).start: nil;
 }
 

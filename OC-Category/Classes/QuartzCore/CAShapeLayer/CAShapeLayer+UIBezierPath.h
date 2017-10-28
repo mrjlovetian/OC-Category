@@ -27,7 +27,7 @@
 /**
  Get UIBezierPath object, constructed from CAShapeLayer.
  */
-- (UIBezierPath*)bezierPath;
+- (UIBezierPath *)bezierPath;
 
 @end
 
