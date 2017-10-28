@@ -6,6 +6,7 @@
 //
 #import "NSObject+GCD.h"
 @implementation NSObject (GCD)
+
 /**
  *  @brief  异步执行代码块
  *
@@ -15,6 +16,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, block);
 }
+
 /**
  *  @brief  GCD主线程执行代码块
  *

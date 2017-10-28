@@ -9,6 +9,6 @@
 
 @interface NSObject (BlockTimer)
 
--(void)logTimeTakenToRunBlock:(void (^)(void)) block withPrefix:(NSString*) prefixString;
+- (void)logTimeTakenToRunBlock:(void (^)(void)) block withPrefix:(NSString *)prefixString;
 
 @end
