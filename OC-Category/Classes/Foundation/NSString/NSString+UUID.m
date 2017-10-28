@@ -13,8 +13,7 @@
  *
  *  @return 随机 UUID
  */
-+ (NSString *)UUID
-{
++ (NSString *)UUID {
     if([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0)
     {
        return  [[NSUUID UUID] UUIDString];
@@ -27,14 +26,14 @@
         return (__bridge_transfer NSString *)uuid;
     }
 }
+
 /**
  *
  *  @brief  毫秒时间戳 例如 1443066826371
  *
  *  @return 毫秒时间戳
  */
-+ (NSString *)UUIDTimestamp
-{
++ (NSString *)UUIDTimestamp {
     return  [[NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]*1000] stringValue];
 }
 

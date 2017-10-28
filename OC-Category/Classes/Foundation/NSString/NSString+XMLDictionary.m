@@ -25,8 +25,7 @@
  *
  *  @return NSDictionary
  */
--(NSDictionary *)XMLDictionary
-{
+- (NSDictionary *)XMLDictionary {
     //TURN THE STRING INTO DATA
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -52,31 +51,26 @@
 #pragma mark -
 #pragma mark ASSOCIATIVE OVERRIDES
 
-- (void)setCurrentDictionaries:(NSMutableArray *)currentDictionaries
-{
+- (void)setCurrentDictionaries:(NSMutableArray *)currentDictionaries {
     objc_setAssociatedObject(self, ASSOCIATIVE_CURRENT_DICTIONARY_KEY, currentDictionaries, OBJC_ASSOCIATION_RETAIN);
 }
 
-- (NSMutableArray *)currentDictionaries
-{
+- (NSMutableArray *)currentDictionaries {
     return objc_getAssociatedObject(self, ASSOCIATIVE_CURRENT_DICTIONARY_KEY);
 }
 
-- (void)setCurrentText:(NSMutableString *)currentText
-{
+- (void)setCurrentText:(NSMutableString *)currentText {
     objc_setAssociatedObject(self, ASSOCIATIVE_CURRENT_TEXT_KEY, currentText, OBJC_ASSOCIATION_RETAIN);
 }
 
-- (NSMutableString *)currentText
-{
+- (NSMutableString *)currentText {
     return objc_getAssociatedObject(self, ASSOCIATIVE_CURRENT_TEXT_KEY);
 }
 
 #pragma mark -
 #pragma mark NSXMLPARSER DELEGATE
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
-{
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     //GET THE LAST DICTIONARY
     NSMutableDictionary *parent = [self.currentDictionaries lastObject];
     
@@ -87,15 +81,13 @@
     id currentValue = [parent objectForKey:elementName];
     
     //SHOULD BE AN ARRAY IF WE ALREADY HAVE ONE FOR THIS KEY, OTHERWISE JUST ADD IT IN
-    if (currentValue)
-    {
+    if (currentValue) {
         NSMutableArray *array = nil;
         
         //IF CURRENTVALUE IS ALREADY AN ARRAY USE IT, OTHERWISE, MAKE ONE
         if ([currentValue isKindOfClass:[NSMutableArray class]])
             array = (NSMutableArray *) currentValue;
-        else
-        {
+        else {
             array = [NSMutableArray array];
             [array addObject:currentValue];
             
@@ -104,39 +96,32 @@
         }
         
         [array addObject:child];
-    }
-    else
+    } else
         [parent setObject:child forKey:elementName];
     
     //ADD NEW OBJECT
     [self.currentDictionaries addObject:child];
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-{
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     //UPDATE PARENT INFO
     NSMutableDictionary *dictInProgress = [self.currentDictionaries lastObject];
     
-    if ([self.currentText length] > 0)
-    {
+    if ([self.currentText length] > 0) {
         //REMOVE WHITE SPACE
         [dictInProgress setObject:self.currentText forKey:@"text"];
-        
         self.currentText = nil;
         self.currentText = [[NSMutableString alloc] init];
     }
-    
     //NO LONGER NEED THIS DICTIONARY, AS WE'RE DONE WITH IT
     [self.currentDictionaries removeLastObject];
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     [self.currentText appendString:string];
 }
 
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
-{
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     //WILL RETURN NIL FOR ERROR
 }
 

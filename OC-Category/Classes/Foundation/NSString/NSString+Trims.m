@@ -9,6 +9,7 @@
 #import "NSString+Trims.h"
 
 @implementation NSString (Trims)
+
 /**
  *  @brief  清除html标签
  *
@@ -17,6 +18,7 @@
 - (NSString *)stringByStrippingHTML {
     return [self stringByReplacingOccurrencesOfString:@"<[^>]+>" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, self.length)];
 }
+
 /**
  *  @brief  清除js脚本
  *
@@ -32,22 +34,23 @@
     }
     return [mString stringByStrippingHTML];
 }
+
 /**
  *  @brief  去除空格
  *
  *  @return 去除空格后的字符串
  */
-- (NSString *)trimmingWhitespace
-{
+- (NSString *)trimmingWhitespace {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
+
 /**
  *  @brief  去除字符串与空行
  *
  *  @return 去除字符串与空行的字符串
  */
-- (NSString *)trimmingWhitespaceAndNewlines
-{
+- (NSString *)trimmingWhitespaceAndNewlines {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
+
 @end

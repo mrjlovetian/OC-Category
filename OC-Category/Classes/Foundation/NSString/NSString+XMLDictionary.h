@@ -13,6 +13,6 @@
  *
  *  @return NSDictionary
  */
--(NSDictionary *)XMLDictionary;
+- (NSDictionary *)XMLDictionary;
 
 @end
