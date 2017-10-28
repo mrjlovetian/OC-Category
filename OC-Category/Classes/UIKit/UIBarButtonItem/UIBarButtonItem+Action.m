@@ -12,21 +12,16 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 @implementation UIBarButtonItem (Action)
 
 - (void)performActionBlock {
-    
     dispatch_block_t block = self.actionBlock;
-    
     if (block)
         block();
-    
 }
 
 - (BarButtonActionBlock)actionBlock {
     return objc_getAssociatedObject(self, UIBarButtonItemActionBlock);
 }
 
-- (void)setactionBlock:(BarButtonActionBlock)actionBlock
- {
-    
+- (void)setactionBlock:(BarButtonActionBlock)actionBlock {
     if (actionBlock != self.actionBlock) {
         [self willChangeValueForKey:@"actionBlock"];
         
@@ -42,4 +37,5 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
         [self didChangeValueForKey:@"actionBlock"];
     }
 }
+
 @end

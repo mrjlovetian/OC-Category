@@ -13,8 +13,7 @@ static void SVGApplier(void* info, const CGPathElement* element);
  *
  *  @return SVG
  */
-- (NSString*)SVGString
-{
+- (NSString *)SVGString {
     CGPathRef path = [self CGPath];
     NSMutableString* SVGString = [NSMutableString string];
     [SVGString appendString:@"<path id=\"temporaryID\" d=\""];

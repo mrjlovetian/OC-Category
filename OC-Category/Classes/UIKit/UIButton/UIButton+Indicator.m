@@ -15,7 +15,6 @@ static NSString *const ButtonTextObjectKey = @"buttonTextObject";
 @implementation UIButton (Indicator)
 
 - (void)showIndicator {
-    
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     [indicator startAnimating];
@@ -33,14 +32,11 @@ static NSString *const ButtonTextObjectKey = @"buttonTextObject";
 }
 
 - (void)hideIndicator {
-    
     NSString *currentButtonText = (NSString *)objc_getAssociatedObject(self, &ButtonTextObjectKey);
     UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)objc_getAssociatedObject(self, &IndicatorViewKey);
-    
     [indicator removeFromSuperview];
     [self setTitle:currentButtonText forState:UIControlStateNormal];
     self.enabled = YES;
-    
 }
 
 @end

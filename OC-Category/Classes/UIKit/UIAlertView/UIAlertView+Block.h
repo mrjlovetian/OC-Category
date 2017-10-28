@@ -11,7 +11,7 @@ typedef void(^UIAlertViewCallBackBlock)(NSInteger buttonIndex);
 
 @interface UIAlertView (Block)<UIAlertViewDelegate>
 
-@property (nonatomic, copy) UIAlertViewCallBackBlock alertViewCallBackBlock;
+@property (nonatomic, copy)UIAlertViewCallBackBlock alertViewCallBackBlock;
 
 + (void)alertWithCallBackBlock:(UIAlertViewCallBackBlock)alertViewCallBackBlock
                             title:(NSString *)title message:(NSString *)message  cancelButtonName:(NSString *)cancelButtonName

@@ -9,14 +9,12 @@
 
 @implementation UIBezierPath (BasicShapes)
 
-+ (CGRect)maximumSquareFrameThatFits:(CGRect)frame;
-{
++ (CGRect)maximumSquareFrameThatFits:(CGRect)frame; {
     CGFloat a = MIN(frame.size.width, frame.size.height);
     return CGRectMake(frame.size.width/2 - a/2, frame.size.height/2 - a/2, a, a);
 }
 
-+ (UIBezierPath *)heartShape:(CGRect)originalFrame
-{
++ (UIBezierPath *)heartShape:(CGRect)originalFrame {
     CGRect frame = [self maximumSquareFrameThatFits:originalFrame];
     
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
@@ -36,8 +34,7 @@
     return bezierPath;
 }
 
-+ (UIBezierPath *)userShape:(CGRect)originalFrame
-{
++ (UIBezierPath *)userShape:(CGRect)originalFrame {
     CGRect frame = [self maximumSquareFrameThatFits:originalFrame];
     
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
@@ -80,8 +77,7 @@
 }
 
 
-+ (UIBezierPath *)martiniShape:(CGRect)originalFrame
-{
++ (UIBezierPath *)martiniShape:(CGRect)originalFrame {
     CGRect frame = [self maximumSquareFrameThatFits:originalFrame];
     
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
@@ -192,8 +188,7 @@
     return bezierPath;
 }
 
-+ (UIBezierPath *)stars:(NSUInteger)numberOfStars shapeInFrame:(CGRect)originalFrame
-{
++ (UIBezierPath *)stars:(NSUInteger)numberOfStars shapeInFrame:(CGRect)originalFrame {
     // divide the original frame into equally sized frames
     CGFloat w = originalFrame.size.width/numberOfStars;
     CGRect babyFrame = CGRectMake(0, 0, w, originalFrame.size.height);
@@ -207,7 +202,6 @@
         // add the path
         [bezierPath appendPath:startPath];
     }
-    
     return bezierPath;
 }
 

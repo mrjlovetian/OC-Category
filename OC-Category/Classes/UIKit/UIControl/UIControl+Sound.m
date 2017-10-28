@@ -14,8 +14,7 @@ static char const * const kSoundsKey = "kSoundsKey";
 
 @implementation UIControl (Sound)
 
-- (void)setSoundNamed:(NSString *)name forControlEvent:(UIControlEvents)controlEvent
-{
+- (void)setSoundNamed:(NSString *)name forControlEvent:(UIControlEvents)controlEvent {
 	// Remove the old UI sound.
 	NSString *oldSoundKey = [NSString stringWithFormat:@"%lu", controlEvent];
 	AVAudioPlayer *oldSound = [self sounds][oldSoundKey];
@@ -50,13 +49,11 @@ static char const * const kSoundsKey = "kSoundsKey";
 
 #pragma mark - Associated objects setters/getters
 
-- (void)setsounds:(NSMutableDictionary *)sounds
-{
+- (void)setsounds:(NSMutableDictionary *)sounds {
 	objc_setAssociatedObject(self, kSoundsKey, sounds, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSMutableDictionary *)sounds
-{
+- (NSMutableDictionary *)sounds {
 	NSMutableDictionary *sounds = objc_getAssociatedObject(self, kSoundsKey);
 	
 	// If sounds is not yet created, create it.
@@ -65,7 +62,6 @@ static char const * const kSoundsKey = "kSoundsKey";
 		// Save it for later.
 		[self setsounds:sounds];
 	}
-	
 	return sounds;
 }
 

@@ -25,13 +25,11 @@ static void bezierSubpathFunction(void *info, CGPathElement const *element) {
 
 #pragma mark - Internal
 
-- (void)enumerateSubpaths:(BezierSubpathEnumerator)enumeratorBlock
-{
+- (void)enumerateSubpaths:(BezierSubpathEnumerator)enumeratorBlock {
 	CGPathApply(self.CGPath, (__bridge void *)enumeratorBlock, bezierSubpathFunction);
 }
 
-- (NSUInteger)countSubpaths
-{
+- (NSUInteger)countSubpaths {
 	__block NSUInteger count = 0;
 	[self enumerateSubpaths:^(const CGPathElement *element) {
 		if (element->type != kCGPathElementMoveToPoint) {
@@ -44,8 +42,7 @@ static void bezierSubpathFunction(void *info, CGPathElement const *element) {
 	return count;
 }
 
-- (void)extractSubpaths:(BezierSubpath*)subpathArray
-{
+- (void)extractSubpaths:(BezierSubpath*)subpathArray {
 	__block CGPoint currentPoint = CGPointZero;
 	__block NSUInteger i = 0;
 	[self enumerateSubpaths:^(const CGPathElement *element) {

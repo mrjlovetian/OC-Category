@@ -10,13 +10,11 @@
 
 @implementation UIBezierPath (ThroughPointsBezier)
 
-- (void)setContractionFactor:(CGFloat)contractionFactor
-{
+- (void)setContractionFactor:(CGFloat)contractionFactor {
     objc_setAssociatedObject(self, @selector(contractionFactor), @(contractionFactor), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)contractionFactor
-{
+- (CGFloat)contractionFactor {
     id contractionFactorAssociatedObject = objc_getAssociatedObject(self, @selector(contractionFactor));
     if (contractionFactorAssociatedObject == nil) {
         return 0.7;
@@ -24,8 +22,7 @@
     return [contractionFactorAssociatedObject floatValue];
 }
 
-- (void)addBezierThroughPoints:(NSArray *)pointArray
-{
+- (void)addBezierThroughPoints:(NSArray *)pointArray {
     NSAssert(pointArray.count > 0, @"You must give at least 1 point for drawing the curve.");
     
     if (pointArray.count < 3) {
@@ -131,18 +128,15 @@ CGFloat ObliqueAngleOfStraightThrough(CGPoint point1, CGPoint point2)   //  [-π
     return obliqueAngle;
 }
 
-CGPoint ControlPointForTheBezierCanThrough3Point(CGPoint point1, CGPoint point2, CGPoint point3)
-{
+CGPoint ControlPointForTheBezierCanThrough3Point(CGPoint point1, CGPoint point2, CGPoint point3) {
     return CGPointMake(2 * point2.x - (point1.x + point3.x) / 2, 2 * point2.y - (point1.y + point3.y) / 2);
 }
 
-CGFloat DistanceBetweenPoint(CGPoint point1, CGPoint point2)
-{
+CGFloat DistanceBetweenPoint(CGPoint point1, CGPoint point2) {
     return sqrt((point1.x - point2.x) * (point1.x - point2.x) + (point1.y - point2.y) * (point1.y - point2.y));
 }
 
-CGPoint CenterPointOf(CGPoint point1, CGPoint point2)
-{
+CGPoint CenterPointOf(CGPoint point1, CGPoint point2) {
     return CGPointMake((point1.x + point2.x) / 2, (point1.y + point2.y) / 2);
 }
 

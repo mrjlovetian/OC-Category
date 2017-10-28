@@ -34,25 +34,25 @@ typedef enum {
 @interface UIApplication (Permissions)
 
 //Check permission of service. Cannot check microphone or motion without asking user for permission
--(PermissionAccess)hasAccessToBluetoothLE;
--(PermissionAccess)hasAccessToCalendar;
--(PermissionAccess)hasAccessToContacts;
--(PermissionAccess)hasAccessToLocation;
--(PermissionAccess)hasAccessToPhotos;
--(PermissionAccess)hasAccessToReminders;
+- (PermissionAccess)hasAccessToBluetoothLE;
+- (PermissionAccess)hasAccessToCalendar;
+- (PermissionAccess)hasAccessToContacts;
+- (PermissionAccess)hasAccessToLocation;
+- (PermissionAccess)hasAccessToPhotos;
+- (PermissionAccess)hasAccessToReminders;
 
 //Request permission with callback
--(void)requestAccessToCalendarWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
--(void)requestAccessToContactsWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
--(void)requestAccessToMicrophoneWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
--(void)requestAccessToPhotosWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
--(void)requestAccessToRemindersWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
+- (void)requestAccessToCalendarWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
+- (void)requestAccessToContactsWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
+- (void)requestAccessToMicrophoneWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
+- (void)requestAccessToPhotosWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
+- (void)requestAccessToRemindersWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
 
 //Instance methods
--(void)requestAccessToLocationWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
+- (void)requestAccessToLocationWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied;
 
 //No failure callback available
--(void)requestAccessToMotionWithSuccess:(void(^)())accessGranted;
+- (void)requestAccessToMotionWithSuccess:(void(^)())accessGranted;
 
 //Needs investigating - unsure whether it can be implemented because of required delegate callbacks
 //-(void)requestAccessToBluetoothLEWithSuccess:(void(^)())accessGranted;

@@ -13,8 +13,7 @@
  *
  *  @return canvas颜色
  */
-- (NSString *)canvasColorString
-{
+- (NSString *)canvasColorString {
     CGFloat *arrRGBA = [self getRGB];
     int r = arrRGBA[0] * 255;
     int g = arrRGBA[1] * 255;
@@ -22,13 +21,13 @@
     float a = arrRGBA[3];
     return [NSString stringWithFormat:@"rgba(%d,%d,%d,%f)", r, g, b, a];
 }
+
 /**
  *  @brief  获取网页颜色字串
  *
  *  @return 网页颜色
  */
-- (NSString *)webColorString
-{
+- (NSString *)webColorString {
     CGFloat *arrRGBA = [self getRGB];
     int r = arrRGBA[0] * 255;
     int g = arrRGBA[1] * 255;
@@ -38,7 +37,7 @@
     return webColor;
 }
 
-- (CGFloat *) getRGB{
+- (CGFloat *) getRGB {
     UIColor * uiColor = self;
     CGColorRef cgColor = [uiColor CGColor];
     int numComponents = (int)CGColorGetNumberOfComponents(cgColor);
@@ -64,4 +63,5 @@
         return (CGFloat *)components;
     }
 }
+
 @end
