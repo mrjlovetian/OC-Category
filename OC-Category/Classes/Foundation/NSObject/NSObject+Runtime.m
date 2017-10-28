@@ -7,37 +7,26 @@
 
 #import "NSObject+Runtime.h"
 #import <objc/runtime.h>
-BOOL method_swizzle(Class klass, SEL origSel, SEL altSel)
-{
+BOOL method_swizzle(Class klass, SEL origSel, SEL altSel) {
     if (!klass)
         return NO;
-    
     Method __block origMethod, __block altMethod;
-    
-    void (^find_methods)() = ^
-    {
+    void (^find_methods)() = ^ {
         unsigned methodCount = 0;
         Method *methodList = class_copyMethodList(klass, &methodCount);
-        
         origMethod = altMethod = NULL;
-        
         if (methodList)
-            for (unsigned i = 0; i < methodCount; ++i)
-            {
+            for (unsigned i = 0; i < methodCount; ++i){
                 if (method_getName(methodList[i]) == origSel)
                     origMethod = methodList[i];
-                
                 if (method_getName(methodList[i]) == altSel)
                     altMethod = methodList[i];
             }
-        
         free(methodList);
     };
     
     find_methods();
-    
-    if (!origMethod)
-    {
+    if (!origMethod) {
         origMethod = class_getInstanceMethod(klass, origSel);
         
         if (!origMethod)
@@ -47,8 +36,7 @@ BOOL method_swizzle(Class klass, SEL origSel, SEL altSel)
             return NO;
     }
     
-    if (!altMethod)
-    {
+    if (!altMethod) {
         altMethod = class_getInstanceMethod(klass, altSel);
         
         if (!altMethod)
@@ -59,75 +47,57 @@ BOOL method_swizzle(Class klass, SEL origSel, SEL altSel)
     }
     
     find_methods();
-    
     if (!origMethod || !altMethod)
         return NO;
-    
     method_exchangeImplementations(origMethod, altMethod);
-    
     return YES;
 }
 
-void method_append(Class toClass, Class fromClass, SEL selector)
-{
+void method_append(Class toClass, Class fromClass, SEL selector) {
     if (!toClass || !fromClass || !selector)
         return;
-    
     Method method = class_getInstanceMethod(fromClass, selector);
-    
     if (!method)
         return;
-    
     class_addMethod(toClass, method_getName(method), method_getImplementation(method), method_getTypeEncoding(method));
 }
 
-void method_replace(Class toClass, Class fromClass, SEL selector)
-{
+void method_replace(Class toClass, Class fromClass, SEL selector) {
     if (!toClass || !fromClass || ! selector)
         return;
-    
     Method method = class_getInstanceMethod(fromClass, selector);
-    
     if (!method)
         return;
-    
     class_replaceMethod(toClass, method_getName(method), method_getImplementation(method), method_getTypeEncoding(method));
 }
 
 @implementation NSObject (Runtime)
 
-+ (void)swizzleMethod:(SEL)originalMethod withMethod:(SEL)newMethod
-{
++ (void)swizzleMethod:(SEL)originalMethod withMethod:(SEL)newMethod {
     method_swizzle(self.class, originalMethod, newMethod);
 }
 
-+ (void)appendMethod:(SEL)newMethod fromClass:(Class)klass
-{
++ (void)appendMethod:(SEL)newMethod fromClass:(Class)klass {
     method_append(self.class, klass, newMethod);
 }
 
-+ (void)replaceMethod:(SEL)method fromClass:(Class)klass
-{
++ (void)replaceMethod:(SEL)method fromClass:(Class)klass {
     method_replace(self.class, klass, method);
 }
 
-- (BOOL)respondsToSelector:(SEL)selector untilClass:(Class)stopClass
-{
+- (BOOL)respondsToSelector:(SEL)selector untilClass:(Class)stopClass {
     return [self.class instancesRespondToSelector:selector untilClass:stopClass];
 }
 
-- (BOOL)superRespondsToSelector:(SEL)selector
-{
+- (BOOL)superRespondsToSelector:(SEL)selector {
     return [self.superclass instancesRespondToSelector:selector];
 }
 
-- (BOOL)superRespondsToSelector:(SEL)selector untilClass:(Class)stopClass
-{
+- (BOOL)superRespondsToSelector:(SEL)selector untilClass:(Class)stopClass {
     return [self.superclass instancesRespondToSelector:selector untilClass:stopClass];
 }
 
-+ (BOOL)instancesRespondToSelector:(SEL)selector untilClass:(Class)stopClass
-{
++ (BOOL)instancesRespondToSelector:(SEL)selector untilClass:(Class)stopClass {
     BOOL __block (^ __weak block_self)(Class klass, SEL selector, Class stopClass);
     BOOL (^block)(Class klass, SEL selector, Class stopClass) = [^
                                                                  (Class klass, SEL selector, Class stopClass)
@@ -147,7 +117,6 @@ void method_replace(Class toClass, Class fromClass, SEL selector)
                                                                  } copy];
     
     block_self = block;
-    
     return block(self.class, selector, stopClass);
 }
 
