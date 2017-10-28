@@ -16,10 +16,10 @@
 + (NSString *)superClassName;
 
 //实例属性字典
--(NSDictionary *)propertyDictionary;
+- (NSDictionary *)propertyDictionary;
 
 //属性名称列表
-- (NSArray*)propertyKeys;
+- (NSArray *)propertyKeys;
 + (NSArray *)propertyKeys;
 
 //属性详细信息列表
@@ -30,8 +30,8 @@
 + (NSArray *)propertiesWithCodeFormat;
 
 //方法列表
--(NSArray*)methodList;
-+(NSArray*)methodList;
+- (NSArray *)methodList;
++ (NSArray *)methodList;
 
 -(NSArray*)methodListInfo;
 
@@ -41,7 +41,7 @@
 + (NSArray *)instanceVariable;
 
 //协议列表
--(NSDictionary *)protocolList;
+- (NSDictionary *)protocolList;
 + (NSDictionary *)protocolList;
 
 - (BOOL)hasPropertyForKey:(NSString*)key;

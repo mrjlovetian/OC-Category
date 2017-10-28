@@ -30,7 +30,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     unsigned int outCount;
     objc_property_t *props = class_copyPropertyList([self class], &outCount);
-    for(int i=0;i<outCount;i++){
+    for(int i = 0; i < outCount; i++){
         objc_property_t prop = props[i];
         NSString *propName = [[NSString alloc]initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
         id propValue = [self valueForKey:propName];
@@ -70,12 +70,9 @@
  */
 + (NSArray *)propertiesInfo {
     NSMutableArray *propertieArray = [NSMutableArray array];
-    
     unsigned int propertyCount;
     objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
-    
-    for (int i = 0; i < propertyCount; i++)
-    {
+    for (int i = 0; i < propertyCount; i++) {
         [propertieArray addObject:({
             
             NSDictionary *dictionary = [self dictionaryWithProperty:properties[i]];
@@ -83,19 +80,14 @@
             dictionary;
         })];
     }
-    
     free(properties);
-    
     return propertieArray;
 }
 
 + (NSArray *)propertiesWithCodeFormat {
     NSMutableArray *array = [NSMutableArray array];
-    
     NSArray *properties = [[self class] propertiesInfo];
-    
-    for (NSDictionary *item in properties)
-    {
+    for (NSDictionary *item in properties) {
         NSMutableString *format = ({
             
             NSMutableString *formatString = [NSMutableString stringWithFormat:@"@property "];
@@ -104,20 +96,17 @@
             attribute = [attribute sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                 return [obj1 compare:obj2 options:NSNumericSearch];
             }];
-            if (attribute && attribute.count > 0)
-            {
+            if (attribute && attribute.count > 0) {
                 NSString *attributeStr = [NSString stringWithFormat:@"(%@)",[attribute componentsJoinedByString:@", "]];
                 
                 [formatString appendString:attributeStr];
             }
-            
             //type
             NSString *type = [item objectForKey:@"type"];
             if (type) {
                 [formatString appendString:@" "];
                 [formatString appendString:type];
             }
-            
             //name
             NSString *name = [item objectForKey:@"name"];
             if (name) {
@@ -139,8 +128,7 @@
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
     Method *methods= class_copyMethodList([self class], &count);
-    for (int i = 0; i < count ; i++)
-    {
+    for (int i = 0; i < count ; i++) {
         SEL name = method_getName(methods[i]);
         NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
         [methodList addObject:strName];
@@ -149,12 +137,11 @@
     return methodList;
 }
 
-- (NSArray*)methodListInfo {
+- (NSArray *)methodListInfo {
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
     Method *methods= class_copyMethodList([self class], &count);
-    for (int i = 0; i < count ; i++)
-    {
+    for (int i = 0; i < count ; i++) {
         NSMutableDictionary *info = [NSMutableDictionary dictionary];
         
         Method method = methods[i];
@@ -209,16 +196,13 @@
 //创建并返回一个指向所有已注册类的指针列表
 + (NSArray *)registedClassList {
     NSMutableArray *result = [NSMutableArray array];
-    
     unsigned int count;
     Class *classes = objc_copyClassList(&count);
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++) {
         [result addObject:NSStringFromClass(classes[i])];
     }
     free(classes);
     [result sortedArrayUsingSelector:@selector(compare:)];
-    
     return result;
 }
 
@@ -238,8 +222,7 @@
     
     unsigned int count;
     Protocol * __unsafe_unretained * protocols = class_copyProtocolList([self class], &count);
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++) {
         Protocol *protocol = protocols[i];
         
         NSString *protocolName = [NSString stringWithCString:protocol_getName(protocol) encoding:NSUTF8StringEncoding];
@@ -250,8 +233,7 @@
             
             unsigned int superProtocolCount;
             Protocol * __unsafe_unretained * superProtocols = protocol_copyProtocolList(protocol, &superProtocolCount);
-            for (int ii = 0; ii < superProtocolCount; ii++)
-            {
+            for (int ii = 0; ii < superProtocolCount; ii++) {
                 Protocol *superProtocol = superProtocols[ii];
                 
                 NSString *superProtocolName = [NSString stringWithCString:protocol_getName(superProtocol) encoding:NSUTF8StringEncoding];
@@ -259,14 +241,12 @@
                 [array addObject:superProtocolName];
             }
             free(superProtocols);
-            
             array;
         });
         
         [dictionary setObject:superProtocolArray forKey:protocolName];
     }
     free(protocols);
-    
     return dictionary;
 }
 
