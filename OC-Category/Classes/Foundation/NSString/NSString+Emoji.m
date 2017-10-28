@@ -12,8 +12,7 @@
 static NSDictionary * s_unicodeToCheatCodes = nil;
 static NSDictionary * s_cheatCodesToUnicode = nil;
 
-+ (void)initializeEmojiCheatCodes
-{
++ (void)initializeEmojiCheatCodes {
     NSDictionary *forwardMap = @{
                                  @"😄": @":smile:",
                                  @"😆": @[@":laughing:", @":D"],
