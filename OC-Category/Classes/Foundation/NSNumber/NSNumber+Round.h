@@ -9,8 +9,8 @@
 
 @interface NSNumber (Round)
 /* 展示 */
-- (NSString*)toDisplayNumberWithDigit:(NSInteger)digit;
-- (NSString*)toDisplayPercentageWithDigit:(NSInteger)digit;
+- (NSString *)toDisplayNumberWithDigit:(NSInteger)digit;
+- (NSString *)toDisplayPercentageWithDigit:(NSInteger)digit;
 
 /*　四舍五入 */
 /**
@@ -20,7 +20,7 @@
  *
  *  @return 结果
  */
-- (NSNumber*)doRoundWithDigit:(NSUInteger)digit;
+- (NSNumber *)doRoundWithDigit:(NSUInteger)digit;
 
 /**
  *  @brief  取上整
@@ -29,7 +29,7 @@
  *
  *  @return 结果
  */
-- (NSNumber*)doCeilWithDigit:(NSUInteger)digit;
+- (NSNumber *)doCeilWithDigit:(NSUInteger)digit;
 
 /**
  *  @brief  取下整
@@ -38,6 +38,6 @@
  *
  *  @return 结果
  */
-- (NSNumber*)doFloorWithDigit:(NSUInteger)digit;
+- (NSNumber *)doFloorWithDigit:(NSUInteger)digit;
 
 @end

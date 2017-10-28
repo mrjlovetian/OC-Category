@@ -32,6 +32,7 @@
     NSString *currentLanguage = [languages firstObject];
     return [NSString stringWithString:currentLanguage];
 }
+
 - (NSString *)deviceModel {
     struct utsname systemInfo;
     uname(&systemInfo);

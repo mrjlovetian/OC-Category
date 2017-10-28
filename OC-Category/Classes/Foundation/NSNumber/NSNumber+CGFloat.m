@@ -9,8 +9,7 @@
 
 @implementation NSNumber (CGFloat)
 
-- (CGFloat)CGFloatValue
-{
+- (CGFloat)CGFloatValue {
 #if (CGFLOAT_IS_DOUBLE == 1)
     CGFloat result = [self doubleValue];
 #else
@@ -19,8 +18,7 @@
     return result;
 }
 
-- (id)initWithCGFloat:(CGFloat)value
-{
+- (id)initWithCGFloat:(CGFloat)value {
 #if (CGFLOAT_IS_DOUBLE == 1)
     self = [self initWithDouble:value];
 #else
@@ -29,8 +27,7 @@
     return self;
 }
 
-+ (NSNumber *)numberWithCGFloat:(CGFloat)value
-{
++ (NSNumber *)numberWithCGFloat:(CGFloat)value {
     NSNumber *result = [[self alloc] initWithCGFloat:value];
     return result;
 }

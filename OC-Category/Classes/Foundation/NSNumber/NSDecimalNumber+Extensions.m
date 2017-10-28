@@ -14,9 +14,10 @@
  *
  *  @return 返回结果
  */
-- (NSDecimalNumber *)roundToScale:(NSUInteger)scale{
+- (NSDecimalNumber *)roundToScale:(NSUInteger)scale {
     return [self roundToScale:scale mode:NSRoundPlain];
 }
+
 /**
  *  @brief  四舍五入
  *
@@ -25,7 +26,7 @@
  *
  *  @return 返回结果
  */
-- (NSDecimalNumber *)roundToScale:(NSUInteger)scale mode:(NSRoundingMode)roundingMode{
+- (NSDecimalNumber *)roundToScale:(NSUInteger)scale mode:(NSRoundingMode)roundingMode {
   NSDecimalNumberHandler * handler = [[NSDecimalNumberHandler alloc] initWithRoundingMode:roundingMode scale:scale raiseOnExactness:NO raiseOnOverflow:YES raiseOnUnderflow:YES raiseOnDivideByZero:YES];
   return [self decimalNumberByRoundingAccordingToBehavior:handler];
 }

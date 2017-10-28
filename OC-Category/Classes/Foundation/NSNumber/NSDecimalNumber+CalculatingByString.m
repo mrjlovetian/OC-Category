@@ -27,15 +27,11 @@ void initOperators();
 
 @implementation NSDecimalNumber (CalculatingByString)
 
-+ (NSDecimalNumber *)decimalNumberWithEquation:(NSString *)equation decimalNumbers:(NSDictionary *)numbers
-{
++ (NSDecimalNumber *)decimalNumberWithEquation:(NSString *)equation decimalNumbers:(NSDictionary *)numbers {
     NSDecimalNumber *left, *right;
-    
     NSMutableArray *equationStack = [RPNFromTokens(tokenizeEquation(equation, numbers)) mutableCopy];
     NSMutableArray *resultArray = [@[] mutableCopy];
-    
     NSString *token;
-    
     initOperators();
     
     do {
@@ -71,9 +67,6 @@ void initOperators();
         [equationStack removeObjectAtIndex:0];
         
     } while (equationStack.count > 0);
-    
-    
-    
     return [NSDecimalNumber decimalNumberWithString:[resultArray objectAtIndex:0]];
 }
 
@@ -83,8 +76,7 @@ void initOperators();
 #pragma mark - helper functions
 
 // find the token type for a character
-tokenType typeForCharacter (const unichar character)
-{
+tokenType typeForCharacter (const unichar character) {
     if ((character >= '0' && character <= '9') || character == '.') {
         return tokenTypeNumber;
         
@@ -109,16 +101,14 @@ tokenType typeForCharacter (const unichar character)
 }
 
 // find the precedence for a operator
-NSInteger precedenceForOperator (NSString *operator)
-{
+NSInteger precedenceForOperator (NSString *operator) {
     unichar operatorChar = operator.UTF8String[0];
     
     return precedenceForOperatorChar(operatorChar);
 }
 
 // find the precedence for a operator
-NSInteger precedenceForOperatorChar (const unichar operator)
-{
+NSInteger precedenceForOperatorChar (const unichar operator) {
     switch (operator) {
         case '+':
         case '-':
@@ -137,8 +127,7 @@ NSInteger precedenceForOperatorChar (const unichar operator)
 }
 
 // split the equation into token (e.g. @[@"1", @"+", @"2", @"*", @"3"])
-NSArray* tokenizeEquation (NSString *equation, NSDictionary *numbers)
-{
+NSArray* tokenizeEquation (NSString *equation, NSDictionary *numbers) {
     unichar equationChars[equation.length + 1], tempChars[equation.length + 1];
     
     tokenType lastTokenType = tokenTypeFirstLoop, currentTokenType = tokenTypeFirstLoop;
@@ -219,8 +208,7 @@ NSArray* tokenizeEquation (NSString *equation, NSDictionary *numbers)
 
 // change the tokens array into RPN (Reverse Polish notation) array
 // e.g. @[@"1", @"2", @"3", @"*", @"+"]
-NSArray* RPNFromTokens (NSArray *tokens)
-{
+NSArray* RPNFromTokens (NSArray *tokens) {
     NSMutableArray *output = [@[] mutableCopy];
     NSMutableArray *operatorStack = [@[] mutableCopy];
     NSString *operator;
@@ -292,8 +280,7 @@ NSArray* RPNFromTokens (NSArray *tokens)
 
 #pragma mark - Operators static array
 
-void initOperators()
-{
+void initOperators() {
     if (operators == nil) {
         operators = @[@"+", @"-", @"*", @"/", @"^"];
     }
