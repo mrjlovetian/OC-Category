@@ -29,60 +29,60 @@
 @property (nonatomic)     NSMutableDictionary *gestureKeysHash;
 
 // tap
--(NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback;
--(NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  numberOfTapsRequired:(NSUInteger)numberOfTapsRequired  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
--(void)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  tapGestureId:(NSString*)tapGestureId;
--(void)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  tapGestureId:(NSString*)tapGestureId  numberOfTapsRequired:(NSUInteger)numberOfTapsRequired  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
--(void)removeTapGesture:(NSString*)tapGestureId;
--(void)removeAllTapGestures;
--(void)tapHandler:(UITapGestureRecognizer*)recognizer;
+- (NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback;
+- (NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  numberOfTapsRequired:(NSUInteger)numberOfTapsRequired  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
+- (void)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  tapGestureId:(NSString*)tapGestureId;
+- (void)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback  tapGestureId:(NSString*)tapGestureId  numberOfTapsRequired:(NSUInteger)numberOfTapsRequired  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
+- (void)removeTapGesture:(NSString *)tapGestureId;
+- (void)removeAllTapGestures;
+- (void)tapHandler:(UITapGestureRecognizer*)recognizer;
 
 // pinch
--(NSString*)addPinchGestureRecognizer:(void(^)(UIPinchGestureRecognizer* recognizer, NSString* gestureId))pinchCallback;
--(void)addPinchGestureRecognizer:(void(^)(UIPinchGestureRecognizer* recognizer, NSString* gestureId))pinchCallback  pinchGestureId:(NSString*)pinchGestureId;
--(void)removePinchGesture:(NSString*)pinchGestureId;
--(void)removeAllPinchGestures;
--(void)pinchHandler:(UIPinchGestureRecognizer*)recognizer;
+- (NSString*)addPinchGestureRecognizer:(void(^)(UIPinchGestureRecognizer* recognizer, NSString* gestureId))pinchCallback;
+- (void)addPinchGestureRecognizer:(void(^)(UIPinchGestureRecognizer* recognizer, NSString* gestureId))pinchCallback  pinchGestureId:(NSString*)pinchGestureId;
+- (void)removePinchGesture:(NSString*)pinchGestureId;
+- (void)removeAllPinchGestures;
+- (void)pinchHandler:(UIPinchGestureRecognizer*)recognizer;
 
 // pan
--(NSString*)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback;
--(NSString*)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback  minimumNumberOfTouches:(NSUInteger)minimumNumberOfTouches  maximumNumberOfTouches:(NSUInteger)maximumNumberOfTouches;
--(void)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback  panGestureId:(NSString*)panGestureId  minimumNumberOfTouches:(NSUInteger)minimumNumberOfTouches  maximumNumberOfTouches:(NSUInteger)maximumNumberOfTouches;
--(void)removePanGesture:(NSString*)panGestureId;
--(void)removeAllPanGestures;
--(void)panHandler:(UIPanGestureRecognizer*)recognizer;
+- (NSString *)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback;
+- (NSString *)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback  minimumNumberOfTouches:(NSUInteger)minimumNumberOfTouches  maximumNumberOfTouches:(NSUInteger)maximumNumberOfTouches;
+- (void)addPanGestureRecognizer:(void(^)(UIPanGestureRecognizer* recognizer, NSString* gestureId))panCallback  panGestureId:(NSString*)panGestureId  minimumNumberOfTouches:(NSUInteger)minimumNumberOfTouches  maximumNumberOfTouches:(NSUInteger)maximumNumberOfTouches;
+- (void)removePanGesture:(NSString*)panGestureId;
+- (void)removeAllPanGestures;
+- (void)panHandler:(UIPanGestureRecognizer*)recognizer;
 
 //swipe
--(NSString*)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  direction:(UISwipeGestureRecognizerDirection)direction;
--(NSString*)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  direction:(UISwipeGestureRecognizerDirection)direction  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
--(void)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  swipeGestureId:(NSString*)swipeGestureId    direction:(UISwipeGestureRecognizerDirection)direction   numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
--(void)removeSwipeGesture:(NSString*)swipeGestureId;
--(void)removeAllSwipeGestures;
--(void)swipeHandler:(UISwipeGestureRecognizer*)recognizer;
+- (NSString *)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  direction:(UISwipeGestureRecognizerDirection)direction;
+- (NSString *)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  direction:(UISwipeGestureRecognizerDirection)direction  numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
+- (void)addSwipeGestureRecognizer:(void(^)(UISwipeGestureRecognizer* recognizer, NSString* gestureId))swipeCallback  swipeGestureId:(NSString *)swipeGestureId    direction:(UISwipeGestureRecognizerDirection)direction   numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired;
+- (void)removeSwipeGesture:(NSString*)swipeGestureId;
+- (void)removeAllSwipeGestures;
+- (void)swipeHandler:(UISwipeGestureRecognizer*)recognizer;
 
 //rotation
--(NSString*)addRotationGestureRecognizer:(void(^)(UIRotationGestureRecognizer* recognizer, NSString* gestureId))rotationCallback;
--(void)addRotationGestureRecognizer:(void(^)(UIRotationGestureRecognizer* recognizer, NSString* gestureId))rotationCallback  rotationGestureId:(NSString*)rotationGestureId;
--(void)removeRotationGesture:(NSString*)rotationGestureId;
--(void)removeAllRotationGestures;
--(void)rotationHandler:(UIRotationGestureRecognizer*)recognizer;
+- (NSString *)addRotationGestureRecognizer:(void(^)(UIRotationGestureRecognizer* recognizer, NSString* gestureId))rotationCallback;
+- (void)addRotationGestureRecognizer:(void(^)(UIRotationGestureRecognizer* recognizer, NSString* gestureId))rotationCallback  rotationGestureId:(NSString *)rotationGestureId;
+- (void)removeRotationGesture:(NSString *)rotationGestureId;
+- (void)removeAllRotationGestures;
+- (void)rotationHandler:(UIRotationGestureRecognizer *)recognizer;
 
 //long press
--(NSString*)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback;
--(NSString*)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback
+- (NSString *)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback;
+- (NSString *)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback
                      numberOfTapsRequired:(NSUInteger)numberOfTapsRequired
                   numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
                      minimumPressDuration:(CFTimeInterval)minimumPressDuration
                         allowableMovement:(CGFloat)allowableMovement;
--(void)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback
-                  longPressGestureId:(NSString*)longPressGestureId
+- (void)addLongPressGestureRecognizer:(void(^)(UILongPressGestureRecognizer* recognizer, NSString* gestureId))longPressCallback
+                  longPressGestureId:(NSString *)longPressGestureId
                 numberOfTapsRequired:(NSUInteger)numberOfTapsRequired
              numberOfTouchesRequired:(NSUInteger)numberOfTouchesRequired
                 minimumPressDuration:(CFTimeInterval)minimumPressDuration
                    allowableMovement:(CGFloat)allowableMovement;
 
--(void)removeLongPressGesture:(NSString*)longPressGestureId;
--(void)removeAllLongPressGestures;
--(void)longPressHandler:(UILongPressGestureRecognizer*)recognizer;
+- (void)removeLongPressGesture:(NSString *)longPressGestureId;
+- (void)removeAllLongPressGestures;
+- (void)longPressHandler:(UILongPressGestureRecognizer*)recognizer;
 
 @end

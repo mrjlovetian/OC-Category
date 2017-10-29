@@ -8,6 +8,7 @@
 #import "UIView+Recursion.h"
 
 @implementation UIView (Recursion)
+
 /**
  *  @brief  寻找子视图
  *
@@ -27,7 +28,6 @@
     }
     return nil;
 }
-
 
 - (void)runBlockOnAllSubviews:(SubviewBlock)block {
     block(self);

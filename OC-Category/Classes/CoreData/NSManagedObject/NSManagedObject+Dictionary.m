@@ -53,6 +53,7 @@
     free(properties);
     return dictionary;
 }
+
 - (NSDictionary *)dictionary {
     NSArray *keys = [[[self entity] attributesByName] allKeys];
     NSDictionary *dict = [self dictionaryWithValuesForKeys:keys];
