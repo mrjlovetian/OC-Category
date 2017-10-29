@@ -29,7 +29,7 @@
     [self loadLocalHtml:htmlName inBundle:[NSBundle mainBundle]];
 }
 
-- (void)loadLocalHtml:(NSString*)htmlName inBundle:(NSBundle*)inBundle {
+- (void)loadLocalHtml:(NSString *)htmlName inBundle:(NSBundle *)inBundle {
     NSString *filePath = [inBundle pathForResource:htmlName ofType:nil];
     NSURL *url = [NSURL fileURLWithPath:filePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

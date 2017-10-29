@@ -19,14 +19,14 @@ static BOOL diagStat = NO;
 - (BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame {
     UIAlertView* dialogue = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Okay", @"Okay") otherButtonTitles:NSLocalizedString(@"Cancel", @"Cancel"), nil];
     [dialogue show];
-    while (dialogue.hidden==NO && dialogue.superview!=nil) {
+    while (dialogue.hidden == NO && dialogue.superview!=nil) {
         [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01f]];
     }
     return diagStat;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex==0) {
+    if (buttonIndex == 0) {
         diagStat=YES;
     } else if (buttonIndex == 1){
         diagStat=NO;
