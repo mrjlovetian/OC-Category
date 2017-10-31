@@ -11,7 +11,6 @@
 
 @implementation NSUserDefaults (iCloudSync)
 
-
 - (void)setValue:(id)value forKey:(NSString *)key iCloudSync:(BOOL)sync {
     if (sync)
         [[NSUbiquitousKeyValueStore defaultStore] setValue:value forKey:key];

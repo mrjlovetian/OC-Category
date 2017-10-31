@@ -11,6 +11,6 @@
 
 - (void)moveLogoByOffset:(CGPoint)offset;
 - (void)moveLogoToPoint:(CGPoint)point;
-- (UIView*)logo;
+- (UIView *)logo;
 
 @end

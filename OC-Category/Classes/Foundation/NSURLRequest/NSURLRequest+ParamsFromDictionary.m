@@ -39,6 +39,7 @@
     }
     return @"";
 }
+
 //These next three methods recursively break the dictionary down into its components.  Largely based on AFHTTPClient, but somewhat more readable and understandable (by me, anyway).
 + (NSArray *)queryStringComponentsFromKey:(NSString *)key value:(id)value {
     NSMutableArray *queryStringComponents = [NSMutableArray arrayWithCapacity:2];
