@@ -15,7 +15,7 @@
 
 @end
 
-NSString* const ADScrollingHandlerDidScrollBlock = @"ADScrollingHandlerDidScrollBlock";
+NSString *const ADScrollingHandlerDidScrollBlock = @"ADScrollingHandlerDidScrollBlock";
 
 @implementation ADScrollingHandler
 
