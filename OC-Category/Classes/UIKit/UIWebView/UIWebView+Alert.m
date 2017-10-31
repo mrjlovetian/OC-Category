@@ -27,9 +27,9 @@ static BOOL diagStat = NO;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        diagStat=YES;
+        diagStat = YES;
     } else if (buttonIndex == 1){
-        diagStat=NO;
+        diagStat = NO;
     }
 }
 

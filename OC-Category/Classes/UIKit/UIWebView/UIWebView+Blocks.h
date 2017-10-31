@@ -28,9 +28,9 @@
  
  @return The generated UIWebView
  */
-+ (UIWebView *) loadRequest: (NSURLRequest *) request
-                     loaded: (void (^)(UIWebView *webView)) loadedBlock
-                     failed: (void (^)(UIWebView *webView, NSError *error)) failureBlock;
++ (UIWebView *)loadRequest:(NSURLRequest *)request
+                    loaded:(void (^)(UIWebView *webView))loadedBlock
+                    failed:(void (^)(UIWebView *webView, NSError *error))failureBlock;
 
 /**
  Load a request and get notified when a web page is loaded successfully, fails to load, or started to load. Also, set whether or not a certain page should be loaded.
@@ -43,11 +43,11 @@
  
  @return The generated UIWebView
  */
-+ (UIWebView *) loadRequest: (NSURLRequest *) request
-                     loaded: (void (^)(UIWebView *webView)) loadedBlock
-                     failed: (void (^)(UIWebView *webView, NSError *error)) failureBlock
-                loadStarted: (void (^)(UIWebView *webView)) loadStartedBlock
-                 shouldLoad: (BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType)) shouldLoadBlock;
++ (UIWebView *)loadRequest:(NSURLRequest *)request
+                    loaded:(void (^)(UIWebView *webView))loadedBlock
+                    failed:(void (^)(UIWebView *webView, NSError *error))failureBlock
+               loadStarted:(void (^)(UIWebView *webView))loadStartedBlock
+                shouldLoad:(BOOL (^)(UIWebView *webView, NSURLRequest *request, UIWebViewNavigationType navigationType)) shouldLoadBlock;
 
 /**
  Load a HTML string and get notified when the web page is loaded successfully or failed to load.
@@ -59,8 +59,8 @@
  @return The generated UIWebView
  */
 + (UIWebView *)loadHTMLString:(NSString *)htmlString
-                      loaded:(void (^)(UIWebView *webView))loadedBlock
-                      failed:(void (^)(UIWebView *webView, NSError *error))failureBlock;
+                       loaded:(void (^)(UIWebView *webView))loadedBlock
+                       failed:(void (^)(UIWebView *webView, NSError *error))failureBlock;
 
 /**
  Load a HTML string and get notified when the web page is loaded successfully, failed to load or started to load.

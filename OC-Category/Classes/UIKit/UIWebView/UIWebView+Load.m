@@ -25,7 +25,7 @@
  *
  *  @param htmlName webview名称
  */
-- (void)loadLocalHtml:(NSString*)htmlName {
+- (void)loadLocalHtml:(NSString *)htmlName {
     [self loadLocalHtml:htmlName inBundle:[NSBundle mainBundle]];
 }
 

@@ -56,7 +56,7 @@
 
 /// 改变背景颜色
 - (void)setBackgroundColor:(UIColor *)color {
-    NSString * jsString = [NSString stringWithFormat:@"document.body.style.backgroundColor = '%@'",[color webColorString]];
+    NSString *jsString = [NSString stringWithFormat:@"document.body.style.backgroundColor = '%@'",[color webColorString]];
     [self stringByEvaluatingJavaScriptFromString:jsString];
 }
 

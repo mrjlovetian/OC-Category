@@ -14,9 +14,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Constants
 
-NSString* const affiliateTokenKey = @"at";
-NSString* const campaignTokenKey = @"ct";
-NSString* const iTunesAppleString = @"itunes.apple.com";
+NSString * const affiliateTokenKey = @"at";
+NSString * const campaignTokenKey = @"ct";
+NSString * const iTunesAppleString = @"itunes.apple.com";
 
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Interface
@@ -65,17 +65,17 @@ NSString* const iTunesAppleString = @"itunes.apple.com";
 #pragma mark - Public methods
 
 + (NSURL *)appURLForIdentifier:(NSInteger)identifier {
-    NSString* appURLString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%li", (long)identifier];
+    NSString *appURLString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%li", (long)identifier];
     return [NSURL URLWithString:appURLString];
 }
 
 + (void)openAppReviewURLForIdentifier:(NSInteger)identifier {
-    NSString* reviewURLString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%li", (long)identifier];
+    NSString *reviewURLString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%li", (long)identifier];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:reviewURLString]];
 }
 
 + (void)openAppURLForIdentifier:(NSInteger)identifier {
-    NSString* appURLString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%li", (long)identifier];
+    NSString *appURLString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%li", (long)identifier];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURLString]];
 }
 
@@ -83,12 +83,12 @@ NSString* const iTunesAppleString = @"itunes.apple.com";
     return ([URLString rangeOfString:iTunesAppleString].location != NSNotFound);
 }
 
-+ (NSInteger)IDFromITunesURL:(NSString*)URLString {
-    NSError* error;
-    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"id\\d+" options:0 error:&error];
-    NSTextCheckingResult* match = [regex firstMatchInString:URLString options:0 range:NSMakeRange(0, URLString.length)];
++ (NSInteger)IDFromITunesURL:(NSString *)URLString {
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"id\\d+" options:0 error:&error];
+    NSTextCheckingResult *match = [regex firstMatchInString:URLString options:0 range:NSMakeRange(0, URLString.length)];
 
-    NSString* idString = [URLString substringWithRange:match.range];
+    NSString *idString = [URLString substringWithRange:match.range];
     if (idString.length > 0) {
         idString = [idString stringByReplacingOccurrencesOfString:@"id" withString:@""];
     }
@@ -98,11 +98,11 @@ NSString* const iTunesAppleString = @"itunes.apple.com";
 
 #pragma mark - Associated objects
 
-- (void)setCampaignToken:(NSString*)campaignToken {
+- (void)setCampaignToken:(NSString *)campaignToken {
     objc_setAssociatedObject(self, @selector(setCampaignToken:), campaignToken, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString*)campaignToken {
+- (NSString *)campaignToken {
     return objc_getAssociatedObject(self, @selector(setCampaignToken:));
 }
 
