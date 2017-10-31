@@ -43,7 +43,7 @@ static void *SubstitutedViewAssociationKey = &SubstitutedViewAssociationKey;
 }
 
 - (void)stopAnimating {
-    NSNumber* positionToRestore = objc_getAssociatedObject(self, LoaderPositionAssociationKey);
+    NSNumber *positionToRestore = objc_getAssociatedObject(self, LoaderPositionAssociationKey);
     id componentToRestore = objc_getAssociatedObject(self, SubstitutedViewAssociationKey);
     
     // restore UI if animation was in a progress
