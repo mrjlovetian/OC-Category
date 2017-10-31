@@ -27,7 +27,6 @@
   if (maxSize.height == CGSizeZero.height) {
     maxSize.width = [[UIScreen mainScreen] bounds].size.width - 40.0;
     maxSize.height = MAXFLOAT; // infinite height
-    
   }
   
   // Now, calculate the size of the label constrained to maxSize
@@ -44,7 +43,7 @@
   }
   
   // Create rect
-  CGRect newFrameSize = CGRectMake(  [self frame].origin.x
+  CGRect newFrameSize = CGRectMake([self frame].origin.x
                                    , [self frame].origin.y
                                    , tempSize.width
                                    , tempSize.height);

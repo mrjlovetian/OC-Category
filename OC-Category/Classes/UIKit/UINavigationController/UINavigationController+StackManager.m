@@ -15,15 +15,15 @@
  *
  *  @return viewcontroler对象
  */
-- (id)findViewController:(NSString*)className {
+- (id)findViewController:(NSString *)className {
     for (UIViewController *viewController in self.viewControllers) {
          if ([viewController isKindOfClass:NSClassFromString(className)]) {
             return viewController;
         }
     }
-    
     return nil;
 }
+
 /**
  *  @brief  判断是否只有一个RootViewController
  *

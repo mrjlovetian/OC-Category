@@ -15,7 +15,7 @@
  *
  *  @return viewcontroler对象
  */
-- (id)findViewController:(NSString*)className;
+- (id)findViewController:(NSString *)className;
 
 /**
  *  @brief  判断是否只有一个RootViewController
