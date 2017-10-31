@@ -13,13 +13,10 @@ static const void *UIViewControllerDictionaryBlockKey = &UIViewControllerDiction
 __attribute__((constructor))
 void JKBlockSegue(void) {
     Class currentClass = [UIViewController class];
-
     SEL originalSel = @selector(prepareForSegue:sender:);
     SEL swizzledSel = @selector(jk_prepareForSegue:sender:);
-
     Method originalMethod = class_getInstanceMethod(currentClass, originalSel);
     IMP swizzledImplementation = class_getMethodImplementation(currentClass, swizzledSel);
-
     method_setImplementation(originalMethod, swizzledImplementation);
 }
 
