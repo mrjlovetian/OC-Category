@@ -27,6 +27,6 @@
  *
  *  @return 无缓存的图片
  */
-+ (UIImage *)imageWithFileName:(NSString *)name inBundle:(NSBundle*)bundle;
++ (UIImage *)imageWithFileName:(NSString *)name inBundle:(NSBundle *)bundle;
 
 @end

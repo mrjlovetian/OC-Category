@@ -57,6 +57,4 @@
  */
 + (NSArray *)registerFontFromURL:(NSURL *)fontURL;
 
-
-
 @end

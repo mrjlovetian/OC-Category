@@ -50,7 +50,7 @@
  *
  *  @return 获得灰度图片
  */
-+ (UIImage*)covertToGrayImageFromImage:(UIImage*)sourceImage;
++ (UIImage *)covertToGrayImageFromImage:(UIImage *)sourceImage;
 
 
 @end
