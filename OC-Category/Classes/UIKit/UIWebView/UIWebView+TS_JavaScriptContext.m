@@ -12,41 +12,41 @@
 
 static const char kTSJavaScriptContext[] = "ts_javaScriptContext";
 
-static NSHashTable* g_webViews = nil;
+static NSHashTable *g_webViews = nil;
 
 @interface UIWebView (TS_JavaScriptCore_private)
 
-- (void) ts_didCreateJavaScriptContext:(JSContext *)ts_javaScriptContext;
+- (void)ts_didCreateJavaScriptContext:(JSContext *)ts_javaScriptContext;
 
 @end
 
 @protocol TSWebFrame <NSObject>
 
-- (id) parentFrame;
+- (id)parentFrame;
 
 @end
 
 @implementation NSObject (TS_JavaScriptContext)
 
-- (void) webView: (id) unused didCreateJavaScriptContext: (JSContext*) ctx forFrame: (id<TSWebFrame>) frame {
+- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<TSWebFrame>) frame {
     NSParameterAssert( [frame respondsToSelector: @selector( parentFrame )] );
     // only interested in root-level frames
-    if ( [frame respondsToSelector: @selector( parentFrame) ] && [frame parentFrame] != nil )
+    if ([frame respondsToSelector: @selector(parentFrame)] && [frame parentFrame] != nil )
         return;
     void (^notifyDidCreateJavaScriptContext)() = ^{
         
-        for ( UIWebView* webView in g_webViews ) {
+        for (UIWebView* webView in g_webViews) {
             NSString* cookie = [NSString stringWithFormat: @"ts_jscWebView_%lud", (unsigned long)webView.hash ];
             
             [webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat: @"var %@ = '%@'", cookie, cookie ] ];
             
-            if ( [ctx[cookie].toString isEqualToString: cookie] ) {
+            if ([ctx[cookie].toString isEqualToString: cookie]) {
                 [webView ts_didCreateJavaScriptContext: ctx];
                 return;
             }
         }
     };
-    if ( [NSThread isMainThread] ) {
+    if ([NSThread isMainThread]) {
         notifyDidCreateJavaScriptContext();
     } else {
         dispatch_async( dispatch_get_main_queue(), notifyDidCreateJavaScriptContext );
@@ -79,8 +79,8 @@ static NSHashTable* g_webViews = nil;
     }
 }
 
-- (JSContext*) ts_javaScriptContext {
-    JSContext* javaScriptContext = objc_getAssociatedObject( self, kTSJavaScriptContext );
+- (JSContext *) ts_javaScriptContext {
+    JSContext * javaScriptContext = objc_getAssociatedObject( self, kTSJavaScriptContext );
     return javaScriptContext;
 }
 

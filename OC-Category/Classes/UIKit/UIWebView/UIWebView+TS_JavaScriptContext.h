@@ -12,12 +12,12 @@
 
 @optional
 
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx;
+- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *) ctx;
 
 @end
 
 @interface UIWebView (TS_JavaScriptContext)
 
-@property (nonatomic, readonly) JSContext* ts_javaScriptContext;
+@property (nonatomic, readonly) JSContext *ts_javaScriptContext;
 
 @end
