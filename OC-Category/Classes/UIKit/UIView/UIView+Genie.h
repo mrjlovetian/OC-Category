@@ -20,7 +20,6 @@ typedef NS_ENUM(NSUInteger, BCRectEdge) {
  * After the animation has completed the view's transform will be changed to match the destination's rect, i.e.
  * view's transform (and thus the frame) will change, however the bounds and center will *not* change.
  */
-
 - (void)genieInTransitionWithDuration:(NSTimeInterval)duration
                       destinationRect:(CGRect)destRect
                       destinationEdge:(BCRectEdge)destEdge
@@ -31,7 +30,6 @@ typedef NS_ENUM(NSUInteger, BCRectEdge) {
 /*
  * After the animation has completed the view's transform will be changed to CGAffineTransformIdentity.
  */
-
 - (void)genieOutTransitionWithDuration:(NSTimeInterval)duration
                              startRect:(CGRect)startRect
                              startEdge:(BCRectEdge)startEdge
