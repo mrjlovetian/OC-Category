@@ -17,7 +17,7 @@
  *
  *  @return data
  */
-- (NSData *)encryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
+- (NSData *)encryptedWithAESUsingKey:(NSString *)key andIV:(NSData *)iv {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     size_t dataMoved;
     NSMutableData *encryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSizeAES128];
@@ -48,7 +48,7 @@
  *
  *  @return 解密后数据
  */
-- (NSData*)decryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
+- (NSData *)decryptedWithAESUsingKey:(NSString *)key andIV:(NSData *)iv {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     size_t dataMoved;
     NSMutableData *decryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSizeAES128];
@@ -80,7 +80,7 @@
  *
  *  @return data
  */
-- (NSData*)encryptedWith3DESUsingKey:(NSString*)key andIV:(NSData*)iv {
+- (NSData *)encryptedWith3DESUsingKey:(NSString *)key andIV:(NSData *)iv {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     size_t dataMoved;
     NSMutableData *encryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSize3DES];
@@ -110,7 +110,7 @@
  *
  *  @return 解密后数据
  */
-- (NSData*)decryptedWith3DESUsingKey:(NSString*)key andIV:(NSData*)iv {
+- (NSData *)decryptedWith3DESUsingKey:(NSString *)key andIV:(NSData *)iv {
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     size_t dataMoved;
     NSMutableData *decryptedData = [NSMutableData dataWithLength:self.length + kCCBlockSize3DES];

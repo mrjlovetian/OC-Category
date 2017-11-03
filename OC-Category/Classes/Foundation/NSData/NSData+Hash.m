@@ -16,6 +16,7 @@
     CC_MD5(self.bytes, (CC_LONG)self.length, bytes);
     return [NSData dataWithBytes:bytes length:CC_MD5_DIGEST_LENGTH];
 }
+
 /**
  *  @brief  sha1Data NSData
  */
@@ -24,6 +25,7 @@
     CC_SHA1(self.bytes, (CC_LONG)self.length, bytes);
     return [NSData dataWithBytes:bytes length:CC_SHA1_DIGEST_LENGTH];
 }
+
 /**
  *  @brief  sha256Data NSData
  */
@@ -32,6 +34,7 @@
     CC_SHA256(self.bytes, (CC_LONG)self.length, bytes);
     return [NSData dataWithBytes:bytes length:CC_SHA256_DIGEST_LENGTH];
 }
+
 /**
  *  @brief  sha512Data NSData
  */
@@ -40,6 +43,7 @@
     CC_SHA512(self.bytes, (CC_LONG)self.length, bytes);
     return [NSData dataWithBytes:bytes length:CC_SHA512_DIGEST_LENGTH];
 }
+
 /**
  *  @brief  md5 NSData
  *
@@ -50,6 +54,7 @@
 - (NSData *)hmacMD5DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
+
 /**
  *  @brief  sha1Data NSData
  *
@@ -57,8 +62,7 @@
  *
  *  @return 结果
  */
-- (NSData *)hmacSHA1DataWithKey:(NSData *)key
-{
+- (NSData *)hmacSHA1DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
 /**
@@ -71,6 +75,7 @@
 - (NSData *)hmacSHA256DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
+
 /**
  *  @brief  sha512Data NSData
  *
@@ -81,7 +86,6 @@
 - (NSData *)hmacSHA512DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
-
 
 - (NSData *)hmacDataUsingAlg:(CCHmacAlgorithm)alg withKey:(NSData *)key {
     size_t size;
