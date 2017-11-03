@@ -9,7 +9,7 @@
 
 @implementation NSArray (SafeAccess)
     
--(id)objectWithIndex:(NSUInteger)index {
+- (id)objectWithIndex:(NSUInteger)index {
     if (index <self.count) {
         return self[index];
     } else {

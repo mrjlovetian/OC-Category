@@ -10,7 +10,7 @@
 
 @implementation CLLocation (CH1903)
 
-- (id) initWithCH1903x:(double)x y:(double)y {
+- (id)initWithCH1903x:(double)x y:(double)y {
     self = [self initWithLatitude:[CLLocation CHtoWGSlatWithX:x y:y] longitude:[CLLocation CHtoWGSlongWithX:x y:y]];
     if (self != nil) {
     }

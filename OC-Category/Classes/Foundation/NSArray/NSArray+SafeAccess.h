@@ -16,7 +16,7 @@
  *
  *  @return
  */
--(id)objectWithIndex:(NSUInteger)index;
+- (id)objectWithIndex:(NSUInteger)index;
 
 /**
  *  数组描述，字符串
@@ -208,82 +208,83 @@
  *
  *  @param i
  */
--(void)addObj:(id)i;
+- (void)addObj:(id)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addString:(NSString*)i;
+- (void)addString:(NSString*)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addBool:(BOOL)i;
+- (void)addBool:(BOOL)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addInt:(int)i;
+- (void)addInt:(int)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addInteger:(NSInteger)i;
+- (void)addInteger:(NSInteger)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addUnsignedInteger:(NSUInteger)i;
+- (void)addUnsignedInteger:(NSUInteger)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addCGFloat:(CGFloat)f;
+- (void)addCGFloat:(CGFloat)f;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addChar:(char)c;
+- (void)addChar:(char)c;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addFloat:(float)i;
+- (void)addFloat:(float)i;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addPoint:(CGPoint)o;
+- (void)addPoint:(CGPoint)o;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addSize:(CGSize)o;
+- (void)addSize:(CGSize)o;
 
 /**
  *  可变数组，添加数组
  *
  *  @param i
  */
--(void)addRect:(CGRect)o;
+- (void)addRect:(CGRect)o;
+
 @end
