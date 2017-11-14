@@ -56,12 +56,9 @@
     if (([self isValidateByRegex:CM])
         || ([self isValidateByRegex:CU])
         || ([self isValidateByRegex:CT])
-        || ([self isValidateByRegex:PHS]))
-    {
+        || ([self isValidateByRegex:PHS])) {
         return YES;
-    }
-    else
-    {
+    } else {
         return NO;
     }
 }
@@ -153,7 +150,7 @@
     int length =0;
     if (!value) {
         return NO;
-    }else {
+    } else {
         length = (int)value.length;
         
         if (length !=15 && length !=18) {
@@ -240,8 +237,6 @@
             return NO;
     }
 }
-
-
 
 /** 银行卡号有效性问题Luhn算法
  *  现行 16 位银联卡现行卡号开头 6 位是 622126～622925 之间的，7 到 15 位是银行自定义的，

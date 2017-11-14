@@ -13,13 +13,11 @@
 
 @implementation NSInvocation (Bb)
 
-+ (NSString*)encodeType:(char *)encodedType
-{
++ (NSString*)encodeType:(char *)encodedType {
     return [NSString stringWithUTF8String:encodedType];
 }
 
-+ (NSArray *)getClassNamesMatchingPattern:(NSString *)matchingPattern
-{
++ (NSArray *)getClassNamesMatchingPattern:(NSString *)matchingPattern {
     NSArray *allClasses = [NSInvocation getClassList];
     if ( nil == allClasses || allClasses.count == 0 ) {
         return nil;
@@ -31,8 +29,7 @@
     return filtered;
 }
 
-+ (NSArray *)getClassList
-{
++ (NSArray *)getClassList {
     unsigned int count;
     objc_copyClassList(&count);
     Class *buffer = (Class *)malloc(sizeof(Class)*count);
@@ -49,8 +46,7 @@
     return [NSArray arrayWithArray:temp];
 }
 
-+ (NSArray *)getMethodListForClass:(NSString *)className
-{
++ (NSArray *)getMethodListForClass:(NSString *)className {
     Class class = NSClassFromString(className);
     unsigned int count = 0;
     class_copyMethodList(class, &count);
@@ -77,8 +73,7 @@
     
 }
 
-+ (NSArray *)getMethodListForClass:(NSString *)className matchingPattern:(NSString *)matchingPattern
-{
++ (NSArray *)getMethodListForClass:(NSString *)className matchingPattern:(NSString *)matchingPattern {
     NSArray *methodList = [NSInvocation getMethodListForClass:className];
     
     if ( nil == methodList || methodList.count == 0 ) {
@@ -91,8 +86,7 @@
     return filtered;
 }
 
-+ (Class)lookupClass:(NSString *)className
-{
++ (Class)lookupClass:(NSString *)className {
     NSArray *classList = [NSInvocation getClassList];
     
     if ( [classList containsObject:className] == NO ) {
@@ -108,8 +102,7 @@
     return NSClassFromString(className);
 }
 
-+ (SEL)lookupSelector:(NSString *)selectorName forClass:(Class)class
-{
++ (SEL)lookupSelector:(NSString *)selectorName forClass:(Class)class {
     NSString *match = [NSString stringWithFormat:@"%@",selectorName];
     NSArray *methodList = [NSInvocation getMethodListForClass:NSStringFromClass(class) matchingPattern:match];
     NSUInteger count = methodList.count;
@@ -126,8 +119,7 @@
     }
 }
 
-+ (id)doInstanceMethodTarget:(id)target selectorName:(NSString *)selectorName args:(NSArray *)args
-{
++ (id)doInstanceMethodTarget:(id)target selectorName:(NSString *)selectorName args:(NSArray *)args {
     if ( nil == target || nil == selectorName ) {
         return nil;
     }
@@ -156,8 +148,7 @@
 
 + (id)doClassMethod:(NSString *)className
        selectorName:(NSString *)selectorName
-               args:(NSArray *)args
-{
+               args:(NSArray *)args {
     if ( nil == className || nil == selectorName ) {
         return nil;
     }
@@ -181,8 +172,7 @@
     return result;
 }
 
-- (void)setArgumentsWithArray:(NSArray *)array
-{
+- (void)setArgumentsWithArray:(NSArray *)array {
     if (nil != array && array.count > 0) {
         NSUInteger numargs = [self.methodSignature numberOfArguments] - 2;
         if (array.count != numargs) {
@@ -196,8 +186,7 @@
     }
 }
 
-- (void)setArgumentWithObject:(id)object atIndex:(NSUInteger)index
-{
+- (void)setArgumentWithObject:(id)object atIndex:(NSUInteger)index {
     NSInteger argIdx = 2+index;
     NSString *type = [NSString stringWithUTF8String:[self.methodSignature getArgumentTypeAtIndex:argIdx]];
     id arg = object;
@@ -265,8 +254,7 @@
 
 }
 
-- (id)getEncodedReturnValue
-{
+- (id)getEncodedReturnValue {
     id result = nil;
     NSString *type = [NSString stringWithUTF8String:[self.methodSignature methodReturnType]];
     
@@ -361,8 +349,7 @@
     return result;
 }
 
-- (id)getArgAtIndex:(NSUInteger)index fromArray:(NSArray *)array
-{
+- (id)getArgAtIndex:(NSUInteger)index fromArray:(NSArray *)array {
     id result = nil;
     NSUInteger argIndex = index+2;
     NSString *type = [NSString stringWithUTF8String:[self.methodSignature getArgumentTypeAtIndex:argIndex]];

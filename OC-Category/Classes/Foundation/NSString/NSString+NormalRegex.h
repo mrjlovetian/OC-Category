@@ -85,6 +85,7 @@
  *  手机号码的有效性:分电信、联通、移动和小灵通
  */
 - (BOOL)isMobileNumberClassification;
+
 /**
  *  手机号有效性
  */

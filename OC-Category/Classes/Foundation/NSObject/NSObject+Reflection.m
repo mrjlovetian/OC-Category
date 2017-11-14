@@ -74,9 +74,7 @@
     objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
     for (int i = 0; i < propertyCount; i++) {
         [propertieArray addObject:({
-            
             NSDictionary *dictionary = [self dictionaryWithProperty:properties[i]];
-            
             dictionary;
         })];
     }
@@ -124,10 +122,10 @@
     return array;
 }
 
-- (NSArray*)methodList {
+- (NSArray *)methodList {
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
-    Method *methods= class_copyMethodList([self class], &count);
+    Method *methods = class_copyMethodList([self class], &count);
     for (int i = 0; i < count ; i++) {
         SEL name = method_getName(methods[i]);
         NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
@@ -155,7 +153,7 @@
         const char *returnType =method_copyReturnType(method);
        
         NSMutableArray *arguments = [NSMutableArray array];
-        for (int index=0; index<argumentsCount; index++) {
+        for (int index = 0; index<argumentsCount; index++) {
             // 获取方法的指定位置参数的类型字符串
           char *arg =   method_copyArgumentType(method,index);
 //            NSString *argString = [NSString stringWithCString:arg encoding:NSUTF8StringEncoding];
@@ -181,7 +179,7 @@
 + (NSArray *)methodList {
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
-    Method * methods= class_copyMethodList([self class], &count);
+    Method * methods = class_copyMethodList([self class], &count);
     for (int i = 0; i < count ; i++)
     {
         SEL name = method_getName(methods[i]);

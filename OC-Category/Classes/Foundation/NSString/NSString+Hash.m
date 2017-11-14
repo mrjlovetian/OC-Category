@@ -84,4 +84,5 @@
         [mutableString appendFormat:@"%02x", bytes[i]];
     return [NSString stringWithString:mutableString];
 }
+
 @end

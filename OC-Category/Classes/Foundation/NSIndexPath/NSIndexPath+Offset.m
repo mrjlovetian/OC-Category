@@ -11,40 +11,34 @@
 
 @implementation NSIndexPath (Offset)
 #pragma mark - Offset
-- (NSIndexPath *)previousRow
-{
+- (NSIndexPath *)previousRow {
     return [NSIndexPath indexPathForRow:self.row - 1
                               inSection:self.section];
 }
 
-- (NSIndexPath *)nextRow
-{
+- (NSIndexPath *)nextRow {
     return [NSIndexPath indexPathForRow:self.row + 1
                               inSection:self.section];
 }
 
-- (NSIndexPath *)previousItem
-{
+- (NSIndexPath *)previousItem {
     return [NSIndexPath indexPathForItem:self.item - 1
                                inSection:self.section];
 }
 
 
-- (NSIndexPath *)nextItem
-{
+- (NSIndexPath *)nextItem {
     return [NSIndexPath indexPathForItem:self.item + 1
                                inSection:self.section];
 }
 
 
-- (NSIndexPath *)nextSection
-{
+- (NSIndexPath *)nextSection {
     return [NSIndexPath indexPathForRow:self.row
                               inSection:self.section + 1];
 }
 
-- (NSIndexPath *)previousSection
-{
+- (NSIndexPath *)previousSection {
     return [NSIndexPath indexPathForRow:self.row
                               inSection:self.section - 1];
 }
