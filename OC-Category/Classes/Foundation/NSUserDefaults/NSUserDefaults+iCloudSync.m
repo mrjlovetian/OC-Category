@@ -60,8 +60,6 @@
     return [self removeObjectForKey:key];
 }
 
-
-
 - (BOOL)synchronizeAlsoiCloudSync:(BOOL)sync {
     BOOL res = true;
     if (sync)

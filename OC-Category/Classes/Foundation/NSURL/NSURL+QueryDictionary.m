@@ -15,17 +15,16 @@ static NSString *const kFragmentBegin       = @"#";
 
 @implementation NSURL (URLQuery)
 
-- (NSDictionary*) queryDictionary {
+- (NSDictionary *)queryDictionary {
   return self.query.URLQueryDictionary;
 }
 
-- (NSURL*) URLByAppendingQueryDictionary:(NSDictionary*) queryDictionary {
+- (NSURL*)URLByAppendingQueryDictionary:(NSDictionary*) queryDictionary {
   return [self URLByAppendingQueryDictionary:queryDictionary withSortedKeys:NO];
 }
 
 - (NSURL *)URLByAppendingQueryDictionary:(NSDictionary *)queryDictionary
-                          withSortedKeys:(BOOL)sortedKeys
-{
+                          withSortedKeys:(BOOL)sortedKeys {
   NSMutableArray *queries = [self.query length] > 0 ? @[self.query].mutableCopy : @[].mutableCopy;
   NSString *dictionaryQuery = [queryDictionary URLQueryStringWithSortedKeys:sortedKeys];
   if (dictionaryQuery) {
@@ -48,7 +47,7 @@ static NSString *const kFragmentBegin       = @"#";
   return self;
 }
 
-- (NSURL*) URLByRemovingQuery {
+- (NSURL*)URLByRemovingQuery {
   NSArray *queryComponents = [self.absoluteString componentsSeparatedByString:kQueryBegin];
   if (queryComponents.count) {
     return [NSURL URLWithString:queryComponents.firstObject];
@@ -60,9 +59,8 @@ static NSString *const kFragmentBegin       = @"#";
   return [self URLByReplacingQueryWithDictionary:queryDictionary withSortedKeys:NO];
 }
 
-- (NSURL*) URLByReplacingQueryWithDictionary:(NSDictionary*) queryDictionary
-                                 withSortedKeys:(BOOL) sortedKeys
-{
+- (NSURL*)URLByReplacingQueryWithDictionary:(NSDictionary*) queryDictionary
+                                 withSortedKeys:(BOOL) sortedKeys {
   NSURL *stripped = [self URLByRemovingQuery];
   return [stripped URLByAppendingQueryDictionary:queryDictionary withSortedKeys:sortedKeys];
 }
@@ -73,7 +71,7 @@ static NSString *const kFragmentBegin       = @"#";
 
 @implementation NSString (URLQuery)
 
-- (NSDictionary*) URLQueryDictionary {
+- (NSDictionary*)URLQueryDictionary {
   NSMutableDictionary *mute = @{}.mutableCopy;
   for (NSString *query in [self componentsSeparatedByString:kQuerySeparator]) {
     NSArray *components = [query componentsSeparatedByString:kQueryDivider];
@@ -112,7 +110,7 @@ static inline NSString *URLEscape(NSString *string);
   return [self URLQueryStringWithSortedKeys:NO];
 }
 
-- (NSString*) URLQueryStringWithSortedKeys:(BOOL)sortedKeys {
+- (NSString*)URLQueryStringWithSortedKeys:(BOOL)sortedKeys {
   NSMutableString *queryString = @"".mutableCopy;
   NSArray *keys = sortedKeys ? [self.allKeys sortedArrayUsingSelector:@selector(compare:)] : self.allKeys;
   for (NSString *key in keys) {
