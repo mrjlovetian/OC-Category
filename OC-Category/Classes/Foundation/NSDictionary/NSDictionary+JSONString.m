@@ -8,12 +8,13 @@
 #import "NSDictionary+JSONString.h"
 
 @implementation NSDictionary (JSONString)
+
 /**
  *  @brief NSDictionary转换成JSON字符串
  *
  *  @return  JSON字符串
  */
--(NSString *)JSONString{
+- (NSString *)JSONString {
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
                                                        options:NSJSONWritingPrettyPrinted
@@ -27,4 +28,5 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     return jsonString;
 }
+
 @end

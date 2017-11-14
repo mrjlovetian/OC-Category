@@ -345,7 +345,6 @@
         [self getReturnValue:&returnVal];
         result = [NSValue valueWithUIEdgeInsets:returnVal];
     }
-    
     return result;
 }
 

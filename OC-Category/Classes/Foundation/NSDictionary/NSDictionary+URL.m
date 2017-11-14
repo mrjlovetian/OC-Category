@@ -36,8 +36,7 @@
  *
  *  @return url 参数字符串
  */
-- (NSString *)URLQueryString 
-{
+- (NSString *)URLQueryString {
     NSMutableString *string = [NSMutableString string];
     for (NSString *key in [self allKeys]) {
         if ([string length]) {
@@ -51,4 +50,5 @@
     }
     return string;
 }
+
 @end

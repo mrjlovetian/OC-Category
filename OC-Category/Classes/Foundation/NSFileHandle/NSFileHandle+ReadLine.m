@@ -33,14 +33,12 @@
     BOOL hasData = YES;
     BOOL lineBreakFound = NO;
     
-    while (lineBreakFound == NO && hasData == YES)
-    {
+    while (lineBreakFound == NO && hasData == YES) {
         // Fill our buffer with data
         lineData = [self readDataOfLength:bufferSize];
         
         // If our buffer gets some data, proceed
-        if ([lineData length] > 0)
-        {
+        if ([lineData length] > 0) {
             // Get a pointer to our buffer's raw data
             const char *buffer = [lineData bytes];
             
@@ -48,32 +46,25 @@
             for (int i = 0; i < [lineData length]; i++)
             {
                 // If the current character matches a character in the delimiter sequence...
-                if (buffer[i] == delimiter[delimiterIndex])
-                {
+                if (buffer[i] == delimiter[delimiterIndex]) {
                     delimiterIndex++; // Move to the next char of the delimiter sequence
                     
-                    if (delimiterIndex >= [delimiterData length])
-                    {
+                    if (delimiterIndex >= [delimiterData length]) {
                         // If we've found all of the delimiter characters, break out of the loop
                         lineBreakFound = YES;
                         positionOffset += i + 1;
                         break;
                     }
-                }
-                else
-                {
+                } else {
                     // Otherwise, reset the current delimiter character offset
                     delimiterIndex = 0;
                 }
             }
             
-            if (lineBreakFound == NO)
-            {
+            if (lineBreakFound == NO) {
                 positionOffset += [lineData length];
             }
-        }
-        else
-        {
+        } else {
             hasData = NO;
             break;
         }
