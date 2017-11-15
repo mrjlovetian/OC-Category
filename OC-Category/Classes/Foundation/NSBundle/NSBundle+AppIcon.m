@@ -9,7 +9,7 @@
 
 @implementation NSBundle (AppIcon)
     
-- (NSString*)appIconPath {
+- (NSString *)appIconPath {
     NSString* iconFilename = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIconFile"] ;
     NSString* iconBasename = [iconFilename stringByDeletingPathExtension] ;
     NSString* iconExtension = [iconFilename pathExtension] ;
@@ -17,7 +17,7 @@
                                            ofType:iconExtension] ;
 }
 
-- (UIImage*)appIcon {
+- (UIImag e*)appIcon {
     UIImage*appIcon = [[UIImage alloc] initWithContentsOfFile:[self appIconPath]] ;
     return appIcon;
 }

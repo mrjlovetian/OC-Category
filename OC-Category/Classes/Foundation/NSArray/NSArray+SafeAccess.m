@@ -244,13 +244,13 @@
 @implementation NSMutableArray (SafeAccess)
     
 - (void)addObj:(id)i {
-    if (i!=nil) {
+    if (i != nil) {
         [self addObject:i];
     }
 }
 
 - (void)addString:(NSString*)i {
-    if (i!=nil) {
+    if (i != nil) {
         [self addObject:i];
     }
 }
