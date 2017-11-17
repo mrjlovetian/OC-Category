@@ -17,7 +17,7 @@
                                            ofType:iconExtension] ;
 }
 
-- (UIImag e*)appIcon {
+- (UIImage*)appIcon {
     UIImage*appIcon = [[UIImage alloc] initWithContentsOfFile:[self appIconPath]] ;
     return appIcon;
 }
