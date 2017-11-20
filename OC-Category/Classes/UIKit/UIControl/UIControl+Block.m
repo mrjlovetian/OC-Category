@@ -37,18 +37,18 @@
 // internal framework use
 // UIControlEventAllEvents           = 0xFFFFFFFF
 
-#define UICONTROL_EVENT(methodName, eventName)                                \
--(void)methodName : (void (^)(void))eventBlock {                              \
+#define UICONTROL_EVENT(methodName, eventName)                                 \
+- (void)methodName : (void (^)(void))eventBlock {                              \
     objc_setAssociatedObject(self, @selector(methodName:), eventBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);\
-    [self addTarget:self                                                        \
-    action:@selector(methodName##Action:)                                       \
-    forControlEvents:UIControlEvent##eventName];                                \
-}                                                                               \
--(void)methodName##Action:(id)sender {                                        \
+    [self addTarget:self                                                       \
+    action:@selector(methodName##Action:)                                      \
+    forControlEvents:UIControlEvent##eventName];                               \
+}                                                                              \
+- (void)methodName##Action:(id)sender {                                        \
     void (^block)() = objc_getAssociatedObject(self, @selector(methodName:));  \
-    if (block) {                                                                \
-        block();                                                                \
-    }                                                                           \
+    if (block) {                                                               \
+        block();                                                               \
+    }                                                                          \
 }
 
 @interface UIControl ()

@@ -30,7 +30,6 @@ static const void *UIControlActionBlockArray = &UIControlActionBlockArray;
     blockActionWrapper.actionBlock = actionBlock;
     blockActionWrapper.controlEvents = controlEvents;
     [actionBlocksArray addObject:blockActionWrapper];
-    
     [self addTarget:blockActionWrapper action:@selector(invokeBlock:) forControlEvents:controlEvents];
 }
 
@@ -46,7 +45,6 @@ static const void *UIControlActionBlockArray = &UIControlActionBlockArray;
             [self removeTarget:wrapperTmp action:@selector(invokeBlock:) forControlEvents:controlEvents];
         }
     }];
-    
     [actionBlocksArray removeObjectsInArray:wrappersToRemove];
 }
 
