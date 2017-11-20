@@ -290,8 +290,7 @@
         unsigned int attributeCount;
         objc_property_attribute_t *attrs = property_copyAttributeList(property, &attributeCount);
         
-        for (int i = 0; i < attributeCount; i++)
-        {
+        for (int i = 0; i < attributeCount; i++) {
             NSString *name = [NSString stringWithCString:attrs[i].name encoding:NSUTF8StringEncoding];
             NSString *value = [NSString stringWithCString:attrs[i].value encoding:NSUTF8StringEncoding];
             [dictionary setObject:value forKey:name];
@@ -428,18 +427,13 @@
             if ([[key substringToIndex:1] isEqualToString:@"@"] && [key rangeOfString:@"?"].location == NSNotFound)
             {
                 type_str = [[key substringWithRange:NSMakeRange(2, key.length - 3)] stringByAppendingString:@"*"];
-            }
-            else if ([[key substringToIndex:1] isEqualToString:@"^"])
-            {
+            } else if ([[key substringToIndex:1] isEqualToString:@"^"]) {
                 id str = [typeDic objectForKey:[key substringFromIndex:1]];
                 
-                if (str)
-                {
+                if (str) {
                     type_str = [NSString stringWithFormat:@"%@ *",str];
                 }
-            }
-            else
-            {
+            } else {
                 type_str = @"unknow";
             }
         }

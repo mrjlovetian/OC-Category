@@ -27,8 +27,7 @@
     if (shouldWait) {
         // Synchronous
         dispatch_sync(dispatch_get_main_queue(), block);
-    }
-    else {
+    } else {
         // Asynchronous
         dispatch_async(dispatch_get_main_queue(), block);
     }

@@ -82,12 +82,12 @@
                     if ([propertyValue conformsToProtocol:@protocol(NSCopying)]) {
                         NSObject *copyValue = [propertyValue copy];
                         [self setValue:copyValue forKey:propertyName];
-                    }else{
+                    } else {
                         NSObject *copyValue = [[[propertyValue class]alloc]init];
                         [copyValue easyDeepCopy:propertyValue];
                         [self setValue:copyValue forKey:propertyName];
                     }
-                }else{
+                } else {
                     [self setValue:propertyValue forKey:propertyName];
                 }
             }
@@ -106,11 +106,11 @@
     BOOL flag = class_conformsToProtocol(clazz, @protocol(NSObject));
     if (flag) {
         return flag;
-    }else{
+    } else {
         Class superClass = class_getSuperclass(clazz);
         if (!superClass) {
             return NO;
-        }else{
+        } else {
             return  [NSObject isNSObjectClass:superClass];
         }
     }

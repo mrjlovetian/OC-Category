@@ -16,8 +16,7 @@
     NSMutableString *numeralString = [NSMutableString string];
     
     for (NSUInteger i = 0; i < valueCount; i++) {
-        while (n >= values[i])
-        {
+        while (n >= values[i]) {
             n -= values[i];
             [numeralString appendString:[numerals objectAtIndex:i]];
         }

@@ -117,28 +117,22 @@ static NSString *const AutocodingException = @"AutocodingException";
                 }
             }
             free(typeEncoding);
-            if (propertyClass)
-            {
-                //check if there is a backing ivar
+            if (propertyClass) {
+                 //check if there is a backing ivar
                 char *ivar = property_copyAttributeValue(property, "V");
-                if (ivar)
-                {
+                if (ivar) {
                     //check if ivar has KVC-compliant name
                     __autoreleasing NSString *ivarName = @(ivar);
-                    if ([ivarName isEqualToString:key] || [ivarName isEqualToString:[@"_" stringByAppendingString:key]])
-                    {
+                    if ([ivarName isEqualToString:key] || [ivarName isEqualToString:[@"_" stringByAppendingString:key]]) {
                         //no setter, but setValue:forKey: will still work
                         codableProperties[key] = propertyClass;
                     }
                     free(ivar);
-                }
-                else
-                {
+                } else {
                     //check if property is dynamic and readwrite
                     char *dynamic = property_copyAttributeValue(property, "D");
                     char *readonly = property_copyAttributeValue(property, "R");
-                    if (dynamic && !readonly)
-                    {
+                    if (dynamic && !readonly) {
                         //no ivar, but setValue:forKey: will still work
                         codableProperties[key] = propertyClass;
                     }
@@ -204,8 +198,7 @@ static NSString *const AutocodingException = @"AutocodingException";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    for (NSString *key in [self codableProperties])
-    {
+    for (NSString *key in [self codableProperties]) {
         id object = [self valueForKey:key];
         if (object) [aCoder encodeObject:object forKey:key];
     }
