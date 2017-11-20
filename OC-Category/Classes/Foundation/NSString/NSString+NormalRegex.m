@@ -310,7 +310,6 @@
     
     if (rc) {
         NSArray *componds = [self componentsSeparatedByString:@","];
-        
         BOOL v = YES;
         for (NSString *s in componds) {
             if (s.integerValue > 255) {

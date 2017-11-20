@@ -31,7 +31,7 @@
  *
  *  @return 是否包含空格
  */
-- (BOOL)isContainBlank{
+- (BOOL)isContainBlank {
     NSRange range = [self rangeOfString:@" "];
     if (range.location != NSNotFound) {
         return YES;
@@ -40,7 +40,7 @@
 }
 
 //Unicode编码的字符串转成NSString
-- (NSString *)makeUnicodeToString{
+- (NSString *)makeUnicodeToString {
     NSString *tempStr1 = [self stringByReplacingOccurrencesOfString:@"\\u"withString:@"\\U"];
     NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\""withString:@"\\\""];
     NSString *tempStr3 = [[@"\""stringByAppendingString:tempStr2] stringByAppendingString:@"\""];

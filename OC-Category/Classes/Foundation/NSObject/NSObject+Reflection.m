@@ -180,8 +180,7 @@
     u_int               count;
     NSMutableArray *methodList = [NSMutableArray array];
     Method * methods = class_copyMethodList([self class], &count);
-    for (int i = 0; i < count ; i++)
-    {
+    for (int i = 0; i < count ; i++) {
         SEL name = method_getName(methods[i]);
         NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
         [methodList addObject:strName];
@@ -422,10 +421,8 @@
         
         id type_str = [typeDic objectForKey:key];
         
-        if (type_str == nil)
-        {
-            if ([[key substringToIndex:1] isEqualToString:@"@"] && [key rangeOfString:@"?"].location == NSNotFound)
-            {
+        if (type_str == nil) {
+            if ([[key substringToIndex:1] isEqualToString:@"@"] && [key rangeOfString:@"?"].location == NSNotFound) {
                 type_str = [[key substringWithRange:NSMakeRange(2, key.length - 3)] stringByAppendingString:@"*"];
             } else if ([[key substringToIndex:1] isEqualToString:@"^"]) {
                 id str = [typeDic objectForKey:[key substringFromIndex:1]];

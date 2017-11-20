@@ -11,8 +11,7 @@
 @implementation NSString (Base64)
 + (NSString *)stringWithBase64EncodedString:(NSString *)string {
     NSData *data = [NSData dataWithBase64EncodedString:string];
-    if (data)
-    {
+    if (data) {
         return [[self alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
     return nil;
