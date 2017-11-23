@@ -18,7 +18,9 @@ typedef NS_OPTIONS(NSUInteger, NSStringScoreOption) {
 @interface NSString (Score)
 
 - (CGFloat)scoreAgainst:(NSString *)otherString;
+
 - (CGFloat)scoreAgainst:(NSString *)otherString fuzziness:(NSNumber *)fuzziness;
+
 - (CGFloat)scoreAgainst:(NSString *)otherString fuzziness:(NSNumber *)fuzziness options:(NSStringScoreOption)options;
 
 @end

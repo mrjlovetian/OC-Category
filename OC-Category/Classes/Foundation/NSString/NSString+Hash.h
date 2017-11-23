@@ -14,8 +14,11 @@
 @property (readonly) NSString *sha512String;
 
 - (NSString *)hmacMD5StringWithKey:(NSString *)key;
+
 - (NSString *)hmacSHA1StringWithKey:(NSString *)key;
+
 - (NSString *)hmacSHA256StringWithKey:(NSString *)key;
+
 - (NSString *)hmacSHA512StringWithKey:(NSString *)key;
 
 @end
