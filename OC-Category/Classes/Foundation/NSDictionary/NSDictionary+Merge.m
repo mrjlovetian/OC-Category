@@ -28,9 +28,7 @@
             } else {
                 [result setObject: obj forKey: key];
             }
-        }
-        else if([dict2 objectForKey:key])
-        {
+        } else if([dict2 objectForKey:key]) {
             if ([obj isKindOfClass:[NSDictionary class]]) {
                 NSDictionary * newVal = [[dict2 objectForKey: key] dictionaryByMergingWith: (NSDictionary *) obj];
                 [result setObject: newVal forKey: key];

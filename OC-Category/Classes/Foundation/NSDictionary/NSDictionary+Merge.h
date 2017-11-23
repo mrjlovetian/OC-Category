@@ -17,6 +17,7 @@
  *  @return 合并后的NSDictionary
  */
 + (NSDictionary *)dictionaryByMerging:(NSDictionary *)dict1 with:(NSDictionary *)dict2;
+
 /**
  *  @brief  并入一个NSDictionary
  *

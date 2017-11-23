@@ -52,13 +52,11 @@
 
 - (NSDictionary *)omit:(NSArray *)keys {
     NSMutableDictionary *omitted = [[NSMutableDictionary alloc] initWithCapacity:([self allKeys].count - keys.count)];
-    
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if (![keys containsObject:key]) {
             omitted[key] = obj;
         }
     }];
-    
     return omitted;
 }
 

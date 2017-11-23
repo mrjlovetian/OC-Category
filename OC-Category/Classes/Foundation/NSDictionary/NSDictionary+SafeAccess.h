@@ -9,17 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface NSDictionary (SafeAccess)
+
 - (BOOL)hasKey:(NSString *)key;
 
-- (NSString*)stringForKey:(id)key;
+- (NSString *)stringForKey:(id)key;
 
-- (NSNumber*)numberForKey:(id)key;
+- (NSNumber *)numberForKey:(id)key;
 
 - (NSDecimalNumber *)decimalNumberForKey:(id)key;
 
-- (NSArray*)arrayForKey:(id)key;
+- (NSArray *)arrayForKey:(id)key;
 
-- (NSDictionary*)dictionaryForKey:(id)key;
+- (NSDictionary *)dictionaryForKey:(id)key;
 
 - (NSInteger)integerForKey:(id)key;
 
@@ -61,32 +62,32 @@
 
 @interface NSMutableDictionary(SafeAccess)
 
-- (void)setObj:(id)i forKey:(NSString*)key;
+- (void)setObj:(id)i forKey:(NSString *)key;
 
-- (void)setString:(NSString*)i forKey:(NSString*)key;
+- (void)setString:(NSString *)i forKey:(NSString*)key;
 
-- (void)setBool:(BOOL)i forKey:(NSString*)key;
+- (void)setBool:(BOOL)i forKey:(NSString *)key;
 
-- (void)setInt:(int)i forKey:(NSString*)key;
+- (void)setInt:(int)i forKey:(NSString *)key;
 
-- (void)setInteger:(NSInteger)i forKey:(NSString*)key;
+- (void)setInteger:(NSInteger)i forKey:(NSString *)key;
 
-- (void)setUnsignedInteger:(NSUInteger)i forKey:(NSString*)key;
+- (void)setUnsignedInteger:(NSUInteger)i forKey:(NSString *)key;
 
-- (void)setCGFloat:(CGFloat)f forKey:(NSString*)key;
+- (void)setCGFloat:(CGFloat)f forKey:(NSString *)key;
 
-- (void)setChar:(char)c forKey:(NSString*)key;
+- (void)setChar:(char)c forKey:(NSString *)key;
 
-- (void)setFloat:(float)i forKey:(NSString*)key;
+- (void)setFloat:(float)i forKey:(NSString *)key;
 
-- (void)setDouble:(double)i forKey:(NSString*)key;
+- (void)setDouble:(double)i forKey:(NSString *)key;
 
-- (void)setLongLong:(long long)i forKey:(NSString*)key;
+- (void)setLongLong:(long long)i forKey:(NSString *)key;
 
-- (void)setPoint:(CGPoint)o forKey:(NSString*)key;
+- (void)setPoint:(CGPoint)o forKey:(NSString *)key;
 
-- (void)setSize:(CGSize)o forKey:(NSString*)key;
+- (void)setSize:(CGSize)o forKey:(NSString *)key;
 
-- (void)setRect:(CGRect)o forKey:(NSString*)key;
+- (void)setRect:(CGRect)o forKey:(NSString *)key;
 
 @end

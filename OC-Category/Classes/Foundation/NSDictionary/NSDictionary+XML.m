@@ -14,13 +14,11 @@
  *  @return XML 字符串
  */
 - (NSString *)XMLString {
-    
     NSString *xmlStr = @"<xml>";
     for (NSString *key in self.allKeys) {
         NSString *value = [self objectForKey:key];
         xmlStr = [xmlStr stringByAppendingString:[NSString stringWithFormat:@"<%@>%@</%@>", key, value, key]];
-    }
-    
+    }    
     xmlStr = [xmlStr stringByAppendingString:@"</xml>"];
     return xmlStr;
 }
