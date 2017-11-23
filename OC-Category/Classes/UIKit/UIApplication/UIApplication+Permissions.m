@@ -236,7 +236,6 @@ static char PermissionsLocationBlockFailurePropertyKey;
 - (void)requestAccessToLocationWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied {
     self.permissionsLocationManager = [[CLLocationManager alloc] init];
     self.permissionsLocationManager.delegate = self;
-    
     self.locationSuccessCallbackProperty = accessGranted;
     self.locationFailureCallbackProperty = accessDenied;
     [self.permissionsLocationManager startUpdatingLocation];

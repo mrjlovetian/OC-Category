@@ -10,7 +10,9 @@
 @interface MKMapView (MoveLogo)
 
 - (void)moveLogoByOffset:(CGPoint)offset;
+
 - (void)moveLogoToPoint:(CGPoint)point;
+
 - (UIView *)logo;
 
 @end

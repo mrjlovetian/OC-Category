@@ -120,8 +120,7 @@
     return bezierPath;
 }
 
-+ (UIBezierPath *)beakerShape:(CGRect)originalFrame
-{
++ (UIBezierPath *)beakerShape:(CGRect)originalFrame {
     CGRect frame = [self maximumSquareFrameThatFits:originalFrame];
     
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
@@ -168,10 +167,8 @@
     return bezierPath;
 }
 
-+ (UIBezierPath *)starShape:(CGRect)originalFrame
-{
++ (UIBezierPath *)starShape:(CGRect)originalFrame {
     CGRect frame = [self maximumSquareFrameThatFits:originalFrame];
-    
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.05000 * CGRectGetHeight(frame))];
     [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.67634 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.30729 * CGRectGetHeight(frame))];
