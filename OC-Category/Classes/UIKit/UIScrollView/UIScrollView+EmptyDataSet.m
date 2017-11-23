@@ -758,12 +758,10 @@ NSString *dzn_implementationKey(id target, SEL selector) {
     if (!view) {
         return;
     }
-    
     if (_customView) {
         [_customView removeFromSuperview];
         _customView = nil;
     }
-    
     _customView = view;
     _customView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_customView];
@@ -773,7 +771,6 @@ NSString *dzn_implementationKey(id target, SEL selector) {
 
 - (void)didTapButton:(id)sender {
     SEL selector = NSSelectorFromString(@"dzn_didTapDataButton:");
-    
     if ([self.superview respondsToSelector:selector]) {
         [self.superview performSelector:selector withObject:sender afterDelay:0.0f];
     }
@@ -786,13 +783,11 @@ NSString *dzn_implementationKey(id target, SEL selector) {
 
 - (void)prepareForReuse {
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
     _titleLabel = nil;
     _detailLabel = nil;
     _imageView = nil;
     _button = nil;
     _customView = nil;
-    
     [self removeAllConstraints];
 }
 
@@ -819,8 +814,7 @@ NSString *dzn_implementationKey(id target, SEL selector) {
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[customView]|" options:0 metrics:nil views:@{@"customView":_customView}]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[customView]|" options:0 metrics:nil views:@{@"customView":_customView}]];
-    }
-    else {
+    } else {
         CGFloat width = CGRectGetWidth(self.frame) ? : CGRectGetWidth([UIScreen mainScreen].bounds);
         CGFloat padding = roundf(width/16.0);
         CGFloat verticalSpace = self.verticalSpace ? : 11.0; // Default is 11 pts

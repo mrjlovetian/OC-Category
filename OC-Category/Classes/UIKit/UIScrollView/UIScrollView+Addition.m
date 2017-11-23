@@ -61,24 +61,15 @@
 - (ScrollDirection)ScrollDirection {
     ScrollDirection direction;
     
-    if ([self.panGestureRecognizer translationInView:self.superview].y > 0.0f)
-    {
+    if ([self.panGestureRecognizer translationInView:self.superview].y > 0.0f) {
         direction = ScrollDirectionUp;
-    }
-    else if ([self.panGestureRecognizer translationInView:self.superview].y < 0.0f)
-    {
+    } else if ([self.panGestureRecognizer translationInView:self.superview].y < 0.0f) {
         direction = ScrollDirectionDown;
-    }
-    else if ([self.panGestureRecognizer translationInView:self].x < 0.0f)
-    {
+    } else if ([self.panGestureRecognizer translationInView:self].x < 0.0f) {
         direction = ScrollDirectionLeft;
-    }
-    else if ([self.panGestureRecognizer translationInView:self].x > 0.0f)
-    {
+    } else if ([self.panGestureRecognizer translationInView:self].x > 0.0f) {
         direction = ScrollDirectionRight;
-    }
-    else
-    {
+    } else {
         direction = ScrollDirectionWTF;
     }
     
