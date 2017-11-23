@@ -11,12 +11,17 @@
 @interface UIView (Nib)
 
 + (UINib *)loadNib;
-+ (UINib *)loadNibNamed:(NSString*)nibName;
-+ (UINib *)loadNibNamed:(NSString*)nibName bundle:(NSBundle *)bundle;
+
++ (UINib *)loadNibNamed:(NSString *)nibName;
+
++ (UINib *)loadNibNamed:(NSString *)nibName bundle:(NSBundle *)bundle;
 
 + (instancetype)loadInstanceFromNib;
+
 + (instancetype)loadInstanceFromNibWithName:(NSString *)nibName;
+
 + (instancetype)loadInstanceFromNibWithName:(NSString *)nibName owner:(id)owner;
+
 + (instancetype)loadInstanceFromNibWithName:(NSString *)nibName owner:(id)owner bundle:(NSBundle *)bundle;
 
 @end

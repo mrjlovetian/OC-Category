@@ -25,8 +25,6 @@ typedef NS_ENUM(NSUInteger, BCRectEdge) {
                       destinationEdge:(BCRectEdge)destEdge
                            completion:(void (^)())completion;
 
-
-
 /*
  * After the animation has completed the view's transform will be changed to CGAffineTransformIdentity.
  */

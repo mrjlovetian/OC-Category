@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'OC-Category'
 
-  s.version          = '0.2.2.8'
+  s.version          = '0.2.2.9'
 
   s.summary          = 'OC语言类目的归类整理.'
 
