@@ -8,10 +8,10 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, ImagePosition) {
-    LXMImagePositionLeft = 0,              //图片在左，文字在右，默认
-    LXMImagePositionRight = 1,             //图片在右，文字在左
-    LXMImagePositionTop = 2,               //图片在上，文字在下
-    LXMImagePositionBottom = 3,            //图片在下，文字在上
+    LXMImagePositionLeft    = 0,                //图片在左，文字在右，默认
+    LXMImagePositionRight   = 1,                //图片在右，文字在左
+    LXMImagePositionTop     = 2,                //图片在上，文字在下
+    LXMImagePositionBottom  = 3,                //图片在下，文字在上
 };
 
 @interface UIButton (ImagePosition)

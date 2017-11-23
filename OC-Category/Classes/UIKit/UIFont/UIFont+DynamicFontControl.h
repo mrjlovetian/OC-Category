@@ -10,8 +10,11 @@
 @interface UIFont (DynamicFontControl)
 
 + (UIFont *)preferredFontForTextStyle:(NSString *)style withFontName:(NSString *)fontName scale:(CGFloat)scale;
+
 + (UIFont *)preferredFontForTextStyle:(NSString *)style withFontName:(NSString *)fontName;
+
 - (UIFont *)adjustFontForTextStyle:(NSString *)style;
+
 - (UIFont *)adjustFontForTextStyle:(NSString *)style scale:(CGFloat)scale;
 
 @end

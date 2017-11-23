@@ -10,8 +10,11 @@
 @interface UIColor (Modify)
 
 - (UIColor *)invertedColor;
+
 - (UIColor *)colorForTranslucency;
+
 - (UIColor *)lightenColor:(CGFloat)lighten;
+
 - (UIColor *)darkenColor:(CGFloat)darken;
 
 @end

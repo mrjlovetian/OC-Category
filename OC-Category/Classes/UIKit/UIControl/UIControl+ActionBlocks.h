@@ -20,6 +20,7 @@ typedef void (^UIControlActionBlock)(id weakSender);
 @interface UIControl (ActionBlocks)
 
 - (void)handleControlEvents:(UIControlEvents)controlEvents withBlock:(UIControlActionBlock)actionBlock;
+
 - (void)removeActionBlocksForControlEvents:(UIControlEvents)controlEvents;
 
 @end
