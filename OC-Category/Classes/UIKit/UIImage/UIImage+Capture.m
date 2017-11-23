@@ -15,8 +15,7 @@
  *
  *  @return 图片
  */
-+ (UIImage *)captureWithView:(UIView *)view
-{
++ (UIImage *)captureWithView:(UIView *)view {
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, [UIScreen mainScreen].scale);
     // IOS7及其后续版本
     if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
@@ -30,8 +29,7 @@
     return screenshot;
 }
 
-+ (UIImage *)getImageWithSize:(CGRect)myImageRect FromImage:(UIImage *)bigImage
-{
++ (UIImage *)getImageWithSize:(CGRect)myImageRect FromImage:(UIImage *)bigImage {
     //大图bigImage
     //定义myImageRect，截图的区域
     CGImageRef imageRef = bigImage.CGImage;

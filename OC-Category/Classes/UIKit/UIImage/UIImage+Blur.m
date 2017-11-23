@@ -12,32 +12,28 @@
 #pragma mark - Effects
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)lightImage
-{
+- (UIImage *)lightImage {
     UIColor *tintColor = [UIColor colorWithWhite:1.0 alpha:0.3];
     return [self blurredImageWithSize:CGSizeMake(60, 60) tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)extraLightImage
-{
+- (UIImage *)extraLightImage {
     UIColor *tintColor = [UIColor colorWithWhite:0.97 alpha:0.82];
     return [self blurredImageWithSize:CGSizeMake(40, 40) tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)darkImage
-{
+- (UIImage *)darkImage {
     UIColor *tintColor = [UIColor colorWithWhite:0.11 alpha:0.73];
     return [self blurredImageWithSize:CGSizeMake(40, 40) tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)tintedImageWithColor:(UIColor *)tintColor
-{
+- (UIImage *)tintedImageWithColor:(UIColor *)tintColor {
     const CGFloat EffectColorAlpha = 0.6;
     UIColor *effectColor = tintColor;
     size_t componentCount = CGColorGetNumberOfComponents(tintColor.CGColor);
@@ -46,8 +42,7 @@
         if ([tintColor getWhite:&b alpha:NULL]) {
             effectColor = [UIColor colorWithWhite:b alpha:EffectColorAlpha];
         }
-    }
-    else {
+    } else {
         CGFloat r, g, b;
         if ([tintColor getRed:&r green:&g blue:&b alpha:NULL]) {
             effectColor = [UIColor colorWithRed:r green:g blue:b alpha:EffectColorAlpha];
@@ -58,15 +53,13 @@
 
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)blurredImageWithRadius:(CGFloat)blurRadius
-{
+- (UIImage *)blurredImageWithRadius:(CGFloat)blurRadius {
     return [self blurredImageWithSize:CGSizeMake(blurRadius, blurRadius)];
 }
 
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)blurredImageWithSize:(CGSize)blurSize
-{
+- (UIImage *)blurredImageWithSize:(CGSize)blurSize {
     return [self blurredImageWithSize:blurSize tintColor:nil saturationDeltaFactor:1.0 maskImage:nil];
 }
 
@@ -74,25 +67,21 @@
 #pragma mark - Implementation
 
 //| ----------------------------------------------------------------------------
-- (UIImage *)blurredImageWithSize:(CGSize)blurSize tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage
-{
+- (UIImage *)blurredImageWithSize:(CGSize)blurSize tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage {
 #define ENABLE_BLUR                     1
 #define ENABLE_SATURATION_ADJUSTMENT    1
 #define ENABLE_TINT                     1
     
     // Check pre-conditions.
-    if (self.size.width < 1 || self.size.height < 1)
-    {
+    if (self.size.width < 1 || self.size.height < 1) {
         NSLog(@"*** error: invalid size: (%.2f x %.2f). Both dimensions must be >= 1: %@", self.size.width, self.size.height, self);
         return nil;
     }
-    if (!self.CGImage)
-    {
+    if (!self.CGImage) {
         NSLog(@"*** error: inputImage must be backed by a CGImage: %@", self);
         return nil;
     }
-    if (maskImage && !maskImage.CGImage)
-    {
+    if (maskImage && !maskImage.CGImage) {
         NSLog(@"*** error: effectMaskImage must be backed by a CGImage: %@", maskImage);
         return nil;
     }
@@ -119,8 +108,7 @@
     CGContextScaleCTM(outputContext, 1.0, -1.0);
     CGContextTranslateCTM(outputContext, 0, -outputImageRectInPoints.size.height);
     
-    if (hasBlur || hasSaturationChange)
-    {
+    if (hasBlur || hasSaturationChange) {
         vImage_Buffer effectInBuffer;
         vImage_Buffer scratchBuffer1;
         
@@ -140,8 +128,7 @@
         };
         
         vImage_Error e = vImageBuffer_InitWithCGImage(&effectInBuffer, &format, NULL, self.CGImage, kvImagePrintDiagnosticsToConsole);
-        if (e != kvImageNoError)
-        {
+        if (e != kvImageNoError) {
             NSLog(@"*** error: vImageBuffer_InitWithCGImage returned error code %zi for inputImage: %@", e, self);
             UIGraphicsEndImageContext();
             return nil;
@@ -152,8 +139,7 @@
         outputBuffer = &scratchBuffer1;
         
 #if ENABLE_BLUR
-        if (hasBlur)
-        {
+        if (hasBlur) {
             CGFloat radiusX = [self gaussianBlurRadiusWithBlurRadius:blurSize.width * inputImageScale];
             CGFloat radiusY = [self gaussianBlurRadiusWithBlurRadius:blurSize.height * inputImageScale];
             
@@ -173,8 +159,7 @@
 #endif
         
 #if ENABLE_SATURATION_ADJUSTMENT
-        if (hasSaturationChange)
-        {
+        if (hasSaturationChange) {
             CGFloat s = saturationDeltaFactor;
             // These values appear in the W3C Filter Effects spec:
             // https://dvcs.w3.org/hg/FXTF/raw-file/default/filters/index.html#grayscaleEquivalent
@@ -219,17 +204,14 @@
         // Cleanup
         CGImageRelease(effectCGImage);
         free(outputBuffer->data);
-    }
-    else
-    {
+    } else {
         // draw base image
         CGContextDrawImage(outputContext, outputImageRectInPoints, inputCGImage);
     }
     
 #if ENABLE_TINT
     // Add in color tint.
-    if (tintColor)
-    {
+    if (tintColor) {
         CGContextSaveGState(outputContext);
         CGContextSetFillColorWithColor(outputContext, tintColor.CGColor);
         CGContextFillRect(outputContext, outputImageRectInPoints);
@@ -260,8 +242,7 @@
 //
 // ... if d is odd, use three box-blurs of size 'd', centered on the output pixel.
 //
-- (CGFloat)gaussianBlurRadiusWithBlurRadius:(CGFloat)blurRadius
-{
+- (CGFloat)gaussianBlurRadiusWithBlurRadius:(CGFloat)blurRadius {
     if (blurRadius - 2. < __FLT_EPSILON__) {
         blurRadius = 2.;
     }

@@ -18,8 +18,7 @@
 @implementation UIImage (BetterFace)
 
 - (UIImage *)betterFaceImageForSize:(CGSize)size
-                           accuracy:(Accuracy)accurary;
-{
+                           accuracy:(Accuracy)accurary {
     NSArray *features = [UIImage _faceFeaturesInImage:self accuracy:accurary];
     
     if ([features count]==0) {
@@ -32,8 +31,7 @@
     }
 }
 
-- (UIImage *)_subImageForFaceFeatures:(NSArray *)faceFeatures size:(CGSize)size
-{
+- (UIImage *)_subImageForFaceFeatures:(NSArray *)faceFeatures size:(CGSize)size {
     CGRect fixedRect = CGRectMake(MAXFLOAT, MAXFLOAT, 0, 0);
     CGFloat rightBorder = 0, bottomBorder = 0;
     for (CIFaceFeature *faceFeature in faceFeatures){
@@ -95,8 +93,7 @@
 
 #pragma mark - Util
 
-+ (NSArray *)_faceFeaturesInImage:(UIImage *)image accuracy:(Accuracy)accurary
-{
++ (NSArray *)_faceFeaturesInImage:(UIImage *)image accuracy:(Accuracy)accurary {
     CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
     NSString *accuraryStr = (accurary == AccuracyLow) ? CIDetectorAccuracyLow : CIDetectorAccuracyHigh;
     
