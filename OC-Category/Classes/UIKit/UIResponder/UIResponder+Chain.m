@@ -13,8 +13,7 @@
  *
  *  @return  响应者链
  */
-- (NSString *)responderChainDescription
-{
+- (NSString *)responderChainDescription {
     NSMutableArray *responderChainStrings = [NSMutableArray array];
     [responderChainStrings addObject:[self class]];
     UIResponder *nextResponder = self;

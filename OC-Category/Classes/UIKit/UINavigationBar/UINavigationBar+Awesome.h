@@ -10,8 +10,11 @@
 @interface UINavigationBar (Awesome)
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor;
+
 - (void)setElementsAlpha:(CGFloat)alpha;
+
 - (void)setTranslationY:(CGFloat)translationY;
+
 - (void)reset;
 
 @end
