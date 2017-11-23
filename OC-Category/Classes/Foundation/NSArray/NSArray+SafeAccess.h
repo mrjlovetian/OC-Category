@@ -52,7 +52,7 @@
  *
  *  @return 描述
  */
-- (NSArray*)arrayWithIndex:(NSUInteger)index;
+- (NSArray *)arrayWithIndex:(NSUInteger)index;
 
 /**
  *  数据描述，字典
@@ -61,7 +61,7 @@
  *
  *  @return 描述
  */
-- (NSDictionary*)dictionaryWithIndex:(NSUInteger)index;
+- (NSDictionary *)dictionaryWithIndex:(NSUInteger)index;
 
 /**
  *  数据描述，数字
@@ -215,7 +215,7 @@
  *
  *  @param i
  */
-- (void)addString:(NSString*)i;
+- (void)addString:(NSString *)i;
 
 /**
  *  可变数组，添加数组

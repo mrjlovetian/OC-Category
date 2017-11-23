@@ -115,7 +115,7 @@
 
 
 #pragma mark Comparing Dates
-- (BOOL) isEqualToDateIgnoringTime: (NSDate *) aDate {
+- (BOOL)isEqualToDateIgnoringTime:(NSDate *) aDate {
     NSDateComponents *components1 = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:self];
     NSDateComponents *components2 = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:aDate];
     return ((components1.year == components2.year) &&
@@ -136,7 +136,7 @@
 }
 
 // This hard codes the assumption that a week is 7 days
-- (BOOL)isSameWeekAsDate: (NSDate *) aDate {
+- (BOOL)isSameWeekAsDate:(NSDate *)aDate {
     NSDateComponents *components1 = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:self];
     NSDateComponents *components2 = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:aDate];
     // Must be same week. 12/31 and 1/1 will both be week "1" if they are in the same week

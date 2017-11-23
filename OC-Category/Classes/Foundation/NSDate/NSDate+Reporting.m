@@ -231,7 +231,7 @@
 
 
 
-- (NSDate *) dateFloor {
+- (NSDate *)dateFloor {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* dateComponents = [gregorianCalendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:self];
@@ -239,7 +239,7 @@
     return [gregorianCalendar dateFromComponents:dateComponents];
 }
 
-- (NSDate *) dateCeil {
+- (NSDate *)dateCeil {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* dateComponents = [gregorianCalendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:self];
@@ -251,7 +251,7 @@
     return [gregorianCalendar dateFromComponents:dateComponents];
 }
 
-- (NSDate*) startOfWeek {
+- (NSDate*)startOfWeek {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
@@ -261,7 +261,7 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate *) endOfWeek {
+- (NSDate *)endOfWeek {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
@@ -274,7 +274,7 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate *) startOfMonth {
+- (NSDate *)startOfMonth {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
@@ -282,7 +282,7 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate *) endOfMonth {
+- (NSDate *)endOfMonth {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
@@ -297,7 +297,7 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate *) startOfYear {
+- (NSDate *)startOfYear {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit fromDate:self];
@@ -305,7 +305,7 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate*) endOfYear {
+- (NSDate*)endOfYear {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit fromDate:self];
@@ -319,27 +319,27 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate *) previousDay {
+- (NSDate *)previousDay {
     return [self dateByAddingTimeInterval:-86400];
 }
 
-- (NSDate *) nextDay {
+- (NSDate *)nextDay {
     return [self dateByAddingTimeInterval:86400];
 }
 
-- (NSDate *) previousWeek {
+- (NSDate *)previousWeek {
     return [self dateByAddingTimeInterval:-(86400*7)];
 }
 
-- (NSDate *) nextWeek {
+- (NSDate *)nextWeek {
     return [self dateByAddingTimeInterval:+(86400*7)];
 }
 
-- (NSDate *) previousMonth {
+- (NSDate *)previousMonth {
     return [self previousMonth:1];
 }
 
-- (NSDate *) previousMonth:(NSUInteger) monthsToMove {
+- (NSDate *)previousMonth:(NSUInteger) monthsToMove {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
@@ -361,11 +361,11 @@
     return [gregorianCalendar dateFromComponents:components];
 }
 
-- (NSDate *) nextMonth {
+- (NSDate *)nextMonth {
     return [self nextMonth:1];
 }
 
-- (NSDate *) nextMonth:(NSUInteger) monthsToMove {
+- (NSDate *)nextMonth:(NSUInteger) monthsToMove {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];

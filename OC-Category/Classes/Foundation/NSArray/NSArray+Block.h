@@ -26,7 +26,6 @@
 - (NSArray *)map:(id (^)(id object))block;
 
 /// 筛选数组
-
 - (NSArray *)filter:(BOOL (^)(id object))block;
 - (NSArray *)reject:(BOOL (^)(id object))block;
 - (id)detect:(BOOL (^)(id object))block;

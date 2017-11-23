@@ -17,7 +17,7 @@
     }
 }
 
-- (NSString*)stringWithIndex:(NSUInteger)index {
+- (NSString *)stringWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"]) {
         return nil;
@@ -31,7 +31,7 @@
     return nil;
 }
 
-- (NSNumber*)numberWithIndex:(NSUInteger)index {
+- (NSNumber *)numberWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     if ([value isKindOfClass:[NSNumber class]]) {
         return (NSNumber*)value;
@@ -58,7 +58,7 @@
     return nil;
 }
 
-- (NSArray*)arrayWithIndex:(NSUInteger)index {
+- (NSArray *)arrayWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     if (value == nil || value == [NSNull null]) {
         return nil;
@@ -69,7 +69,7 @@
     return nil;
 }
 
-- (NSDictionary*)dictionaryWithIndex:(NSUInteger)index {
+- (NSDictionary *)dictionaryWithIndex:(NSUInteger)index {
     id value = [self objectWithIndex:index];
     if (value == nil || value == [NSNull null]) {
         return nil;
@@ -237,6 +237,7 @@
     CGRect rect = CGRectFromString(value);
     return rect;
 }
+
 @end
 
 #pragma --mark NSMutableArray setter
