@@ -175,9 +175,7 @@ typedef uint32_t dword;
                 if( self.sizeRequestCompletion ) {
                     self.sizeRequestCompletion(self, CGSizeMake(width, height));
                 }
-                
                 self.sizeRequestCompletion = nil;
-                
                 [connection cancel];
                 
             }
@@ -207,12 +205,12 @@ typedef uint32_t dword;
     }
 }
 
--(void)connection:(NSURLConnection*)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError *)error {
     if( self.sizeRequestCompletion )
         self.sizeRequestCompletion(self, CGSizeZero);
 }
 
--(NSCachedURLResponse*)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+- (NSCachedURLResponse*)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
     return cachedResponse;
 }
 
@@ -240,7 +238,7 @@ typedef uint32_t dword;
 
 @implementation UIImage (RemoteSize)
 
-+ (void)requestSizeNoHeader:(NSURL*)imgURL completion:(UIImageSizeRequestCompleted)completion{
++ (void)requestSizeNoHeader:(NSURL*)imgURL completion:(UIImageSizeRequestCompleted)completion {
     
     if([imgURL isFileURL] ) {
         //Load from file stream

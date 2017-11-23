@@ -116,8 +116,7 @@
  *
  *  @return 旋转后图片
  */
-- (UIImage *)imageRotatedByRadians:(CGFloat)radians
-{
+- (UIImage *)imageRotatedByRadians:(CGFloat)radians {
     return [self imageRotatedByDegrees:[UIImage radiansToDegrees:radians]];
 }
 /**
@@ -127,8 +126,7 @@
  *
  *  @return 旋转后图片
  */
-- (UIImage *)imageRotatedByDegrees:(CGFloat)degrees
-{
+- (UIImage *)imageRotatedByDegrees:(CGFloat)degrees {
     // calculate the size of the rotated view's containing box for our drawing space
     UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.size.width, self.size.height)];
     CGAffineTransform t = CGAffineTransformMakeRotation([UIImage degreesToRadians:degrees]);
@@ -162,8 +160,7 @@
  *
  *  @return 弧度
  */
-+(CGFloat)degreesToRadians:(CGFloat)degrees
-{
++ (CGFloat)degreesToRadians:(CGFloat)degrees {
     return degrees * M_PI / 180;
 }
 /**
@@ -173,8 +170,8 @@
  *
  *  @return 角度
  */
-+(CGFloat)radiansToDegrees:(CGFloat)radians
-{
++ (CGFloat)radiansToDegrees:(CGFloat)radians {
     return radians * 180/M_PI;
 }
+
 @end

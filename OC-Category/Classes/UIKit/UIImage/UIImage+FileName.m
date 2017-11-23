@@ -19,6 +19,7 @@
 + (UIImage *)imageWithFileName:(NSString *)name {
     return [self imageWithFileName:name inBundle:[NSBundle mainBundle]];
 }
+
 + (UIImage *)imageWithFileName:(NSString *)name inBundle:(NSBundle*)bundle{
     NSString *extension = @"png";
     

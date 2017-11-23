@@ -10,7 +10,9 @@
 @interface UIImage (GIF)
 
 + (UIImage *)animatedGIFNamed:(NSString *)name;
+
 + (UIImage *)animatedGIFWithData:(NSData *)data;
+
 - (UIImage *)animatedImageByScalingAndCroppingToSize:(CGSize)size;
 
 @end

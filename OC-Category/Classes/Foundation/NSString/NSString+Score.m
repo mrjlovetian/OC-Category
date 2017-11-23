@@ -129,7 +129,6 @@
     if(startOfStringBonus && finalScore + 0.15 < 1){
         finalScore += 0.15;
     }
-    
     return finalScore;
 }
 

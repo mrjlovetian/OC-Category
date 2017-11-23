@@ -31,4 +31,5 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
 @end
