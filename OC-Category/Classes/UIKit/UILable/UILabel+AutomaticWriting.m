@@ -41,7 +41,7 @@ static char kAutomaticWritingEdgeInsetsKey;
     });
 }
 
--(void)drawAutomaticWritingTextInRect:(CGRect)rect {
+- (void)drawAutomaticWritingTextInRect:(CGRect)rect {
     [self drawAutomaticWritingTextInRect:UIEdgeInsetsInsetRect(rect, self.edgeInsets)];
 }
 
@@ -50,70 +50,64 @@ static char kAutomaticWritingEdgeInsetsKey;
     return textRect;
 }
 
-- (void)setedgeInsets:(UIEdgeInsets)edgeInsets {
+- (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
     objc_setAssociatedObject(self, &kAutomaticWritingEdgeInsetsKey, [NSValue valueWithUIEdgeInsets:edgeInsets], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (UIEdgeInsets)edgeInsets {
     NSValue *edgeInsetsValue = objc_getAssociatedObject(self, &kAutomaticWritingEdgeInsetsKey);
+    
     if (edgeInsetsValue) {
         return edgeInsetsValue.UIEdgeInsetsValue;
     }
     
     edgeInsetsValue = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsZero];
-    
     objc_setAssociatedObject(self, &kAutomaticWritingEdgeInsetsKey, edgeInsetsValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
     return edgeInsetsValue.UIEdgeInsetsValue;
 }
 
-- (void)setautomaticWritingOperationQueue:(NSOperationQueue *)automaticWritingOperationQueue {
+- (void)setAutomaticWritingOperationQueue:(NSOperationQueue *)automaticWritingOperationQueue {
     objc_setAssociatedObject(self, &kAutomaticWritingOperationQueueKey, automaticWritingOperationQueue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSOperationQueue *)automaticWritingOperationQueue {
     NSOperationQueue *operationQueue = objc_getAssociatedObject(self, &kAutomaticWritingOperationQueueKey);
     
-    if (operationQueue)
-    {
+    if (operationQueue) {
         return operationQueue;
     }
     
     operationQueue = NSOperationQueue.new;
     operationQueue.name = @"Automatic Writing Operation Queue";
     operationQueue.maxConcurrentOperationCount = 1;
-    
     objc_setAssociatedObject(self, &kAutomaticWritingOperationQueueKey, operationQueue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
     return operationQueue;
 }
 
 - (void)setTextWithAutomaticWritingAnimation:(NSString *)text {
-    [self setText:text automaticWritingAnimationWithBlinkingMode:UILabellinkingModeNone];
+    [self setText:text automaticWritingAnimationWithBlinkingMode:UILabelAWBlinkingModeNone];
 }
 
-- (void)setText:(NSString *)text automaticWritingAnimationWithBlinkingMode:(UILabellinkingMode)blinkingMode {
+- (void)setText:(NSString *)text automaticWritingAnimationWithBlinkingMode:(UILabelAWBlinkingMode)blinkingMode {
     [self setText:text automaticWritingAnimationWithDuration:UILabelAWDefaultDuration blinkingMode:blinkingMode];
 }
 
 - (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration {
-    [self setText:text automaticWritingAnimationWithDuration:duration blinkingMode:UILabellinkingModeNone];
+    [self setText:text automaticWritingAnimationWithDuration:duration blinkingMode:UILabelAWBlinkingModeNone];
 }
 
-- (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabellinkingMode)blinkingMode {
+- (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabelAWBlinkingMode)blinkingMode {
     [self setText:text automaticWritingAnimationWithDuration:duration blinkingMode:blinkingMode blinkingCharacter:UILabelAWDefaultCharacter];
 }
 
-- (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabellinkingMode)blinkingMode blinkingCharacter:(unichar)blinkingCharacter {
+- (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabelAWBlinkingMode)blinkingMode blinkingCharacter:(unichar)blinkingCharacter {
     [self setText:text automaticWritingAnimationWithDuration:duration blinkingMode:blinkingMode blinkingCharacter:blinkingCharacter completion:nil];
 }
 
-- (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabellinkingMode)blinkingMode blinkingCharacter:(unichar)blinkingCharacter completion:(void (^)(void))completion {
+- (void)setText:(NSString *)text automaticWritingAnimationWithDuration:(NSTimeInterval)duration blinkingMode:(UILabelAWBlinkingMode)blinkingMode blinkingCharacter:(unichar)blinkingCharacter completion:(void (^)(void))completion {
     self.automaticWritingOperationQueue.suspended = YES;
     self.automaticWritingOperationQueue = nil;
-    
     self.text = @"";
-    
     NSMutableString *automaticWritingText = NSMutableString.new;
     
     if (text) {
@@ -127,14 +121,14 @@ static char kAutomaticWritingEdgeInsetsKey;
 
 #pragma mark - Private Methods
 
-- (void)automaticWriting:(NSMutableString *)text duration:(NSTimeInterval)duration mode:(UILabellinkingMode)mode character:(unichar)character completion:(void (^)(void))completion {
+- (void)automaticWriting:(NSMutableString *)text duration:(NSTimeInterval)duration mode:(UILabelAWBlinkingMode)mode character:(unichar)character completion:(void (^)(void))completion {
     NSOperationQueue *currentQueue = NSOperationQueue.currentQueue;
-    if ((text.length || mode >= UILabellinkingModeWhenFinish) && !currentQueue.isSuspended) {
+    if ((text.length || mode >= UILabelAWBlinkingModeWhenFinish) && !currentQueue.isSuspended) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if (mode != UILabellinkingModeNone) {
+            if (mode != UILabelAWBlinkingModeNone) {
                 if ([self isLastCharacter:character]) {
                     [self deleteLastCharacter];
-                } else if (mode != UILabellinkingModeWhenFinish || !text.length) {
+                } else if (mode != UILabelAWBlinkingModeWhenFinish || !text.length) {
                     [text insertString:[self stringWithCharacter:character] atIndex:0];
                 }
             }
@@ -142,7 +136,7 @@ static char kAutomaticWritingEdgeInsetsKey;
             if (text.length) {
                 [self appendCharacter:[text characterAtIndex:0]];
                 [text deleteCharactersInRange:NSMakeRange(0, 1)];
-                if ((![self isLastCharacter:character] && mode == UILabellinkingModeWhenFinishShowing) || (!text.length && mode == UILabellinkingModeUntilFinishKeeping)) {
+                if ((![self isLastCharacter:character] && mode == UILabelAWBlinkingModeWhenFinishShowing) || (!text.length && mode == UILabelAWBlinkingModeUntilFinishKeeping)) {
                     [self appendCharacter:character];
                 }
             }
@@ -155,8 +149,7 @@ static char kAutomaticWritingEdgeInsetsKey;
                 completion();
             }
         });
-    }
-    else if (completion) {
+    } else if (completion) {
         completion();
     }
 }
@@ -167,7 +160,6 @@ static char kAutomaticWritingEdgeInsetsKey;
 
 - (NSString *)stringWithCharacters:(NSArray *)characters {
     NSMutableString *string = NSMutableString.new;
-    
     for (NSNumber *character in characters) {
         [string appendFormat:@"%C", character.unsignedShortValue];
     }
@@ -206,3 +198,4 @@ static char kAutomaticWritingEdgeInsetsKey;
 }
 
 @end
+
