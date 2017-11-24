@@ -22,7 +22,7 @@
  *
  *  @return 返回结果
  */
-- (NSDecimalNumber*)roundToScale:(NSUInteger)scale;
+- (NSDecimalNumber *)roundToScale:(NSUInteger)scale;
 
 /**
  *  @brief  四舍五入
