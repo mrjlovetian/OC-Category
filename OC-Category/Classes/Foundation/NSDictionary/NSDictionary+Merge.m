@@ -8,6 +8,7 @@
 #import "NSDictionary+Merge.h"
 
 @implementation NSDictionary (Merge)
+
 /**
  *  @brief  合并两个NSDictionary
  *
@@ -40,6 +41,7 @@
     return (NSDictionary *) [result mutableCopy];
     
 }
+
 /**
  *  @brief  并入一个NSDictionary
  *

@@ -9,8 +9,8 @@
 
 @implementation NSDictionary (Block)
 
-
 #pragma mark - RX
+
 - (void)each:(void (^)(id k, id v))block {
     [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         block(key, obj);
