@@ -8,6 +8,7 @@
 #import "NSDictionary+URL.h"
 
 @implementation NSDictionary (URI)
+
 /**
  *  @brief  将url参数转换成NSDictionary
  *
@@ -31,6 +32,7 @@
     }
     return [NSDictionary dictionaryWithDictionary:dict];
 }
+
 /**
  *  @brief  将NSDictionary转换成url 参数字符串
  *

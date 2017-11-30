@@ -9,6 +9,7 @@
 #include <execinfo.h>
 
 @implementation NSException (Trace)
+
 - (NSArray *)backtrace {
     NSArray *addresses = self.callStackReturnAddresses;
     unsigned count = (int)addresses.count;
@@ -22,10 +23,10 @@
     
     for (int i = 0; i < count; ++i)
         [ret addObject:@(strings[i])];
-    
     free(stack);
     free(strings);
     
     return ret;
 }
+
 @end
