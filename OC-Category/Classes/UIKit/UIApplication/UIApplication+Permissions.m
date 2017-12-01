@@ -34,6 +34,7 @@ static char PermissionsLocationBlockFailurePropertyKey;
 @implementation UIApplication (Permissions)
 
 #pragma mark - Check permissions
+
 - (PermissionAccess)hasAccessToBluetoothLE {
     switch ([[[CBCentralManager alloc] init] state]) {
         case CBCentralManagerStateUnsupported:
@@ -152,8 +153,8 @@ static char PermissionsLocationBlockFailurePropertyKey;
     return PermissionAccessUnknown;
 }
 
-
 #pragma mark - Request permissions
+
 - (void)requestAccessToCalendarWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied {
     EKEventStore *eventStore = [[EKEventStore alloc] init];
     [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
@@ -241,7 +242,6 @@ static char PermissionsLocationBlockFailurePropertyKey;
     [self.permissionsLocationManager startUpdatingLocation];
 }
 
-
 #pragma mark - Location manager injection
 - (CLLocationManager *)permissionsLocationManager {
     return objc_getAssociatedObject(self, &PermissionsLocationManagerPropertyKey);
@@ -267,8 +267,8 @@ static char PermissionsLocationBlockFailurePropertyKey;
     objc_setAssociatedObject(self, &PermissionsLocationBlockFailurePropertyKey, locationFailureCallbackProperty, OBJC_ASSOCIATION_COPY);
 }
 
-
 #pragma mark - Location manager delegate
+
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorized) {
         self.locationSuccessCallbackProperty();

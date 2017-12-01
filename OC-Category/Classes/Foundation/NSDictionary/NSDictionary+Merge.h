@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (Merge)
+
 /**
  *  @brief  合并两个NSDictionary
  *

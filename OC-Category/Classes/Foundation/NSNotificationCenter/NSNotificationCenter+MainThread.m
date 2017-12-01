@@ -8,6 +8,7 @@
 #import "NSNotificationCenter+MainThread.h"
 
 @implementation NSNotificationCenter (MainThread)
+
 /**
  *  @brief  在主线程中发送一条通知
  *

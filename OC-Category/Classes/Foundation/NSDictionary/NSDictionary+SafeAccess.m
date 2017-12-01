@@ -8,6 +8,7 @@
 #import "NSDictionary+SafeAccess.h"
 
 @implementation NSDictionary (SafeAccess)
+
 - (BOOL)hasKey:(NSString *)key {
     return [self objectForKey:key] != nil;
 }
@@ -25,7 +26,6 @@
     if ([value isKindOfClass:[NSNumber class]]) {
        return [value stringValue];
     }
-    
     return nil;
 }
 
@@ -58,7 +58,7 @@
     return nil;
 }
 
-- (NSArray*)arrayForKey:(id)key {
+- (NSArray *)arrayForKey:(id)key {
     id value = [self objectForKey:key];
     if (value == nil || value == [NSNull null]) {
         return nil;
@@ -70,7 +70,7 @@
     return nil;
 }
 
-- (NSDictionary*)dictionaryForKey:(id)key {
+- (NSDictionary *)dictionaryForKey:(id)key {
     id value = [self objectForKey:key];
     if (value == nil || value == [NSNull null]) {
         return nil;
@@ -249,7 +249,6 @@
     return nil;
 }
 
-
 //CG
 - (CGFloat)CGFloatForKey:(id)key {
     CGFloat f = [self[key] doubleValue];
@@ -282,43 +281,35 @@
     }
 }
 
-- (void)setString:(NSString *)i forKey:(NSString *)key;
-{
+- (void)setString:(NSString *)i forKey:(NSString *)key {
     [self setValue:i forKey:key];
 }
 
-- (void)setBool:(BOOL)i forKey:(NSString *)key
-{
+- (void)setBool:(BOOL)i forKey:(NSString *)key {
     self[key] = @(i);
 }
 
-- (void)setInt:(int)i forKey:(NSString *)key
-{
+- (void)setInt:(int)i forKey:(NSString *)key {
     self[key] = @(i);
 }
 
-- (void)setInteger:(NSInteger)i forKey:(NSString *)key
-{
+- (void)setInteger:(NSInteger)i forKey:(NSString *)key {
     self[key] = @(i);
 }
 
-- (void)setUnsignedInteger:(NSUInteger)i forKey:(NSString *)key
-{
+- (void)setUnsignedInteger:(NSUInteger)i forKey:(NSString *)key {
     self[key] = @(i);
 }
 
-- (void)setCGFloat:(CGFloat)f forKey:(NSString *)key
-{
+- (void)setCGFloat:(CGFloat)f forKey:(NSString *)key {
     self[key] = @(f);
 }
 
-- (void)setChar:(char)c forKey:(NSString *)key
-{
+- (void)setChar:(char)c forKey:(NSString *)key {
     self[key] = @(c);
 }
 
-- (void)setFloat:(float)i forKey:(NSString *)key
-{
+- (void)setFloat:(float)i forKey:(NSString *)key {
     self[key] = @(i);
 }
 
@@ -330,18 +321,15 @@
     self[key] = @(i);
 }
 
-- (void)setPoint:(CGPoint)o forKey:(NSString *)key
-{
+- (void)setPoint:(CGPoint)o forKey:(NSString *)key {
     self[key] = NSStringFromCGPoint(o);
 }
 
-- (void)setSize:(CGSize)o forKey:(NSString *)key
-{
+- (void)setSize:(CGSize)o forKey:(NSString *)key {
     self[key] = NSStringFromCGSize(o);
 }
 
-- (void)setRect:(CGRect)o forKey:(NSString *)key
-{
+- (void)setRect:(CGRect)o forKey:(NSString *)key {
     self[key] = NSStringFromCGRect(o);
 }
 
