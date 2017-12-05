@@ -10,7 +10,7 @@
 
 - (NSDate *)beginningOfDay {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:self];
     return [calendar dateFromComponents:components];
 }
 
@@ -23,7 +23,7 @@
 
 - (NSDate *)beginningOfWeek {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit fromDate:self];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitWeekday | NSCalendarUnitDay fromDate:self];
     NSUInteger offset = ([components weekday] == [calendar firstWeekday]) ? 6 : [components weekday] - 2;
     [components setDay:[components day] - offset];
     return [calendar dateFromComponents:components];
@@ -37,7 +37,7 @@
 
 - (NSDate *)beginningOfMonth {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:self];
     return [calendar dateFromComponents:components];
 }
 
@@ -50,7 +50,7 @@
 
 - (NSDate *)beginningOfYear {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:self];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear fromDate:self];
     return [calendar dateFromComponents:components];
 }
 
