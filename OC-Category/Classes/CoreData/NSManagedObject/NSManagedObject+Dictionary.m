@@ -27,12 +27,10 @@
                         BOOL isParent = [[[(NSRelationshipDescription *)[namedRelationships objectForKey:relName] destinationEntity] name] isEqualToString:NSStringFromClass([self class])];
                         if (!isParent)
                             [dictionary setObject:[(NSManagedObject *)obj toDictionary] forKey:name];
-                    }
-                    else {
+                    } else {
                         [dictionary setObject:[(NSManagedObject *)obj toDictionary] forKey:name];
                     }
-                }
-                else if ([[obj class] isSubclassOfClass:[NSSet class]]) {
+                } else if ([[obj class] isSubclassOfClass:[NSSet class]]) {
                     if ([obj count] > 0) {
                         NSArray *array = [(NSSet *)obj allObjects];
                         NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:[array count]];
@@ -40,11 +38,9 @@
                             [mutableArray addObject:[(NSManagedObject *)o toDictionary]];
                         [dictionary setObject:[NSArray arrayWithArray:mutableArray] forKey:name];
                     }
-                }
-                else if ([[obj class] isSubclassOfClass:[NSDate class]]) {
+                } else if ([[obj class] isSubclassOfClass:[NSDate class]]) {
                     [dictionary setObject:[obj description] forKey:name];
-                }
-                else {
+                } else {
                     [dictionary setObject:obj forKey:name];
                 }
             }

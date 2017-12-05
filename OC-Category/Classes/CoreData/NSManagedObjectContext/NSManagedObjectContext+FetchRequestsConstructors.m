@@ -14,20 +14,20 @@
 #pragma mark - Constructors
 - (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingValue:(id)value forKey:(NSString*)key returningAsFault:(BOOL)fault {
     // Create request
-    NSFetchRequest *req        = [[NSFetchRequest alloc] init];
-    req.entity                 = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
-    req.predicate              = [NSPredicate predicateWithFormat:@"%K == %@", key, value];
-    req.fetchLimit             = 1;
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
+    req.predicate = [NSPredicate predicateWithFormat:@"%K == %@", key, value];
+    req.fetchLimit = 1;
     req.returnsObjectsAsFaults = fault;
 	return req;
 }
 
 - (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault {
 	// Create request
-    NSFetchRequest *req        = [[NSFetchRequest alloc] init];
-    req.entity                 = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
-    req.predicate              = predicate;
-    req.fetchLimit             = 1;
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
+    req.predicate = predicate;
+    req.fetchLimit = 1;
     req.returnsObjectsAsFaults = fault;
 	return req;
 }
@@ -55,10 +55,10 @@
 
 - (NSFetchRequest*)fetchRequestForEntityObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault {
     // Create request
-    NSFetchRequest *req        = [[NSFetchRequest alloc] init];
-    req.entity                 = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
-    req.sortDescriptors        = sortDescriptors;
-    req.predicate              = predicate;
+    NSFetchRequest *req = [[NSFetchRequest alloc] init];
+    req.entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
+    req.sortDescriptors = sortDescriptors;
+    req.predicate = predicate;
     req.returnsObjectsAsFaults = fault;
 	return req;
 }

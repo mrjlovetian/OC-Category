@@ -37,7 +37,6 @@
   NSError *error = nil;
   @try {
     NSArray *results = [self executeFetchRequest:request error:&error];
-    
     if(error) {
       @throw [NSString stringWithFormat:@"CoreData Fetch error: %@", [error userInfo]];
       return nil;
