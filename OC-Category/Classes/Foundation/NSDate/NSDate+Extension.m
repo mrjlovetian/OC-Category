@@ -68,20 +68,17 @@
 #else
     NSDateComponents *dayComponents = [calendar components:(NSYearCalendarUnit) fromDate:date];
 #endif
-    
     return [dayComponents year];
 }
 
 + (NSUInteger)hour:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
     NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitHour) fromDate:date];
 #else
     NSDateComponents *dayComponents = [calendar components:(NSHourCalendarUnit) fromDate:date];
 #endif
-    
     return [dayComponents hour];
 }
 
@@ -100,14 +97,12 @@
 
 + (NSUInteger)second:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
     NSDateComponents *dayComponents = [calendar components:(NSCalendarUnitSecond) fromDate:date];
 #else
     NSDateComponents *dayComponents = [calendar components:(NSSecondCalendarUnit) fromDate:date];
 #endif
-    
     return [dayComponents second];
 }
 
@@ -172,9 +167,7 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
     [componentsToAdd setDay:day];
-    
     NSDate *dateAfterDay = [calendar dateByAddingComponents:componentsToAdd toDate:date options:0];
-    
     return dateAfterDay;
 }
 
@@ -187,7 +180,6 @@
     NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
     [componentsToAdd setMonth:month];
     NSDate *dateAfterMonth = [calendar dateByAddingComponents:componentsToAdd toDate:date options:0];
-    
     return dateAfterMonth;
 }
 
@@ -214,7 +206,6 @@
 
 + (NSUInteger)daysAgo:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     NSDateComponents *components = [calendar components:(NSCalendarUnitDay)
                                                fromDate:date
@@ -226,7 +217,6 @@
                                                  toDate:[NSDate date]
                                                 options:0];
 #endif
-    
     return [components day];
 }
 
@@ -239,7 +229,6 @@
                              initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday) fromDate:date];
     NSInteger weekday = [comps weekday];
-    
     return weekday;
 }
 
@@ -371,18 +360,14 @@
 - (NSString *)stringWithFormat:(NSString *)format {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:format];
-    
     NSString *retStr = [outputFormatter stringFromDate:self];
-    
     return retStr;
 }
 
 + (NSDate *)dateWithString:(NSString *)string format:(NSString *)format {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setDateFormat:format];
-    
     NSDate *date = [inputFormatter dateFromString:string];
-    
     return date;
 }
 
@@ -418,7 +403,6 @@
 
 + (NSString *)timeInfoWithDateString:(NSString *)dateString {
     NSDate *date = [self dateWithString:dateString format:[self ymdHmsFormat]];
-    
     NSDate *curDate = [NSDate date];
     NSTimeInterval time = -[date timeIntervalSinceDate:curDate];
     
@@ -592,7 +576,6 @@
     if (fromDate == nil) {
         return nil;
     }
-    
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
     // NSDayCalendarUnit
     NSCalendar *gregorian = [[NSCalendar alloc]
@@ -601,8 +584,6 @@
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
 #endif
-    
-    
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setHour:numHours];
     

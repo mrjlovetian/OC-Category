@@ -21,20 +21,16 @@
 }
 
 + (NSDateFormatter *)formatterWithoutTime {
-    
     static NSDateFormatter *formatterWithoutTime = nil;
     static dispatch_once_t oncePredicate;
-    
     dispatch_once(&oncePredicate, ^{
         formatterWithoutTime = [[NSDate formatter] copy];
         [formatterWithoutTime setTimeStyle:NSDateFormatterNoStyle];
     });
-    
     return formatterWithoutTime;
 }
 
 + (NSDateFormatter *)formatterWithoutDate {
-    
     static NSDateFormatter *formatterWithoutDate = nil;
     static dispatch_once_t oncePredicate;
     
@@ -42,7 +38,6 @@
         formatterWithoutDate = [[NSDate formatter] copy];
         [formatterWithoutDate setDateStyle:NSDateFormatterNoStyle];
     });
-    
     return formatterWithoutDate;
 }
 

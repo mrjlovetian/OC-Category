@@ -73,7 +73,6 @@
     // Process Y
     double y = 600072.37  + 211455.93 * lng_aux  -  10938.51 * lng_aux * lat_aux -      0.36 * lng_aux * pow(lat_aux,2) -     44.54 * pow(lng_aux,3);
     return y;
-    
 }
 
 + (double)WGStoCHxWithLatitude:(double)lat longitude:(double)lng {
@@ -118,4 +117,5 @@
     // Result in degrees sex (dd.mmss)
     return deg + (sec/60.0 + min)/60.0;
 }
+
 @end

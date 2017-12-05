@@ -81,8 +81,7 @@
     NSMutableString *result = [NSMutableString string];
     for (NSUInteger i = 0; i < [encoded length]; i+= wrapWidth)
     {
-        if (i + wrapWidth >= [encoded length])
-        {
+        if (i + wrapWidth >= [encoded length]) {
             [result appendString:[encoded substringFromIndex:i]];
             break;
         }
