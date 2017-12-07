@@ -129,8 +129,7 @@ static NSDateFormatter *_internetDateTimeFormatter = nil;
                 [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"]; 
                 date = [dateFormatter dateFromString:RFC3339String];
             }
-            if(!date) //  2013-04-05 14:06:00
-            {
+            if(!date) { //  2013-04-05 14:06:00
                 [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd HH':'mm':'ss"];
                 date = [dateFormatter dateFromString:RFC3339String];
             }
