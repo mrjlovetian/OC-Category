@@ -59,7 +59,6 @@ void initOperators();
                 
             } else if ([@"^" isEqualToString:token]) {
                 token = [[left decimalNumberByRaisingToPower:right.integerValue] stringValue];
-                
             }
         }
         
@@ -84,14 +83,12 @@ tokenType typeForCharacter (const unichar character) {
         return tokenTypeText;
         
     } else if (character == '+' || character == '-' || character == '*' || character == '/' ||
-               character == '(' || character == ')' || character == '^')
-    {
+               character == '(' || character == ')' || character == '^') {
         return tokenTypeOperator;
         
     } else if (character == 0) {
         return tokenTypeEndOfEquation;
     }
-    
 #ifdef DEBUG
     NSLog(@"Invalid Operator: %@ is not a valid character." ,[NSString stringWithCharacters:&character length:1]);
     exit(EXIT_FAILURE);
