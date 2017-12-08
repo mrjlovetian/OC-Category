@@ -276,27 +276,21 @@
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     
     //name
-    
     NSString *propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
     [result setObject:propertyName forKey:@"name"];
     
     //attribute
-    
     NSMutableDictionary *attributeDictionary = ({
         
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-        
         unsigned int attributeCount;
         objc_property_attribute_t *attrs = property_copyAttributeList(property, &attributeCount);
-        
         for (int i = 0; i < attributeCount; i++) {
             NSString *name = [NSString stringWithCString:attrs[i].name encoding:NSUTF8StringEncoding];
             NSString *value = [NSString stringWithCString:attrs[i].value encoding:NSUTF8StringEncoding];
             [dictionary setObject:value forKey:name];
         }
-        
         free(attrs);
-        
         dictionary;
     });
     

@@ -82,8 +82,7 @@
     int i;
     int l = 0, a = 0, b = 0;
     unichar c;
-    for (i = 0; i < n; i++)
-    {
+    for (i = 0; i < n; i++) {
         c = [self characterAtIndex:i];
         if (isblank(c)) {
             b++;
@@ -98,4 +97,5 @@
     }
     return l + (int)ceilf((float)(a + b) / 2.0);
 }
+
 @end

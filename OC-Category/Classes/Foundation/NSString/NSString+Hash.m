@@ -8,7 +8,9 @@
 #import "NSString+Hash.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
+
 @implementation NSString (Hash)
+
 - (NSString *)md5String {
     const char *string = self.UTF8String;
     int length = (int)strlen(string);

@@ -9,8 +9,8 @@
 
 @implementation NSString (Emoji)
 
-static NSDictionary * s_unicodeToCheatCodes = nil;
-static NSDictionary * s_cheatCodesToUnicode = nil;
+static NSDictionary *s_unicodeToCheatCodes = nil;
+static NSDictionary *s_cheatCodesToUnicode = nil;
 
 + (void)initializeEmojiCheatCodes {
     NSDictionary *forwardMap = @{
@@ -863,8 +863,7 @@ static NSDictionary * s_cheatCodesToUnicode = nil;
     }
 }
 
-- (NSString *)stringByReplacingEmojiCheatCodesWithUnicode
-{
+- (NSString *)stringByReplacingEmojiCheatCodesWithUnicode {
     if (!s_cheatCodesToUnicode) {
         [NSString initializeEmojiCheatCodes];
     }
@@ -876,7 +875,6 @@ static NSDictionary * s_cheatCodesToUnicode = nil;
         }];
         return newText;
     }
-    
     return self;
 }
 

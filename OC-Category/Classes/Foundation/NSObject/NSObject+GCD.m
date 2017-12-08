@@ -32,6 +32,7 @@
         dispatch_async(dispatch_get_main_queue(), block);
     }
 }
+
 /**
  *  @brief  延迟执行代码块
  *
@@ -42,7 +43,6 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC);
 //    dispatch_after(popTime, dispatch_get_current_queue(), block);
     dispatch_after(popTime, dispatch_get_main_queue(), block);
-
 }
 
 @end

@@ -57,12 +57,10 @@
         //相同实例
         return NO;
     }
-    
     if (![instance isMemberOfClass:currentClass] ) {
         //不是当前类的实例
         return NO;
     }
-    
     while (instanceClass != [NSObject class]) {
         unsigned int propertyListCount = 0;
         objc_property_t *propertyList = class_copyPropertyList(currentClass, &propertyListCount);
@@ -97,7 +95,6 @@
         free(propertyList);
         instanceClass = class_getSuperclass(instanceClass);
     }
-    
     return YES;
 }
 
