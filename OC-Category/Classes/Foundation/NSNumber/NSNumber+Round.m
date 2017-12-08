@@ -9,6 +9,7 @@
 
 @implementation NSNumber (Round)
 #pragma mark - Display
+
 - (NSString *)toDisplayNumberWithDigit:(NSInteger)digit {
     NSString *result = nil;
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];

@@ -27,6 +27,7 @@ static const void *IntegerProperty = &IntegerProperty;
     //use that property's selector as the key:
     //objc_setAssociatedObject(self, @selector(stringProperty), stringProperty, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 //get
 - (NSString *)stringProperty {
     return objc_getAssociatedObject(self, StringProperty);

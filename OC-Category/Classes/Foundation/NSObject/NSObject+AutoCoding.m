@@ -79,8 +79,7 @@ static NSString *const AutocodingException = @"AutocodingException";
             {
                 case '@':
                 {
-                    if (strlen(typeEncoding) >= 3)
-                    {
+                    if (strlen(typeEncoding) >= 3) {
                         char *className = strndup(typeEncoding + 2, strlen(typeEncoding) - 3);
                         __autoreleasing NSString *name = @(className);
                         NSRange range = [name rangeOfString:@"<"];
