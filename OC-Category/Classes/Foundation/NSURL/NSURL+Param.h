@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSURL (Param)
+
 /**
  *  @brief  url参数转字典
  *

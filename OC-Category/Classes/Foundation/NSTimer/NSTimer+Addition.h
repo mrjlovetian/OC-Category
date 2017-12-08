@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSTimer (Addition)
+
 /// 暂停NSTimer
 - (void)pauseTimer;
 

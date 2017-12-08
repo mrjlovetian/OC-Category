@@ -22,7 +22,6 @@
 
 - (UIView *)logo {
     UIView *logo;
-    
     //Google Maps
     for (UIView *subview in self.subviews) {
         if ([subview isMemberOfClass:[UIImageView class]]) {

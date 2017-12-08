@@ -9,12 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSURLRequest (ParamsFromDictionary)
-/**
- *  @author Categories
- *
- *
- *
- */
+
 - (id)initWithURL:(NSURL *)URL parameters:(NSDictionary *)params;
 
 + (NSURLRequest *)requestGETWithURL:(NSURL *)url parameters:(NSDictionary *)params;
