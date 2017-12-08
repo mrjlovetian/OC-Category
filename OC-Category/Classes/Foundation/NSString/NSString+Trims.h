@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Trims)
+
 /**
  *  @brief  清除html标签
  *
