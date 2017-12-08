@@ -79,7 +79,6 @@
                    animated:(BOOL)animated {
     // clamp large numbers to 28
     zoomLevel = MIN(zoomLevel, 28);
-    
     // use the zoom level to compute the region
     MKCoordinateSpan span = [self coordinateSpanWithMapView:self centerCoordinate:centerCoordinate andZoomLevel:zoomLevel];
     MKCoordinateRegion region = MKCoordinateRegionMake(centerCoordinate, span);
