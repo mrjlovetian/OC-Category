@@ -16,10 +16,10 @@
 @property(nonatomic, retain)NSMutableArray *currentDictionaries;
 @property(nonatomic, retain)NSMutableString *currentText;
 
-
 @end
 
 @implementation NSString (XMLDictionary)
+
 /**
  *  @brief  xml字符串转换成NSDictionary
  *

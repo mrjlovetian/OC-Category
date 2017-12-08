@@ -7,19 +7,18 @@
 
 #import "NSString+UUID.h"
 #import <UIKit/UIKit.h>
+
 @implementation NSString (UUID)
+
 /**
  *  @brief  获取随机 UUID 例如 E621E1F8-C36C-495A-93FC-0C247A3E6E5F
  *
  *  @return 随机 UUID
  */
 + (NSString *)UUID {
-    if([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0)
-    {
+    if([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0) {
        return  [[NSUUID UUID] UUIDString];
-    }
-    else
-    {
+    } else {
         CFUUIDRef uuidRef = CFUUIDCreate(NULL);
         CFStringRef uuid = CFUUIDCreateString(NULL, uuidRef);
         CFRelease(uuidRef);
