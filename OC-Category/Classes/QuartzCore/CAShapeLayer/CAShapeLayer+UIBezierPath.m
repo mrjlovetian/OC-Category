@@ -49,8 +49,6 @@
     return path;
 }
 
-
-
 + (NSDictionary *)CGtoCALineCaps {
     return @{
              @(kCGLineCapSquare) :kCALineCapSquare,

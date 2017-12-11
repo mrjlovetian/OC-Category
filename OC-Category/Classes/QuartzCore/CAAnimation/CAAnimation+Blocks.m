@@ -39,8 +39,7 @@
 - (void)setCompletion:(void (^)(BOOL))completion {
     if ([self.delegate isKindOfClass:[CAAnimationDelegate class]]) {
         ((CAAnimationDelegate *)self.delegate).completion = completion;
-    }
-    else {
+    } else {
         CAAnimationDelegate *delegate = [[CAAnimationDelegate alloc] init];
         delegate.completion = completion;
         self.delegate = delegate;
@@ -54,8 +53,7 @@
 - (void)setStart:(void (^)(void))start {
     if ([self.delegate isKindOfClass:[CAAnimationDelegate class]]) {
         ((CAAnimationDelegate *)self.delegate).start = start;
-    }
-    else {
+    } else {
         CAAnimationDelegate *delegate = [[CAAnimationDelegate alloc] init];
         delegate.start = start;
         self.delegate = delegate;

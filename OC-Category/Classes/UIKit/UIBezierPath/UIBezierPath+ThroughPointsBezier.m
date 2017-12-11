@@ -102,8 +102,8 @@
     }
 }
 
-CGFloat ObliqueAngleOfStraightThrough(CGPoint point1, CGPoint point2)   //  [-π/2, 3π/2)
-{
+///  [-π/2, 3π/2)
+CGFloat ObliqueAngleOfStraightThrough(CGPoint point1, CGPoint point2)   {
     CGFloat obliqueRatio = 0;
     CGFloat obliqueAngle = 0;
     
@@ -111,17 +111,14 @@ CGFloat ObliqueAngleOfStraightThrough(CGPoint point1, CGPoint point2)   //  [-π
         
         obliqueRatio = (point2.y - point1.y) / (point2.x - point1.x);
         obliqueAngle = atan(obliqueRatio);
-    }
-    else if (point1.x < point2.x) {
+    } else if (point1.x < point2.x) {
         
         obliqueRatio = (point2.y - point1.y) / (point2.x - point1.x);
         obliqueAngle = M_PI + atan(obliqueRatio);
-    }
-    else if (point2.y - point1.y >= 0) {
+    } else if (point2.y - point1.y >= 0) {
         
         obliqueAngle = M_PI/2;
-    }
-    else {
+    } else {
         obliqueAngle = -M_PI/2;
     }
     

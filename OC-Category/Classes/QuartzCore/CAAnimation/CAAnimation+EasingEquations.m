@@ -323,8 +323,7 @@ static EasingFunction easeInOutBounce = ^CGFloat(CGFloat t, CGFloat b, CGFloat c
 
 @implementation CAAnimation (EasingEquations)
 
-+ (EasingFunction)blockForCAAnimationEasingFunction:(CAAnimationEasingFunction)easingFunction
-{
++ (EasingFunction)blockForCAAnimationEasingFunction:(CAAnimationEasingFunction)easingFunction {
     static NSDictionary *easingFunctionsToBlocks = nil;
     if (!easingFunctionsToBlocks) {
         easingFunctionsToBlocks = @{
@@ -378,8 +377,7 @@ static EasingFunction easeInOutBounce = ^CGFloat(CGFloat t, CGFloat b, CGFloat c
 + (CAKeyframeAnimation*)transformAnimationWithDuration:(CGFloat)duration
                                                   from:(CATransform3D)startValue
                                                     to:(CATransform3D)endValue
-                                        easingFunction:(CAAnimationEasingFunction)easingFunction
-{
+                                        easingFunction:(CAAnimationEasingFunction)easingFunction {
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.duration = duration;
     animation.fillMode = kCAFillModeForwards;
@@ -457,8 +455,7 @@ static EasingFunction easeInOutBounce = ^CGFloat(CGFloat t, CGFloat b, CGFloat c
 + (void)addAnimationToLayer:(CALayer *)layer
                    duration:(CGFloat)duration
                   transform:(CATransform3D)transform
-             easingFunction:(CAAnimationEasingFunction)easingFunction
-{
+             easingFunction:(CAAnimationEasingFunction)easingFunction {
     CAAnimation *animation = [self transformAnimationWithDuration:duration
                                                              from:layer.transform
                                                                to:transform
@@ -471,8 +468,7 @@ static EasingFunction easeInOutBounce = ^CGFloat(CGFloat t, CGFloat b, CGFloat c
                                     duration:(CGFloat)duration
                                         from:(CGFloat)startValue
                                           to:(CGFloat)endValue
-                              easingFunction:(CAAnimationEasingFunction)easingFunction
-{
+                              easingFunction:(CAAnimationEasingFunction)easingFunction {
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
     animation.duration = duration;
     animation.fillMode = kCAFillModeForwards;
@@ -496,8 +492,7 @@ static EasingFunction easeInOutBounce = ^CGFloat(CGFloat t, CGFloat b, CGFloat c
                 withKeyPath:(NSString *)keyPath
                    duration:(CGFloat)duration
                          to:(CGFloat)endValue
-             easingFunction:(CAAnimationEasingFunction)easingFunction
-{
+             easingFunction:(CAAnimationEasingFunction)easingFunction {
     [self addAnimationToLayer:layer
                   withKeyPath:keyPath
                      duration:duration
@@ -511,8 +506,7 @@ static EasingFunction easeInOutBounce = ^CGFloat(CGFloat t, CGFloat b, CGFloat c
                    duration:(CGFloat)duration
                        from:(CGFloat)startValue
                          to:(CGFloat)endValue
-             easingFunction:(CAAnimationEasingFunction)easingFunction
-{
+             easingFunction:(CAAnimationEasingFunction)easingFunction {
     CAAnimation *animation = [self animationWithKeyPath:keyPath
                                                duration:duration
                                                    from:startValue

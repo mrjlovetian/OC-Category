@@ -12,6 +12,14 @@
 
 @implementation UIBezierPath (Symbol)
 
+static void extracted(const CGRect *rect, CGFloat scale, CGFloat *size, CGFloat *thick, CGFloat *twiceThick) {
+    CGFloat height = CGRectGetHeight(*rect) *scale;
+    CGFloat width = CGRectGetWidth(*rect)  *scale;
+    *size = (height < width ? height : width) * scale;
+    *thick = *size / 3.f;
+    *twiceThick = *thick * 2.f;
+}
+
 // plus
 //
 //     c-d
@@ -24,11 +32,10 @@
 //
 + (UIBezierPath *)customBezierPathOfPlusSymbolWithRect:(CGRect)rect
                                                  scale:(CGFloat)scale {
-  CGFloat height     = CGRectGetHeight(rect) * scale;
-  CGFloat width      = CGRectGetWidth(rect)  * scale;
-  CGFloat size       = (height < width ? height : width) * scale;
-  CGFloat thick      = size / 3.f;
-  CGFloat twiceThick = thick * 2.f;
+    CGFloat size;
+    CGFloat thick;
+    CGFloat twiceThick;
+    extracted(&rect, scale, &size, &thick, &twiceThick);
   
   CGPoint offsetPoint =
     CGPointMake(CGRectGetMinX(rect) + (CGRectGetWidth(rect)  - size) / 2.f,
@@ -56,7 +63,7 @@
                                                   scale:(CGFloat)scale {
   CGFloat height = CGRectGetHeight(rect) * scale;
   CGFloat width  = CGRectGetWidth(rect)  * scale;
-  CGFloat size   = height < width ? height : width;
+  CGFloat size  = height < width ? height : width;
   CGFloat thick  = size / 3.f;
   
   return [self bezierPathWithRect:
@@ -96,10 +103,10 @@
     height = width * 25.f / 32.f;
   }
   
-  CGFloat topPointOffset    = thick / sqrt(2.f);
-  CGFloat bottomHeight      = thick * sqrt(2.f);
+  CGFloat topPointOffset = thick / sqrt(2.f);
+  CGFloat bottomHeight = thick * sqrt(2.f);
   CGFloat bottomMarginRight = height - topPointOffset;
-  CGFloat bottomMarginLeft  = width - bottomMarginRight;
+  CGFloat bottomMarginLeft = width - bottomMarginRight;
   
   CGPoint offsetPoint =
     CGPointMake(CGRectGetMinX(rect) + (CGRectGetWidth(rect)  - width)  / 2.f,
@@ -141,12 +148,12 @@
 + (UIBezierPath *)customBezierPathOfCrossSymbolWithRect:(CGRect)rect
                                                   scale:(CGFloat)scale
                                                   thick:(CGFloat)thick {
-  CGFloat height     = CGRectGetHeight(rect) * scale;
-  CGFloat width      = CGRectGetWidth(rect)  * scale;
+  CGFloat height = CGRectGetHeight(rect) * scale;
+  CGFloat width = CGRectGetWidth(rect)  * scale;
   CGFloat halfHeight = height / 2.f;
-  CGFloat halfWidth  = width  / 2.f;
-  CGFloat size       = height < width ? height : width;
-  CGFloat offset     = thick / sqrt(2.f);
+  CGFloat halfWidth = width  / 2.f;
+  CGFloat size = height < width ? height : width;
+  CGFloat offset = thick / sqrt(2.f);
   
   CGPoint offsetPoint =
     CGPointMake(CGRectGetMinX(rect) + (CGRectGetWidth(rect)  - size) / 2.f,
@@ -192,10 +199,10 @@
                                                   scale:(CGFloat)scale
                                                   thick:(CGFloat)thick
                                               direction:(UIBezierPathArrowDirection)direction {
-  CGFloat height     = CGRectGetHeight(rect) * scale;
-  CGFloat width      = CGRectGetWidth(rect)  * scale;
+  CGFloat height = CGRectGetHeight(rect) * scale;
+  CGFloat width = CGRectGetWidth(rect)  * scale;
   CGFloat halfHeight = height / 2.f;
-  CGFloat halfWidth  = width  / 2.f;
+  CGFloat halfWidth = width  / 2.f;
   
   CGPoint offsetPoint =
     CGPointMake(CGRectGetMinX(rect) + (CGRectGetWidth(rect)  - width)  / 2.f,
@@ -210,8 +217,7 @@
       [path addLineToPoint:CGPointWithOffset(CGPointMake(thick, halfHeight), offsetPoint)];     // d
       [path addLineToPoint:CGPointWithOffset(CGPointMake(width, height), offsetPoint)];         // e
       [path addLineToPoint:CGPointWithOffset(CGPointMake(width - thick, height), offsetPoint)]; // f
-    }
-    else {
+    } else {
       [path moveToPoint:CGPointWithOffset(CGPointMake(width - thick, halfHeight), offsetPoint)]; // a
       [path addLineToPoint:CGPointWithOffset(CGPointMake(0.f, 0.f), offsetPoint)];               // b
       [path addLineToPoint:CGPointWithOffset(CGPointMake(thick, 0.f), offsetPoint)];             // c
@@ -219,8 +225,7 @@
       [path addLineToPoint:CGPointWithOffset(CGPointMake(thick, height), offsetPoint)];          // e
       [path addLineToPoint:CGPointWithOffset(CGPointMake(0.f, height), offsetPoint)];            // f
     }
-  }
-  else {
+  } else {
     if (direction == kUIBezierPathArrowDirectionUp) {
       [path moveToPoint:CGPointWithOffset(CGPointMake(halfWidth, 0.f), offsetPoint)];           // a
       [path addLineToPoint:CGPointWithOffset(CGPointMake(width, height - thick), offsetPoint)]; // b
@@ -228,8 +233,7 @@
       [path addLineToPoint:CGPointWithOffset(CGPointMake(halfWidth, thick), offsetPoint)];      // d
       [path addLineToPoint:CGPointWithOffset(CGPointMake(0.f, height), offsetPoint)];           // e
       [path addLineToPoint:CGPointWithOffset(CGPointMake(0.f, height - thick), offsetPoint)];   // f
-    }
-    else {
+    } else {
       [path moveToPoint:CGPointWithOffset(CGPointMake(halfWidth, height - thick), offsetPoint)]; // a
       [path addLineToPoint:CGPointWithOffset(CGPointMake(width, 0.f), offsetPoint)];             // b
       [path addLineToPoint:CGPointWithOffset(CGPointMake(width, thick), offsetPoint)];           // c
@@ -256,8 +260,8 @@
 + (UIBezierPath *)customBezierPathOfPencilSymbolWithRect:(CGRect)rect
                                                    scale:(CGFloat)scale
                                                    thick:(CGFloat)thick {
-  CGFloat height    = CGRectGetHeight(rect) * scale;
-  CGFloat width     = CGRectGetWidth(rect)  * scale;
+  CGFloat height = CGRectGetHeight(rect) * scale;
+  CGFloat width = CGRectGetWidth(rect)  * scale;
   CGFloat edgeWidth = thick / sqrt(2.f);
   
   CGPoint offsetPoint =
