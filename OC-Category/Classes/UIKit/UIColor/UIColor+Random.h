@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (Random)
+
 /**
  *  @brief  随机颜色
  *

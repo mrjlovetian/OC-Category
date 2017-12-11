@@ -7,6 +7,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Alpha)
+
 /**
  *  @brief  是否有alpha通道
  *

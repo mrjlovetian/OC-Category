@@ -8,10 +8,13 @@
 
 // Private helper methods
 @interface UIImage (AlphaPrivateMethods)
+
 - (CGImageRef)newBorderMask:(NSUInteger)borderSize size:(CGSize)size;
+
 @end
 
 @implementation UIImage (Alpha)
+
 /**
  *  @brief  是否有alpha通道
  *
@@ -24,6 +27,7 @@
             alpha == kCGImageAlphaPremultipliedFirst ||
             alpha == kCGImageAlphaPremultipliedLast);
 }
+
 /**
  *  @brief  如果没有alpha通道 增加alpha通道
  *
@@ -101,6 +105,7 @@
     
     return transparentBorderImage;
 }
+
 /**
  *  @brief  裁切含透明图片为最小大小
  *
@@ -181,9 +186,7 @@
         }
     }
     
-    
     CGFloat scale = self.scale;
-    
     CGRect cropRect = CGRectMake(left.x / scale, top.y/scale, (right.x - left.x)/scale, (bottom.y - top.y) / scale);
     UIGraphicsBeginImageContextWithOptions( cropRect.size,
                                            NO,

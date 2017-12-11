@@ -6,6 +6,7 @@
 //
 
 #import "UIColor+HEX.h"
+
 CGFloat colorComponentFrom(NSString *string, NSUInteger start, NSUInteger length) {
     NSString *substring = [string substringWithRange:NSMakeRange(start, length)];
     NSString *fullHex = length == 2 ? substring : [NSString stringWithFormat: @"%@%@", substring, substring];
@@ -16,6 +17,7 @@ CGFloat colorComponentFrom(NSString *string, NSUInteger start, NSUInteger length
 }
 
 @implementation UIColor (HEX)
+
 + (UIColor *)colorWithHex:(UInt32)hex{
     return [UIColor colorWithHex:hex andAlpha:1];
 }
@@ -66,7 +68,7 @@ CGFloat colorComponentFrom(NSString *string, NSUInteger start, NSUInteger length
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
-- (NSString *)HEXString{
+- (NSString *)HEXString {
     UIColor* color = self;
     if (CGColorGetNumberOfComponents(color.CGColor) < 4) {
         const CGFloat *components = CGColorGetComponents(color.CGColor);
@@ -96,11 +98,11 @@ CGFloat colorComponentFrom(NSString *string, NSUInteger start, NSUInteger length
 
 + (UIColor *)colorWithWholeRed:(CGFloat)red
                          green:(CGFloat)green
-                          blue:(CGFloat)blue
-{
+                          blue:(CGFloat)blue {
     return [self colorWithWholeRed:red
                              green:green
                               blue:blue
                              alpha:1.0];
 }
+
 @end
