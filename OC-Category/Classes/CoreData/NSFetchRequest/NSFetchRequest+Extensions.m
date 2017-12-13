@@ -8,6 +8,7 @@
 #import "NSFetchRequest+Extensions.h"
 
 @implementation NSFetchRequest(Extensions)
+
 + (id)fetchRequestWithEntity:(NSEntityDescription *)entity{
   return [[self alloc] initWithEntity:entity predicate:nil sortDescriptors:nil];
 }
