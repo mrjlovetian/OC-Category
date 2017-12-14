@@ -7,12 +7,14 @@
 
 #import "UIView+BlockGesture.h"
 #import <objc/runtime.h>
+
 static char kActionHandlerTapBlockKey;
 static char kActionHandlerTapGestureKey;
 static char kActionHandlerLongPressBlockKey;
 static char kActionHandlerLongPressGestureKey;
 
 @implementation UIView (BlockGesture)
+
 - (void)addTapActionWithBlock:(GestureActionBlock)block {
     UITapGestureRecognizer *gesture = objc_getAssociatedObject(self, &kActionHandlerTapGestureKey);
     if (!gesture) {

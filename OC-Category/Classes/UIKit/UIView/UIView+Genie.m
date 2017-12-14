@@ -9,9 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+Genie.h"
 
-
 #pragma mark - Constants
-
 
 /* Animation parameters
  *

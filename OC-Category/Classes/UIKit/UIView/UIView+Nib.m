@@ -8,7 +8,9 @@
 #import "UIView+Nib.h"
 
 @implementation UIView (Nib)
+
 #pragma mark - Nibs
+
 + (UINib *)loadNib {
     return [self loadNibNamed:NSStringFromClass([self class])];
 }

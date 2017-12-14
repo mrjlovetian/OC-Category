@@ -11,16 +11,13 @@
 const NSString *UIView_GestureCallback_gesturesKey = @"UIView_GestureCallback_gesturesKey";
 const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCallback_gestureKeysHashKey";
 
-
 @implementation GestureCallbackValues
 @synthesize tapCallback, pinchCallback, panCallback, swipeCallback, rotationCallback, longPressCallback;
 @synthesize gesture, gestureId;
 @end
 
-
 @implementation UIView (GestureCallback)
 @dynamic gestures, gestureKeysHash;
-
 
 #pragma mark - ##### TAP
 
@@ -128,7 +125,6 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
     [self addGestureRecognizer:tg];
 }
 
-
 #pragma mark remove pinch gestures
 
 - (void)removePinchGesture:(NSString *)pinchGestureId {
@@ -199,7 +195,6 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
     [self.gestures setValue:v forKey:panGestureId];
     [self addGestureRecognizer:tg];
 }
-
 
 #pragma mark remove pan gestures
 
@@ -414,7 +409,6 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
     [self addGestureRecognizer:tg];
 }
 
-
 #pragma mark remove longPress gestures
 
 - (void)removeLongPressGesture:(NSString *)longPressGestureId {
@@ -437,7 +431,7 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
 
 #pragma mark longPress handler
 
--(void)longPressHandler:(UILongPressGestureRecognizer*)recognizer {
+- (void)longPressHandler:(UILongPressGestureRecognizer*)recognizer {
     GestureCallbackValues *v = [self.gestureKeysHash objectForKey:[NSString stringWithFormat:@"%lu", (unsigned long)recognizer.hash]];
     
     if (v != nil) {
@@ -447,7 +441,6 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
     }
 }
 
-
 #pragma mark - random string
 
 /*----------------------------------
@@ -456,7 +449,6 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
  *  http://stackoverflow.com/questions/2633801/generate-a-random-alphanumeric-string-in-cocoa
  *
  ---------------------------------*/
-
 
 - (NSString *)randomStringWithLength: (int) len {
     const NSString *letters = @"abcdefghilmnopqrstuvwxyzABCDEFGHILMNOPQRSTUVWXYZ0123456789";
@@ -493,7 +485,7 @@ const NSString *UIView_GestureCallback_gestureKeysHashKey = @"UIView_GestureCall
     return dict;
 }
 
--(void) setGestureKeysHash:(NSMutableDictionary *)value {
+- (void) setGestureKeysHash:(NSMutableDictionary *)value {
     objc_setAssociatedObject(self, &UIView_GestureCallback_gestureKeysHashKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 

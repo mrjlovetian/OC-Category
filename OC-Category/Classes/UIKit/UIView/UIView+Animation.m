@@ -219,6 +219,7 @@ float radiansForDegrees(int degrees) {
                                           }];
                      }];
 }
+
 #pragma mark - add subview
 
 - (void)addSubviewWithFadeAnimation:(UIView *)subview {

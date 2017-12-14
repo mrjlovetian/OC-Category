@@ -8,6 +8,7 @@
 typedef void (^GestureActionBlock)(UIGestureRecognizer *gestureRecoginzer);
 
 @interface UIView (BlockGesture)
+
 /**
  *  @brief  添加tap手势
  *

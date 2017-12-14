@@ -8,6 +8,7 @@
 #import "UIView+Constraints.h"
 
 @implementation UIView (Constraints)
+
 - (NSLayoutConstraint *)constraintForAttribute:(NSLayoutAttribute)attribute {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"firstAttribute = %d && (firstItem = %@ || secondItem = %@)", attribute, self, self];
     NSArray *constraintArray = [self.superview constraints];
@@ -67,4 +68,5 @@
 - (NSLayoutConstraint *)baseLineConstraint {
     return [self constraintForAttribute:NSLayoutAttributeBaseline];
 }
+
 @end

@@ -27,6 +27,4 @@
     return [[self scrollView] delaysContentTouches];
 }
 
-
-
 @end

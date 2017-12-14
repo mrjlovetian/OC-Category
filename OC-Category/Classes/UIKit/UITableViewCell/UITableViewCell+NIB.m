@@ -8,6 +8,7 @@
 #import "UITableViewCell+NIB.h"
 
 @implementation UITableViewCell (NIB)
+
 /**
  *  @brief  加载同类名的nib
  *

@@ -8,6 +8,7 @@
 #import "UITableView+iOS7Style.h"
 
 @implementation UITableView (iOS7Style)
+
 // http://stackoverflow.com/questions/18822619/ios-7-tableview-like-in-settings-app-on-ipad
 /**
  *  @brief  ios7设置页面的UITableViewCell样式
@@ -15,7 +16,7 @@
  *  @param cell      cell
  *  @param indexPath indexPath
  */
--(void)applyiOS7SettingsStyleGrouping:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)applyiOS7SettingsStyleGrouping:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(tintColor)]) {
         CGFloat cornerRadius = 5.f;
         cell.backgroundColor = UIColor.clearColor;
