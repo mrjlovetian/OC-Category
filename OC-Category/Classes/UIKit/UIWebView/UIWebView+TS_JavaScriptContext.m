@@ -11,7 +11,6 @@
 #import <objc/runtime.h>
 
 static const char kTSJavaScriptContext[] = "ts_javaScriptContext";
-
 static NSHashTable *g_webViews = nil;
 
 @interface UIWebView (TS_JavaScriptCore_private)
@@ -54,7 +53,6 @@ static NSHashTable *g_webViews = nil;
 }
 
 @end
-
 
 @implementation UIWebView (TS_JavaScriptContext)
 
