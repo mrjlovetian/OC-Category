@@ -7,6 +7,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIResponder (Chain)
+
 /**
  *  @brief  响应者链
  *

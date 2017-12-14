@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UINavigationItem (Lock)
+
 /**
  *  @brief  锁定RightItem
  *

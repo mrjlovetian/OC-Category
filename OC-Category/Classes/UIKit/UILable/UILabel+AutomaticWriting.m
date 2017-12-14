@@ -8,7 +8,6 @@
 #import "UILabel+AutomaticWriting.h"
 #import <objc/runtime.h>
 
-
 NSTimeInterval const UILabelAWDefaultDuration = 0.4f;
 
 unichar const UILabelAWDefaultCharacter = 124;
@@ -25,7 +24,6 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 
 static char kAutomaticWritingOperationQueueKey;
 static char kAutomaticWritingEdgeInsetsKey;
-
 
 @implementation UILabel (AutomaticWriting)
 

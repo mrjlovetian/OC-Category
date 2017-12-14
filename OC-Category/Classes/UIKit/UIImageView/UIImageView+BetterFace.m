@@ -73,8 +73,7 @@ char detectorKey;
     return [associatedObject boolValue];
 }
 
-- (void)faceDetect:(UIImage *)aImage
-{
+- (void)faceDetect:(UIImage *)aImage {
     dispatch_queue_t queue = dispatch_queue_create("com.croath.betterface.queue", NULL);
     dispatch_async(queue, ^{
         CIImage* image = aImage.CIImage;
@@ -105,7 +104,7 @@ char detectorKey;
     });
 }
 
--(void)markAfterFaceDetect:(NSArray *)features size:(CGSize)size{
+- (void)markAfterFaceDetect:(NSArray *)features size:(CGSize)size {
     CGRect fixedRect = CGRectMake(MAXFLOAT, MAXFLOAT, 0, 0);
     CGFloat rightBorder = 0, bottomBorder = 0;
     for (CIFaceFeature *f in features){

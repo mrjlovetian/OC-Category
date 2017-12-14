@@ -7,6 +7,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UINavigationBar (CustomHeight)
+
 /**
  *  @brief  自定义UINavigationBar高度
  *

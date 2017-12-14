@@ -17,7 +17,6 @@ typedef void (^UISearchBarScopeIndexBlock)(UISearchBar *searchBar, NSInteger sel
 
 @implementation UISearchBar (Blocks)
 
-
 static const void *UISearchBarDelegateKey                                = &UISearchBarDelegateKey;
 static const void *UISearchBarShouldBeginEditingKey                      = &UISearchBarShouldBeginEditingKey;
 static const void *UISearchBarTextDidBeginEditingKey                     = &UISearchBarTextDidBeginEditingKey;
@@ -31,10 +30,8 @@ static const void *UISearchBarCancelButtonClickedKey                            
 static const void *UISearchBarResultsListButtonClickedKey                                = &UISearchBarResultsListButtonClickedKey;
 static const void *UISearchBarSelectedScopeButtonIndexDidChangeKey                                = &UISearchBarSelectedScopeButtonIndexDidChangeKey;
 
-
-
-
 #pragma mark UISearchBar delegate Methods
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     UISearchBarReturnBlock block = searchBar.completionShouldBeginEditingBlock;
     if (block) {

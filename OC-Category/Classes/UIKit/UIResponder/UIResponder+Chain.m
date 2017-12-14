@@ -8,6 +8,7 @@
 #import "UIResponder+Chain.h"
 
 @implementation UIResponder (Chain)
+
 /**
  *  @brief  响应者链
  *
@@ -39,4 +40,5 @@
                                             }];
     return returnString;
 }
+
 @end

@@ -8,6 +8,7 @@
 #import "UINavigationItem+Lock.h"
 
 @implementation UINavigationItem (Lock)
+
 - (void)lockRightItem:(BOOL)lock {
     NSArray *rightBarItems = self.rightBarButtonItems;
     if (rightBarItems  && [rightBarItems count]>0) {

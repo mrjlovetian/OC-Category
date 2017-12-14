@@ -8,6 +8,7 @@
 #import "UILabel+AutoSize.h"
 
 @implementation UILabel (AutoSize)
+
 - (UILabel *)resizeLabelHorizontal{
     return [self resizeLabelHorizontal:0];
 }
@@ -65,4 +66,5 @@
     self.frame = newFrame;
     return self;
 }
+
 @end

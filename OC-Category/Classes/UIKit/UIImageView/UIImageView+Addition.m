@@ -8,6 +8,7 @@
 #import "UIImageView+Addition.h"
 
 @implementation UIImageView (Addition)
+
 + (id)imageViewWithImageNamed:(NSString *)imageName{
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
 }

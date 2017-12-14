@@ -23,17 +23,14 @@
 @property (nonatomic, readonly) UIButton *button;
 @property (nonatomic, strong) UIView *customView;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
-
 @property (nonatomic, assign) CGFloat verticalOffset;
 @property (nonatomic, assign) CGFloat verticalSpace;
-
 @property (nonatomic, assign) BOOL fadeInOnDisplay;
 
 - (void)setupConstraints;
 - (void)prepareForReuse;
 
 @end
-
 
 #pragma mark - UIScrollView+EmptyDataSet
 
@@ -63,7 +60,6 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     UIView *view = objc_getAssociatedObject(self, kEmptyDataSetView);
     return view ? !view.hidden : NO;
 }
-
 
 #pragma mark - Getters (Private)
 
@@ -111,8 +107,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
         for (NSInteger i = 0; i < sections; i++) {
             items += [dataSource tableView:tableView numberOfRowsInSection:i];
         }
-    }
-    else if ([self isKindOfClass:[UICollectionView class]]) {
+    } else if ([self isKindOfClass:[UICollectionView class]]) {
         
         id <UICollectionViewDataSource> dataSource = [self performSelector:@selector(dataSource)];
         UICollectionView *collectionView = (UICollectionView *)self;
@@ -129,7 +124,6 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     
     return items;
 }
-
 
 #pragma mark - Data Source Getters
 
@@ -349,7 +343,6 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
     }
     objc_setAssociatedObject(self, kEmptyDataSetDelegate, delegate, OBJC_ASSOCIATION_ASSIGN);
 }
-
 
 #pragma mark - Setters (Private)
 

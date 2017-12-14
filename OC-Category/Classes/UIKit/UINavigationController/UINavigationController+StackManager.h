@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UINavigationController (StackManager)
+
 /**
  *  @brief  寻找Navigation中的某个viewcontroler对象
  *

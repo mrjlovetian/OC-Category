@@ -38,7 +38,6 @@
     return 16; // iOS 7+
 }
 
-
 #pragma mark - Spacer
 
 - (UIBarButtonItem *)spacerForItem:(UIBarButtonItem *)item withMargin:(CGFloat)margin {
@@ -58,7 +57,6 @@
 - (UIBarButtonItem *)rightSpacerForItem:(UIBarButtonItem *)item {
     return [self spacerForItem:item withMargin:self.rightMargin];
 }
-
 
 #pragma mark - Margin
 
@@ -81,7 +79,6 @@
     objc_setAssociatedObject(self, @selector(rightMargin), @(rightMargin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     self.rightBarButtonItems = self.rightBarButtonItems;
 }
-
 
 #pragma mark - Original Bar Button Items
 

@@ -124,5 +124,4 @@
     [self setContentOffset:CGPointMake(self.frame.size.width * pageIndex, 0.0f) animated:animated];
 }
 
-
 @end
