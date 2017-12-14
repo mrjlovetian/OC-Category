@@ -8,6 +8,7 @@
 #import "UIView+Screenshot.h"
 #import <QuartzCore/QuartzCore.h>
 @implementation UIView (Screenshot)
+
 /**
  *  @brief  view截图
  *

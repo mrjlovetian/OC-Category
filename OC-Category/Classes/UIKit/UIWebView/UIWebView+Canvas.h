@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIWebView (Canvas)
+
 /// 创建一个指定大小的画布
 - (void)createCanvas:(NSString *)canvasId
                width:(NSInteger)width

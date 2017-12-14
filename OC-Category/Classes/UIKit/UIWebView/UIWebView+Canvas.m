@@ -8,6 +8,7 @@
 #import "UIWebView+Canvas.h"
 #import "UIColor+Web.h"
 @implementation UIWebView (Canvas)
+
 /// 创建一个指定大小的透明画布
 - (void)createCanvas:(NSString *)canvasId width:(NSInteger)width height:(NSInteger)height {
     NSString *jsString = [NSString stringWithFormat:

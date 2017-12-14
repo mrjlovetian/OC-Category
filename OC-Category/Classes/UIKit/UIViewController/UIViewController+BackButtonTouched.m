@@ -22,6 +22,7 @@ static const void *BackButtonHandlerKey = &BackButtonHandlerKey;
 @end
 
 @implementation UINavigationController (ShouldPopItem)
+
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
 	if([self.viewControllers count] < [navigationBar.items count]) {
 		return YES;
