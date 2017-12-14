@@ -25,14 +25,12 @@ static const void *UIControlActionBlockArray = &UIControlActionBlockArray;
 
 - (void)handleControlEvents:(UIControlEvents)controlEvents withBlock:(UIControlActionBlock)actionBlock {
     NSMutableArray *actionBlocksArray = [self actionBlocksArray];
-    
     UIControlActionBlockWrapper *blockActionWrapper = [[UIControlActionBlockWrapper alloc] init];
     blockActionWrapper.actionBlock = actionBlock;
     blockActionWrapper.controlEvents = controlEvents;
     [actionBlocksArray addObject:blockActionWrapper];
     [self addTarget:blockActionWrapper action:@selector(invokeBlock:) forControlEvents:controlEvents];
 }
-
 
 - (void)removeActionBlocksForControlEvents:(UIControlEvents)controlEvents {
     NSMutableArray *actionBlocksArray = [self actionBlocksArray];
@@ -47,7 +45,6 @@ static const void *UIControlActionBlockArray = &UIControlActionBlockArray;
     }];
     [actionBlocksArray removeObjectsInArray:wrappersToRemove];
 }
-
 
 - (NSMutableArray *)actionBlocksArray {
     NSMutableArray *actionBlocksArray = objc_getAssociatedObject(self, UIControlActionBlockArray);

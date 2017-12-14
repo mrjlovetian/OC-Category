@@ -19,11 +19,9 @@
     UIFont * font = nil;
     if([[UIFont class] resolveClassMethod:@selector(preferredFontForTextStyle:)]){
         font = [UIFont preferredFontForTextStyle:fontName];
-    }else{
+    } else {
         font = [UIFont fontWithName:fontName size:14 * scale];
     }
-    
-    
     return [font adjustFontForTextStyle:style];
 }
 
@@ -38,7 +36,6 @@
     } else {
         fontDescriptor = self.fontDescriptor;
     }
-    
     float dynamicSize = [fontDescriptor pointSize] * scale + 3;
     return [UIFont fontWithName:self.fontName size:dynamicSize];
 }

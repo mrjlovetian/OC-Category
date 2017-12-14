@@ -21,7 +21,7 @@
 #import <mach/processor_info.h>
 
 @implementation UIDevice (Hardware)
-+ (NSString *)platform{
++ (NSString *)platform {
     size_t size;
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
     char *machine = malloc(size);
@@ -31,7 +31,7 @@
     return platform;
 }
 
-+ (NSString *)platformString{
++ (NSString *)platformString {
     NSString *platform = [self platform];
     if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";
     if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
@@ -88,13 +88,11 @@
     if ([platform isEqualToString:@"iPad6,4"])      return @"iPad Pro 9.7-inch (Cellular)";
     if ([platform isEqualToString:@"iPad6,7"])      return @"iPad Pro 12.9-inch (WiFi)";
     if ([platform isEqualToString:@"iPad6,8"])      return @"iPad Pro 12.9-inch (Cellular)";
-    
     if ([platform isEqualToString:@"i386"])         return [UIDevice currentDevice].model;
     if ([platform isEqualToString:@"x86_64"])       return [UIDevice currentDevice].model;
     
     return platform;
 }
-
 
 + (NSString *)macAddress {
     int                 mib[6];
@@ -136,22 +134,20 @@
     NSString *outstring = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
                            *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
     free(buf);
-    
     return outstring;
 }
 
-+ (NSString *)systemVersion
-{
++ (NSString *)systemVersion {
     return [[UIDevice currentDevice] systemVersion];
 }
-+ (BOOL)hasCamera
-{
+
++ (BOOL)hasCamera {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
+
 #pragma mark - sysctl utils
 
-+ (NSUInteger)getSysInfo:(uint)typeSpecifier
-{
++ (NSUInteger)getSysInfo:(uint)typeSpecifier {
     size_t size = sizeof(int);
     int result;
     int mib[2] = {CTL_HW, typeSpecifier};
@@ -160,6 +156,7 @@
 }
 
 #pragma mark - memory information
+
 + (NSUInteger)cpuFrequency {
     return [self getSysInfo:HW_CPU_FREQ];
 }
@@ -177,13 +174,11 @@
 }
 
 
-+ (NSUInteger)totalMemoryBytes
-{
++ (NSUInteger)totalMemoryBytes {
     return [self getSysInfo:HW_PHYSMEM];
 }
 
-+ (NSUInteger)freeMemoryBytes
-{
++ (NSUInteger)freeMemoryBytes {
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t pagesize;
@@ -199,8 +194,7 @@
 
 #pragma mark - disk information
 
-+ (long long)freeDiskSpaceBytes
-{
++ (long long)freeDiskSpaceBytes {
     struct statfs buf;
     long long freespace;
     freespace = 0;
@@ -210,8 +204,7 @@
     return freespace;
 }
 
-+ (long long)totalDiskSpaceBytes
-{
++ (long long)totalDiskSpaceBytes {
     struct statfs buf;
     long long totalspace;
     totalspace = 0;
@@ -220,4 +213,5 @@
     }
     return totalspace;
 }
+
 @end
