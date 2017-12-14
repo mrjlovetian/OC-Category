@@ -10,6 +10,7 @@
 typedef void (^UIImageSizeRequestCompleted) (NSURL *imgURL, CGSize size);
 
 @interface UIImage (RemoteSize)
+
 /**
  *  @brief 获取远程图片的大小
  *

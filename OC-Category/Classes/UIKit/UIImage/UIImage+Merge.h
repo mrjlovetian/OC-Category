@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Merge)
+
 /**
  *  @brief  合并两个图片
  *

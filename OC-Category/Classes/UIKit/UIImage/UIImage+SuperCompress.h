@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (SuperCompress)
+
 /**
  *  压缩上传图片到指定字节
  *

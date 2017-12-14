@@ -9,6 +9,7 @@
 //CGFloat DegreesToRadiansForOrientation(CGFloat degrees) {return degrees * M_PI / 180;};
 //CGFloat RadiansToDegreesForOrientation(CGFloat radians) {return radians * 180/M_PI;};
 @interface UIImage (Orientation)
+
 /**
  *  @brief  修正图片的方向
  *

@@ -9,8 +9,7 @@
 
 @implementation UIImage (FXImage)
 
-- (UIImage *)imageCroppedToRect:(CGRect)rect
-{
+- (UIImage *)imageCroppedToRect:(CGRect)rect {
     //create drawing context
 	UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
     
@@ -25,11 +24,9 @@
 	return image;
 }
 
-- (UIImage *)imageScaledToSize:(CGSize)size
-{   
+- (UIImage *)imageScaledToSize:(CGSize)size {
     //avoid redundant drawing
-    if (CGSizeEqualToSize(self.size, size))
-    {
+    if (CGSizeEqualToSize(self.size, size)) {
         return self;
     }
     
@@ -47,34 +44,25 @@
 	return image;
 }
 
-- (UIImage *)imageScaledToFitSize:(CGSize)size
-{
+- (UIImage *)imageScaledToFitSize:(CGSize)size {
     //calculate rect
     CGFloat aspect = self.size.width / self.size.height;
-    if (size.width / aspect <= size.height)
-    {
+    if (size.width / aspect <= size.height) {
         return [self imageScaledToSize:CGSizeMake(size.width, size.width / aspect)];
-    }
-    else
-    {
+    } else {
         return [self imageScaledToSize:CGSizeMake(size.height * aspect, size.height)];
     }
 }
 
-- (UIImage *)imageScaledToFillSize:(CGSize)size
-{
-    if (CGSizeEqualToSize(self.size, size))
-    {
+- (UIImage *)imageScaledToFillSize:(CGSize)size {
+    if (CGSizeEqualToSize(self.size, size)) {
         return self;
     }
     //calculate rect
     CGFloat aspect = self.size.width / self.size.height;
-    if (size.width / aspect >= size.height)
-    {
+    if (size.width / aspect >= size.height) {
         return [self imageScaledToSize:CGSizeMake(size.width, size.width / aspect)];
-    }
-    else
-    {
+    } else {
         return [self imageScaledToSize:CGSizeMake(size.height * aspect, size.height)];
     }
 }
@@ -90,12 +78,9 @@
         case UIViewContentModeScaleAspectFit:
         {
             CGFloat aspect = self.size.width / self.size.height;
-            if (size.width / aspect <= size.height)
-            {
+            if (size.width / aspect <= size.height) {
                 rect = CGRectMake(0.0f, (size.height - size.width / aspect) / 2.0f, size.width, size.width / aspect);
-            }
-            else
-            {
+            } else {
                 rect = CGRectMake((size.width - size.height * aspect) / 2.0f, 0.0f, size.height * aspect, size.height);
             }
             break;
@@ -103,12 +88,9 @@
         case UIViewContentModeScaleAspectFill:
         {
             CGFloat aspect = self.size.width / self.size.height;
-            if (size.width / aspect >= size.height)
-            {
+            if (size.width / aspect >= size.height) {
                 rect = CGRectMake(0.0f, (size.height - size.width / aspect) / 2.0f, size.width, size.width / aspect);
-            }
-            else
-            {
+            } else {
                 rect = CGRectMake((size.width - size.height * aspect) / 2.0f, 0.0f, size.height * aspect, size.height);
             }
             break;
@@ -165,24 +147,20 @@
         }
     }
     
-    if (!padToFit)
-    {
+    if (!padToFit) {
         //remove padding
-        if (rect.size.width < size.width)
-        {
+        if (rect.size.width < size.width) {
             size.width = rect.size.width;
             rect.origin.x = 0.0f;
         }
-        if (rect.size.height < size.height)
-        {
+        if (rect.size.height < size.height) {
             size.height = rect.size.height;
             rect.origin.y = 0.0f;
         }
     }
     
     //avoid redundant drawing
-    if (CGSizeEqualToSize(self.size, size))
-    {
+    if (CGSizeEqualToSize(self.size, size)) {
         return self;
     }
     
@@ -200,11 +178,9 @@
 	return image;
 }
 
-+ (CGImageRef)gradientMask
-{
++ (CGImageRef)gradientMask {
     static CGImageRef sharedMask = NULL;
-    if (sharedMask == NULL)
-    {
+    if (sharedMask == NULL)  {
         //create gradient mask
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 256), YES, 0.0);
         CGContextRef gradientContext = UIGraphicsGetCurrentContext();
@@ -223,8 +199,7 @@
     return sharedMask;
 }
 
-- (UIImage *)reflectedImageWithScale:(CGFloat)scale
-{
+- (UIImage *)reflectedImageWithScale:(CGFloat)scale {
 	//get reflection dimensions
 	CGFloat height = ceil(self.size.height * scale);
 	CGSize size = CGSizeMake(self.size.width, height);
@@ -250,8 +225,7 @@
 	return reflection;
 }
 
-- (UIImage *)imageWithReflectionWithScale:(CGFloat)scale gap:(CGFloat)gap alpha:(CGFloat)alpha
-{
+- (UIImage *)imageWithReflectionWithScale:(CGFloat)scale gap:(CGFloat)gap alpha:(CGFloat)alpha {
     //get reflected image
     UIImage *reflection = [self reflectedImageWithScale:scale];
     CGFloat reflectionOffset = reflection.size.height + gap;
@@ -273,8 +247,7 @@
 	return image;
 }
 
-- (UIImage *)imageWithShadowColor:(UIColor *)color offset:(CGSize)offset blur:(CGFloat)blur
-{
+- (UIImage *)imageWithShadowColor:(UIColor *)color offset:(CGSize)offset blur:(CGFloat)blur {
     //get size
     //CGSize border = CGSizeMake(fabsf(offset.width) + blur, fabsf(offset.height) + blur);
     CGSize border = CGSizeMake(fabs(offset.width) + blur, fabs(offset.height) + blur);
@@ -299,8 +272,7 @@
 	return image;
 }
 
-- (UIImage *)imageWithCornerRadius:(CGFloat)radius
-{
+- (UIImage *)imageWithCornerRadius:(CGFloat)radius {
     //create drawing context
 	UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -329,8 +301,7 @@
 	return image;
 }
 
-- (UIImage *)imageWithAlpha:(CGFloat)alpha
-{
+- (UIImage *)imageWithAlpha:(CGFloat)alpha {
     //create drawing context
 	UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     
@@ -345,8 +316,7 @@
 	return image;
 }
 
-- (UIImage *)imageWithMask:(UIImage *)maskImage;
-{
+- (UIImage *)imageWithMask:(UIImage *)maskImage {
     //create drawing context
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -365,8 +335,7 @@
     return image;
 }
 
-- (UIImage *)maskImageFromImageAlpha
-{
+- (UIImage *)maskImageFromImageAlpha {
     //get dimensions
     NSInteger width = CGImageGetWidth(self.CGImage);
     NSInteger height = CGImageGetHeight(self.CGImage);
@@ -378,10 +347,8 @@
     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), self.CGImage);
     
     //invert alpha pixels
-    for (int y = 0; y < height; y++)
-    {
-        for (int x = 0; x < width; x++)
-        {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
             NSInteger index = y * bytesPerRow + x;
             ((unsigned char *)data)[index] = 255 - ((unsigned char *)data)[index];
         }

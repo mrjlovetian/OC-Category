@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Capture)
+
 /**
  *  @brief  截图指定view成图片
  *

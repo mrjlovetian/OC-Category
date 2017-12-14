@@ -8,6 +8,7 @@
 #import "UIImage+Orientation.h"
 
 @implementation UIImage (Orientation)
+
 /**
  *  @brief  修正图片的方向
  *

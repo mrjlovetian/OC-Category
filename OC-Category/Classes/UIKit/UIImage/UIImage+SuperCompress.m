@@ -8,6 +8,7 @@
 #import "UIImage+SuperCompress.h"
 
 @implementation UIImage (SuperCompress)
+
 + (UIImage*)resizableHalfImage:(NSString *)name {
     UIImage *normal = [UIImage imageNamed:name];
     
