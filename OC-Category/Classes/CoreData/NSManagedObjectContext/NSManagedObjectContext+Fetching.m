@@ -7,7 +7,9 @@
 #import "NSManagedObjectContext+Fetching.h"
 
 @implementation NSManagedObjectContext(Fetching)
+
 #pragma mark Fetching
+
 - (id)fetchObject:(NSString *)entityName usingValue:(id)value forKey:(NSString *)key returningAsFault:(BOOL)fault {
     return [self fetchObject:entityName
               usingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", key, value]

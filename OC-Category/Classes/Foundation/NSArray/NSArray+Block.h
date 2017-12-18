@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSArray (Block)
+
 /**
  *  快速遍历数组
  *

@@ -7,7 +7,6 @@
 //
 #import "CLLocation+CH1903.h"
 
-
 @implementation CLLocation (CH1903)
 
 - (id)initWithCH1903x:(double)x y:(double)y {

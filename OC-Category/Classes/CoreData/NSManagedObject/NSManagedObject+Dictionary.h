@@ -8,6 +8,7 @@
 #import <CoreData/CoreData.h>
 
 @interface NSManagedObject (Dictionary)
+
 /**
  *  @author Categories
  *
@@ -26,4 +27,5 @@
  *  @return <#return value description#>
  */
 - (NSDictionary *)dictionary;
+
 @end

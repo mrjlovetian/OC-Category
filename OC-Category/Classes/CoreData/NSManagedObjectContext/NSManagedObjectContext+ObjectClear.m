@@ -9,9 +9,12 @@
 #import "NSManagedObjectContext+ObjectClear.h"
 
 @implementation NSManagedObjectContext (ObjectClear)
+
 #pragma mark - Utils
+
 - (void)deleteObjects:(id <NSFastEnumeration>)objects {
     for (id obj in objects)
         [self deleteObject:obj];
 }
+
 @end

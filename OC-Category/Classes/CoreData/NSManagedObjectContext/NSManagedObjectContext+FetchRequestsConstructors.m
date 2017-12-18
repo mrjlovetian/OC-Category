@@ -8,10 +8,13 @@
 #import "NSManagedObjectContext+FetchRequestsConstructors.h"
 
 @interface NSManagedObjectContext ()
+
 @end
 
 @implementation NSManagedObjectContext(FetchRequestsConstructors)
+
 #pragma mark - Constructors
+
 - (NSFetchRequest*)fetchRequestForEntityObject:(NSString*)entityName usingValue:(id)value forKey:(NSString*)key returningAsFault:(BOOL)fault {
     // Create request
     NSFetchRequest *req = [[NSFetchRequest alloc] init];
@@ -62,4 +65,5 @@
     req.returnsObjectsAsFaults = fault;
 	return req;
 }
+
 @end

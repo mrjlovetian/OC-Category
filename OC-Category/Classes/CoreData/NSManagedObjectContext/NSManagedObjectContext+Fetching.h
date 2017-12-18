@@ -8,6 +8,7 @@
 #import <CoreData/CoreData.h>
 
 @interface NSManagedObjectContext(Fetching)
+
 /* Fetch one object using given key and value. Usefull to fetch objects on their uid key 
  * /!\ Warning, errors are ignored /!\
  */

@@ -8,6 +8,8 @@
 #import <CoreData/CoreData.h>
 
 @interface NSManagedObjectContext (ObjectClear)
+
 /* Delete all given objects*/
 - (void)deleteObjects:(id <NSFastEnumeration>)objects;
+
 @end

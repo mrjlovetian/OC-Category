@@ -43,4 +43,5 @@ typedef void (^ContextObjectsCallback)(NSManagedObjectContext *context, NSArray 
 #pragma mark - Insert New Entity
 - (id)insertEntity:(NSString *)entity;
 - (void)deleteEntity:(NSString *)entity withPredicate:(NSPredicate *)predicate;
+
 @end
