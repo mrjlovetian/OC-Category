@@ -8,6 +8,7 @@
 #import "NSDate+Formatter.h"
 
 @implementation NSDate (Formatter)
+
 + (NSDateFormatter *)formatter {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t oncePredicate;
