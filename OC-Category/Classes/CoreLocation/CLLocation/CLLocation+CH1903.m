@@ -36,7 +36,6 @@
     -  0.002528 * pow(x_aux,2)
     -  0.0447 * pow(y_aux,2) * x_aux
     -  0.0140 * pow(x_aux,3);
-    
     // Unit 10000" to 1 " and converts seconds to degrees (dec)
     lat = lat * 100/36.0;
     return lat;
