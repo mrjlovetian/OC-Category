@@ -10,6 +10,7 @@
 #import <Availability.h>
 
 @implementation NSData (Base64)
+
 /**
  *  @brief  字符串base64后转data
  *
@@ -73,8 +74,7 @@
             }
         }
     }
-    if (!wrapWidth || wrapWidth >= [encoded length])
-    {
+    if (!wrapWidth || wrapWidth >= [encoded length]) {
         return encoded;
     }
     wrapWidth = (wrapWidth / 4) * 4;
@@ -90,6 +90,7 @@
     }
     return result;
 }
+
 /**
  *  @brief  NSData转string 换行长度默认64
  *
