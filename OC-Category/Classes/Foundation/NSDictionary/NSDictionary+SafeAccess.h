@@ -56,6 +56,7 @@
 - (CGSize)sizeForKey:(id)key;
 
 - (CGRect)rectForKey:(id)key;
+
 @end
 
 #pragma --mark NSMutableDictionary setter
