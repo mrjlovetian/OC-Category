@@ -21,7 +21,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 159, 45)];
+    UIImage *image = [UIImage imageNamed:@"Rec"];
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 18, 0, 10) resizingMode:UIImageResizingModeStretch];
+    imageView.image = image;
+//    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:imageView];
+    return;
     
     UILabel *testLab = [[UILabel alloc] initWithFrame:CGRectMake(25, 100, SCREE_SIZE.width - 50, 160)];
     testLab.text = @"数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....数据测试中....";
@@ -61,6 +67,11 @@
     btn.backgroundColor = [UIColor redColor];
     [btn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    
+    
+    
+   
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

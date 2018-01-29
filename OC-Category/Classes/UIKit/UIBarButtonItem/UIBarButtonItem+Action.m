@@ -14,7 +14,7 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 - (void)performActionBlock {
     dispatch_block_t block = self.actionBlock;
     if (block)
-        block();
+            block();
 }
 
 - (BarButtonActionBlock)actionBlock {
@@ -33,7 +33,6 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
         // Sets up the action.
         [self setTarget:self];
         [self setAction:@selector(performActionBlock)];
-        
         [self didChangeValueForKey:@"actionBlock"];
     }
 }

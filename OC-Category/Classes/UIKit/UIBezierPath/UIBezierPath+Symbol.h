@@ -12,7 +12,7 @@ typedef enum {
   kUIBezierPathArrowDirectionLeft  = 1 << 1,
   kUIBezierPathArrowDirectionUp    = 1 << 2,
   kUIBezierPathArrowDirectionDown  = 1 << 3
-}UIBezierPathArrowDirection;
+} UIBezierPathArrowDirection;
 
 @interface UIBezierPath (Symbol)
 

@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BA5F0357F96A9957B00A8C64 /* Pods_OC_Category_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38EC12212D74EFB3813CBF5 /* Pods_OC_Category_Example.framework */; };
+		E7E67BFF2019BE5C00920C7C /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7E67BFE2019BE5C00920C7C /* image.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BDADE9419A40DC0992D3C378 /* Pods_OC_Category_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OC_Category_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C193CCBDF9F18CBF28BBAE18 /* Pods-OC-Category_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OC-Category_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OC-Category_Tests/Pods-OC-Category_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C38EC12212D74EFB3813CBF5 /* Pods_OC_Category_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OC_Category_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7E67BFE2019BE5C00920C7C /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				E7E67BFE2019BE5C00920C7C /* image.xcassets */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for OC-Category */,
 				6003F5B5195388D20070C39A /* Tests */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				E7E67BFF2019BE5C00920C7C /* image.xcassets in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);

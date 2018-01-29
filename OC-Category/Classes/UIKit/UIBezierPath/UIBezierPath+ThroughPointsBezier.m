@@ -81,15 +81,12 @@
         }
         
         if (i == 1) {
-            
             [self addQuadCurveToPoint:previousPoint controlPoint:previousControlPoint2];
         }
         else if (i > 1 && i < pointArray.count - 1) {
-            
             [self addCurveToPoint:previousPoint controlPoint1:previousControlPoint1 controlPoint2:previousControlPoint2];
         }
         else if (i == pointArray.count - 1) {
-            
             [self addCurveToPoint:previousPoint controlPoint1:previousControlPoint1 controlPoint2:previousControlPoint2];
             [self addQuadCurveToPoint:pointI controlPoint:controlPoint1];
         }
@@ -108,7 +105,6 @@ CGFloat ObliqueAngleOfStraightThrough(CGPoint point1, CGPoint point2)   {
     CGFloat obliqueAngle = 0;
     
     if (point1.x > point2.x) {
-        
         obliqueRatio = (point2.y - point1.y) / (point2.x - point1.x);
         obliqueAngle = atan(obliqueRatio);
     } else if (point1.x < point2.x) {
