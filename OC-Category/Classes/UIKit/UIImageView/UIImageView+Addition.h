@@ -16,7 +16,7 @@
  *
  *  @return imageview
  */
-+ (id)imageViewWithImageNamed:(NSString*)imageName;
++ (id)imageViewWithImageNamed:(NSString *)imageName;
 
 /**
  *  @brief  根据frame创建imageview

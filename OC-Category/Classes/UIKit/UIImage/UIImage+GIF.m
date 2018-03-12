@@ -23,8 +23,7 @@
 
     if (count <= 1) {
         animatedImage = [[UIImage alloc] initWithData:data];
-    }
-    else {
+    } else {
         NSMutableArray *images = [NSMutableArray array];
 
         NSTimeInterval duration = 0.0f;

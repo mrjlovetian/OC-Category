@@ -8,18 +8,11 @@
 
 @interface UIImage (Alpha)
 
-/**
- *  @brief  是否有alpha通道
- *
- *  @return 是否有alpha通道
- */
+
+/// 是否有alpha通道
 - (BOOL)hasAlpha;
 
-/**
- *  @brief  如果没有alpha通道 增加alpha通道
- *
- *  @return 如果没有alpha通道 增加alpha通道
- */
+/// 如果没有alpha通道 增加alpha通道
 - (UIImage *)imageWithAlpha;
 
 /**
@@ -32,6 +25,7 @@
 - (UIImage *)transparentBorderImage:(NSUInteger)borderSize;
 
 //http://stackoverflow.com/questions/6521987/crop-uiimage-to-alpha?answertab=oldest#tab-top
+
 /**
  *  @brief  裁切含透明图片为最小大小
  *
