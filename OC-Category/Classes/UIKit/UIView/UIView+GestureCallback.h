@@ -10,14 +10,14 @@
 
 @interface GestureCallbackValues : NSObject
 
-@property (nonatomic, copy)         void (^tapCallback)(UITapGestureRecognizer* recognizer, NSString* gestureId);
-@property (nonatomic, copy)         void (^pinchCallback)(UIPinchGestureRecognizer* recognizer, NSString* gestureId);
-@property (nonatomic, copy)         void (^panCallback)(UIPanGestureRecognizer* recognizer, NSString* gestureId);
-@property (nonatomic, copy)         void (^swipeCallback)(UISwipeGestureRecognizer* recognizer, NSString* gestureId);
-@property (nonatomic, copy)         void (^rotationCallback)(UIRotationGestureRecognizer* recognizer, NSString* gestureId);
-@property (nonatomic, copy)         void (^longPressCallback)(UILongPressGestureRecognizer* recognizer, NSString* gestureId);
-@property (nonatomic, retain)       UIGestureRecognizer *gesture;
-@property (nonatomic, retain)       NSString *gestureId;
+@property (nonatomic, copy) void (^tapCallback)(UITapGestureRecognizer* recognizer, NSString* gestureId);
+@property (nonatomic, copy) void (^pinchCallback)(UIPinchGestureRecognizer* recognizer, NSString* gestureId);
+@property (nonatomic, copy) void (^panCallback)(UIPanGestureRecognizer* recognizer, NSString* gestureId);
+@property (nonatomic, copy) void (^swipeCallback)(UISwipeGestureRecognizer* recognizer, NSString* gestureId);
+@property (nonatomic, copy) void (^rotationCallback)(UIRotationGestureRecognizer* recognizer, NSString* gestureId);
+@property (nonatomic, copy) void (^longPressCallback)(UILongPressGestureRecognizer* recognizer, NSString* gestureId);
+@property (nonatomic, retain) UIGestureRecognizer *gesture;
+@property (nonatomic, retain) NSString *gestureId;
 
 @end
 
@@ -25,8 +25,8 @@
 
 @interface UIView (GestureCallback)
 
-@property (nonatomic)     NSMutableDictionary *gestures;
-@property (nonatomic)     NSMutableDictionary *gestureKeysHash;
+@property (nonatomic) NSMutableDictionary *gestures;
+@property (nonatomic) NSMutableDictionary *gestureKeysHash;
 
 // tap
 - (NSString*)addTapGestureRecognizer:(void(^)(UITapGestureRecognizer* recognizer, NSString* gestureId))tapCallback;

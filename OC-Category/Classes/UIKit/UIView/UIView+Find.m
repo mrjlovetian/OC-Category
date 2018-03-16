@@ -22,7 +22,6 @@
             return subView;
         }
     }
-    
     return nil;
 }
 
@@ -61,7 +60,6 @@
             return YES;
         }
     }
-    
     return NO;
 }
 
