@@ -28,7 +28,6 @@ static char const *const heightKey = "Height";
     } else {
         newSize = [super sizeThatFits:size];
     }
-    
     return newSize;
 }
 

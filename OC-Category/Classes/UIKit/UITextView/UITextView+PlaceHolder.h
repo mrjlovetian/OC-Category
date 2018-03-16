@@ -7,7 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+
 @interface UITextView (PlaceHolder) <UITextViewDelegate>
+
 @property (nonatomic, strong) UITextView *placeHolderTextView;
 
 - (void)addPlaceHolder:(NSString *)placeHolder;

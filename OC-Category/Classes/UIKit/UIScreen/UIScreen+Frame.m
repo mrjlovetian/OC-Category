@@ -42,7 +42,6 @@
     return CGSizeMake(size.width * scale, size.height * scale);
 }
 
-
 /**
  *  交换高度与宽度
  */
