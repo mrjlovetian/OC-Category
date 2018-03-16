@@ -379,7 +379,6 @@ static void * const keypath = (void*)&keypath;
 
 @end
 
-
 @implementation MJPopupBackgroundView
 
 - (void)drawRect:(CGRect)rect {
