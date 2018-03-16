@@ -33,7 +33,7 @@ static NSString *MJPopupViewDismissedKey = @"MJPopupViewDismissed";
 
 static void * const keypath = (void*)&keypath;
 
-- (UIViewController*)mj_popupViewController {
+- (UIViewController *)mj_popupViewController {
     return objc_getAssociatedObject(self, kMJPopupViewController);
 }
 
@@ -49,12 +49,12 @@ static void * const keypath = (void*)&keypath;
     objc_setAssociatedObject(self, kMJPopupBackgroundView, mj_popupBackgroundView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)presentPopupViewController:(UIViewController*)popupViewController animationType:(MJPopupViewAnimation)animationType backgroundTouch:(BOOL)enable dismissed:(void(^)(void))dismissed {
+- (void)presentPopupViewController:(UIViewController *)popupViewController animationType:(MJPopupViewAnimation)animationType backgroundTouch:(BOOL)enable dismissed:(void(^)(void))dismissed {
     self.mj_popupViewController = popupViewController;
     [self presentPopupView:popupViewController.view animationType:animationType backgroundTouch:enable dismissed:dismissed];
 }
 
-- (void)presentPopupViewController:(UIViewController*)popupViewController animationType:(MJPopupViewAnimation)animationType {
+- (void)presentPopupViewController:(UIViewController *)popupViewController animationType:(MJPopupViewAnimation)animationType {
     [self presentPopupViewController:popupViewController animationType:animationType backgroundTouch:YES dismissed:nil];
 }
 
@@ -82,23 +82,23 @@ static void * const keypath = (void*)&keypath;
 #pragma mark -
 #pragma mark View Handling
 
-- (void)presentPopupView:(UIView*)popupView animationType:(MJPopupViewAnimation)animationType {
+- (void)presentPopupView:(UIView *)popupView animationType:(MJPopupViewAnimation)animationType {
     [self presentPopupView:popupView animationType:animationType backgroundTouch:YES dismissed:nil];
 }
 
-- (UIViewController*)topViewController {
+- (UIViewController *)topViewController {
     return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 
 - (UIViewController *)topViewControllerWithRootViewController:(UIViewController *)rootViewController {
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
+        UITabBarController *tabBarController = (UITabBarController*)rootViewController;
         return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
     } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        UINavigationController *navigationController = (UINavigationController*)rootViewController;
         return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
     } else if (rootViewController.presentedViewController) {
-        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        UIViewController *presentedViewController = rootViewController.presentedViewController;
         return [self topViewControllerWithRootViewController:presentedViewController];
     } else {
         if (rootViewController) {
@@ -113,7 +113,7 @@ static void * const keypath = (void*)&keypath;
     }
 }
 
-- (void)presentPopupView:(UIView*)popupView animationType:(MJPopupViewAnimation)animationType backgroundTouch:(BOOL)enable dismissed:(void(^)(void))dismissed {
+- (void)presentPopupView:(UIView *)popupView animationType:(MJPopupViewAnimation)animationType backgroundTouch:(BOOL)enable dismissed:(void(^)(void))dismissed {
     UIView *sourceView = [self topView];
     sourceView.tag = kMJSourceViewTag;
     popupView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -211,7 +211,7 @@ static void * const keypath = (void*)&keypath;
 
 #pragma mark --- Slide
 
-- (void)slideViewIn:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView withAnimationType:(MJPopupViewAnimation)animationType {
+- (void)slideViewIn:(UIView *)popupView sourceView:(UIView *)sourceView overlayView:(UIView *)overlayView withAnimationType:(MJPopupViewAnimation)animationType {
     // Generating Start and Stop Positions
     CGSize sourceSize = sourceView.bounds.size;
     CGSize popupSize = popupView.bounds.size;
@@ -265,7 +265,7 @@ static void * const keypath = (void*)&keypath;
     }];
 }
 
-- (void)slideViewOut:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView withAnimationType:(MJPopupViewAnimation)animationType {
+- (void)slideViewOut:(UIView *)popupView sourceView:(UIView *)sourceView overlayView:(UIView *)overlayView withAnimationType:(MJPopupViewAnimation)animationType {
     // Generating Start and Stop Positions
     CGSize sourceSize = sourceView.bounds.size;
     CGSize popupSize = popupView.bounds.size;
@@ -321,7 +321,7 @@ static void * const keypath = (void*)&keypath;
 
 #pragma mark --- Fade
 
-- (void)fadeViewIn:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView {
+- (void)fadeViewIn:(UIView *)popupView sourceView:(UIView *)sourceView overlayView:(UIView*)overlayView {
     // Generating Start and Stop Positions
     CGSize sourceSize = sourceView.bounds.size;
     CGSize popupSize = popupView.bounds.size;
@@ -343,7 +343,7 @@ static void * const keypath = (void*)&keypath;
     }];
 }
 
-- (void)fadeViewOut:(UIView*)popupView sourceView:(UIView*)sourceView overlayView:(UIView*)overlayView {
+- (void)fadeViewOut:(UIView *)popupView sourceView:(UIView *)sourceView overlayView:(UIView *)overlayView {
     [UIView animateWithDuration:kPopupModalAnimationDuration animations:^{
         [self.mj_popupViewController viewWillDisappear:NO];
         self.mj_popupBackgroundView.alpha = 0.0f;

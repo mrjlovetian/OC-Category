@@ -8,7 +8,7 @@
 #import "UIScrollView+Addition.h"
 
 @implementation UIScrollView (Addition)
-//frame
+
 - (CGFloat)contentWidth {
     return self.contentSize.width;
 }
@@ -40,7 +40,6 @@
 - (void)setContentOffsetY:(CGFloat)y {
     self.contentOffset = CGPointMake(self.contentOffset.x, y);
 }
-//
 
 - (CGPoint)topContentOffset {
     return CGPointMake(0.0f, -self.contentInset.top);
