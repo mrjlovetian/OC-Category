@@ -36,8 +36,7 @@
             
             if (contentMode == UIViewContentModeScaleAspectFit) {
                 scale = MIN(ratioX, ratioY);
-            }
-            else /*if (contentMode == UIViewContentModeScaleAspectFill)*/ {
+            } else /*if (contentMode == UIViewContentModeScaleAspectFill)*/ {
                 scale = MAX(ratioX, ratioY);
             }
             
@@ -46,7 +45,6 @@
             
             viewPoint.x += (viewSize.width  - imageSize.width  * scale) / 2.0f;
             viewPoint.y += (viewSize.height - imageSize.height * scale) / 2.0f;
-            
             break;
         }
             
@@ -54,14 +52,12 @@
         {
             viewPoint.x += viewSize.width / 2.0  - imageSize.width  / 2.0f;
             viewPoint.y += viewSize.height / 2.0 - imageSize.height / 2.0f;
-            
             break;
         }
             
         case UIViewContentModeTop:
         {
             viewPoint.x += viewSize.width / 2.0 - imageSize.width / 2.0f;
-            
             break;
         }
             
@@ -69,14 +65,12 @@
         {
             viewPoint.x += viewSize.width / 2.0 - imageSize.width / 2.0f;
             viewPoint.y += viewSize.height - imageSize.height;
-            
             break;
         }
             
         case UIViewContentModeLeft:
         {
             viewPoint.y += viewSize.height / 2.0 - imageSize.height / 2.0f;
-            
             break;
         }
             
@@ -84,14 +78,12 @@
         {
             viewPoint.x += viewSize.width - imageSize.width;
             viewPoint.y += viewSize.height / 2.0 - imageSize.height / 2.0f;
-            
             break;
         }
             
         case UIViewContentModeTopRight:
         {
             viewPoint.x += viewSize.width - imageSize.width;
-            
             break;
         }
             
@@ -99,16 +91,13 @@
         case UIViewContentModeBottomLeft:
         {
             viewPoint.y += viewSize.height - imageSize.height;
-            
             break;
         }
-            
             
         case UIViewContentModeBottomRight:
         {
             viewPoint.x += viewSize.width  - imageSize.width;
             viewPoint.y += viewSize.height - imageSize.height;
-            
             break;
         }
             
@@ -164,8 +153,7 @@
             
             if (contentMode == UIViewContentModeScaleAspectFit) {
                 scale = MIN(ratioX, ratioY);
-            }
-            else /*if (contentMode == UIViewContentModeScaleAspectFill)*/ {
+            } else /*if (contentMode == UIViewContentModeScaleAspectFill)*/ {
                 scale = MAX(ratioX, ratioY);
             }
             
@@ -175,7 +163,6 @@
 
             imagePoint.x /= scale;
             imagePoint.y /= scale;
-
             break;
         }
             
@@ -183,14 +170,12 @@
         {
             imagePoint.x -= (viewSize.width - imageSize.width)  / 2.0f;
             imagePoint.y -= (viewSize.height - imageSize.height) / 2.0f;
-            
             break;
         }
             
         case UIViewContentModeTop:
         {
             imagePoint.x -= (viewSize.width - imageSize.width)  / 2.0f;
-            
             break;
         }
             
@@ -198,14 +183,12 @@
         {
             imagePoint.x -= (viewSize.width - imageSize.width)  / 2.0f;
             imagePoint.y -= (viewSize.height - imageSize.height);
-            
             break;
         }
             
         case UIViewContentModeLeft:
         {
             imagePoint.y -= (viewSize.height - imageSize.height) / 2.0f;
-            
             break;
         }
             
@@ -213,31 +196,25 @@
         {
             imagePoint.x -= (viewSize.width - imageSize.width);
             imagePoint.y -= (viewSize.height - imageSize.height) / 2.0f;
-
             break;
         }
-            
+
         case UIViewContentModeTopRight:
         {
             imagePoint.x -= (viewSize.width - imageSize.width);
-            
             break;
         }
-            
             
         case UIViewContentModeBottomLeft:
         {
             imagePoint.y -= (viewSize.height - imageSize.height);
-            
             break;
         }
-            
             
         case UIViewContentModeBottomRight:
         {
             imagePoint.x -= (viewSize.width - imageSize.width);
             imagePoint.y -= (viewSize.height - imageSize.height);
-            
             break;
         }
             
