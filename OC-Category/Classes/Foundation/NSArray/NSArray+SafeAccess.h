@@ -11,10 +11,6 @@
 @interface NSArray (SafeAccess)
 /**
  *  防止数组越界，选择数组
- *
- *  @param index
- *
- *  @return
  */
 - (id)objectWithIndex:(NSUInteger)index;
 
@@ -25,7 +21,7 @@
  *
  *  @return 描述
  */
-- (NSString*)stringWithIndex:(NSUInteger)index;
+- (NSString *)stringWithIndex:(NSUInteger)index;
 
 /**
  *  数据描述，数字
@@ -205,85 +201,61 @@
 @interface NSMutableArray(SafeAccess)
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addObj:(id)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addString:(NSString *)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addBool:(BOOL)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addInt:(int)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addInteger:(NSInteger)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addUnsignedInteger:(NSUInteger)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addCGFloat:(CGFloat)f;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addChar:(char)c;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addFloat:(float)i;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addPoint:(CGPoint)o;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addSize:(CGSize)o;
 
 /**
  *  可变数组，添加数组
- *
- *  @param i
  */
 - (void)addRect:(CGRect)o;
 
