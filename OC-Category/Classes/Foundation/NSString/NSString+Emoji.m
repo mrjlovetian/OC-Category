@@ -878,8 +878,7 @@ static NSDictionary *s_cheatCodesToUnicode = nil;
     return self;
 }
 
-- (NSString *)stringByReplacingEmojiUnicodeWithCheatCodes
-{
+- (NSString *)stringByReplacingEmojiUnicodeWithCheatCodes {
     if (!s_cheatCodesToUnicode) {
         [NSString initializeEmojiCheatCodes];
     }
