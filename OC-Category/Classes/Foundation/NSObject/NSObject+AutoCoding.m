@@ -9,7 +9,9 @@
 #import <objc/runtime.h>
 #pragma GCC diagnostic ignored "-Wgnu"
 static NSString *const AutocodingException = @"AutocodingException";
+
 @implementation NSObject (AutoCoding)
+
 + (BOOL)supportsSecureCoding {
     return YES;
 }

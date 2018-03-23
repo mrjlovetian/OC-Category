@@ -43,8 +43,7 @@
             const char *buffer = [lineData bytes];
             
             // Loop over the raw data, byte-by-byte
-            for (int i = 0; i < [lineData length]; i++)
-            {
+            for (int i = 0; i < [lineData length]; i++) {
                 // If the current character matches a character in the delimiter sequence...
                 if (buffer[i] == delimiter[delimiterIndex]) {
                     delimiterIndex++; // Move to the next char of the delimiter sequence
@@ -77,12 +76,9 @@
     
     NSData *returnData = [self readDataOfLength:positionOffset];
     
-    if ([returnData length] > 0)
-    {
+    if ([returnData length] > 0) {
         return returnData;
-    }
-    else
-    {
+    } else {
         return nil;
     }
 }

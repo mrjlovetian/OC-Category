@@ -233,89 +233,67 @@
 
 - (NSDate *)dateFloor {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* dateComponents = [gregorianCalendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:self];
-    
     return [gregorianCalendar dateFromComponents:dateComponents];
 }
 
 - (NSDate *)dateCeil {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* dateComponents = [gregorianCalendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:self];
-    
     [dateComponents setHour:23];
     [dateComponents setMinute:59];
     [dateComponents setSecond:59];
-    
     return [gregorianCalendar dateFromComponents:dateComponents];
 }
 
 - (NSDate*)startOfWeek {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
-    
     [components setDay:([components day] - ([components weekday] - 1))];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
 - (NSDate *)endOfWeek {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSWeekdayCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
-    
     [components setDay:([components day] + (7 - [components weekday]))];
     [components setHour:23];
     [components setMinute:59];
     [components setSecond:59];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
 - (NSDate *)startOfMonth {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
 - (NSDate *)endOfMonth {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
-    
     NSRange dayRange = [gregorianCalendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
-    
     [components setDay:dayRange.length];
     [components setHour:23];
     [components setMinute:59];
     [components setSecond:59];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
 - (NSDate *)startOfYear {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit fromDate:self];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
 - (NSDate*)endOfYear {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit fromDate:self];
-    
     [components setDay:31];
     [components setMonth:12];
     [components setHour:23];
     [components setMinute:59];
     [components setSecond:59];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
@@ -341,9 +319,7 @@
 
 - (NSDate *)previousMonth:(NSUInteger) monthsToMove {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
-    
     NSInteger dayInMonth = [components day];
     
     // Update the components, initially setting the day in month to 0
@@ -357,7 +333,6 @@
     
     // Set the day clamping to the maximum number of days in that month
     [components setDay:MIN(dayInMonth, dayRange.length)];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 
@@ -367,9 +342,7 @@
 
 - (NSDate *)nextMonth:(NSUInteger) monthsToMove {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-
     NSDateComponents* components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:self];
-    
     NSInteger dayInMonth = [components day];
     
     // Update the components, initially setting the day in month to 0
@@ -383,7 +356,6 @@
     
     // Set the day clamping to the maximum number of days in that month
     [components setDay:MIN(dayInMonth, dayRange.length)];
-    
     return [gregorianCalendar dateFromComponents:components];
 }
 

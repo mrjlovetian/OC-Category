@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (Reflection)
+
 //类名
 - (NSString *)className;
 + (NSString *)className;

@@ -24,8 +24,7 @@
     req.fetchLimit  = 1;
     req.returnsObjectsAsFaults = fault;
 	// Execute request
-    return [[self executeFetchRequest:req
-                                error:nil] lastObject];
+    return [[self executeFetchRequest:req error:nil] lastObject];
 }
 
 - (NSArray *)fetchObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate returningAsFault:(BOOL)fault {
@@ -35,8 +34,7 @@
     req.predicate = predicate;
     req.returnsObjectsAsFaults = fault;
 	// Execute request
-    return [self executeFetchRequest:req
-                               error:nil];
+    return [self executeFetchRequest:req error:nil];
 }
 
 - (NSArray *)fetchObjects:(NSString*)entityName usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault {
@@ -46,8 +44,7 @@
     req.sortDescriptors = sortDescriptors;
     req.returnsObjectsAsFaults = fault;
 	// Execute request
-    return [self executeFetchRequest:req
-                               error:nil];
+    return [self executeFetchRequest:req error:nil];
 }
 
 - (NSArray *)fetchObjects:(NSString*)entityName usingPredicate:(NSPredicate*)predicate usingSortDescriptors:(NSArray*)sortDescriptors returningAsFault:(BOOL)fault {
@@ -58,8 +55,7 @@
     req.predicate = predicate;
     req.returnsObjectsAsFaults = fault;
 	// Execute request
-    return [self executeFetchRequest:req
-                               error:nil];
+    return [self executeFetchRequest:req error:nil];
 }
 
 - (NSArray*)fetchObjects:(NSString*)entityName returningAsFault:(BOOL)fault {

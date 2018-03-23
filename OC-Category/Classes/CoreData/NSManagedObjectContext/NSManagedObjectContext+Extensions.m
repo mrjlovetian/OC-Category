@@ -141,7 +141,6 @@
   
   NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
   
-    
     [results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSManagedObject *object = (NSManagedObject *)obj;
         if([object validateForDelete:&error])

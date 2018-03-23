@@ -8,6 +8,7 @@
 #import "NSObject+AssociatedObject.h"
 #import  <objc/runtime.h>
 @implementation NSObject (AssociatedObject)
+
 /**
  *  @brief  附加一个stong对象
  *

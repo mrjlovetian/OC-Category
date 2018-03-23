@@ -267,13 +267,9 @@
 
 - (BOOL)isSameDay:(NSDate *)anotherDate {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components1 = [calendar components:(NSCalendarUnitYear
-                                                          | NSCalendarUnitMonth
-                                                          | NSCalendarUnitDay)
+    NSDateComponents *components1 = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
                                                 fromDate:self];
-    NSDateComponents *components2 = [calendar components:(NSCalendarUnitYear
-                                                          | NSCalendarUnitMonth
-                                                          | NSCalendarUnitDay)
+    NSDateComponents *components2 = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
                                                 fromDate:anotherDate];
     return ([components1 year] == [components2 year]
             && [components1 month] == [components2 month]
@@ -456,7 +452,6 @@
             }
             return [NSString stringWithFormat:@"%d个月前", (abs)(12 - preMonth + month)];
         }
-        
         return [NSString stringWithFormat:@"%d年前", abs(year)];
     }
     

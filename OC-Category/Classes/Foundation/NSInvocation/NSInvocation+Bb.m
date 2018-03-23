@@ -13,7 +13,7 @@
 
 @implementation NSInvocation (Bb)
 
-+ (NSString*)encodeType:(char *)encodedType {
++ (NSString *)encodeType:(char *)encodedType {
     return [NSString stringWithUTF8String:encodedType];
 }
 

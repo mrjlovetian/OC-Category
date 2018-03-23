@@ -45,7 +45,6 @@
         free(propertyList);
         instanceClass = class_getSuperclass(instanceClass);
     }
-    
     return YES;
 }
 
