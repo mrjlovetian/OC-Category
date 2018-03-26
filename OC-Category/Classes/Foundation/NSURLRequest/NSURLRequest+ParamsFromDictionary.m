@@ -72,10 +72,8 @@
         } else {
             components = [self queryStringComponentsFromKey:[NSString stringWithFormat:@"%@[%@]", key, nestedKey] value:nestedValue];
         }
-        
         [queryStringComponents addObjectsFromArray:components];
     }];
-    
     return queryStringComponents;
 }
 

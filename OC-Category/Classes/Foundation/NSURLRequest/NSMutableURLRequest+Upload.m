@@ -46,18 +46,14 @@
         [data appendData:[@"Content-Type: application/octet-stream\n\n" dataUsingEncoding:NSUTF8StringEncoding]];
         
         [data appendData:[NSData dataWithContentsOfURL:fileURL]];
-        
         [data appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
     }];
     
     NSString *tailStr = [NSString stringWithFormat:@"--%@--\n", boundary];
     [data appendData:[tailStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
     request.HTTPBody = data;
-    
     NSString *headerString = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request setValue:headerString forHTTPHeaderField:@"Content-Type"];
-    
     return request;
 }
 
