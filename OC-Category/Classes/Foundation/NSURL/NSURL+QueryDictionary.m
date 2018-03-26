@@ -7,7 +7,7 @@
 
 #import "NSURL+QueryDictionary.h"
 
-static NSString *const URLReservedChars  = @"￼=,!$&'()*+;@?\r\n\"<>#\t :/";
+static NSString *const URLReservedChars     = @"￼=,!$&'()*+;@?\r\n\"<>#\t :/";
 static NSString *const kQuerySeparator      = @"&";
 static NSString *const kQueryDivider        = @"=";
 static NSString *const kQueryBegin          = @"?";
