@@ -20,7 +20,6 @@
     if (result == nil)
         return @"";
     return result;
-    
 }
 
 - (NSString *)toDisplayPercentageWithDigit:(NSInteger)digit {

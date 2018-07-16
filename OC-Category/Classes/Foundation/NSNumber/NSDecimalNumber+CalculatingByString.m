@@ -186,9 +186,7 @@ NSArray* tokenizeEquation (NSString *equation, NSDictionary *numbers) {
                 // '-': unary minus
                 [equationStack addObject:@"-1"];
                 [equationStack addObject:@"*"];
-                
                 tempCharsLength = 0;
-                
             } else {
                 [equationStack addObject:string];
                 tempCharsLength = 0;
@@ -222,20 +220,15 @@ NSArray* RPNFromTokens (NSArray *tokens) {
         operator = nil;
         
         if ([@")" isEqualToString:token]) {
-            
             do {
                 operator = [operatorStack lastObject];
                 [operatorStack removeLastObject];
-                
                 if (![@"(" isEqualToString:operator]) {
                     [output addObject:operator];
                 }
-                
             } while (![@"(" isEqualToString:operator]);
-            
             continue;
         }
-        
         
         if ([operators indexOfObject:token] != NSNotFound) {
             operator = [operatorStack lastObject];
@@ -265,7 +258,6 @@ NSArray* RPNFromTokens (NSArray *tokens) {
             [operatorStack addObject:token];
             continue;
         }
-        
         [output addObject:token];
     }
     

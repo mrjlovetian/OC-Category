@@ -7,17 +7,17 @@
 #import <Foundation/Foundation.h>
 @interface NSObject (AutoCoding) <NSSecureCoding>
 
-//coding
+// coding
 + (NSDictionary *)codableProperties;
 
 - (void)setWithCoder:(NSCoder *)aDecoder;
 
-//property access
+// property access
 - (NSDictionary *)codableProperties;
 
 - (NSDictionary *)dictionaryRepresentation;
 
-//loading / saving
+// loading / saving
 + (instancetype)objectWithContentsOfFile:(NSString *)path;
 
 - (BOOL)writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;

@@ -17,7 +17,7 @@ static const void *IntegerProperty = &IntegerProperty;
 @dynamic stringProperty;
 @dynamic integerProperty;
 
-//set
+// set
 /**
  *  @brief  catgory runtime实现get set方法增加一个字符串属性
  */
@@ -28,12 +28,12 @@ static const void *IntegerProperty = &IntegerProperty;
     //objc_setAssociatedObject(self, @selector(stringProperty), stringProperty, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-//get
+// get
 - (NSString *)stringProperty {
     return objc_getAssociatedObject(self, StringProperty);
 }
 
-//set
+// set
 /**
  *  @brief  catgory runtime实现get set方法增加一个NSInteger属性
  */

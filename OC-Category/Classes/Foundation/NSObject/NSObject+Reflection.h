@@ -45,7 +45,7 @@
 - (NSDictionary *)protocolList;
 + (NSDictionary *)protocolList;
 
-- (BOOL)hasPropertyForKey:(NSString*)key;
-- (BOOL)hasIvarForKey:(NSString*)key;
+- (BOOL)hasPropertyForKey:(NSString *)key;
+- (BOOL)hasIvarForKey:(NSString *)key;
 
 @end
