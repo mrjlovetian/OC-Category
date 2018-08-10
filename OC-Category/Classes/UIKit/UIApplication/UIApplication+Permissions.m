@@ -228,11 +228,6 @@ static char PermissionsLocationBlockFailurePropertyKey;
 }
 
 #pragma mark - Needs investigating
-/*
- -(void)requestAccessToBluetoothLEWithSuccess:(void(^)())accessGranted {
- //REQUIRES DELEGATE - NEEDS RETHINKING
- }
- */
 
 - (void)requestAccessToLocationWithSuccess:(void(^)())accessGranted andFailure:(void(^)())accessDenied {
     self.permissionsLocationManager = [[CLLocationManager alloc] init];

@@ -213,7 +213,6 @@
     return nil;
 }
 
-//CG
 - (CGFloat)CGFloatWithIndex:(NSUInteger)index{
     id value = [self objectWithIndex:index];
     CGFloat f = [value doubleValue];

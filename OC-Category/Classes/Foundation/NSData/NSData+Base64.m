@@ -58,18 +58,14 @@
     else
 #endif
     {
-        switch (wrapWidth)
-        {
-            case 64:
-            {
+        switch (wrapWidth) {
+            case 64:{
                 return [self base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
             }
-            case 76:
-            {
+            case 76:{
                 return [self base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
             }
-            default:
-            {
+            default:{
                 encoded = [self base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
             }
         }
