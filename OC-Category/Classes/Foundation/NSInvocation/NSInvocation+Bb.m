@@ -25,7 +25,6 @@
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF like %@",matchingPattern];
     NSArray *filtered = [allClasses filteredArrayUsingPredicate:predicate];
-    
     return filtered;
 }
 
@@ -70,7 +69,6 @@
     }
     
     return [temp sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
 }
 
 + (NSArray *)getMethodListForClass:(NSString *)className matchingPattern:(NSString *)matchingPattern {
@@ -98,7 +96,6 @@
         
         className = classes.firstObject;
     }
-    
     return NSClassFromString(className);
 }
 

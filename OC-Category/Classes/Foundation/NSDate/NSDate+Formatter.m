@@ -100,6 +100,7 @@
     [formatter setTimeZone:timezone];
     return [formatter stringFromDate:self];
 }
+
 #pragma mark -
 #pragma mark Formatter  date
 + (NSString *)currentDateStringWithFormat:(NSString *)format {

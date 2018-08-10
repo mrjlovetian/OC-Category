@@ -39,7 +39,6 @@
         }
     }];
     return (NSDictionary *) [result mutableCopy];
-    
 }
 
 /**

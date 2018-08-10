@@ -27,7 +27,6 @@
         
         [cookieData addObject:cookieDictionary];
     }
-    
     [cookieData writeToFile:[self storagePath] atomically:TRUE];
 }
 

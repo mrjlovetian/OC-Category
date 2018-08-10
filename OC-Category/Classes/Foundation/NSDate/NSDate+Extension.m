@@ -432,18 +432,15 @@
         if (retDay <= 0) {
             // 获取发布日期中，该月有多少天
             int totalDays = (int)[self daysInMonth:date month:[date month]];
-            
             // 当前天数 + （发布日期月中的总天数-发布日期月中发布日，即等于距离今天的天数）
             retDay = (int)[curDate day] + (totalDays - (int)[date day]);
         }
-        
         return [NSString stringWithFormat:@"%d天前", (abs)(retDay)];
     } else  {
         if (abs(year) <= 1) {
             if (year == 0) { // 同年
                 return [NSString stringWithFormat:@"%d个月前", abs(month)];
             }
-            
             // 隔年
             int month = (int)[curDate month];
             int preMonth = (int)[date month];
@@ -500,7 +497,6 @@
                              initWithCalendarIdentifier:NSGregorianCalendar];
 #endif
     
-    
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setYear:numYears];
     
@@ -527,7 +523,6 @@
                              initWithCalendarIdentifier:NSGregorianCalendar];
 #endif
     
-    
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setMonth:numMonths];
     
@@ -553,7 +548,6 @@
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
 #endif
-    
     
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setDay:numDays];

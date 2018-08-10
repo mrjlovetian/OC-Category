@@ -26,12 +26,10 @@
                                inSection:self.section];
 }
 
-
 - (NSIndexPath *)nextItem {
     return [NSIndexPath indexPathForItem:self.item + 1
                                inSection:self.section];
 }
-
 
 - (NSIndexPath *)nextSection {
     return [NSIndexPath indexPathForRow:self.row

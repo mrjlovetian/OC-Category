@@ -70,7 +70,6 @@
     }
     
     // Use positionOffset to determine the string to return...
-    
     // Return to the start of this line
     [self seekToFileOffset:currentPosition];
     
