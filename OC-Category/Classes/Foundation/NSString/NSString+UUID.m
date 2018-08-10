@@ -33,7 +33,7 @@
  *  @return 毫秒时间戳
  */
 + (NSString *)UUIDTimestamp {
-    return  [[NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]*1000] stringValue];
+    return  [[NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970] * 1000] stringValue];
 }
 
 @end

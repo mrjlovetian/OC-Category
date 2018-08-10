@@ -73,7 +73,6 @@
         }
         
         // Set base score for matching chr
-        
         // Same case bonus.
         if(indexInString != NSNotFound && [[string substringWithRange:NSMakeRange(indexInString, 1)] isEqualToString:chr]){
             characterScore += 0.1;
@@ -103,7 +102,6 @@
         if(indexInString != NSNotFound){
             string = [string substringFromIndex:indexInString + 1];
         }
-        
         totalCharacterScore += characterScore;
     }
     
@@ -113,7 +111,6 @@
     } 
     
     otherStringScore = totalCharacterScore / otherStringLength;
-    
     if(NSStringScoreOptionReducedLongStringPenalty == (options & NSStringScoreOptionReducedLongStringPenalty)){
         // Reduce the penalty for longer words
         CGFloat percentageOfMatchedString = otherStringLength / stringLength;
@@ -125,7 +122,6 @@
     }
     
     finalScore = finalScore / fuzzies;
-    
     if(startOfStringBonus && finalScore + 0.15 < 1){
         finalScore += 0.15;
     }

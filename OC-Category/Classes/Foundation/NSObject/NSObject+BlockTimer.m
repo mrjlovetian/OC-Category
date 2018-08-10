@@ -15,7 +15,6 @@
 	block();
 	double b = CFAbsoluteTimeGetCurrent();
 	unsigned int m = ((b-a) * 1000.0f); // convert from seconds to milliseconds
-	NSLog(@"%@: %d ms", prefixString ? prefixString : @"Time taken", m);
 }
 
 @end

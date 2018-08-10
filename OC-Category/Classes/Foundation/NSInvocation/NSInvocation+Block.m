@@ -33,8 +33,7 @@ enum {
     BLOCK_HAS_SIGNATURE =     (1 << 30),
 };
 
-static const char *__BlockSignature__(id blockObj)
-{
+static const char *__BlockSignature__(id blockObj) {
     struct Block_literal_1 *block = (__bridge void *)blockObj;
     struct Block_descriptor_1 *descriptor = block->descriptor;
     assert(block->flags & BLOCK_HAS_SIGNATURE);
@@ -46,15 +45,14 @@ static const char *__BlockSignature__(id blockObj)
 
 @implementation NSInvocation (Block)
 
-+ (instancetype)invocationWithBlock:(id) block
-{
++ (instancetype)invocationWithBlock:(id) block {
     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[NSMethodSignature signatureWithObjCTypes:__BlockSignature__(block)]];
     invocation.target = block;
     return invocation;
 }
+
 #define ARG_GET_SET(type) do { type val = 0; val = va_arg(args,type); [invocation setArgument:&val atIndex:1 + i];} while (0)
-+ (instancetype)invocationWithBlockAndArguments:(id) block ,...
-{
++ (instancetype)invocationWithBlockAndArguments:(id) block ,... {
     NSInvocation* invocation = [NSInvocation invocationWithBlock:block];
     NSUInteger argsCount = invocation.methodSignature.numberOfArguments - 1;
     va_list args;

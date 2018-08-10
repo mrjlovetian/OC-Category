@@ -479,26 +479,6 @@
     if (!strcmp(cString, @encode(BOOL)))
         return @"BOOL";
     
-//    NSDictionary *typeDic = @{@"c":@"char",
-//                              @"i":@"int",
-//                              @"s":@"short",
-//                              @"l":@"long",
-//                              @"q":@"long long",
-//                              @"C":@"unsigned char",
-//                              @"I":@"unsigned int",
-//                              @"S":@"unsigned short",
-//                              @"L":@"unsigned long",
-//                              @"Q":@"unsigned long long",
-//                              @"f":@"float",
-//                              @"d":@"double",
-//                              @"B":@"BOOL",
-//                              @"v":@"void",
-//                              @"*":@"char *",
-//                              @"@":@"id",
-//                              @"#":@"Class",
-//                              @":":@"SEL",
-//                              };
-    
     //@TODO: do handle bitmasks
     NSString *result = [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
 //    if ([typeDic objectForKey:result]) {

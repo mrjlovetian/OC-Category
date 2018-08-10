@@ -39,7 +39,7 @@
     return NO;
 }
 
-//Unicode编码的字符串转成NSString
+/// Unicode编码的字符串转成NSString
 - (NSString *)makeUnicodeToString {
     NSString *tempStr1 = [self stringByReplacingOccurrencesOfString:@"\\u"withString:@"\\U"];
     NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\""withString:@"\\\""];
