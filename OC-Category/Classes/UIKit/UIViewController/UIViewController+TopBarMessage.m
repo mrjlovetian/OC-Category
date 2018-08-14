@@ -171,7 +171,6 @@ static char TopWarningKey;
     [self showTopMessage:message topBarConfig:nil mode:TopBarMessageModeOverlay  dismissDelay:kDefaultDimissDelay withTapBlock:nil];
 }
 
-//- (void)showTopMessage:(NSString *)message topBarConfig:(NSDictionary *)config dismissDelay:(float)delay withTapBlock:(dispatch_block_t)tapHandler
 - (void)showTopMessage:(NSString *)message topBarConfig:(NSDictionary *)config mode:(TopBarMessageMode)messageMode dismissDelay:(float)delay withTapBlock:(dispatch_block_t)tapHandler {
     TopWarningView *topV = objc_getAssociatedObject(self, &TopWarningKey);
     if (!topV) {
@@ -242,7 +241,6 @@ static char TopWarningKey;
 }
 
 - (void)dismissTopMessage {
-    NSLog(@"隐藏");
     NSArray *subViews = self.view.subviews;
     for (UIView *subView in subViews) {
         if ([subView isKindOfClass:[TopWarningView class]]) {
