@@ -10,7 +10,7 @@
 @implementation NSURLRequest (ParamsFromDictionary)
 
 + (NSURLRequest *)requestGETWithURL:(NSURL *)url parameters:(NSDictionary *)params {
-    //This code is ARC only.
+    // This code is ARC only.
     return [[NSURLRequest alloc] initWithURL:url parameters:params];
 }
 
@@ -40,7 +40,7 @@
     return @"";
 }
 
-//These next three methods recursively break the dictionary down into its components.  Largely based on AFHTTPClient, but somewhat more readable and understandable (by me, anyway).
+// These next three methods recursively break the dictionary down into its components.  Largely based on AFHTTPClient, but somewhat more readable and understandable (by me, anyway).
 + (NSArray *)queryStringComponentsFromKey:(NSString *)key value:(id)value {
     NSMutableArray *queryStringComponents = [NSMutableArray arrayWithCapacity:2];
     if ([value isKindOfClass:[NSDictionary class]]) {
