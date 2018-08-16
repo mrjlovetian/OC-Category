@@ -37,7 +37,7 @@ static NSString *const kFragmentBegin       = @"#";
     if (queryComponents.count) {
       return [NSURL URLWithString:
               [NSString stringWithFormat:@"%@%@%@%@%@",
-               queryComponents[0],                      // existing url
+               queryComponents[0],                      
                kQueryBegin,
                newQuery,
                self.fragment.length ? kFragmentBegin : @"",

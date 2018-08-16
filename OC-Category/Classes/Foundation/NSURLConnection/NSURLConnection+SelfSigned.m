@@ -97,7 +97,6 @@
 
 @end
 
-
 @implementation NSURLConnection (SelfSigned)
 
 + (void)sendAsynchronousRequestAcceptingAllCerts:(NSURLRequest *)request queue:(NSOperationQueue *)queue completionHandler:(void (^)(NSURLResponse *, NSData *, NSError *))handler{
